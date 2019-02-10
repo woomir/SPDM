@@ -1,9 +1,11 @@
+
 <?php
 //fetch.php
 $connect = mysqli_connect("localhost", "root", "52telecast", "woomir");
 $columns = array('id', 'lotPw', 'makerPaste', 'dateMake', 'recipePaste', 'amountPaste',	'objectMakePaste',	'etcPaste');
 
 $query = "SELECT * FROM makelistpastetbl";
+//$query = "SELECT * FROM".$_POST[0];
 
 if(isset($_POST["search"]["value"]))
 {
@@ -60,6 +62,7 @@ while($row = mysqli_fetch_array($result))
 function get_all_data($connect)
 {
  $query = "SELECT * FROM makelistpastetbl";
+ //$query = "SELECT * FROM".$_POST[0];
  $result = mysqli_query($connect, $query);
  return mysqli_num_rows($result);
 }
