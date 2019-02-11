@@ -1,11 +1,15 @@
 
 <?php
+session_start();
 //fetch.php
 $connect = mysqli_connect("localhost", "root", "52telecast", "woomir");
 $columns = array('id', 'lotPw', 'makerPaste', 'dateMake', 'recipePaste', 'amountPaste',	'objectMakePaste',	'etcPaste');
-
+//$table = $_SESSION['database'];
+//$a = inplode(" ",$table);
 $query = "SELECT * FROM makelistpastetbl";
-//$query = "SELECT * FROM".$_POST[0];
+
+//$get = $_POST["datdabase"];
+//$query = 'SELECT * FROM '.$get;
 
 if(isset($_POST["search"]["value"]))
 {
@@ -72,8 +76,10 @@ $output = array(
  "recordsTotal"  =>  get_all_data($connect),
  "recordsFiltered" => $number_filter_row,
  "data"    => $data
+
 );
 
 echo json_encode($output);
+
 
 ?>

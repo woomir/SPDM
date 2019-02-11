@@ -55,13 +55,13 @@
               <a class="dropdown-item" href=#>Conditions of Manu</a>
               <a class="dropdown-item" href=#>Conditions of Coating</a>
               <form method="POST" action="analysisPw.php">
-                <button class="dropdown-item" id="analysisPw" name="analysisPw" value="analysisPw">Analysis</button>
+                <button class="dropdown-item" id="analysisPw" name="datdabase[]" value="analysisPw">Analysis</button>
               </form>
               <div class="dropdown-divider"></div>
               <h6 class="dropdown-header">Paste</h6>
               <a class="dropdown-item" href=#>Recipe</a>
               <form method="POST" action="listofManu.php">
-                <button class="dropdown-item" id="listofManu" name="listofManu" value="makelistpastetbl">List of Manu</button>
+                <button class="dropdown-item" id="listofManu" name="database[]" value="makelistpastetbl">List of Manu</button>
               </form>
               <a class="dropdown-item" href=#>Analysis-Mass</a>
               <a class="dropdown-item" href=#>Analysis-Lab</a>
