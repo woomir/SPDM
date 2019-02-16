@@ -54,17 +54,11 @@
               <h6 class="dropdown-header">Lab powder</h6>
               <a class="dropdown-item" href=#>Conditions of Manu</a>
               <a class="dropdown-item" href=#>Conditions of Coating</a>
-              <form method="POST" action="analysisPw.php">
-                <button class="dropdown-item" id="analysisPw" name="database[]" value="analysisPw">Analysis</button>
-
-              </form>
+              <a class="dropdown-item" href="analysisPw.php">Analysis</a>
               <div class="dropdown-divider"></div>
               <h6 class="dropdown-header">Paste</h6>
               <a class="dropdown-item" href=#>Recipe</a>
-              <form method="POST" action="listofManu.php">
-                <button class="dropdown-item" id="listofManu" name="database[]" value="makelistpastetbl">List of Manu</button>
-                <input type="hidden" />
-              </form>
+              <a class="dropdown-item" href="listofManu.php">List of Manu</a>
               <a class="dropdown-item" href=#>Analysis-Mass</a>
               <a class="dropdown-item" href=#>Analysis-Lab</a>
           </div>
@@ -83,14 +77,14 @@
               </ol>
             </nav>
           <div class="card-body">
-            <form method="post" action="../dataManage/delete.php">
+            <form method="post" action="../dataManage/listofManu/delete.php">
               <div class="table-responsive">
                 <?php
                 settype($_SESSION['role_id'],'int');
                  //var_dump($_POST);
-                 print_r($_POST["database"]);
-                 $_SESSION['database'] = $_POST['database'];
-                 var_dump($_SESSION);
+                 //print_r($_POST["database"]);
+                 //$_SESSION['database'] = $_POST['database'];
+                 //var_dump($_SESSION);
                 ?>
                  <div align="right">
                   <?php if ($_SESSION['role_id']<3){ ?>
@@ -103,7 +97,7 @@
                  <br />
                  <div id="alert_message"></div>
 
-                 <table id="PasteTable" class="table table-bordered table-striped">
+                 <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover">
                   <thead>
                    <tr>
                      <th></th>
@@ -197,6 +191,7 @@
 </html>
 
 <script type="text/javascript" language="javascript" >
+
  $(document).ready(function(){
 
   fetch_data();
@@ -206,20 +201,26 @@
    var dataTable = $('#PasteTable').DataTable({
     "processing" : true,
     "serverSide" : true,
-    "order" : [],
+    "order" : [[4,'asc']],
+    "columnDefs": [{
+    orderable: false,
+    //className: 'select-checkbox',
+    targets: 0
+  }],
     "ajax" : {
-     url:"../dataManage/fetch.php",
+     url:"../dataManage/listofManu/fetch.php",
      type:"POST"
     }
    });
   }
+
 
 <?php if ($_SESSION['role_id']==1) {
   ?>
   function update_data(id, column_name, value)
   {
    $.ajax({
-    url:"../dataManage/update.php",
+    url:"../dataManage/listofManu/update.php",
     method:"POST",
     data:{id:id, column_name:column_name, value:value},
     success:function(data)
@@ -271,9 +272,16 @@
    if(id != '' && lotPw != '')
    {
     $.ajax({
-     url:"../dataManage/insert.php",
+     url:"../dataManage/listofManu/insert.php",
      method:"POST",
-     data:{id:id, lotPw:lotPw, makerPaste:makerPaste, dateMake:dateMake, recipePaste:recipePaste, amountPaste:amountPaste, objectMakePaste:objectMakePaste, etcPaste:etcPaste},
+     data:{id:id,
+       lotPw:lotPw,
+       makerPaste:makerPaste,
+       dateMake:dateMake,
+       recipePaste:recipePaste,
+       amountPaste:amountPaste,
+       objectMakePaste:objectMakePaste,
+       etcPaste:etcPaste},
      success:function(data)
      {
       $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
@@ -290,6 +298,8 @@
     alert("Fields is required");
    }
   });
+
+
 /*
   $(document).on('click', '.delete', function(){
    var id = $(this).attr("id");
@@ -311,4 +321,5 @@
    }
 */
   });
+
 </script>

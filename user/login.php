@@ -28,11 +28,11 @@
        echo "Failed to connect to MySQL: " . mysqli_connect_error();
    }
 
-   if (isset($_POST['id']) && isset($_POST['password'])) {
-        $_SESSION['id'] = $_POST['id'];
-        $_SESSION['password'] = $_POST['password'];
-       $id = $_POST['id'];
-       $password = $_POST['password'];
+   if (isset($_SESSION['id']) && isset($_SESSION['password'])) {
+      //  $_SESSION['id'] = $_POST['id'];
+      //  $_SESSION['password'] = $_POST['password'];
+       $id = $_SESSION['id'];
+       $password = $_SESSION['password'];
 
        $sql = "SELECT * from users where id='".$id."' AND password='".$password."'";
        $result = mysqli_query($conn,$sql);

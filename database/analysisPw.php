@@ -54,19 +54,16 @@
               <h6 class="dropdown-header">Lab powder</h6>
               <a class="dropdown-item" href=#>Conditions of Manu</a>
               <a class="dropdown-item" href=#>Conditions of Coating</a>
-              <form method="POST" action="analysisPw.php">
-                <button class="dropdown-item" id="analysisPw" name="datdabase[]" value="analysisPw">Analysis</button>
-              </form>
+              <a class="dropdown-item" href="analysisPw.php">Analysis</a>
               <div class="dropdown-divider"></div>
               <h6 class="dropdown-header">Paste</h6>
               <a class="dropdown-item" href=#>Recipe</a>
-              <form method="POST" action="listofManu.php">
-                <button class="dropdown-item" id="listofManu" name="database[]" value="makelistpastetbl">List of Manu</button>
-              </form>
+              <a class="dropdown-item" href="listofManu.php">List of Manu</a>
               <a class="dropdown-item" href=#>Analysis-Mass</a>
               <a class="dropdown-item" href=#>Analysis-Lab</a>
           </div>
       </li>
+
     </ul>
 
     <div id="content-wrapper">
@@ -75,17 +72,19 @@
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">Databases</li>
-                <li class="breadcrumb-item">Paste</li>
-                <li class="breadcrumb-item active" aria-current="page">List of Manu</li>
+                <li class="breadcrumb-item">Lab Powder</li>
+                <li class="breadcrumb-item active" aria-current="page">Analysis</li>
               </ol>
             </nav>
           <div class="card-body">
-            <form method="post" action="../dataManage/delete.php">
+            <form method="post" action="../dataManage/analysisPw/delete.php">
               <div class="table-responsive">
                 <?php
                 settype($_SESSION['role_id'],'int');
-
-                var_dump($_POST);
+                 //var_dump($_POST);
+                 //print_r($_POST["database"]);
+                 //$_SESSION['database'] = $_POST['database'];
+                 //var_dump($_SESSION);
                 ?>
                  <div align="right">
                   <?php if ($_SESSION['role_id']<3){ ?>
@@ -98,19 +97,24 @@
                  <br />
                  <div id="alert_message"></div>
 
-                 <table id="PasteTable" class="table table-bordered table-striped">
+                 <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover">
                   <thead>
                    <tr>
                      <th></th>
-                     <th>Paste Lot</th>
-                     <th>Powder Lot</th>
-                     <th>작업자</th>
-                     <th>제조 일자</th>
-                     <th>배합명</th>
-                     <th>제조량(g)</th>
-                     <th>제조 목적</th>
-                     <th>비고</th>
-                    </tr>
+                     <th>Sample No</th>
+                     <th>D10</th>
+                     <th>D50</th>
+                     <th>D90</th>
+                     <th>Dmax</th>
+                     <th>Total IGL</th>
+                     <th>Excess IGL</th>
+                     <th>Coating IGL</th>
+                     <th>DTA Peak</th>
+                     <th>Enthalphy</th>
+                     <th>BET</th>
+                     <th>TD</th>
+                     <th>XRD</th>
+                   </tr>
                    </thead>
                  </table>
               </div>
@@ -192,7 +196,11 @@
 </html>
 
 <script type="text/javascript" language="javascript" >
+
+
  $(document).ready(function(){
+
+
 
   fetch_data();
 
@@ -201,20 +209,25 @@
    var dataTable = $('#PasteTable').DataTable({
     "processing" : true,
     "serverSide" : true,
-    "order" : [],
+    "order" : [[1,'asc']],
+    "columnDefs": [{
+    orderable: false,
+    //className: 'select-checkbox',
+    targets: 0}],
     "ajax" : {
-     url:"../dataManage/fetch.php",
+     url:"../dataManage/analysisPw/fetch.php",
      type:"POST"
     }
    });
   }
+
 
 <?php if ($_SESSION['role_id']==1) {
   ?>
   function update_data(id, column_name, value)
   {
    $.ajax({
-    url:"../dataManage/update.php",
+    url:"../dataManage/analysisPw/update.php",
     method:"POST",
     data:{id:id, column_name:column_name, value:value},
     success:function(data)
@@ -248,27 +261,51 @@
    html += '<td contenteditable id="data6"></td>';
    html += '<td contenteditable id="data7"></td>';
    html += '<td contenteditable id="data8"></td>';
+   html += '<td contenteditable id="data9"></td>';
+   html += '<td contenteditable id="data10"></td>';
+   html += '<td contenteditable id="data11"></td>';
+   html += '<td contenteditable id="data12"></td>';
+   html += '<td contenteditable id="data13"></td>';
    html += '<td><button type="button" name="insert" id="insert" class="btn btn-success btn-xs">Insert</button></td>';
    html += '</tr>';
    $('#PasteTable tbody').prepend(html);
   });
 
   $(document).on('click', '#insert', function(){
-   var id = $('#data1').text();
-   var lotPw = $('#data2').text();
-   var makerPaste = $('#data3').text();
-   var dateMake = $('#data4').text();
-   var recipePaste = $('#data5').text();
-   var amountPaste = $('#data6').text();
-   var objectMakePaste = $('#data7').text();
-   var etcPaste = $('#data8').text();
+   var sampleNo = $('#data1').text();
+   var d10 = $('#data2').text();
+   var d50 = $('#data3').text();
+   var d90 = $('#data4').text();
+   var dmax = $('#data5').text();
+   var totalIgl = $('#data6').text();
+   var excessIgl = $('#data7').text();
+   var coatingIgl = $('#data8').text();
+   var dtaPeak = $('#data9').text();
+   var enthalphy = $('#data10').text();
+   var bet = $('#data11').text();
+   var td = $('#data12').text();
+   var xrd = $('#data13').text();
 
-   if(id != '' && lotPw != '')
+
+   if(sampleNo != '')
    {
     $.ajax({
-     url:"../dataManage/insert.php",
+     url:"../dataManage/analysisPw/insert.php",
      method:"POST",
-     data:{id:id, lotPw:lotPw, makerPaste:makerPaste, dateMake:dateMake, recipePaste:recipePaste, amountPaste:amountPaste, objectMakePaste:objectMakePaste, etcPaste:etcPaste},
+     data:{
+       sampleNo:sampleNo,
+       d10:d10,
+       d50:d50,
+       d90:d90,
+       dmax:dmax,
+       totalIgl:totalIgl,
+       excessIgl:excessIgl,
+       coatingIgl:coatingIgl,
+       dtaPeak:dtaPeak,
+       enthalphy:enthalphy,
+       bet:bet,
+       td:td,
+       xrd:xrd},
      success:function(data)
      {
       $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
@@ -285,25 +322,6 @@
     alert("Fields is required");
    }
   });
-/*
-  $(document).on('click', '.delete', function(){
-   var id = $(this).attr("id");
-   if(confirm("Are you sure you want to remove this?"))
-   {
-    $.ajax({
-     url:"../dataManage/delete.php",
-     method:"POST",
-     data:{id:id},
-     success:function(data){
-      $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
-      $('#PasteTable').DataTable().destroy();
-      fetch_data();
-     }
-    });
-    setInterval(function(){
-     $('#alert_message').html('');
-    }, 5000);
-   }
-*/
   });
+
 </script>
