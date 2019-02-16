@@ -45,7 +45,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="tablesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-fw fa-table"></i>
-          <span>Databases</span></a>
+          <span>Databases</span></a> 
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
               <h6 class="dropdown-header">Mass Powder</h6>
               <a class="dropdown-item" href=#>Conditions of Manu</a>
