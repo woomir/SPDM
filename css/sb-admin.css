@@ -10461,14 +10461,17 @@ body {
   font-weight: 900;
   content: '\f105';
   font-family: 'Font Awesome 5 Free';
+    transition: all 1s ease-in;
 }
 
 .navbar-nav .nav-item.dropdown.show .dropdown-toggle::after {
   content: '\f107';
+    transition: all 1s ease-in;
 }
 
 .navbar-nav .nav-item.dropdown.no-arrow .dropdown-toggle::after {
   display: none;
+    transition: all 1s ease-in;
 }
 
 .navbar-nav .nav-item .nav-link:focus {
@@ -10516,15 +10519,18 @@ body {
   transform: none !important;
   left: calc(90px + 0.5rem) !important;
   margin: 0;
+  transition: all 1s ease-in;
 }
 
 .sidebar .nav-item .dropdown-menu.dropup {
   bottom: 0;
   top: auto !important;
+    transition: all 1s ease-in;
 }
 
 .sidebar .nav-item.dropdown .dropdown-toggle::after {
   display: none;
+    transition: all 1s ease-in;
 }
 
 .sidebar .nav-item .nav-link {
@@ -10538,6 +10544,7 @@ body {
 .sidebar.toggled {
   width: 0 !important;
   overflow: hidden;
+    transition: all 1s ease-in;
 }
 
 @media (min-width: 768px) {
@@ -10559,9 +10566,11 @@ body {
     position: static !important;
     margin: 0 1rem;
     top: 0;
+      transition: all 1s ease-in;
   }
   .sidebar .nav-item.dropdown .dropdown-toggle::after {
     display: block;
+      transition: all 1s ease-in;
   }
   .sidebar.toggled {
     overflow: visible;
@@ -10585,13 +10594,16 @@ body {
     transform: none !important;
     left: calc(90px + 0.5rem) !important;
     margin: 0;
+      transition: all 1s ease-in;
   }
   .sidebar.toggled .nav-item .dropdown-menu.dropup {
     bottom: 0;
     top: auto !important;
+      transition: all 1s ease-in;
   }
   .sidebar.toggled .nav-item.dropdown .dropdown-toggle::after {
     display: none;
+      transition: all 1s ease-in;
   }
 }
 
