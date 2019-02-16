@@ -10,7 +10,8 @@ if(isset($_POST["id"], $_POST["lotPw"]))
  $amountPaste = mysqli_real_escape_string($connect, $_POST["amountPaste"]);
  $objectMakePaste = mysqli_real_escape_string($connect, $_POST["objectMakePaste"]);
  $etcPaste = mysqli_real_escape_string($connect, $_POST["etcPaste"]);
- $query = "INSERT INTO makelistpastetbl(id, lotPw, makerPaste, dateMake, recipePaste, amountPaste, objectMakePaste, etcPaste) VALUES('$id', '$lotPw', '$makerPaste', '$dateMake', '$recipePaste', '$amountPaste', '$objectMakePaste', '$etcPaste')";
+ $query = "INSERT INTO makelistpastetbl(id, lotPw, makerPaste, dateMake, recipePaste, amountPaste, objectMakePaste, etcPaste)
+ VALUES('$id', '$lotPw', '$makerPaste', '$dateMake', '$recipePaste', '$amountPaste', '$objectMakePaste', '$etcPaste')";
  if(mysqli_query($connect, $query))
  {
   echo 'Data Inserted';

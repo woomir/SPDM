@@ -1,12 +1,12 @@
 
 <?php
-session_start();
 //fetch.php
 $connect = mysqli_connect("localhost", "root", "52telecast", "woomir");
-$columns = array('id', 'lotPw', 'makerPaste', 'dateMake', 'recipePaste', 'amountPaste',	'objectMakePaste',	'etcPaste');
+$column = array('', 'id', 'lotPw', 'makerPaste', 'dateMake', 'recipePaste', 'amountPaste',	'objectMakePaste',	'etcPaste');
 //$table = $_SESSION['database'];
 //$a = inplode(" ",$table);
 $query = "SELECT * FROM makelistpastetbl";
+
 
 //$get = $_POST["datdabase"];
 //$query = 'SELECT * FROM '.$get;
@@ -27,7 +27,7 @@ if(isset($_POST["search"]["value"]))
 
 if(isset($_POST["order"]))
 {
- $query .= 'ORDER BY '.$columns[$_POST['order']['0']['column']].' '.$_POST['order']['0']['dir'].'
+ $query .= 'ORDER BY '.$column[$_POST['order']['0']['column']].' '.$_POST['order']['0']['dir'].'
  ';
 }
 else
@@ -36,7 +36,7 @@ else
 }
 
 $query1 = '';
-
+//var_dump($_POST['columns']);
 if($_POST["length"] != -1)
 {
  $query1 = 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
@@ -51,7 +51,7 @@ $data = array();
 while($row = mysqli_fetch_array($result))
 {
  $sub_array = array();
- $sub_array[] = '<input type="checkbox" value="'.$row["id"].'"name="check[]" id="delete" class="check">';
+ $sub_array[] = '<input type="checkbox" value="'.$row["id"].'"name="check[]" id="delete" data-column="check" class="check">';
  $sub_array[] = '<div contenteditable class="update" data-id="'.$row["id"].'" data-column="id">' . $row["id"] . '</div>';
  $sub_array[] = '<div contenteditable class="update" data-id="'.$row["id"].'" data-column="lotPw">' . $row["lotPw"] . '</div>';
  $sub_array[] = '<div contenteditable class="update" data-id="'.$row["id"].'" data-column="makerPaste">' . $row["makerPaste"] . '</div>';
@@ -65,8 +65,8 @@ while($row = mysqli_fetch_array($result))
 //$sub_array[] = '<button type="button" name="delete" class="btn btn-danger btn-sm delete" id="'.$row["id"].'">Delete</button>';
 function get_all_data($connect)
 {
- $query = "SELECT * FROM makelistpastetbl";
- //$query = "SELECT * FROM".$_POST[0];
+
+$query = "SELECT * FROM makelistpastetbl";
  $result = mysqli_query($connect, $query);
  return mysqli_num_rows($result);
 }

@@ -17,8 +17,8 @@ if (isset($_POST['delete']) && isset($_POST['check']))
 			$sql = "DELETE FROM makelistpastetbl WHERE id ='".$del_id."'";
       mysqli_query($connect,$sql);
       }
-      header("location:../database/listofManu.php");
+      header("location:/Project/SPDM/database/listofManu.php");
 	} else {
-    header("location:../database/listofManu.php");
+    header("location:/Project/SPDM/database/listofManu.php");
   }
 ?>
