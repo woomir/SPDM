@@ -59,8 +59,7 @@
               <h6 class="dropdown-header">Paste</h6>
               <a class="dropdown-item" href=#>Recipe</a>
               <a class="dropdown-item" href="listofManu.php">List of Manu</a>
-              <a class="dropdown-item" href=#>Analysis-Mass</a>
-              <a class="dropdown-item" href=#>Analysis-Lab</a>
+              <a class="dropdown-item" href=#>Analysis</a>
           </div>
       </li>
 
@@ -81,10 +80,7 @@
               <div class="table-responsive">
                 <?php
                 settype($_SESSION['role_id'],'int');
-                 //var_dump($_POST);
-                 //print_r($_POST["database"]);
-                 //$_SESSION['database'] = $_POST['database'];
-                 //var_dump($_SESSION);
+                //var_dump($_SESSION);
                 ?>
                  <div align="right">
                   <?php if ($_SESSION['role_id']<3){ ?>
@@ -100,14 +96,15 @@
                  <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover">
                   <thead>
                    <tr>
-                     <th></th>
-                     <th>Paste Lot</th>
-                     <th>Powder Lot</th>
-                     <th>작업자</th>
-                     <th>제조 일자</th>
-                     <th>배합명</th>
-                     <th>제조량(g)</th>
+                     <th width="3%"></th>
+                     <th width="8%">Paste No</th>
+                     <th width="10%">Powder Lot</th>
+                     <th width="7%">Powder type</th>
+                     <th width="10%">제조 일자</th>
+                     <th width="7%">작업자</th>
                      <th>제조 목적</th>
+                     <th width="7%">제조량 (g)</th>
+                     <th width="7%">배합명</th>
                      <th>비고</th>
                     </tr>
                    </thead>
@@ -254,34 +251,37 @@
    html += '<td contenteditable id="data6"></td>';
    html += '<td contenteditable id="data7"></td>';
    html += '<td contenteditable id="data8"></td>';
+   html += '<td contenteditable id="data9"></td>';
    html += '<td><button type="button" name="insert" id="insert" class="btn btn-success btn-xs">Insert</button></td>';
    html += '</tr>';
    $('#PasteTable tbody').prepend(html);
   });
 
   $(document).on('click', '#insert', function(){
-   var id = $('#data1').text();
-   var lotPw = $('#data2').text();
-   var makerPaste = $('#data3').text();
+   var pasteNo = $('#data1').text();
+   var powderLot = $('#data2').text();
+   var powderType = $('#data3').text();
    var dateMake = $('#data4').text();
-   var recipePaste = $('#data5').text();
-   var amountPaste = $('#data6').text();
-   var objectMakePaste = $('#data7').text();
-   var etcPaste = $('#data8').text();
+   var maker = $('#data5').text();
+   var object = $('#data6').text();
+   var amount = $('#data7').text();
+   var recipe = $('#data8').text();
+   var etc = $('#data9').text();
 
-   if(id != '' && lotPw != '')
+   if(pasteNo != '' && powderLot != '')
    {
     $.ajax({
      url:"../dataManage/listofManu/insert.php",
      method:"POST",
-     data:{id:id,
-       lotPw:lotPw,
-       makerPaste:makerPaste,
+     data:{pasteNo:pasteNo,
+       powderLot:powderLot,
+       powderType:powderType,
        dateMake:dateMake,
-       recipePaste:recipePaste,
-       amountPaste:amountPaste,
-       objectMakePaste:objectMakePaste,
-       etcPaste:etcPaste},
+       maker:maker,
+       object:object,
+       amount:amount,
+       recipe:recipe,
+       etc:etc},
      success:function(data)
      {
       $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');

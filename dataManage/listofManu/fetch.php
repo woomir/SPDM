@@ -2,26 +2,24 @@
 <?php
 //fetch.php
 $connect = mysqli_connect("localhost", "root", "52telecast", "woomir");
-$column = array('', 'id', 'lotPw', 'makerPaste', 'dateMake', 'recipePaste', 'amountPaste',	'objectMakePaste',	'etcPaste');
-//$table = $_SESSION['database'];
-//$a = inplode(" ",$table);
+$column = array('', 'pasteNo', 'powderLot', 'powderType', 'dateMake', 'maker',
+'object', 'amount', 'recipe', 'etc');
 $query = "SELECT * FROM makelistpastetbl";
 
 
-//$get = $_POST["datdabase"];
-//$query = 'SELECT * FROM '.$get;
 
 if(isset($_POST["search"]["value"]))
 {
  $query .= '
- WHERE id LIKE "%'.$_POST["search"]["value"].'%"
- OR lotPw LIKE "%'.$_POST["search"]["value"].'%"
- OR makerPaste LIKE "%'.$_POST["search"]["value"].'%"
+ WHERE pasteNo LIKE "%'.$_POST["search"]["value"].'%"
+ OR powderLot LIKE "%'.$_POST["search"]["value"].'%"
+ OR powderType LIKE "%'.$_POST["search"]["value"].'%"
  OR dateMake LIKE "%'.$_POST["search"]["value"].'%"
- OR recipePaste LIKE "%'.$_POST["search"]["value"].'%"
- OR amountPaste LIKE "%'.$_POST["search"]["value"].'%"
- OR objectMakePaste LIKE "%'.$_POST["search"]["value"].'%"
- OR etcPaste LIKE "%'.$_POST["search"]["value"].'%"
+ OR maker LIKE "%'.$_POST["search"]["value"].'%"
+ OR object LIKE "%'.$_POST["search"]["value"].'%"
+ OR amount LIKE "%'.$_POST["search"]["value"].'%"
+ OR recipe LIKE "%'.$_POST["search"]["value"].'%"
+ OR etc LIKE "%'.$_POST["search"]["value"].'%"
  ';
 }
 
@@ -36,7 +34,7 @@ else
 }
 
 $query1 = '';
-//var_dump($_POST['columns']);
+
 if($_POST["length"] != -1)
 {
  $query1 = 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
@@ -51,18 +49,19 @@ $data = array();
 while($row = mysqli_fetch_array($result))
 {
  $sub_array = array();
- $sub_array[] = '<input type="checkbox" value="'.$row["id"].'"name="check[]" id="delete" data-column="check" class="check">';
- $sub_array[] = '<div contenteditable class="update" data-id="'.$row["id"].'" data-column="id">' . $row["id"] . '</div>';
- $sub_array[] = '<div contenteditable class="update" data-id="'.$row["id"].'" data-column="lotPw">' . $row["lotPw"] . '</div>';
- $sub_array[] = '<div contenteditable class="update" data-id="'.$row["id"].'" data-column="makerPaste">' . $row["makerPaste"] . '</div>';
- $sub_array[] = '<div contenteditable class="update" data-id="'.$row["id"].'" data-column="dateMake">' . $row["dateMake"] . '</div>';
- $sub_array[] = '<div contenteditable class="update" data-id="'.$row["id"].'" data-column="recipePaste">' . $row["recipePaste"] . '</div>';
- $sub_array[] = '<div contenteditable class="update" data-id="'.$row["id"].'" data-column="amountPaste">' . $row["amountPaste"] . '</div>';
- $sub_array[] = '<div contenteditable class="update" data-id="'.$row["id"].'" data-column="objectMakePaste">' . $row["objectMakePaste"] . '</div>';
- $sub_array[] = '<div contenteditable class="update" data-id="'.$row["id"].'" data-column="etcPaste">' . $row["etcPaste"] . '</div>';
+ $sub_array[] = '<input type="checkbox" value="'.$row["pasteNo"].'"name="check[]" id="delete" data-column="check" class="check">';
+ $sub_array[] = '<div contenteditable class="update" data-id="'.$row["pasteNo"].'" data-column="pasteNo">' . $row["pasteNo"] . '</div>';
+ $sub_array[] = '<div contenteditable class="update" data-id="'.$row["pasteNo"].'" data-column="powderLot">' . $row["powderLot"] . '</div>';
+ $sub_array[] = '<div contenteditable class="update" data-id="'.$row["pasteNo"].'" data-column="powderType">' . $row["powderType"] . '</div>';
+ $sub_array[] = '<div contenteditable class="update" data-id="'.$row["pasteNo"].'" data-column="dateMake">' . $row["dateMake"] . '</div>';
+ $sub_array[] = '<div contenteditable class="update" data-id="'.$row["pasteNo"].'" data-column="maker">' . $row["maker"] . '</div>';
+ $sub_array[] = '<div contenteditable class="update" data-id="'.$row["pasteNo"].'" data-column="object">' . $row["object"] . '</div>';
+ $sub_array[] = '<div contenteditable class="update" data-id="'.$row["pasteNo"].'" data-column="amount">' . $row["amount"] . '</div>';
+ $sub_array[] = '<div contenteditable class="update" data-id="'.$row["pasteNo"].'" data-column="recipe">' . $row["recipe"] . '</div>';
+ $sub_array[] = '<div contenteditable class="update" data-id="'.$row["pasteNo"].'" data-column="etc">' . $row["etc"] . '</div>';
  $data[] = $sub_array;
 }
-//$sub_array[] = '<button type="button" name="delete" class="btn btn-danger btn-sm delete" id="'.$row["id"].'">Delete</button>';
+
 function get_all_data($connect)
 {
 

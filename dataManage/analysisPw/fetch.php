@@ -28,18 +28,18 @@ if(isset($_POST["search"]["value"]))
 
 if(isset($_POST['order']))
 {
- $query .= 'ORDER BY '.$column[$_POST['order']['0']['column']].' '.$_POST['order']['0']['dir'].'';
+ $query .= ' ORDER BY '.$column[$_POST['order']['0']['column']].' '.$_POST['order']['0']['dir'].'';
 }
 else
 {
- $query .= 'ORDER BY sampleNo DESC ';
+ $query .= ' ORDER BY sampleNo DESC ';
 }
 
 $query1 = '';
-
+//var_dump($_POST);
 if($_POST["length"] != -1)
 {
-// $query1 = 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
+$query1 = ' LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
 }
 
 $number_filter_row = mysqli_num_rows(mysqli_query($connect, $query));
@@ -51,7 +51,7 @@ $data = array();
 while($row = mysqli_fetch_array($result))
 {
  $sub_array = array();
- $sub_array[] = '<input type="checkbox" value="'.$row["sampleNo"].'"name="check[]" id="delete" class="check">';
+ $sub_array[] = '<input type="checkbox" value="'.$row["sampleNo"].'"name="check[]" id="delete" data-column="check" class="check">';
  $sub_array[] = '<div contenteditable class="update" data-id="'.$row["sampleNo"].'" data-column="sampleNo">' . $row["sampleNo"] . '</div>';
  $sub_array[] = '<div contenteditable class="update" data-id="'.$row["sampleNo"].'" data-column="d10">' . $row["d10"] . '</div>';
  $sub_array[] = '<div contenteditable class="update" data-id="'.$row["sampleNo"].'" data-column="d50">' . $row["d50"] . '</div>';
@@ -72,7 +72,6 @@ function get_all_data($connect)
 {
 
 $query = "SELECT * FROM analysispwtbl";
- //$query = "SELECT * FROM".$_POST[0];
  $result = mysqli_query($connect, $query);
  return mysqli_num_rows($result);
 }

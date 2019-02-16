@@ -59,8 +59,7 @@
               <h6 class="dropdown-header">Paste</h6>
               <a class="dropdown-item" href=#>Recipe</a>
               <a class="dropdown-item" href="listofManu.php">List of Manu</a>
-              <a class="dropdown-item" href=#>Analysis-Mass</a>
-              <a class="dropdown-item" href=#>Analysis-Lab</a>
+              <a class="dropdown-item" href=#>Analysis</a>
           </div>
       </li>
 
@@ -81,9 +80,7 @@
               <div class="table-responsive">
                 <?php
                 settype($_SESSION['role_id'],'int');
-                 //var_dump($_POST);
-                 //print_r($_POST["database"]);
-                 //$_SESSION['database'] = $_POST['database'];
+
                  //var_dump($_SESSION);
                 ?>
                  <div align="right">

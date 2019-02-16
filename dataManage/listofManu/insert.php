@@ -1,17 +1,18 @@
 <?php
 $connect = mysqli_connect("localhost", "root", "52telecast", "woomir");
-if(isset($_POST["id"], $_POST["lotPw"]))
+if(isset($_POST["pasteNo"], $_POST["powderLot"]))
 {
- $id = mysqli_real_escape_string($connect, $_POST["id"]);
- $lotPw = mysqli_real_escape_string($connect, $_POST["lotPw"]);
- $makerPaste = mysqli_real_escape_string($connect, $_POST["makerPaste"]);
+ $pasteNo = mysqli_real_escape_string($connect, $_POST["pasteNo"]);
+ $powderLot = mysqli_real_escape_string($connect, $_POST["powderLot"]);
+ $powderType = mysqli_real_escape_string($connect, $_POST["powderType"]);
  $dateMake= mysqli_real_escape_string($connect, $_POST["dateMake"]);
- $recipePaste = mysqli_real_escape_string($connect, $_POST["recipePaste"]);
- $amountPaste = mysqli_real_escape_string($connect, $_POST["amountPaste"]);
- $objectMakePaste = mysqli_real_escape_string($connect, $_POST["objectMakePaste"]);
- $etcPaste = mysqli_real_escape_string($connect, $_POST["etcPaste"]);
- $query = "INSERT INTO makelistpastetbl(id, lotPw, makerPaste, dateMake, recipePaste, amountPaste, objectMakePaste, etcPaste)
- VALUES('$id', '$lotPw', '$makerPaste', '$dateMake', '$recipePaste', '$amountPaste', '$objectMakePaste', '$etcPaste')";
+ $maker = mysqli_real_escape_string($connect, $_POST["maker"]);
+ $object = mysqli_real_escape_string($connect, $_POST["object"]);
+ $amount = mysqli_real_escape_string($connect, $_POST["amount"]);
+ $recipe = mysqli_real_escape_string($connect, $_POST["recipe"]);
+ $etc = mysqli_real_escape_string($connect, $_POST["etc"]);
+ $query = "INSERT INTO makelistpastetbl(pasteNo,powderLot, powderType, dateMake, maker, object, amount, recipe, etc)
+ VALUES('$pasteNo', '$powderLot', '$powderType', '$dateMake', '$maker', '$object', '$amount', '$recipe', '$etc')";
  if(mysqli_query($connect, $query))
  {
   echo 'Data Inserted';
