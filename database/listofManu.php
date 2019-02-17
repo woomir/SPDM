@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 
-  <title>Silver Powder Databases Management</title>
+  <title>Silver Powder Database Management</title>
 
   <!-- Custom fonts for this template-->
   <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -30,7 +30,7 @@
  if(isset($_SESSION['id']) && isset($_SESSION['password'])){?>
 <body id="page-top">
   <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a class="navbar-brand mr-1" href="">SPDM</a>
+    <a class="navbar-brand mr-1" href="">Silver Powder Database Management</a>
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
     </button>
@@ -45,7 +45,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="tablesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-fw fa-table"></i>
-          <span>Databases</span></a>
+          <span>Database</span></a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
               <h6 class="dropdown-header">Mass Powder</h6>
               <a class="dropdown-item" href=#>Conditions of Manu</a>
@@ -59,7 +59,7 @@
               <h6 class="dropdown-header">Paste</h6>
               <a class="dropdown-item" href=#>Recipe</a>
               <a class="dropdown-item" href="listofManu.php">List of Manu</a>
-              <a class="dropdown-item" href=#>Analysis</a>
+              <a class="dropdown-item" href="analysisPt.php">Analysis</a>
           </div>
       </li>
 
@@ -94,7 +94,7 @@
                  <div id="alert_message"></div>
 
                  <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover">
-                  <thead>
+                  <thead align="center">
                    <tr>
                      <th width="3%"></th>
                      <th width="8%">Paste No</th>
@@ -240,6 +240,8 @@
    update_data(id, column_name, value);
  });
 
+
+
   $('#add').click(function(){
    var html = '<tr>';
    html += '<td></td>';
@@ -255,6 +257,7 @@
    html += '<td><button type="button" name="insert" id="insert" class="btn btn-success btn-xs">Insert</button></td>';
    html += '</tr>';
    $('#PasteTable tbody').prepend(html);
+
   });
 
   $(document).on('click', '#insert', function(){
@@ -270,6 +273,7 @@
 
    if(pasteNo != '' && powderLot != '')
    {
+
     $.ajax({
      url:"../dataManage/listofManu/insert.php",
      method:"POST",
@@ -298,7 +302,6 @@
     alert("Fields is required");
    }
   });
-
 
 /*
   $(document).on('click', '.delete', function(){

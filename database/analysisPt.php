@@ -71,12 +71,12 @@
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">Database</li>
-                <li class="breadcrumb-item">Lab Powder</li>
+                <li class="breadcrumb-item">Paste</li>
                 <li class="breadcrumb-item active" aria-current="page">Analysis</li>
               </ol>
             </nav>
           <div class="card-body">
-            <form method="post" action="../dataManage/analysisPw/delete.php">
+            <form method="post" action="../dataManage/analysisPt/delete.php">
               <div class="table-responsive">
                 <?php
                 settype($_SESSION['role_id'],'int');
@@ -95,22 +95,30 @@
                  <div id="alert_message"></div>
 
                  <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover">
-                  <thead>
+                  <thead align="center">
                    <tr>
                      <th></th>
-                     <th>Sample No</th>
-                     <th>D10</th>
-                     <th>D50</th>
-                     <th>D90</th>
-                     <th>Dmax</th>
-                     <th>Total IGL</th>
-                     <th>Excess IGL</th>
-                     <th>Coating IGL</th>
-                     <th>DTA Peak</th>
-                     <th>Enthalphy</th>
-                     <th>BET</th>
-                     <th>TD</th>
-                     <th>XRD</th>
+                     <th>Paste No</th>
+                     <th>Aging Time</th>
+                     <th>Aging Temp</th>
+                     <th>분석일자</th>
+                     <th>점도 분석원</th>
+                     <th>1RPM</th>
+                     <th>10RPM</th>
+                     <th>30RPM</th>
+                     <th>100RPM</th>
+                     <th>1RPM(2)</th>
+                     <th>10RPM(2)</th>
+                     <th>30RPM(2)</th>
+                     <th>100RPM(2)</th>
+                     <th>탄성 분석원</th>
+                     <th>Low G'</th>
+                     <th>High G'</th>
+                     <th>YSP</th>
+                     <th>Low G'(2)</th>
+                     <th>High G'(2)</th>
+                     <th>YSP(2)</th>
+                     <th>etc</th>
                    </tr>
                    </thead>
                  </table>
