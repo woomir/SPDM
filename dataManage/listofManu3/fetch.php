@@ -2,7 +2,7 @@
 <?php
 //fetch.php
 $connect = mysqli_connect("localhost", "root", "52telecast", "woomir");
-$column = array('', 'pasteNo', 'powderLot', 'powderType', 'dateMake', 'maker',
+$column = array('pasteNo', 'powderLot', 'powderType', 'dateMake', 'maker',
 'object', 'amount', 'recipe', 'etc');
 $query = "SELECT * FROM makelistpastetbl";
 
@@ -49,16 +49,17 @@ $data = array();
 while($row = mysqli_fetch_array($result))
 {
  $sub_array = array();
- $sub_array[] = '<input type="checkbox" value="'.$row["pasteNo"].'"name="check[]" id="delete" data-column="check" class="check">';
- $sub_array[] = '<div class="update" data-id="'.$row["pasteNo"].'" data-column="pasteNo">' . $row["pasteNo"] . '</div>';
- $sub_array[] = '<div  class="update" data-id="'.$row["pasteNo"].'" data-column="powderLot">' . $row["powderLot"] . '</div>';
- $sub_array[] = '<div  class="update" data-id="'.$row["pasteNo"].'" data-column="powderType">' . $row["powderType"] . '</div>';
- $sub_array[] = '<div  class="update" data-id="'.$row["pasteNo"].'" data-column="dateMake">' . $row["dateMake"] . '</div>';
- $sub_array[] = '<div  class="update" data-id="'.$row["pasteNo"].'" data-column="maker">' . $row["maker"] . '</div>';
- $sub_array[] = '<div  class="update" data-id="'.$row["pasteNo"].'" data-column="object">' . $row["object"] . '</div>';
- $sub_array[] = '<div  class="update" data-id="'.$row["pasteNo"].'" data-column="amount">' . $row["amount"] . '</div>';
- $sub_array[] = '<div  class="update" data-id="'.$row["pasteNo"].'" data-column="recipe">' . $row["recipe"] . '</div>';
- $sub_array[] = '<div  class="update" data-id="'.$row["pasteNo"].'" data-column="etc">' . $row["etc"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="pasteNo">' . $row["pasteNo"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="powderLot">' . $row["powderLot"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="powderType">' . $row["powderType"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="dateMake">' . $row["dateMake"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="maker">' . $row["maker"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="object">' . $row["object"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="amount">' . $row["amount"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="recipe">' . $row["recipe"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="etc">' . $row["etc"] . '</div>';
+ $sub_array[] = '<div><input type="button" name="edit" value="Edit" id="'.$row["id"] .'" class="btn btn-info btn-sm edit_data" />
+                <input type="button" name="delete" value="Delete" id="'.$row["id"] .'" class="btn btn-sm btn-danger btn_delete" /></div>';
  $data[] = $sub_array;
 }
 

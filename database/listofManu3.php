@@ -1,8 +1,4 @@
-<?php session_start();
-$connect = mysqli_connect("localhost", "root", "52telecast", "woomir");
-$query = "SELECT * FROM makelistpastetbl ORDER BY datemake DESC";
- $result = mysqli_query($connect, $query);
-?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -81,7 +77,6 @@ $query = "SELECT * FROM makelistpastetbl ORDER BY datemake DESC";
               </ol>
             </nav>
           <div class="card-body">
-            <form method="post" action="../dataManage/listofManu/delete.php">
               <div class="table-responsive">
                 <?php
                 settype($_SESSION['role_id'],'int');
@@ -92,56 +87,24 @@ $query = "SELECT * FROM makelistpastetbl ORDER BY datemake DESC";
                 <?php } ?>
                  </div>
                  <br />
-                 <div class="form-group">
-                  <div class="input-group">
-                   <span class="input-group-addon">Search: </span>
-                   <input type="text" name="search_text" id="search_text" placeholder="Search by Customer Details" class="form-control" size="10" />
-                  </div>
-                 </div>
-                </br>
-                <div id="result"></div>
-                   <!--<table id="PasteTable" class="table table-bordered table-striped table-sm table-hover">
-                     <tr>
-                       <th width="8%">Paste No</th>
-                       <th width="10%">Powder Lot</th>
-                       <th width="7%">Powder type</th>
-                       <th width="10%">제조 일자</th>
-                       <th width="7%">작업자</th>
-                       <th>제조 목적</th>
-                       <th width="7%">제조량 (g)</th>
-                       <th width="7%">배합명</th>
-                       <th>비고</th>
-                       <th width="15%">Edit</th>
-                    </tr>
-
-                    <?php
-                    //while($row = mysqli_fetch_array($result))
-                     { ?>
-                       <tr>
-                          <td><?php //echo $row["pasteNo"]; ?></td>
-                          <td><?php //echo $row["powderLot"]; ?></td>
-                          <td><?php //echo $row["powderType"]; ?></td>
-                          <td><?php //echo $row["dateMake"]; ?></td>
-                          <td><?php //echo $row["maker"]; ?></td>
-                          <td><?php //echo $row["object"]; ?></td>
-                          <td><?php //echo $row["amount"]; ?></td>
-                          <td><?php //echo $row["recipe"]; ?></td>
-                          <td><?php //echo $row["etc"]; ?></td>
-                          <td>
-                          <?php  if ($_SESSION['role_id']<3){ ?>
-                          <input type="button" name="edit" value="Edit" id="<?php //echo $row["id"]; ?>" class="btn btn-info btn-xs edit_data" />
-                          <?php } ?>
-                          <?php  if ($_SESSION['role_id']<2){ ?>
-                          <input type="button" name="delete" value="Delete" id="<?php //echo $row["id"]; ?>" class="btn btn-xs btn-danger btn_delete" />
-                            <?php } ?>
-                          </td>
-                     </tr>
-                     <?php
-                     }
-                     ?>
-                 </table>-->
+                 <div id="alert_message"></div>
+                <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover">
+                 <thead align="center">
+                  <tr>
+                    <th width="8%">Paste No</th>
+                    <th width="10%">Powder Lot</th>
+                    <th width="7%">Powder type</th>
+                    <th width="10%">제조 일자</th>
+                    <th width="7%">작업자</th>
+                    <th>제조 목적</th>
+                    <th width="7%">제조량 (g)</th>
+                    <th width="7%">배합명</th>
+                    <th>비고</th>
+                    <th width="11%">Edit</th>
+                   </tr>
+                  </thead>
+                </table>
               </div>
-            </form>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -219,49 +182,70 @@ $query = "SELECT * FROM makelistpastetbl ORDER BY datemake DESC";
 </html>
 
 <!--Modal add-->
-<div id="add_data_Modal" class="modal fade">
+<div id="add_data_Modal" class="modal fade" tabindex="-1" role="dialog">
       <div class="modal-dialog">
            <div class="modal-content">
                 <div class="modal-header">
-                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                     <h4 class="modal-title">Add</h4>
+                     <h4 class="modal-title" id="gridModalLabel">Data Insert</h4>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">×</span>
+                     </button>
+
                 </div>
                 <div class="modal-body">
+                  <div class="container-fluid">
                      <form method="post" id="insert_form">
-                          <label>Enter Paste No</label>
-                          <input type="text" name="pasteNo" id="pasteNo" class="form-control" />
-                          <br />
-                          <label>Enter Powder Lot</label>
-                          <input type="text" name="powderLot" id="powderLot" class="form-control"></input>
-                          <br />
-                          <label>Powder Type</label>
-                          <select name="powderType" id="powderType" class="form-control">
-                               <option value="jet">JET</option>
-                               <option value="cl">CL</option>
-                          </select>
-                          <br />
-                          <label>Date make</label>
-                          <input type="date" name="dateMake" id="dateMake" class="form-control" />
-                          <br />
-                          <label>Maker</label>
-                          <select name="maker" id="maker" class="form-control">
-                               <option value="lgj">임기주</option>
-                               <option value="cyh">최영훈</option>
-                               <option value="sjw">손정우</option>
-                          </select>
-                          </br>
-                          <label>Object</label>
-                          <input type="text" name="object" id="object" class="form-control" />
-                          <br />
-                          <label>Amount</label>
-                          <input type="number" name="amount" id="amount" class="form-control" min="100" max="500" />
-                          <br />
-                          <label>Recipe</label>
+                       <div class="row">
+                         <div class="col-md-3">
+                           <label>*Paste No</label>
+                           <input type="text" name="pasteNo" id="pasteNo" class="form-control" />
+                         </div>
+                         <div class="col-md-5">
+                           <label>*Powder Lot</label>
+                           <input type="text" name="powderLot" id="powderLot" class="form-control" placeholder="ex) 1809BU1CP6"></input>
+                         </div>
+                         <div class="col-md-4">
+                           <label>*Powder Type</label>
+                           <select name="powderType" id="powderType" class="form-control">
+                                <option value="jet">JET</option>
+                                <option value="cl">CL</option>
+                           </select>
+                         </div>
+                       </div>
+                       <br />
+                       <div class="row">
+                         <div class="col-md-6">
+                           <label>*Date make</label>
+                           <input type="date" name="dateMake" id="dateMake" class="form-control" />
+                         </div>
+                         <div class="col-md-3">
+                           <label>*Maker</label>
+                           <select name="maker" id="maker" class="form-control">
+                                <option value="lgj">임기주</option>
+                                <option value="cyh">최영훈</option>
+                                <option value="sjw">손정우</option>
+                           </select>
+                         </div>
+                         <div class="col-md-3">
+                           <label>*Amount</label>
+                           <input type="number" name="amount" id="amount" class="form-control" min="100" max="500" placeholder="g" />
+                         </div>
+                       </div>
+                       <br />
+                       <div class="row">
+                         <div class="col-md-8">
+                            <label>*Object</label>
+                            <input type="text" name="object" id="object" class="form-control" />
+                         </div>
+                         <div class="col-md-4">
+                          <label>*Recipe</label>
                           <select name="recipe" id="recipe" class="form-control">
                                <option value="s2y9">S2Y9</option>
                                <option value="hs6a4">HS6A4</option>
                           </select>
-                          </br>
+                        </div>
+                       </div>
+                       </br>
                           <label>Etc</label>
                           <input type="text" name="etc" id="etc" class="form-control" />
                           <br />
@@ -269,6 +253,7 @@ $query = "SELECT * FROM makelistpastetbl ORDER BY datemake DESC";
                           <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />
                      </form>
                 </div>
+              </div>
                 <div class="modal-footer">
                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
@@ -279,32 +264,24 @@ $query = "SELECT * FROM makelistpastetbl ORDER BY datemake DESC";
 
 <script>
 $(document).ready(function(){
-  load_data();
+  fetch_data();
 
-   function load_data(query)
-   {
-    $.ajax({
-     url:"../dataManage/listofManu2/fetch2.php",
-     method:"POST",
-     data:{query:query},
-     success:function(data)
-     {
-      $('#result').html(data);
-     }
-    });
-   }
-   $('#search_text').keyup(function(){
-    var search = $(this).val();
-    if(search != '')
-    {
-     load_data(search);
-    }
-    else
-    {
-     load_data();
+  function fetch_data()
+  {
+   var dataTable = $('#PasteTable').DataTable({
+    "processing" : true,
+    "serverSide" : true,
+    "order" : [[3,'asc']],
+    "columnDefs": [{
+    orderable: false,
+    targets: [8,9]
+  }],
+    "ajax" : {
+     url:"../dataManage/listofManu3/fetch.php",
+     type:"POST"
     }
    });
-
+  }
       $('#add').click(function(){
            $('#insert').val("Insert");
            $('#insert_form')[0].reset();
@@ -312,7 +289,7 @@ $(document).ready(function(){
       $(document).on('click', '.edit_data', function(){
            var id = $(this).attr("id");
            $.ajax({
-                url:"../dataManage/listofManu2/fetch.php",
+                url:"../dataManage/listofManu3/edit.php",
                 method:"POST",
                 data:{id:id},
                 dataType:"json",
@@ -369,7 +346,7 @@ $(document).ready(function(){
            else
            {
                 $.ajax({
-                     url:"../dataManage/listofManu2/insert.php",
+                     url:"../dataManage/listofManu3/insert.php",
                      method:"POST",
                      data:$('#insert_form').serialize(),
                      beforeSend:function(){
@@ -378,9 +355,14 @@ $(document).ready(function(){
                      success:function(data){
                           $('#insert_form')[0].reset();
                           $('#add_data_Modal').modal('hide');
-                          $('#PasteTable').html(data);
+                          $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
+                          $('#PasteTable').DataTable().destroy();
+                          fetch_data();
                      }
                 });
+                setInterval(function(){
+                 $('#alert_message').html('');
+               }, 5000);
            }
       });
 
@@ -389,13 +371,18 @@ $(document).ready(function(){
                  if(confirm("Are you sure you want to delete this?"))
                  {
                       $.ajax({
-                           url:"../dataManage/listofManu2/delete.php",
+                           url:"../dataManage/listofManu3/delete.php",
                            method:"POST",
                            data:{id:id},
                            success:function(data){
-                                $('#PasteTable').html(data);
+                                $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
+                                $('#PasteTable').DataTable().destroy();
+                                fetch_data();
                            }
                       });
+                      setInterval(function(){
+                       $('#alert_message').html('');
+                     }, 5000);
                  }
             });
 

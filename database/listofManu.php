@@ -191,6 +191,7 @@
 
  $(document).ready(function(){
 
+
   fetch_data();
 
   function fetch_data()
@@ -245,15 +246,15 @@
   $('#add').click(function(){
    var html = '<tr>';
    html += '<td></td>';
-   html += '<td contenteditable id="data1"></td>';
-   html += '<td contenteditable id="data2"></td>';
-   html += '<td contenteditable id="data3"></td>';
-   html += '<td contenteditable id="data4"></td>';
-   html += '<td contenteditable id="data5"></td>';
-   html += '<td contenteditable id="data6"></td>';
-   html += '<td contenteditable id="data7"></td>';
-   html += '<td contenteditable id="data8"></td>';
-   html += '<td contenteditable id="data9"></td>';
+   html += '<td  id="data1"></td>';
+   html += '<td  id="data2"></td>';
+   html += '<td  id="data3"></td>';
+   html += '<td  id="data4"></td>';
+   html += '<td  id="data5"></td>';
+   html += '<td  id="data6"></td>';
+   html += '<td  id="data7"></td>';
+   html += '<td  id="data8"></td>';
+   html += '<td  id="data9"></td>';
    html += '<td><button type="button" name="insert" id="insert" class="btn btn-success btn-xs">Insert</button></td>';
    html += '</tr>';
    $('#PasteTable tbody').prepend(html);
