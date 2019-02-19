@@ -1,24 +1,13 @@
 <?php
-$connect = mysqli_connect("localhost", "root", "52telecast", "woomir");
-if(isset($_POST["sampleNo"]))
-{
- $query = "DELETE FROM analysispwtbl WHERE sampleNo = '".$_POST["sampleNo"]."'";
- if(mysqli_query($connect, $query))
+session_start();
+if ($_SESSION['role_id']<2){
+ $connect = mysqli_connect("localhost", "root", "52telecast", "woomir");
+ $sql = "DELETE FROM analysispwtbl WHERE id = '".$_POST["id"]."'";
+ if(mysqli_query($connect, $sql))
  {
-  echo 'Data Deleted';
+      echo 'Data Deleted';
  }
+} else {
+  echo '데이터 삭제 권한이 없습니다.';
 }
-
-
-if (isset($_POST['delete']) && isset($_POST['check']))
-	{
-		foreach($_POST['check'] as $del_id)
-		{
-			$sql = "DELETE FROM analysispwtbl WHERE sampleNo ='".$del_id."'";
-      mysqli_query($connect,$sql);
-      }
-      header("location:/Project/SPDM/database/analysisPw.php");
-	} else {
-    header("location:/Project/SPDM/database/analysisPw.php");
-  }
-?>
+ ?>

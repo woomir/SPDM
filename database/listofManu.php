@@ -1,4 +1,5 @@
-<?php session_start();?>
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +32,7 @@
 <body id="page-top">
   <nav class="navbar navbar-expand navbar-dark bg-dark">
     <a class="navbar-brand mr-1" href="">Silver Powder Database Management</a>
-    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+    <button class="btn btn-link text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
     </button>
           <ul class="navbar-nav ml-auto">
@@ -40,6 +41,7 @@
   </nav>
 
   <div id="wrapper">
+
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
       <li class="nav-item dropdown">
@@ -76,41 +78,34 @@
               </ol>
             </nav>
           <div class="card-body">
-            <form method="post" action="../dataManage/listofManu/delete.php">
               <div class="table-responsive">
                 <?php
                 settype($_SESSION['role_id'],'int');
-                //var_dump($_SESSION);
                 ?>
                  <div align="right">
                   <?php if ($_SESSION['role_id']<3){ ?>
-                  <button type="button" name="add" id="add" class="btn btn-info">Add</button>
-                  <?php }
-                  if ($_SESSION['role_id']<2){ ?>
-                  <button type="submit" name="delete" class="btn btn-danger delete" id="delete">Delete Selected</button>
-                  <?php } ?>
+                  <button type="button" name="add" id="add" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-info btn-xs">Add</button>
+                <?php } ?>
                  </div>
                  <br />
                  <div id="alert_message"></div>
-
-                 <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover">
-                  <thead align="center">
-                   <tr>
-                     <th width="3%"></th>
-                     <th width="8%">Paste No</th>
-                     <th width="10%">Powder Lot</th>
-                     <th width="7%">Powder type</th>
-                     <th width="10%">제조 일자</th>
-                     <th width="7%">작업자</th>
-                     <th>제조 목적</th>
-                     <th width="7%">제조량 (g)</th>
-                     <th width="7%">배합명</th>
-                     <th>비고</th>
-                    </tr>
-                   </thead>
-                 </table>
+                <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover">
+                 <thead align="center">
+                  <tr>
+                    <th width="8%">Paste No</th>
+                    <th width="10%">Powder Lot</th>
+                    <th width="7%">Powder type</th>
+                    <th width="10%">제조 일자</th>
+                    <th width="7%">작업자</th>
+                    <th>제조 목적</th>
+                    <th width="7%">제조량 (g)</th>
+                    <th width="7%">배합명</th>
+                    <th>비고</th>
+                    <th width="11%">Edit</th>
+                   </tr>
+                  </thead>
+                </table>
               </div>
-            </form>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -187,11 +182,89 @@
 </body>
 </html>
 
-<script type="text/javascript" language="javascript" >
+<!--Modal add-->
+<div id="add_data_Modal" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+           <div class="modal-content">
+                <div class="modal-header">
+                     <h4 class="modal-title" id="gridModalLabel">Data Insert</h4>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">×</span>
+                     </button>
 
- $(document).ready(function(){
+                </div>
+                <div class="modal-body">
+                  <div class="container-fluid">
+                     <form method="post" id="insert_form">
+                       <div class="row">
+                         <div class="col-md-3">
+                           <label>*Paste No</label>
+                           <input type="text" name="pasteNo" id="pasteNo" class="form-control" />
+                         </div>
+                         <div class="col-md-5">
+                           <label>*Powder Lot</label>
+                           <input type="text" name="powderLot" id="powderLot" class="form-control" placeholder="ex) 1809BU1CP6"></input>
+                         </div>
+                         <div class="col-md-4">
+                           <label>*Powder Type</label>
+                           <select name="powderType" id="powderType" class="form-control">
+                                <option value="jet">JET</option>
+                                <option value="cl">CL</option>
+                           </select>
+                         </div>
+                       </div>
+                       <br />
+                       <div class="row">
+                         <div class="col-md-6">
+                           <label>*Date make</label>
+                           <input type="date" name="dateMake" id="dateMake" class="form-control" />
+                         </div>
+                         <div class="col-md-3">
+                           <label>*Maker</label>
+                           <select name="maker" id="maker" class="form-control">
+                                <option value="lgj">임기주</option>
+                                <option value="cyh">최영훈</option>
+                                <option value="sjw">손정우</option>
+                           </select>
+                         </div>
+                         <div class="col-md-3">
+                           <label>*Amount</label>
+                           <input type="number" name="amount" id="amount" class="form-control" min="100" max="500" placeholder="g" />
+                         </div>
+                       </div>
+                       <br />
+                       <div class="row">
+                         <div class="col-md-8">
+                            <label>*Object</label>
+                            <input type="text" name="object" id="object" class="form-control" />
+                         </div>
+                         <div class="col-md-4">
+                          <label>*Recipe</label>
+                          <select name="recipe" id="recipe" class="form-control">
+                               <option value="s2y9">S2Y9</option>
+                               <option value="hs6a4">HS6A4</option>
+                          </select>
+                        </div>
+                       </div>
+                       </br>
+                          <label>Etc</label>
+                          <input type="text" name="etc" id="etc" class="form-control" />
+                          <br />
+                          <input type="hidden" name="id" id="id" />
+                          <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />
+                     </form>
+                </div>
+              </div>
+                <div class="modal-footer">
+                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+           </div>
+      </div>
+ </div>
 
 
+<script>
+$(document).ready(function(){
   fetch_data();
 
   function fetch_data()
@@ -199,11 +272,10 @@
    var dataTable = $('#PasteTable').DataTable({
     "processing" : true,
     "serverSide" : true,
-    "order" : [[4,'asc']],
+    "order" : [[3,'asc']],
     "columnDefs": [{
     orderable: false,
-    //className: 'select-checkbox',
-    targets: 0
+    targets: [8,9]
   }],
     "ajax" : {
      url:"../dataManage/listofManu/fetch.php",
@@ -211,119 +283,110 @@
     }
    });
   }
+      $('#add').click(function(){
+           $('#insert').val("Insert");
+           $('#insert_form')[0].reset();
+      });
+      $(document).on('click', '.edit_data', function(){
+           var id = $(this).attr("id");
+           $.ajax({
+                url:"../dataManage/listofManu/edit.php",
+                method:"POST",
+                data:{id:id},
+                dataType:"json",
+                success:function(data){
+                     $('#pasteNo').val(data.pasteNo);
+                     $('#powderLot').val(data.powderLot);
+                     $('#powderType').val(data.powderType);
+                     $('#dateMake').val(data.dateMake);
+                     $('#maker').val(data.maker);
+                     $('#object').val(data.object);
+                     $('#amount').val(data.amount);
+                     $('#recipe').val(data.recipe);
+                     $('#etc').val(data.etc);
+                     $('#id').val(data.id);
+                     $('#insert').val("Update");
+                     $('#add_data_Modal').modal('show');
+                }
+           });
+      });
+      $('#insert_form').on("submit", function(event){
+           event.preventDefault();
+           if($('#pasteNo').val() == "")
+           {
+                alert("pasteNo is required");
+           }
+           else if($('#powderLot').val() == '')
+           {
+                alert("powderLot is required");
+           }
+           else if($('#powderType').val() == '')
+           {
+                alert("powderType is required");
+           }
+           else if($('#dateMake').val() == '')
+           {
+                alert("dateMake is required");
+           }
+           else if($('#maker').val() == '')
+           {
+                alert("maker is required");
+           }
+           else if($('#object').val() == '')
+           {
+                alert("object is required");
+           }
+           else if($('#amount').val() == '')
+           {
+                alert("amount is required");
+           }
+           else if($('#recipe').val() == '')
+           {
+                alert("recipe is required");
+           }
+           else
+           {
+                $.ajax({
+                     url:"../dataManage/listofManu/insert.php",
+                     method:"POST",
+                     data:$('#insert_form').serialize(),
+                     beforeSend:function(){
+                          $('#insert').val("Inserting");
+                     },
+                     success:function(data){
+                          $('#insert_form')[0].reset();
+                          $('#add_data_Modal').modal('hide');
+                          $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
+                          $('#PasteTable').DataTable().destroy();
+                          fetch_data();
+                     }
+                });
+                setInterval(function(){
+                 $('#alert_message').html('');
+               }, 5000);
+           }
+      });
 
+      $(document).on('click', '.btn_delete', function(){
+                 var id=$(this).attr("id");
+                 if(confirm("Are you sure you want to delete this?"))
+                 {
+                      $.ajax({
+                           url:"../dataManage/listofManu/delete.php",
+                           method:"POST",
+                           data:{id:id},
+                           success:function(data){
+                                $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
+                                $('#PasteTable').DataTable().destroy();
+                                fetch_data();
+                           }
+                      });
+                      setInterval(function(){
+                       $('#alert_message').html('');
+                     }, 5000);
+                 }
+            });
 
-<?php if ($_SESSION['role_id']==1) {
-  ?>
-  function update_data(id, column_name, value)
-  {
-   $.ajax({
-    url:"../dataManage/listofManu/update.php",
-    method:"POST",
-    data:{id:id, column_name:column_name, value:value},
-    success:function(data)
-    {
-     $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
-     $('#PasteTable').DataTable().destroy();
-     fetch_data();
-    }
-   });
-   setInterval(function(){
-    $('#alert_message').html('');
-  }, 5000);
- }
-  <?php } ?>
-
-  $(document).on('blur', '.update', function(){
-   var id = $(this).data("id");
-   var column_name = $(this).data("column");
-   var value = $(this).text();
-   update_data(id, column_name, value);
  });
-
-
-
-  $('#add').click(function(){
-   var html = '<tr>';
-   html += '<td></td>';
-   html += '<td  id="data1"></td>';
-   html += '<td  id="data2"></td>';
-   html += '<td  id="data3"></td>';
-   html += '<td  id="data4"></td>';
-   html += '<td  id="data5"></td>';
-   html += '<td  id="data6"></td>';
-   html += '<td  id="data7"></td>';
-   html += '<td  id="data8"></td>';
-   html += '<td  id="data9"></td>';
-   html += '<td><button type="button" name="insert" id="insert" class="btn btn-success btn-xs">Insert</button></td>';
-   html += '</tr>';
-   $('#PasteTable tbody').prepend(html);
-
-  });
-
-  $(document).on('click', '#insert', function(){
-   var pasteNo = $('#data1').text();
-   var powderLot = $('#data2').text();
-   var powderType = $('#data3').text();
-   var dateMake = $('#data4').text();
-   var maker = $('#data5').text();
-   var object = $('#data6').text();
-   var amount = $('#data7').text();
-   var recipe = $('#data8').text();
-   var etc = $('#data9').text();
-
-   if(pasteNo != '' && powderLot != '')
-   {
-
-    $.ajax({
-     url:"../dataManage/listofManu/insert.php",
-     method:"POST",
-     data:{pasteNo:pasteNo,
-       powderLot:powderLot,
-       powderType:powderType,
-       dateMake:dateMake,
-       maker:maker,
-       object:object,
-       amount:amount,
-       recipe:recipe,
-       etc:etc},
-     success:function(data)
-     {
-      $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
-      $('#PasteTable').DataTable().destroy();
-      fetch_data();
-     }
-    });
-    setInterval(function(){
-     $('#alert_message').html('');
-   }, 5000);
-   }
-   else
-   {
-    alert("Fields is required");
-   }
-  });
-
-/*
-  $(document).on('click', '.delete', function(){
-   var id = $(this).attr("id");
-   if(confirm("Are you sure you want to remove this?"))
-   {
-    $.ajax({
-     url:"../dataManage/delete.php",
-     method:"POST",
-     data:{id:id},
-     success:function(data){
-      $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
-      $('#PasteTable').DataTable().destroy();
-      fetch_data();
-     }
-    });
-    setInterval(function(){
-     $('#alert_message').html('');
-    }, 5000);
-   }
-*/
-  });
 
 </script>

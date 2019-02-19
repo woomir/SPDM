@@ -1,4 +1,5 @@
-<?php session_start();?>
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,9 +30,9 @@
 <?php
  if(isset($_SESSION['id']) && isset($_SESSION['password'])){?>
 <body id="page-top">
-  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
     <a class="navbar-brand mr-1" href="">Silver Powder Database Management</a>
-    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+    <button class="btn btn-link text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
     </button>
           <ul class="navbar-nav ml-auto">
@@ -40,6 +41,7 @@
   </nav>
 
   <div id="wrapper">
+
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
       <li class="nav-item dropdown">
@@ -51,7 +53,7 @@
               <a class="dropdown-item" href=#>Conditions of Manu</a>
               <a class="dropdown-item" href=#>Analysis</a>
               <div class="dropdown-divider"></div>
-              <h6 class="dropdown-header">Lab powder</h6>
+              <h6 class="dropdown-header">Lab Powder</h6>
               <a class="dropdown-item" href=#>Conditions of Manu</a>
               <a class="dropdown-item" href=#>Conditions of Coating</a>
               <a class="dropdown-item" href="analysisPw.php">Analysis</a>
@@ -70,52 +72,43 @@
         <div class="card mb-3">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item">Database</li>
+                <li class="breadcrumb-item">Databases</li>
                 <li class="breadcrumb-item">Lab Powder</li>
                 <li class="breadcrumb-item active" aria-current="page">Analysis</li>
               </ol>
             </nav>
           <div class="card-body">
-            <form method="post" action="../dataManage/analysisPw/delete.php">
               <div class="table-responsive">
                 <?php
                 settype($_SESSION['role_id'],'int');
-
-                 //var_dump($_SESSION);
                 ?>
                  <div align="right">
                   <?php if ($_SESSION['role_id']<3){ ?>
-                  <button type="button" name="add" id="add" class="btn btn-info">Add</button>
-                  <?php }
-                  if ($_SESSION['role_id']<2){ ?>
-                  <button type="submit" name="delete" class="btn btn-danger delete" id="delete">Delete Selected</button>
-                  <?php } ?>
+                  <button type="button" name="add" id="add" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-info btn-xs">Add</button>
+                <?php } ?>
                  </div>
                  <br />
                  <div id="alert_message"></div>
-
-                 <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover">
-                  <thead>
-                   <tr>
-                     <th></th>
-                     <th>Sample No</th>
-                     <th>D10</th>
-                     <th>D50</th>
-                     <th>D90</th>
-                     <th>Dmax</th>
-                     <th>Total IGL</th>
-                     <th>Excess IGL</th>
-                     <th>Coating IGL</th>
-                     <th>DTA Peak</th>
-                     <th>Enthalphy</th>
-                     <th>BET</th>
-                     <th>TD</th>
-                     <th>XRD</th>
+                <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover">
+                 <thead align="center">
+                  <tr>
+                    <th width="">Sample No </th>
+                    <th width="">D10 </th>
+                    <th width="">D50 </th>
+                    <th width="">D90 </th>
+                    <th width="">Dmax</th>
+                    <th>T-IGL</th>
+                    <th width="">P-IGL</th>
+                    <th width="">C-IGL</th>
+                    <th>DTA Peak</th>
+                    <th width="">Enthalphy</th>
+                    <th width="">BET</th>
+                    <th width="">TD</th>
+                    <th width="">Edit</th>
                    </tr>
-                   </thead>
-                 </table>
+                  </thead>
+                </table>
               </div>
-            </form>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -192,13 +185,95 @@
 </body>
 </html>
 
-<script type="text/javascript" language="javascript" >
+<!--Modal add-->
+<div id="add_data_Modal" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+           <div class="modal-content">
+                <div class="modal-header">
+                     <h4 class="modal-title" id="gridModalLabel">Data Insert</h4>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">×</span>
+                     </button>
+
+                </div>
+                <div class="modal-body">
+                  <div class="container-fluid">
+                     <form method="post" id="insert_form">
+                       <label>*Sample No</label>
+                       <input type="text" name="sampleNo" id="sampleNo" class="form-control" />
+                       <br />
+                       <div class="row">
+                         <div class="col-md-3">
+                           <label>*D10</label>
+                           <input type="number" name="dt" id="dt" class="form-control" placeholder="um"></input>
+                         </div>
+                         <div class="col-md-3">
+                           <label>*D50</label>
+                           <input type="number" name="df" id="df" class="form-control" placeholder="um"></input>
+                         </div>
+                         <div class="col-md-3">
+                           <label>*D90</label>
+                           <input type="number" name="dn" id="dn" class="form-control" placeholder="um"></input>
+                         </div>
+                         <div class="col-md-3">
+                           <label>*Dmax</label>
+                           <input type="number" name="dmax" id="dmax" class="form-control" placeholder="um"></input>
+                         </div>
+                       </div>
+                       <br />
+                       <div class="row">
+                         <div class="col-md-4">
+                           <label>*T-IGL</label>
+                           <input type="number" name="tIgl" id="tIgl" class="form-control" placeholder="%"/>
+                         </div>
+                         <div class="col-md-4">
+                           <label>*P-IGL</label>
+                           <input type="number" name="pIgl" id="pIgl" class="form-control" placeholder="%"/>
+                         </div>
+                         <div class="col-md-4">
+                           <label>*C-IGL</label>
+                           <input type="number" name="cIgl" id="cIgl" class="form-control" placeholder="%" />
+                         </div>
+                       </div>
+                       <br />
+                       <div class="row">
+                         <div class="col-md-4">
+                            <label>*DTA Peak</label>
+                            <input type="number" name="dtaPeak" id="dtaPeak" class="form-control" placeholder="C" />
+                         </div>
+                         <div class="col-md-4">
+                          <label>*Enthalphy</label>
+                          <input type="number" name="enthalphy" id="enthalphy" class="form-control" placeholder="J/g"/>
+                        </div>
+                       </div>
+                       </br>
+                       <div class="row">
+                         <div class="col-md-4">
+                            <label>*BET</label>
+                            <input type="number" name="bet" id="bet" class="form-control" placeholder="m2/g" />
+                         </div>
+                         <div class="col-md-4">
+                          <label>*TD</label>
+                          <input type="number" name="td" id="td" class="form-control"/>
+                        </div>
+                       </div>
+                       </br>
+
+                          <input type="hidden" name="id" id="id" />
+                          <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />
+                     </form>
+                </div>
+              </div>
+                <div class="modal-footer">
+                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+           </div>
+      </div>
+ </div>
 
 
- $(document).ready(function(){
-
-
-
+<script>
+$(document).ready(function(){
   fetch_data();
 
   function fetch_data()
@@ -209,116 +284,136 @@
     "order" : [[1,'asc']],
     "columnDefs": [{
     orderable: false,
-    //className: 'select-checkbox',
-    targets: 0}],
+    targets: [13]
+  }],
     "ajax" : {
      url:"../dataManage/analysisPw/fetch.php",
      type:"POST"
     }
    });
   }
+      $('#add').click(function(){
+           $('#insert').val("Insert");
+           $('#insert_form')[0].reset();
+      });
+      $(document).on('click', '.edit_data', function(){
+           var id = $(this).attr("id");
+           $.ajax({
+                url:"../dataManage/analysisPw/edit.php",
+                method:"POST",
+                data:{id:id},
+                dataType:"json",
+                success:function(data){
+                     $('#sampleNo').val(data.sampleNo);
+                     $('#dt').val(data.dt);
+                     $('#df').val(data.df);
+                     $('#dn').val(data.dn);
+                     $('#tIgl').val(data.tIgl);
+                     $('#pIgl').val(data.pIgl);
+                     $('#cIgl').val(data.cIgl);
+                     $('#dtaPeak').val(data.dtaPeak);
+                     $('#enthalphy').val(data.enthalphy);
+                     $('#bet').val(data.bet);
+                     $('#td').val(data.td);
+                     $('#id').val(data.id);
+                     $('#insert').val("Update");
+                     $('#add_data_Modal').modal('show');
+                }
+           });
+      });
+      $('#insert_form').on("submit", function(event){
+           event.preventDefault();
+           if($('#sampleNo').val() == "")
+           {
+                alert("Sample No is required");
+           }
+           else if($('#dt').val() == '')
+           {
+                alert("D10 is required");
+           }
+           else if($('#df').val() == '')
+           {
+                alert("D50 is required");
+           }
+           else if($('#dn').val() == '')
+           {
+                alert("D90 is required");
+           }
+           else if($('#dmax').val() == '')
+           {
+                alert("Dmax is required");
+           }
+           else if($('#tIgl').val() == '')
+           {
+                alert("T-IGL is required");
+           }
+           else if($('#pIgl').val() == '')
+           {
+                alert("P-IGL is required");
+           }
+           else if($('#cIgl').val() == '')
+           {
+                alert("C-IGL is required");
+           }
+           else if($('#dtaPeak').val() == '')
+           {
+                alert("DTA Peak is required");
+           }
+           else if($('#enthalphy').val() == '')
+           {
+                alert("Enthalphy is required");
+           }
+           else if($('#bet').val() == '')
+           {
+                alert("BET is required");
+           }
+           else if($('#td').val() == '')
+           {
+                alert("TD is required");
+           }
+           else
+           {
+                $.ajax({
+                     url:"../dataManage/analysisPw/insert.php",
+                     method:"POST",
+                     data:$('#insert_form').serialize(),
+                     beforeSend:function(){
+                          $('#insert').val("Inserting");
+                     },
+                     success:function(data){
+                          $('#insert_form')[0].reset();
+                          $('#add_data_Modal').modal('hide');
+                          $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
+                          $('#PasteTable').DataTable().destroy();
+                          fetch_data();
+                     }
+                });
+                setInterval(function(){
+                 $('#alert_message').html('');
+               }, 5000);
+           }
+      });
 
+      $(document).on('click', '.btn_delete', function(){
+                 var id=$(this).attr("id");
+                 if(confirm("Are you sure you want to delete this?"))
+                 {
+                      $.ajax({
+                           url:"../dataManage/analysisPw/delete.php",
+                           method:"POST",
+                           data:{id:id},
+                           success:function(data){
+                                $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
+                                $('#PasteTable').DataTable().destroy();
+                                fetch_data();
+                           }
+                      });
+                      setInterval(function(){
+                       $('#alert_message').html('');
+                     }, 5000);
+                 }
+            });
 
-<?php if ($_SESSION['role_id']==1) {
-  ?>
-  function update_data(id, column_name, value)
-  {
-   $.ajax({
-    url:"../dataManage/analysisPw/update.php",
-    method:"POST",
-    data:{id:id, column_name:column_name, value:value},
-    success:function(data)
-    {
-     $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
-     $('#PasteTable').DataTable().destroy();
-     fetch_data();
-    }
-   });
-   setInterval(function(){
-    $('#alert_message').html('');
-  }, 5000);
- }
-  <?php } ?>
-
-  $(document).on('blur', '.update', function(){
-   var id = $(this).data("id");
-   var column_name = $(this).data("column");
-   var value = $(this).text();
-   update_data(id, column_name, value);
  });
-
-  $('#add').click(function(){
-   var html = '<tr>';
-   html += '<td></td>';
-   html += '<td contenteditable id="data1"></td>';
-   html += '<td contenteditable id="data2"></td>';
-   html += '<td contenteditable id="data3"></td>';
-   html += '<td contenteditable id="data4"></td>';
-   html += '<td contenteditable id="data5"></td>';
-   html += '<td contenteditable id="data6"></td>';
-   html += '<td contenteditable id="data7"></td>';
-   html += '<td contenteditable id="data8"></td>';
-   html += '<td contenteditable id="data9"></td>';
-   html += '<td contenteditable id="data10"></td>';
-   html += '<td contenteditable id="data11"></td>';
-   html += '<td contenteditable id="data12"></td>';
-   html += '<td contenteditable id="data13"></td>';
-   html += '<td><button type="button" name="insert" id="insert" class="btn btn-success btn-xs">Insert</button></td>';
-   html += '</tr>';
-   $('#PasteTable tbody').prepend(html);
-  });
-
-  $(document).on('click', '#insert', function(){
-   var sampleNo = $('#data1').text();
-   var d10 = $('#data2').text();
-   var d50 = $('#data3').text();
-   var d90 = $('#data4').text();
-   var dmax = $('#data5').text();
-   var totalIgl = $('#data6').text();
-   var excessIgl = $('#data7').text();
-   var coatingIgl = $('#data8').text();
-   var dtaPeak = $('#data9').text();
-   var enthalphy = $('#data10').text();
-   var bet = $('#data11').text();
-   var td = $('#data12').text();
-   var xrd = $('#data13').text();
-
-
-   if(sampleNo != '')
-   {
-    $.ajax({
-     url:"../dataManage/analysisPw/insert.php",
-     method:"POST",
-     data:{
-       sampleNo:sampleNo,
-       d10:d10,
-       d50:d50,
-       d90:d90,
-       dmax:dmax,
-       totalIgl:totalIgl,
-       excessIgl:excessIgl,
-       coatingIgl:coatingIgl,
-       dtaPeak:dtaPeak,
-       enthalphy:enthalphy,
-       bet:bet,
-       td:td,
-       xrd:xrd},
-     success:function(data)
-     {
-      $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
-      $('#PasteTable').DataTable().destroy();
-      fetch_data();
-     }
-    });
-    setInterval(function(){
-     $('#alert_message').html('');
-   }, 5000);
-   }
-   else
-   {
-    alert("Fields is required");
-   }
-  });
-  });
 
 </script>
