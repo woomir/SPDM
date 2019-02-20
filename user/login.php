@@ -40,7 +40,7 @@
        $row = mysqli_num_rows($result);
 
        if ($row==1){
-     header('location:../database/listofManu3.php');
+     header('location:../database/listofManu.php');
    } else { ?>
 
      <div class="card card-login mt-5 mx-auto">

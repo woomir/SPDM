@@ -64,7 +64,6 @@
               <a class="dropdown-item" href="analysisPt.php">Analysis</a>
           </div>
       </li>
-
     </ul>
 
     <div id="content-wrapper">
@@ -77,39 +76,40 @@
                 <li class="breadcrumb-item active" aria-current="page">Analysis</li>
               </ol>
             </nav>
-          <div class="card-body">
-              <div class="table-responsive">
-                <?php
-                settype($_SESSION['role_id'],'int');
-                ?>
-                 <div align="right">
-                  <?php if ($_SESSION['role_id']<3){ ?>
-                  <button type="button" name="add" id="add" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-info btn-xs">Add</button>
-                <?php } ?>
-                 </div>
-                 <br />
-                 <div id="alert_message"></div>
-                <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover">
-                 <thead align="center">
-                  <tr>
-                    <th width="">Sample No </th>
-                    <th width="">D10 </th>
-                    <th width="">D50 </th>
-                    <th width="">D90 </th>
-                    <th width="">Dmax</th>
-                    <th>T-IGL</th>
-                    <th width="">P-IGL</th>
-                    <th width="">C-IGL</th>
-                    <th>DTA Peak</th>
-                    <th width="">Enthalphy</th>
-                    <th width="">BET</th>
-                    <th width="">TD</th>
-                    <th width="">Edit</th>
-                   </tr>
-                  </thead>
-                </table>
-              </div>
-          </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                  <?php
+                  settype($_SESSION['role_id'],'int');
+                  ?>
+                   <div align="right">
+                    <?php if ($_SESSION['role_id']<3){ ?>
+                    <button type="button" name="add" id="add" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-info btn-xs">Add</button>
+                  <?php } ?>
+                   </div>
+                   <br />
+                   <div id="alert_message"></div>
+                  <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover">
+                   <thead align="center">
+                    <tr>
+                      <th width="">Sample No </th>
+                      <th width="">D10 </th>
+                      <th width="">D50 </th>
+                      <th width="">D90 </th>
+                      <th width="">Dmax</th>
+                      <th>T-IGL</th>
+                      <th width="">P-IGL</th>
+                      <th width="">C-IGL</th>
+                      <th>DTA Peak</th>
+                      <th width="">Enthalphy</th>
+                      <th width="">BET</th>
+                      <th width="">TD</th>
+                      <th width="">XRD</th>
+                      <th width="">Edit</th>
+                     </tr>
+                    </thead>
+                  </table>
+                </div>
+            </div>
         </div>
       </div><!-- /.container-fluid -->
 
@@ -204,61 +204,64 @@
                        <br />
                        <div class="row">
                          <div class="col-md-3">
-                           <label>*D10</label>
+                           <label>D10</label>
                            <input type="number" name="dt" id="dt" class="form-control" placeholder="um"></input>
                          </div>
                          <div class="col-md-3">
-                           <label>*D50</label>
+                           <label>D50</label>
                            <input type="number" name="df" id="df" class="form-control" placeholder="um"></input>
                          </div>
                          <div class="col-md-3">
-                           <label>*D90</label>
+                           <label>D90</label>
                            <input type="number" name="dn" id="dn" class="form-control" placeholder="um"></input>
                          </div>
                          <div class="col-md-3">
-                           <label>*Dmax</label>
+                           <label>Dmax</label>
                            <input type="number" name="dmax" id="dmax" class="form-control" placeholder="um"></input>
                          </div>
                        </div>
                        <br />
                        <div class="row">
                          <div class="col-md-4">
-                           <label>*T-IGL</label>
+                           <label>T-IGL</label>
                            <input type="number" name="tIgl" id="tIgl" class="form-control" placeholder="%"/>
                          </div>
                          <div class="col-md-4">
-                           <label>*P-IGL</label>
+                           <label>P-IGL</label>
                            <input type="number" name="pIgl" id="pIgl" class="form-control" placeholder="%"/>
                          </div>
                          <div class="col-md-4">
-                           <label>*C-IGL</label>
+                           <label>C-IGL</label>
                            <input type="number" name="cIgl" id="cIgl" class="form-control" placeholder="%" />
                          </div>
                        </div>
                        <br />
                        <div class="row">
                          <div class="col-md-4">
-                            <label>*DTA Peak</label>
+                            <label>DTA Peak</label>
                             <input type="number" name="dtaPeak" id="dtaPeak" class="form-control" placeholder="C" />
                          </div>
                          <div class="col-md-4">
-                          <label>*Enthalphy</label>
+                          <label>Enthalphy</label>
                           <input type="number" name="enthalphy" id="enthalphy" class="form-control" placeholder="J/g"/>
                         </div>
                        </div>
                        </br>
                        <div class="row">
                          <div class="col-md-4">
-                            <label>*BET</label>
+                            <label>BET</label>
                             <input type="number" name="bet" id="bet" class="form-control" placeholder="m2/g" />
                          </div>
                          <div class="col-md-4">
-                          <label>*TD</label>
+                          <label>TD</label>
                           <input type="number" name="td" id="td" class="form-control"/>
                         </div>
+                        <div class="col-md-4">
+                         <label>XRD</label>
+                         <input type="number" name="xrd" id="xrd" class="form-control"/>
+                       </div>
                        </div>
                        </br>
-
                           <input type="hidden" name="id" id="id" />
                           <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />
                      </form>
@@ -305,9 +308,10 @@ $(document).ready(function(){
                 dataType:"json",
                 success:function(data){
                      $('#sampleNo').val(data.sampleNo);
-                     $('#dt').val(data.dt);
-                     $('#df').val(data.df);
-                     $('#dn').val(data.dn);
+                     $('#dt').val(data.d10);
+                     $('#df').val(data.d50);
+                     $('#dn').val(data.d90);
+                     $('#dmax').val(data.dmax);
                      $('#tIgl').val(data.tIgl);
                      $('#pIgl').val(data.pIgl);
                      $('#cIgl').val(data.cIgl);
@@ -315,6 +319,7 @@ $(document).ready(function(){
                      $('#enthalphy').val(data.enthalphy);
                      $('#bet').val(data.bet);
                      $('#td').val(data.td);
+                     $('#xrd').val(data.xrd);
                      $('#id').val(data.id);
                      $('#insert').val("Update");
                      $('#add_data_Modal').modal('show');
@@ -326,50 +331,6 @@ $(document).ready(function(){
            if($('#sampleNo').val() == "")
            {
                 alert("Sample No is required");
-           }
-           else if($('#dt').val() == '')
-           {
-                alert("D10 is required");
-           }
-           else if($('#df').val() == '')
-           {
-                alert("D50 is required");
-           }
-           else if($('#dn').val() == '')
-           {
-                alert("D90 is required");
-           }
-           else if($('#dmax').val() == '')
-           {
-                alert("Dmax is required");
-           }
-           else if($('#tIgl').val() == '')
-           {
-                alert("T-IGL is required");
-           }
-           else if($('#pIgl').val() == '')
-           {
-                alert("P-IGL is required");
-           }
-           else if($('#cIgl').val() == '')
-           {
-                alert("C-IGL is required");
-           }
-           else if($('#dtaPeak').val() == '')
-           {
-                alert("DTA Peak is required");
-           }
-           else if($('#enthalphy').val() == '')
-           {
-                alert("Enthalphy is required");
-           }
-           else if($('#bet').val() == '')
-           {
-                alert("BET is required");
-           }
-           else if($('#td').val() == '')
-           {
-                alert("TD is required");
            }
            else
            {
