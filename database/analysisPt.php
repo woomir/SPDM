@@ -72,7 +72,7 @@
         <div class="card mb-3">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item">Databases</li>
+                <li class="breadcrumb-item">Database</li>
                 <li class="breadcrumb-item">Paste</li>
                 <li class="breadcrumb-item active" aria-current="page">Analysis</li>
               </ol>
@@ -92,7 +92,7 @@
                 <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover">
                  <thead align="center">
                   <tr>
-                    <th width="">Paste No</th>
+                    <th width="10%">Paste No</th>
                     <th width="">Aging Time</th>
                     <th width="">Aging Temp</th>
                     <th width="">전처리 방법</th>
@@ -214,7 +214,7 @@
                            <input type="text" name="pasteNo" id="pasteNo" class="form-control" />
                          </div>
                          <div class="col-md-5">
-                           <label>Aging Time</label>
+                           <label>*Aging Time</label>
                            <input type="number" name="timeAging" id="timeAging" class="form-control" placeholder="hr"></input>
                          </div>
                          <div class="col-md-4">
@@ -230,16 +230,16 @@
                          </div>
                          <div class="col-md-5">
                            <label>*분석일자</label>
-                           <input type="date" name="dataAnalysis" id="dataAnalysis" class="form-control" />
+                           <input type="date" name="dateAnalysis" id="dateAnalysis" class="form-control" />
                          </div>
                          <div class="col-md-4">
                            <label>*분석원</label>
                            <select name="analyzer" id="analyzer" class="form-control">
-                                <option value="lgj">임기주</option>
-                                <option value="cyh">최영훈</option>
-                                <option value="sjw">손정우</option>
-                                <option value="jwm">진우민</option>
-                                <option value="lym">이미영</option>
+                                <option >임기주</option>
+                                <option >최영훈</option>
+                                <option >손정우</option>
+                                <option >진우민</option>
+                                <option >이미영</option>
                            </select>
                          </div>
                        </div>
@@ -338,7 +338,7 @@ $(document).ready(function(){
     "order" : [[4,'asc']],
     "columnDefs": [{
     orderable: false,
-    targets: [22]
+    targets: [21]
   }],
     "ajax" : {
      url:"../dataManage/analysisPt/fetch.php",
@@ -353,19 +353,31 @@ $(document).ready(function(){
       $(document).on('click', '.edit_data', function(){
            var id = $(this).attr("id");
            $.ajax({
-                url:"../dataManage/analyisPt/edit.php",
+                url:"../dataManage/analysisPt/edit.php",
                 method:"POST",
                 data:{id:id},
                 dataType:"json",
                 success:function(data){
                      $('#pasteNo').val(data.pasteNo);
                      $('#timeAging').val(data.timeAging);
-                     $('#powderType').val(data.powderType);
-                     $('#dateMake').val(data.dateMake);
-                     $('#maker').val(data.maker);
-                     $('#object').val(data.object);
-                     $('#amount').val(data.amount);
-                     $('#recipe').val(data.recipe);
+                     $('#tempAging').val(data.tempAging);
+                     $('#preCon').val(data.preCon);
+                     $('#dateAnalysis').val(data.dateAnalysis);
+                     $('#analyzer').val(data.analyzer);
+                     $('#rpm1').val(data.rpm1);
+                     $('#rpm10').val(data.rpm10);
+                     $('#rpm30').val(data.rpm30);
+                     $('#rpm100').val(data.rpm100);
+                     $('#rpm1_2').val(data.rpm1_2);
+                     $('#rpm10_2').val(data.rpm10_2);
+                     $('#rpm30_2').val(data.rpm30_2);
+                     $('#rpm100_2').val(data.rpm100_2);
+                     $('#lowG').val(data.lowG);
+                     $('#highG').val(data.highG);
+                     $('#ysp').val(data.ysp);
+                     $('#lowG2').val(data.lowG2);
+                     $('#highG2').val(data.highG2);
+                     $('#ysp2').val(data.ysp2);
                      $('#etc').val(data.etc);
                      $('#id').val(data.id);
                      $('#insert').val("Update");
@@ -379,38 +391,22 @@ $(document).ready(function(){
            {
                 alert("pasteNo is required");
            }
-           else if($('#powderLot').val() == '')
+           else if($('#timeAging').val() == '')
            {
-                alert("powderLot is required");
+                alert("Aging Time is required");
            }
-           else if($('#powderType').val() == '')
+           else if($('#dateAnalysis').val() == '')
            {
-                alert("powderType is required");
+                alert("분석일자 is required");
            }
-           else if($('#dateMake').val() == '')
+           else if($('#analyzer').val() == '')
            {
-                alert("dateMake is required");
-           }
-           else if($('#maker').val() == '')
-           {
-                alert("maker is required");
-           }
-           else if($('#object').val() == '')
-           {
-                alert("object is required");
-           }
-           else if($('#amount').val() == '')
-           {
-                alert("amount is required");
-           }
-           else if($('#recipe').val() == '')
-           {
-                alert("recipe is required");
+                alert("분석원 is required");
            }
            else
            {
                 $.ajax({
-                     url:"../dataManage/listofManu/insert.php",
+                     url:"../dataManage/analysisPt/insert.php",
                      method:"POST",
                      data:$('#insert_form').serialize(),
                      beforeSend:function(){
@@ -435,7 +431,7 @@ $(document).ready(function(){
                  if(confirm("Are you sure you want to delete this?"))
                  {
                       $.ajax({
-                           url:"../dataManage/listofManu/delete.php",
+                           url:"../dataManage/analysisPt/delete.php",
                            method:"POST",
                            data:{id:id},
                            success:function(data){

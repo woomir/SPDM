@@ -2,28 +2,37 @@
 <?php
 //fetch.php
 $connect = mysqli_connect("localhost", "root", "52telecast", "woomir");
-$column = array('sampleNo', 'd10', 'd50', 'd90', 'dmax',
-'tIgl', 'pIgl', 'cIgl', 'dtaPeak', 'enthalphy', 'bet', 'td', 'xrd');
-$query = "SELECT * FROM analysispwtbl";
+$column = array('pasteNo', 'timeAging', 'tempAging', 'preCon', 'dateAnalysis',
+'analyzer', 'rpm1', 'rpm10', 'rpm30', 'rpm100', 'rpm1_2', 'rpm10_2', 'rpm30_2',
+'rpm100_2', 'lowG', 'highG', 'ysp', 'lowG2', 'highG2', 'ysp2', 'etc');
+$query = "SELECT * FROM analysispttbl";
 
 
 
 if(isset($_POST["search"]["value"]))
 {
  $query .= '
- WHERE sampleNo LIKE "%'.$_POST["search"]["value"].'%"
- OR d10 LIKE "%'.$_POST["search"]["value"].'%"
- OR d50 LIKE "%'.$_POST["search"]["value"].'%"
- OR d90 LIKE "%'.$_POST["search"]["value"].'%"
- OR dmax LIKE "%'.$_POST["search"]["value"].'%"
- OR tIgl LIKE "%'.$_POST["search"]["value"].'%"
- OR pIgl LIKE "%'.$_POST["search"]["value"].'%"
- OR cIgl LIKE "%'.$_POST["search"]["value"].'%"
- OR dtaPeak LIKE "%'.$_POST["search"]["value"].'%"
- OR enthalphy LIKE "%'.$_POST["search"]["value"].'%"
- OR bet LIKE "%'.$_POST["search"]["value"].'%"
- OR td LIKE "%'.$_POST["search"]["value"].'%"
- OR xrd LIKE "%'.$_POST["search"]["value"].'%"
+ WHERE pasteNo LIKE "%'.$_POST["search"]["value"].'%"
+ OR timeAging LIKE "%'.$_POST["search"]["value"].'%"
+ OR tempAging LIKE "%'.$_POST["search"]["value"].'%"
+ OR preCon LIKE "%'.$_POST["search"]["value"].'%"
+ OR dateAnalysis LIKE "%'.$_POST["search"]["value"].'%"
+ OR analyzer LIKE "%'.$_POST["search"]["value"].'%"
+ OR rpm1 LIKE "%'.$_POST["search"]["value"].'%"
+ OR rpm10 LIKE "%'.$_POST["search"]["value"].'%"
+ OR rpm30 LIKE "%'.$_POST["search"]["value"].'%"
+ OR rpm100 LIKE "%'.$_POST["search"]["value"].'%"
+ OR rpm1_2 LIKE "%'.$_POST["search"]["value"].'%"
+ OR rpm10_2 LIKE "%'.$_POST["search"]["value"].'%"
+ OR rpm30_2 LIKE "%'.$_POST["search"]["value"].'%"
+ OR rpm100_2 LIKE "%'.$_POST["search"]["value"].'%"
+ OR lowG LIKE "%'.$_POST["search"]["value"].'%"
+ OR highG LIKE "%'.$_POST["search"]["value"].'%"
+ OR ysp LIKE "%'.$_POST["search"]["value"].'%"
+ OR lowG2 LIKE "%'.$_POST["search"]["value"].'%"
+ OR highG2 LIKE "%'.$_POST["search"]["value"].'%"
+ OR ysp2 LIKE "%'.$_POST["search"]["value"].'%"
+ OR etc LIKE "%'.$_POST["search"]["value"].'%"
  ';
 }
 
@@ -53,19 +62,27 @@ $data = array();
 while($row = mysqli_fetch_array($result))
 {
  $sub_array = array();
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="sampleNo">' . $row["sampleNo"] . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="d10">' . $row["d10"] . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="d50">' . $row["d50"] . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="d90">' . $row["d90"] . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="dmax">' . $row["dmax"] . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="tIgl">' . $row["tIgl"] . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="pIgl">' . $row["pIgl"] . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="cIgl">' . $row["cIgl"] . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="dtaPeak">' . $row["dtaPeak"] . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="enthalphy">' . $row["enthalphy"] . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="bet">' . $row["bet"] . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="td">' . $row["td"] . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="xrd">' . $row["xrd"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="pasteNo">' . $row["pasteNo"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="timeAging">' . $row["timeAging"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="tempAging">' . $row["tempAging"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="preCon">' . $row["preCon"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="dateAnalysis">' . $row["dateAnalysis"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="analyzer">' . $row["analyzer"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="rpm1">' . $row["rpm1"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="rpm10">' . $row["rpm10"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="rpm30">' . $row["rpm30"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="rpm100">' . $row["rpm100"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="rpm1_2">' . $row["rpm1_2"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="rpm10_2">' . $row["rpm10_2"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="rpm30_2">' . $row["rpm30_2"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="rpm100_2">' . $row["rpm100_2"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="lowG">' . $row["lowG"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="highG">' . $row["highG"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ysp">' . $row["ysp"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="lowG2">' . $row["lowG2"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="highG2">' . $row["highG2"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ysp2">' . $row["ysp2"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="etc">' . $row["etc"] . '</div>';
  $sub_array[] = '<div><input type="button" name="edit" value="Edit" id="'.$row["id"] .'" class="btn btn-info btn-sm edit_data" />
                 <input type="button" name="delete" value="Delete" id="'.$row["id"] .'" class="btn btn-sm btn-danger btn_delete" /></div>';
  $data[] = $sub_array;
@@ -74,7 +91,7 @@ while($row = mysqli_fetch_array($result))
 function get_all_data($connect)
 {
 
-$query = "SELECT * FROM analysispwtbl";
+$query = "SELECT * FROM analysispttbl";
  $result = mysqli_query($connect, $query);
  return mysqli_num_rows($result);
 }

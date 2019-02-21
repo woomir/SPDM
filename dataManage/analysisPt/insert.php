@@ -1,4 +1,4 @@
-<?php
+pasteNo<?php
 session_start();
 if ($_SESSION['role_id']<3){
 
@@ -7,44 +7,65 @@ if ($_SESSION['role_id']<3){
  {
       $output = '';
       $message = '';
-      $sampleNo = mysqli_real_escape_string($connect, $_POST["sampleNo"]);
-      $d10 = mysqli_real_escape_string($connect, $_POST["dt"]);
-      $d50 = mysqli_real_escape_string($connect, $_POST["df"]);
-      $d90= mysqli_real_escape_string($connect, $_POST["dn"]);
-      $dmax = mysqli_real_escape_string($connect, $_POST["dmax"]);
-      $tIgl = mysqli_real_escape_string($connect, $_POST["tIgl"]);
-      $pIgl = mysqli_real_escape_string($connect, $_POST["pIgl"]);
-      $cIgl = mysqli_real_escape_string($connect, $_POST["cIgl"]);
-      $dtaPeak = mysqli_real_escape_string($connect, $_POST["dtaPeak"]);
-      $enthalphy = mysqli_real_escape_string($connect, $_POST["enthalphy"]);
-      $bet = mysqli_real_escape_string($connect, $_POST["bet"]);
-      $td = mysqli_real_escape_string($connect, $_POST["td"]);
-      $xrd = mysqli_real_escape_string($connect, $_POST["xrd"]);
-
+      $pasteNo = mysqli_real_escape_string($connect, $_POST["pasteNo"]);
+      $timeAging = mysqli_real_escape_string($connect, $_POST["timeAging"]);
+      $tempAging = mysqli_real_escape_string($connect, $_POST["tempAging"]);
+      $preCon= mysqli_real_escape_string($connect, $_POST["preCon"]);
+      $dateAnalysis = mysqli_real_escape_string($connect, $_POST["dateAnalysis"]);
+      $analyzer = mysqli_real_escape_string($connect, $_POST["analyzer"]);
+      $rpm1 = mysqli_real_escape_string($connect, $_POST["rpm1"]);
+      $rpm10 = mysqli_real_escape_string($connect, $_POST["rpm10"]);
+      $rpm30 = mysqli_real_escape_string($connect, $_POST["rpm30"]);
+      $rpm100 = mysqli_real_escape_string($connect, $_POST["rpm100"]);
+      $rpm1_2 = mysqli_real_escape_string($connect, $_POST["rpm1_2"]);
+      $rpm10_2 = mysqli_real_escape_string($connect, $_POST["rpm10_2"]);
+      $rpm30_2 = mysqli_real_escape_string($connect, $_POST["rpm30_2"]);
+      $rpm100_2 = mysqli_real_escape_string($connect, $_POST["rpm100_2"]);
+      $lowG = mysqli_real_escape_string($connect, $_POST["lowG"]);
+      $highG = mysqli_real_escape_string($connect, $_POST["highG"]);
+      $ysp = mysqli_real_escape_string($connect, $_POST["ysp"]);
+      $lowG2 = mysqli_real_escape_string($connect, $_POST["lowG2"]);
+      $highG2 = mysqli_real_escape_string($connect, $_POST["highG2"]);
+      $ysp2 = mysqli_real_escape_string($connect, $_POST["ysp2"]);
+      $etc = mysqli_real_escape_string($connect, $_POST["etc"]);
       if($_POST["id"] != '')
       {
            $query = "
-           UPDATE analysispwtbl
-           SET sampleNo='$sampleNo',
-           d10='$d10',
-           d50='$d50',
-           d90 = '$d90',
-           dmax = '$dmax',
-           tIgl = '$tIgl',
-           pIgl = '$pIgl',
-           cIgl = '$cIgl',
-           dtaPeak = '$dtaPeak',
-           enthalphy = '$enthalphy',
-           bet = '$bet',
-           td = '$td',
-           xrd = '$xrd'
+           UPDATE analysispttbl
+           SET pasteNo='$pasteNo',
+           timeAging='$timeAging',
+           tempAging='$tempAging',
+           preCon = '$preCon',
+           dateAnalysis = '$dateAnalysis',
+           analyzer = '$analyzer',
+           rpm1 = '$rpm1',
+           rpm10 = '$rpm10',
+           rpm30 = '$rpm30',
+           rpm100 = '$rpm100',
+           rpm1_2 = '$rpm1_2',
+           rpm10_2 = '$rpm10_2',
+           rpm30_2 = '$rpm30_2',
+           rpm100_2 = '$rpm100_2',
+           lowG = '$lowG',
+           highG = '$highG',
+           ysp = '$ysp',
+           lowG2 = '$lowG2',
+           highG2 = '$highG2',
+           ysp2 = '$ysp2',
+           etc = '$etc'
            WHERE id='".$_POST["id"]."'";
            $message = 'Data Updated';
       }
       else
       {
-           $query = "INSERT INTO analysispwtbl (sampleNo, d10, d50, d90, dmax, tIgl, pIgl, cIgl, dtaPeak, enthalphy, bet, td, xrd)
-           VALUES('$sampleNo', '$d10', '$d50', '$d90', '$dmax', '$tIgl', '$pIgl', '$cIgl', '$dtaPeak', '$enthalphy', '$bet', '$td', '$xrd');
+           $query = "INSERT INTO analysispttbl (pasteNo, timeAging, tempAging, preCon,
+             dateAnalysis, analyzer,rpm1, rpm10 , rpm30, rpm100, rpm1_2, rpm10_2, rpm30_2,
+             rpm100_2, lowG, highG, ysp, lowG2, highG2, ysp2, etc)
+           VALUES('$pasteNo', '$timeAging', '$tempAging', '$preCon', '$dateAnalysis',
+             '$analyzer', '$rpm1', '$rpm10', '$rpm30', '$rpm100', '$rpm1_2', '$rpm10_2',
+             '$rpm30_2', '$rpm100_2', '$lowG', '$highG', '$ysp', '$lowG2', '$highG2', '$ysp2',
+             '$etc'
+            );
            ";
            $message = 'Data Inserted';
       }
