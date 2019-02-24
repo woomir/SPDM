@@ -365,6 +365,7 @@ $(document).ready(function(){
      url:"../dataManage/analysisPt/fetch.php",
      type:"POST"
     }
+    
    });
   }
       $('#add').click(function(){

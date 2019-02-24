@@ -5,20 +5,20 @@
 <head>
 
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+
+      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+      <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+      <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+      <script src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.html5.min.js"></script>
 
   <title>Silver Powder Database Management</title>
 
   <!-- Custom fonts for this template-->
   <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+<link href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css" rel="stylesheet"/>
+
 
   <!-- Page level plugin CSS-->
   <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
@@ -101,7 +101,7 @@
                     <th width="7%">제조량 (g)</th>
                     <th width="7%">배합명</th>
                     <th>비고</th>
-                    <th width="11%">Edit</th>
+                    <th width="6%">Edit</th>
                    </tr>
                   </thead>
                 </table>
@@ -147,15 +147,14 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="../vendor/jquery/jquery.min.js"></script>
+
   <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
   <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Page level plugin JavaScript-->
-  <script src="../vendor/chart.js/Chart.min.js"></script>
-  <script src="../vendor/datatables/jquery.dataTables.js"></script>
+
   <script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
 
   <!-- Custom scripts for all pages-->
@@ -263,26 +262,43 @@
  </div>
 
 
-<script>
+<script type="text/javascript">
 $(document).ready(function(){
+
   fetch_data();
 
   function fetch_data()
   {
    var dataTable = $('#PasteTable').DataTable({
+
     "processing" : true,
     "serverSide" : true,
     "order" : [[3,'asc']],
     "columnDefs": [{
     orderable: false,
-    targets: [8,9]
-  }],
+    targets: [8,9],
+    }],
     "ajax" : {
      url:"../dataManage/listofManu/fetch.php",
      type:"POST"
-    }
+   },
+   dom: '<"top"B>lfrt<"bottom"ip><"clear">',
+        buttons: [
+          {
+            extend: 'csvHtml5',
+            text: 'Export CSV',
+            footer: true,
+            className: 'btn btn-dark'
+        },
+        {
+          extend: 'colvis',
+          columns: ':not(.noVis)',
+          className: 'btn btn-dark btn-xs'
+        }]
    });
   }
+
+
       $('#add').click(function(){
            $('#insert').val("Insert");
            $('#insert_form')[0].reset();
