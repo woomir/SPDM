@@ -3,8 +3,8 @@
 //fetch.php
 $connect = mysqli_connect("localhost", "root", "52telecast", "woomir");
 $column = array('pasteNo', 'timeAging', 'tempAging', 'preCon', 'dateAnalysis',
-'analyzer', 'rpm1', 'rpm10', 'rpm30', 'rpm100', 'rpm1_2', 'rpm10_2', 'rpm30_2',
-'rpm100_2', 'lowG', 'highG', 'ysp', 'lowG2', 'highG2', 'ysp2', 'etc');
+'visAnalyzer', 'rpm1', 'rpm10', 'rpm30', 'rpm100', 'rpm1_2', 'rpm10_2', 'rpm30_2',
+'rpm100_2', 'dssAnalyzer', 'lowG', 'highG', 'ysp', 'lowG2', 'highG2', 'ysp2', 'etc');
 $query = "SELECT * FROM analysispttbl";
 
 
@@ -17,7 +17,7 @@ if(isset($_POST["search"]["value"]))
  OR tempAging LIKE "%'.$_POST["search"]["value"].'%"
  OR preCon LIKE "%'.$_POST["search"]["value"].'%"
  OR dateAnalysis LIKE "%'.$_POST["search"]["value"].'%"
- OR analyzer LIKE "%'.$_POST["search"]["value"].'%"
+ OR visAnalyzer LIKE "%'.$_POST["search"]["value"].'%"
  OR rpm1 LIKE "%'.$_POST["search"]["value"].'%"
  OR rpm10 LIKE "%'.$_POST["search"]["value"].'%"
  OR rpm30 LIKE "%'.$_POST["search"]["value"].'%"
@@ -26,6 +26,7 @@ if(isset($_POST["search"]["value"]))
  OR rpm10_2 LIKE "%'.$_POST["search"]["value"].'%"
  OR rpm30_2 LIKE "%'.$_POST["search"]["value"].'%"
  OR rpm100_2 LIKE "%'.$_POST["search"]["value"].'%"
+ OR dssAnalyzer LIKE "%'.$_POST["search"]["value"].'%"
  OR lowG LIKE "%'.$_POST["search"]["value"].'%"
  OR highG LIKE "%'.$_POST["search"]["value"].'%"
  OR ysp LIKE "%'.$_POST["search"]["value"].'%"
@@ -67,7 +68,7 @@ while($row = mysqli_fetch_array($result))
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="tempAging">' . $row["tempAging"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="preCon">' . $row["preCon"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="dateAnalysis">' . $row["dateAnalysis"] . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="analyzer">' . $row["analyzer"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="visAnalyzer">' . $row["visAnalyzer"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="rpm1">' . $row["rpm1"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="rpm10">' . $row["rpm10"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="rpm30">' . $row["rpm30"] . '</div>';
@@ -76,6 +77,7 @@ while($row = mysqli_fetch_array($result))
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="rpm10_2">' . $row["rpm10_2"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="rpm30_2">' . $row["rpm30_2"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="rpm100_2">' . $row["rpm100_2"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="dssAnalyzer">' . $row["dssAnalyzer"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="lowG">' . $row["lowG"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="highG">' . $row["highG"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ysp">' . $row["ysp"] . '</div>';

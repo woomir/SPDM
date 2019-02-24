@@ -92,28 +92,29 @@
                 <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover">
                  <thead align="center">
                   <tr>
-                    <th width="10%">Paste No</th>
-                    <th width="">Aging Time</th>
-                    <th width="">Aging Temp</th>
-                    <th width="">전처리 방법</th>
-                    <th width="">분석 일자</th>
-                    <th width="">점도 분석원</th>
-                    <th width="">1rpm</th>
-                    <th width="">10rpm</th>
-                    <th width="">30rpm</th>
-                    <th width="">100rpm</th>
-                    <th width="">1rpm_2</th>
-                    <th width="">10rpm_2</th>
-                    <th width="">30rpm_2</th>
-                    <th width="">100rpm_2</th>
-                    <th width="">G' Low</th>
-                    <th width="">G' High</th>
-                    <th width="">YSP</th>
-                    <th width="">G' Low_2</th>
-                    <th width="">G' High_2</th>
-                    <th width="">YSP_2</th>
+                    <th width="3%">Paste<br /> No</th>
+                    <th width="3%">Aging<br /> Time</th>
+                    <th width="3%">Aging<br /> Temp</th>
+                    <th width="4%">전처리</th>
+                    <th width="5%">Date</th>
+                    <th width="4%">점도<br />분석원</th>
+                    <th width="3%">1rpm</th>
+                    <th width="3%">10rpm</th>
+                    <th width="3%">30rpm</th>
+                    <th width="3%">100rpm</th>
+                    <th width="3%">1rpm_2</th>
+                    <th width="3%">10rpm_2</th>
+                    <th width="3%">30rpm_2</th>
+                    <th width="3%">100rpm_2</th>
+                    <th width="4%">탄성<br />분석원</th>
+                    <th width="5%">G' Low</th>
+                    <th width="3%">G' High</th>
+                    <th width="3%">YSP</th>
+                    <th width="3%">G' Low_2</th>
+                    <th width="3%">G' High_2</th>
+                    <th width="3%">YSP_2</th>
                     <th width="">Etc</th>
-                    <th width="">Edit</th>
+                    <th width="6%">Edit</th>
                    </tr>
                   </thead>
                 </table>
@@ -196,45 +197,54 @@
 
 <!--Modal add-->
 <div id="add_data_Modal" class="modal fade" tabindex="-1" role="dialog">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
            <div class="modal-content">
                 <div class="modal-header">
                      <h4 class="modal-title" id="gridModalLabel">Data Insert</h4>
                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                        <span aria-hidden="true">×</span>
                      </button>
-
                 </div>
                 <div class="modal-body">
                   <div class="container-fluid">
                      <form method="post" id="insert_form">
                        <div class="row">
-                         <div class="col-md-3">
+                         <div class="col-md-4">
                            <label>*Paste No</label>
                            <input type="text" name="pasteNo" id="pasteNo" class="form-control" />
                          </div>
-                         <div class="col-md-5">
+                         <div class="col-md-4">
                            <label>*Aging Time</label>
-                           <input type="number" name="timeAging" id="timeAging" class="form-control" placeholder="hr"></input>
+                           <select name="timeAging" id="timeAging" class="form-control">
+                                <option >0</option>
+                                <option >12</option>
+                                <option >72</option>
+                           </select>
                          </div>
                          <div class="col-md-4">
                            <label>Aging Temp</label>
-                           <input type="number" name="tempAging" id="tempAging" class="form-control" placeholder="C"></input>
+                           <select name="tempAging" id="tempAging" class="form-control">
+                                <option >0</option>
+                                <option >50</option>
+                           </select>
                          </div>
                        </div>
                        <br />
                        <div class="row">
                          <div class="col-md-3">
                            <label>전처리</label>
-                           <input type="text" name="preCon" id="preCon" class="form-control" />
+                           <select name="preCon" id="preCon" class="form-control">
+                                <option >c-mixer</option>
+                                <option >hand mixing</option>
+                           </select>
                          </div>
-                         <div class="col-md-5">
+                         <div class="col-md-6">
                            <label>*분석일자</label>
-                           <input type="date" name="dateAnalysis" id="dateAnalysis" class="form-control" />
+                           <input type="date" name="dateAnalysis" id="dateAnalysis" class="form-control" value="<?php echo date("Y-m-d");?>" />
                          </div>
-                         <div class="col-md-4">
-                           <label>*분석원</label>
-                           <select name="analyzer" id="analyzer" class="form-control">
+                         <div class="col-md-3">
+                           <label>*점도 분석원</label>
+                           <select name="visAnalyzer" id="visAnalyzer" class="form-control">
                                 <option >임기주</option>
                                 <option >최영훈</option>
                                 <option >손정우</option>
@@ -245,24 +255,24 @@
                        </div>
                        <br />
                        <div class="row">
-                         <div class="col-md-3">
-                            <label>1RPM</label>
-                            <input type="number" name="rpm1" id="rpm1" class="form-control" />
-                         </div>
-                        <div class="col-md-3">
-                          <label>10RPM</label>
-                          <input type="number" name="rpm10" id="rpm10" class="form-control" />
-                        </div>
-                        <div class="col-md-3">
-                          <label>30RPM</label>
-                          <input type="number" name="rpm30" id="rpm30" class="form-control" />
-                        </div>
-                        <div class="col-md-3">
-                          <label>100RPM</label>
-                          <input type="number" name="rpm100" id="rpm100" class="form-control" />
-                        </div>
-                        </div>
-                        </br>
+                               <div class="col-md-3">
+                                  <label>1RPM</label>
+                                  <input type="number" name="rpm1" id="rpm1" class="form-control" />
+                               </div>
+                               <div class="col-md-3">
+                                <label>10RPM</label>
+                                <input type="number" name="rpm10" id="rpm10" class="form-control" />
+                               </div>
+                               <div class="col-md-3">
+                                <label>30RPM</label>
+                                <input type="number" name="rpm30" id="rpm30" class="form-control" />
+                               </div>
+                               <div class="col-md-3">
+                                <label>100RPM</label>
+                                <input type="number" name="rpm100" id="rpm100" class="form-control" step="0.1"/>
+                               </div>
+                       </div></br>
+
                         <div class="row">
                           <div class="col-md-3">
                              <label>1RPM_2</label>
@@ -278,22 +288,33 @@
                          </div>
                          <div class="col-md-3">
                            <label>100RPM_2</label>
-                           <input type="number" name="rpm100_2" id="rpm100_2" class="form-control" />
+                           <input type="number" name="rpm100_2" id="rpm100_2" class="form-control" step="0.1" />
                          </div>
                          </div>
                          <br />
+
                          <div class="row">
-                           <div class="col-md-4">
-                              <label>G' Low</label>
-                              <input type="number" name="lowG" id="lowG" class="form-control" />
+                           <div class="col-md-3">
+                             <label>탄성 분석원</label>
+                             <select name="dssAnalyzer" id="dssAnalyzer" class="form-control">
+                                  <option >진우민</option>
+                                  <option >최영훈</option>
+                                  <option >손정우</option>
+                                  <option >임기주</option>
+                                  <option >이미영</option>
+                             </select>
                            </div>
-                          <div class="col-md-4">
-                            <label>G'High</label>
-                            <input type="number" name="highG" id="highG" class="form-control" />
+                           <div class="col-md-3">
+                              <label>G' Low</label>
+                              <input type="number" name="lowG" id="lowG" class="form-control"/>
+                           </div>
+                          <div class="col-md-3">
+                            <label>G' High</label>
+                            <input type="number" name="highG" id="highG" class="form-control"/>
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-md-3">
                             <label>YSP</label>
-                            <input type="number" name="ysp" id="ysp" class="form-control" />
+                            <input type="number" name="ysp" id="ysp" class="form-control" step="0.1"/>
                           </div>
                         </div><br />
                         <div class="row">
@@ -307,7 +328,7 @@
                          </div>
                          <div class="col-md-4">
                            <label>YSP_2</label>
-                           <input type="number" name="ysp2" id="ysp2" class="form-control" />
+                           <input type="number" name="ysp2" id="ysp2" class="form-control" step="0.1"/>
                          </div>
                        </div><br />
                           <label>Etc</label>
@@ -363,7 +384,7 @@ $(document).ready(function(){
                      $('#tempAging').val(data.tempAging);
                      $('#preCon').val(data.preCon);
                      $('#dateAnalysis').val(data.dateAnalysis);
-                     $('#analyzer').val(data.analyzer);
+                     $('#visAnalyzer').val(data.visAnalyzer);
                      $('#rpm1').val(data.rpm1);
                      $('#rpm10').val(data.rpm10);
                      $('#rpm30').val(data.rpm30);
@@ -372,6 +393,7 @@ $(document).ready(function(){
                      $('#rpm10_2').val(data.rpm10_2);
                      $('#rpm30_2').val(data.rpm30_2);
                      $('#rpm100_2').val(data.rpm100_2);
+                     $('#dssAnalyzer').val(data.dssAnalyzer);
                      $('#lowG').val(data.lowG);
                      $('#highG').val(data.highG);
                      $('#ysp').val(data.ysp);
@@ -389,19 +411,23 @@ $(document).ready(function(){
            event.preventDefault();
            if($('#pasteNo').val() == "")
            {
-                alert("pasteNo is required");
+                alert("Paste No is required");
            }
            else if($('#timeAging').val() == '')
            {
                 alert("Aging Time is required");
            }
+           else if($('#tempAging').val() == '')
+           {
+                alert("Aging Temp is required");
+           }
            else if($('#dateAnalysis').val() == '')
            {
                 alert("분석일자 is required");
            }
-           else if($('#analyzer').val() == '')
+           else if($('#visAnalyzer').val() == '')
            {
-                alert("분석원 is required");
+                alert("점도 분석원 is required");
            }
            else
            {
@@ -447,5 +473,6 @@ $(document).ready(function(){
             });
 
  });
+
 
 </script>
