@@ -208,23 +208,23 @@
                          <div class="col-md-4">
                            <label>*Powder Type</label>
                            <select name="powderType" id="powderType" class="form-control">
-                                <option value="jet">JET</option>
-                                <option value="cl">CL</option>
+                                <option >JET</option>
+                                <option >CL</option>
                            </select>
                          </div>
                        </div>
                        <br />
                        <div class="row">
                          <div class="col-md-6">
-                           <label>*Date make</label>
-                           <input type="date" name="dateMake" id="dateMake" class="form-control" />
+                           <label>*제조일자</label>
+                           <input type="date" name="dateMake" id="dateMake" class="form-control" value="<?php echo date("Y-m-d");?>"/>
                          </div>
                          <div class="col-md-3">
                            <label>*Maker</label>
                            <select name="maker" id="maker" class="form-control">
-                                <option value="lgj">임기주</option>
-                                <option value="cyh">최영훈</option>
-                                <option value="sjw">손정우</option>
+                                <option >임기주</option>
+                                <option >최영훈</option>
+                                <option >손정우</option>
                            </select>
                          </div>
                          <div class="col-md-3">
@@ -241,8 +241,8 @@
                          <div class="col-md-4">
                           <label>*Recipe</label>
                           <select name="recipe" id="recipe" class="form-control">
-                               <option value="s2y9">S2Y9</option>
-                               <option value="hs6a4">HS6A4</option>
+                               <option >S2Y9</option>
+                               <option >HS6A4</option>
                           </select>
                         </div>
                        </div>

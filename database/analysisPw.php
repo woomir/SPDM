@@ -89,7 +89,7 @@
                    <br />
                    <div id="alert_message"></div>
                   <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover">
-                   <thead align="center" class="thead-light">
+                   <thead align="center">
                     <tr>
                       <th width="">Sample No </th>
                       <th width="">D10 </th>
@@ -104,7 +104,7 @@
                       <th width="">BET</th>
                       <th width="">TD</th>
                       <th width="">XRD</th>
-                      <th width="">etc</th>
+                      <th width="">Etc</th>
                       <th width="">Edit</th>
                      </tr>
                     </thead>
@@ -291,7 +291,7 @@ $(document).ready(function(){
     "order" : [[1,'asc']],
     "columnDefs": [{
     orderable: false,
-    targets: [13]
+    targets: [13,14]
   }],
     "ajax" : {
      url:"../dataManage/analysisPw/fetch.php",

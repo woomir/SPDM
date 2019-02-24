@@ -359,7 +359,7 @@ $(document).ready(function(){
     "order" : [[4,'asc']],
     "columnDefs": [{
     orderable: false,
-    targets: [21]
+    targets: [21,22]
   }],
     "ajax" : {
      url:"../dataManage/analysisPt/fetch.php",
