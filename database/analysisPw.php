@@ -77,7 +77,7 @@
               </ol>
             </nav>
             <div class="card-body">
-                <div class="table-responsive">
+                <div class="table-responsive-lg">
                   <?php
                   settype($_SESSION['role_id'],'int');
                   ?>
@@ -89,21 +89,22 @@
                    <br />
                    <div id="alert_message"></div>
                   <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover">
-                   <thead align="center">
+                   <thead align="center" class="thead-light">
                     <tr>
                       <th width="">Sample No </th>
                       <th width="">D10 </th>
                       <th width="">D50 </th>
                       <th width="">D90 </th>
                       <th width="">Dmax</th>
-                      <th>T-IGL</th>
+                      <th width="">T-IGL</th>
                       <th width="">P-IGL</th>
                       <th width="">C-IGL</th>
-                      <th>DTA Peak</th>
+                      <th width="">DTA Peak</th>
                       <th width="">Enthalphy</th>
                       <th width="">BET</th>
                       <th width="">TD</th>
                       <th width="">XRD</th>
+                      <th width="">etc</th>
                       <th width="">Edit</th>
                      </tr>
                     </thead>
@@ -205,63 +206,66 @@
                        <div class="row">
                          <div class="col-md-3">
                            <label>D10</label>
-                           <input type="number" name="dt" id="dt" class="form-control" placeholder="um"></input>
+                           <input type="number" name="dt" id="dt" class="form-control" placeholder="um" step="0.001"></input>
                          </div>
                          <div class="col-md-3">
                            <label>D50</label>
-                           <input type="number" name="df" id="df" class="form-control" placeholder="um"></input>
+                           <input type="number" name="df" id="df" class="form-control" placeholder="um" step="0.001"></input>
                          </div>
                          <div class="col-md-3">
                            <label>D90</label>
-                           <input type="number" name="dn" id="dn" class="form-control" placeholder="um"></input>
+                           <input type="number" name="dn" id="dn" class="form-control" placeholder="um" step="0.001"></input>
                          </div>
                          <div class="col-md-3">
                            <label>Dmax</label>
-                           <input type="number" name="dmax" id="dmax" class="form-control" placeholder="um"></input>
+                           <input type="number" name="dmax" id="dmax" class="form-control" placeholder="um" step="0.01"></input>
                          </div>
                        </div>
                        <br />
                        <div class="row">
                          <div class="col-md-4">
                            <label>T-IGL</label>
-                           <input type="number" name="tIgl" id="tIgl" class="form-control" placeholder="%"/>
+                           <input type="number" name="tIgl" id="tIgl" class="form-control" placeholder="%" step="0.001"/>
                          </div>
                          <div class="col-md-4">
                            <label>P-IGL</label>
-                           <input type="number" name="pIgl" id="pIgl" class="form-control" placeholder="%"/>
+                           <input type="number" name="pIgl" id="pIgl" class="form-control" placeholder="%" step="0.001"/>
                          </div>
                          <div class="col-md-4">
                            <label>C-IGL</label>
-                           <input type="number" name="cIgl" id="cIgl" class="form-control" placeholder="%" />
+                           <input type="number" name="cIgl" id="cIgl" class="form-control" placeholder="%" step="0.001"/>
                          </div>
                        </div>
                        <br />
                        <div class="row">
                          <div class="col-md-4">
                             <label>DTA Peak</label>
-                            <input type="number" name="dtaPeak" id="dtaPeak" class="form-control" placeholder="C" />
+                            <input type="number" name="dtaPeak" id="dtaPeak" class="form-control" placeholder="C" step="0.1"/>
                          </div>
                          <div class="col-md-4">
                           <label>Enthalphy</label>
-                          <input type="number" name="enthalphy" id="enthalphy" class="form-control" placeholder="J/g"/>
+                          <input type="number" name="enthalphy" id="enthalphy" class="form-control" placeholder="J/g" step="0.1"/>
                         </div>
                        </div>
                        </br>
                        <div class="row">
                          <div class="col-md-4">
                             <label>BET</label>
-                            <input type="number" name="bet" id="bet" class="form-control" placeholder="m2/g" />
+                            <input type="number" name="bet" id="bet" class="form-control" placeholder="m2/g" step="0.0001"/>
                          </div>
                          <div class="col-md-4">
                           <label>TD</label>
-                          <input type="number" name="td" id="td" class="form-control"/>
+                          <input type="number" name="td" id="td" class="form-control" step="0.1"/>
                         </div>
                         <div class="col-md-4">
                          <label>XRD</label>
                          <input type="number" name="xrd" id="xrd" class="form-control"/>
-                       </div>
-                       </div>
-                       </br>
+                        </div>
+                       </div></br>
+
+                         <label>Etc</label>
+                         <input type="text" name="etc" id="etc" class="form-control" />
+                       <br />
                           <input type="hidden" name="id" id="id" />
                           <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />
                      </form>
@@ -320,6 +324,7 @@ $(document).ready(function(){
                      $('#bet').val(data.bet);
                      $('#td').val(data.td);
                      $('#xrd').val(data.xrd);
+                     $('#etc').val(data.etc);
                      $('#id').val(data.id);
                      $('#insert').val("Update");
                      $('#add_data_Modal').modal('show');

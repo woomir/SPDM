@@ -3,7 +3,7 @@
 //fetch.php
 $connect = mysqli_connect("localhost", "root", "52telecast", "woomir");
 $column = array('sampleNo', 'd10', 'd50', 'd90', 'dmax',
-'tIgl', 'pIgl', 'cIgl', 'dtaPeak', 'enthalphy', 'bet', 'td', 'xrd');
+'tIgl', 'pIgl', 'cIgl', 'dtaPeak', 'enthalphy', 'bet', 'td', 'xrd', 'etc');
 $query = "SELECT * FROM analysispwtbl";
 
 
@@ -24,6 +24,7 @@ if(isset($_POST["search"]["value"]))
  OR bet LIKE "%'.$_POST["search"]["value"].'%"
  OR td LIKE "%'.$_POST["search"]["value"].'%"
  OR xrd LIKE "%'.$_POST["search"]["value"].'%"
+ OR etc LIKE "%'.$_POST["search"]["value"].'%"
  ';
 }
 
@@ -66,7 +67,8 @@ while($row = mysqli_fetch_array($result))
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="bet">' . $row["bet"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="td">' . $row["td"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="xrd">' . $row["xrd"] . '</div>';
- $sub_array[] = '<div><input type="button" name="edit" value="Edit" id="'.$row["id"] .'" class="btn btn-info btn-sm edit_data" />
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="etc">' . $row["etc"] . '</div>';
+ $sub_array[] = '<div align="center"><input type="button" name="edit" value="Edit" id="'.$row["id"] .'" class="btn btn-info btn-sm edit_data"/>
                 <input type="button" name="delete" value="Delete" id="'.$row["id"] .'" class="btn btn-sm btn-danger btn_delete" /></div>';
  $data[] = $sub_array;
 }
