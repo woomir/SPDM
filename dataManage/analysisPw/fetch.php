@@ -2,7 +2,7 @@
 <?php
 //fetch.php
 $connect = mysqli_connect("localhost", "root", "52telecast", "woomir");
-$column = array('sampleNo', 'd10', 'd50', 'd90', 'dmax',
+$column = array('sampleNo', 'powderType', 'd10', 'd50', 'd90', 'dmax',
 'tIgl', 'pIgl', 'cIgl', 'dtaPeak', 'enthalphy', 'bet', 'td', 'xrd', 'etc');
 $query = "SELECT * FROM analysispwtbl";
 
@@ -55,6 +55,7 @@ while($row = mysqli_fetch_array($result))
 {
  $sub_array = array();
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="sampleNo">' . $row["sampleNo"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="powderType">' . $row["powderType"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="d10">' . $row["d10"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="d50">' . $row["d50"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="d90">' . $row["d90"] . '</div>';

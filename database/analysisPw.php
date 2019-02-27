@@ -106,6 +106,7 @@
                    <thead align="center">
                     <tr>
                       <th width="">Sample No </th>
+                      <th width="">Powder Type </th>
                       <th width="">D10 </th>
                       <th width="">D50 </th>
                       <th width="">D90 </th>
@@ -199,8 +200,16 @@
                 <div class="modal-body">
                   <div class="container-fluid">
                      <form method="post" id="insert_form">
-                       <label>*Sample No</label>
-                       <input type="text" name="sampleNo" id="sampleNo" class="form-control" />
+                      <div class="row">
+                        <div class="col-md-6">
+                         <label>*Sample No</label>
+                         <input type="text" name="sampleNo" id="sampleNo" class="form-control" />
+                        </div>
+                        <div class="col-md-6">
+                          <label>*Powder Type</label>
+                          <input type="text" name="powderType" id="powderType" class="form-control" />
+                        </div>
+                      </div>
                        <br />
                        <div class="row">
                          <div class="col-md-3">
@@ -318,6 +327,7 @@ $(document).ready(function(){
                 dataType:"json",
                 success:function(data){
                      $('#sampleNo').val(data.sampleNo);
+                     $('#powderType').val(data.powderType);
                      $('#dt').val(data.d10);
                      $('#df').val(data.d50);
                      $('#dn').val(data.d90);
@@ -342,6 +352,10 @@ $(document).ready(function(){
            if($('#sampleNo').val() == "")
            {
                 alert("Sample No is required");
+           }
+           else if($('#powderType').val() == '')
+           {
+                alert("Powder Type is required");
            }
            else
            {

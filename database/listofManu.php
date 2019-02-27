@@ -107,12 +107,12 @@
                     <th width="8%">Paste No</th>
                     <th width="10%">Powder Lot</th>
                     <th width="7%">Powder type</th>
-                    <th width="10%">제조 일자</th>
-                    <th width="7%">작업자</th>
-                    <th>제조 목적</th>
-                    <th width="7%">제조량 (g)</th>
-                    <th width="7%">배합명</th>
-                    <th>비고</th>
+                    <th width="10%">Date</th>
+                    <th width="7%">Maker</th>
+                    <th>Object</th>
+                    <th width="7%">Amount</th>
+                    <th width="7%">Recipe</th>
+                    <th>Etc</th>
                     <th width="6%">Edit</th>
                    </tr>
                   </thead>
