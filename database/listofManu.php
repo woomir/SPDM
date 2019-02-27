@@ -6,25 +6,37 @@
 
   <meta charset="utf-8">
 
+  <title>Silver Powder Database Management</title>
+
       <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
       <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
       <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
       <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
       <script src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.html5.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+      <script src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.bootstrap4.min.js"></script>
+      <!-- Bootstrap core JavaScript-->
+      <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <!-- Core plugin JavaScript-->
+      <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+      <!-- Page level plugin JavaScript-->
+      <script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
+      <!-- Custom scripts for all pages-->
+      <script src="../js/sb-admin.min.js"></script>
 
-  <title>Silver Powder Database Management</title>
+      <!-- Custom fonts for this template-->
+      <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" rel="stylesheet"/>
+      <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet"/>
+      <link href="https://cdn.datatables.net/buttons/1.5.4/css/buttons.bootstrap4.min.css" rel="stylesheet"/>
 
-  <!-- Custom fonts for this template-->
-  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
-<link href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css" rel="stylesheet"/>
+      <!-- Page level plugin CSS-->
+      <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+      <!-- Custom styles for this template-->
+      <link href="../css/sb-admin.css" rel="stylesheet">
 
 
-  <!-- Page level plugin CSS-->
-  <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-
-  <!-- Custom styles for this template-->
-  <link href="../css/sb-admin.css" rel="stylesheet">
 
 </head>
 <?php
@@ -146,20 +158,6 @@
     </div>
   </div>
 
-  <!-- Bootstrap core JavaScript-->
-
-  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Page level plugin JavaScript-->
-
-  <script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="../js/sb-admin.min.js"></script>
-
 <?php }else{ ?>
 
 <!-- invalid access-->
@@ -270,7 +268,6 @@ $(document).ready(function(){
   function fetch_data()
   {
    var dataTable = $('#PasteTable').DataTable({
-
     "processing" : true,
     "serverSide" : true,
     "order" : [[3,'asc']],
@@ -282,21 +279,16 @@ $(document).ready(function(){
      url:"../dataManage/listofManu/fetch.php",
      type:"POST"
    },
-   dom: '<"top"B>lfrt<"bottom"ip><"clear">',
-        buttons: [
-          {
-            extend: 'csvHtml5',
-            text: 'Export CSV',
-            footer: true,
-            className: 'btn btn-dark'
-        },
+   dom: "<'row'<'col-sm-12 col-md-auto'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4 ml-auto'f>>" +
+        "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+        buttons: ['copy', 'excel',
         {
           extend: 'colvis',
-          columns: ':not(.noVis)',
-          className: 'btn btn-dark btn-xs'
+          text: 'Show / Hide columns'
         }]
    });
   }
+
 
 
       $('#add').click(function(){
