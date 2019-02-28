@@ -8,34 +8,33 @@
 
   <title>Silver Powder Database Management</title>
 
-      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-      <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-      <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
-      <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
-      <script src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.html5.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-      <script src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.bootstrap4.min.js"></script>
-      <!-- Bootstrap core JavaScript-->
-      <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-      <!-- Core plugin JavaScript-->
-      <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-      <!-- Page level plugin JavaScript-->
-      <script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
-      <!-- Custom scripts for all pages-->
-      <script src="../js/sb-admin.min.js"></script>
-
       <!-- Custom fonts for this template-->
       <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
       <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" rel="stylesheet"/>
       <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet"/>
       <link href="https://cdn.datatables.net/buttons/1.5.4/css/buttons.bootstrap4.min.css" rel="stylesheet"/>
-
-
       <!-- Page level plugin CSS-->
       <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
       <!-- Custom styles for this template-->
       <link href="../css/sb-admin.css" rel="stylesheet">
 
+<!--sidebar class에 toggled가 있을 때 사용-->
+<style>
+footer.sticky-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: calc(100% - 90px);
+  height: 80px;
+  background-color: #e9ecef;
+}
+body.sidebar-toggled footer.sticky-footer {
+  width: calc(100% - 225px);
+}
+</style>
 
 
 </head>
@@ -48,14 +47,21 @@
       <i class="fas fa-bars"></i>
     </button>
           <ul class="navbar-nav ml-auto">
-            <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#logoutModal">Logout</button>
+            <a class="navbar-brand mb-0 h2" href=""><?php echo $_SESSION['id']; ?></a>
+            <li class="nav-item dropdown no-arrow">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="tooltip" data-placement="bottom" title="Password Change" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-cog"></i>
+                </a>
+            </li>
+            &nbsp &nbsp <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#logoutModal">Logout</button>
           </ul>
   </nav>
 
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="sidebar navbar-nav">
+
+    <ul class="sidebar navbar-nav toggled">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="tablesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-fw fa-table"></i>
@@ -78,6 +84,7 @@
       </li>
 
     </ul>
+
 
     <div id="content-wrapper">
       <div class="container-fluid">
@@ -259,6 +266,24 @@
       </div>
  </div>
 
+ <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+ <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+ <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+ <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+ <script src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.html5.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+ <script src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.bootstrap4.min.js"></script>
+
+ <!-- Bootstrap core JavaScript-->
+ <script src="../vendor/bootstrap/js/bootstrap.bundle.js"></script>
+
+ <!-- Core plugin JavaScript-->
+ <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+ <!-- Page level plugin JavaScript-->
+ <script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
+ <!-- Custom scripts for all pages-->
+ <script src="../js/sb-admin.js"></script>
+
 
 <script type="text/javascript">
 $(document).ready(function(){
@@ -397,4 +422,16 @@ $(document).ready(function(){
 
  });
 
+//Dropdown버튼의 속도 조절
+ $('.dropdown').on('show.bs.dropdown', function(e){
+   $(this).find('.dropdown-menu').first().stop(true, true).slideDown(300);
+ });
+
+ $('.dropdown').on('hide.bs.dropdown', function(e){
+   $(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+ });
+
+ $(function () {
+   $('[data-toggle="tooltip"]').tooltip()
+ });
 </script>

@@ -10390,6 +10390,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+
 }
 
 #wrapper #content-wrapper {
@@ -10397,6 +10398,8 @@ body {
   width: 100%;
   padding-top: 1rem;
   padding-bottom: 80px;
+
+
 }
 
 .scroll-to-top {

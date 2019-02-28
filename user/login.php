@@ -23,6 +23,7 @@
    $conn = mysqli_connect("localhost", "root", "52telecast", "woomir");
     $_SESSION['id']=$_POST['id'];
     $_SESSION['password']=$_POST['password'];
+    $_SESSION['username']=$_POST['username'];
 
    if (mysqli_connect_errno($conn)) {
        echo "Failed to connect to MySQL: " . mysqli_connect_error();
