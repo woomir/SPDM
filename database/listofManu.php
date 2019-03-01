@@ -47,7 +47,9 @@ body.sidebar-toggled footer.sticky-footer {
       <i class="fas fa-bars"></i>
     </button>
           <ul class="navbar-nav ml-auto">
-            <a class="navbar-brand mb-0 h2" href=""><?php echo $_SESSION['id']; ?></a>
+            <li class="nav-item">
+              <a class="nav-link active mb-0" href=""><?php echo $_SESSION['id']; ?></a>
+            </li>
             <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="tooltip" data-placement="bottom" title="Password Change" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-cog"></i>
@@ -111,16 +113,16 @@ body.sidebar-toggled footer.sticky-footer {
                 <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover">
                  <thead align="center">
                   <tr>
-                    <th width="8%">Paste No</th>
-                    <th width="10%">Powder Lot</th>
-                    <th width="7%">Powder type</th>
-                    <th width="10%">Date</th>
-                    <th width="7%">Maker</th>
+                    <th width="">Paste No</th>
+                    <th width="">Powder Lot</th>
+                    <th width="">Powder type</th>
+                    <th width="">Date</th>
+                    <th width="">Maker</th>
                     <th>Object</th>
-                    <th width="7%">Amount</th>
-                    <th width="7%">Recipe</th>
+                    <th width="">Amount</th>
+                    <th width="">Recipe</th>
                     <th>Etc</th>
-                    <th width="6%">Edit</th>
+                    <th width="">Edit</th>
                    </tr>
                   </thead>
                 </table>

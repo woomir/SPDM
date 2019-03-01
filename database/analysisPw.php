@@ -48,7 +48,9 @@
       <i class="fas fa-bars"></i>
     </button>
           <ul class="navbar-nav ml-auto">
-            <a class="navbar-brand mb-0 h2" href=""><?php echo $_SESSION['id']; ?></a>
+            <li class="nav-item">
+              <a class="nav-link active mb-0" href=""><?php echo $_SESSION['id']; ?></a>
+            </li>
             <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="tooltip" data-placement="bottom" title="Password Change" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-cog"></i>
@@ -95,7 +97,7 @@
               </ol>
             </nav>
             <div class="card-body">
-                <div class="table-responsive-lg">
+                <div class="table-responsive">
                   <?php
                   settype($_SESSION['role_id'],'int');
                   ?>

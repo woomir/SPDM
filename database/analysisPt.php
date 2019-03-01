@@ -49,7 +49,9 @@
       <i class="fas fa-bars"></i>
     </button>
           <ul class="navbar-nav ml-auto">
-            <a class="navbar-brand mb-0 h2" href=""><?php echo $_SESSION['id']; ?></a>
+            <li class="nav-item">
+              <a class="nav-link active mb-0" href=""><?php echo $_SESSION['id']; ?></a>
+            </li>
             <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="tooltip" data-placement="bottom" title="Password Change" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-cog"></i>
@@ -111,29 +113,29 @@
                 <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover">
                  <thead align="center">
                   <tr>
-                    <th width="3%">Paste<br /> No</th>
-                    <th width="3%">Aging<br /> Time</th>
-                    <th width="3%">Aging<br /> Temp</th>
-                    <th width="4%">전처리</th>
-                    <th width="5%">Date</th>
-                    <th width="4%">점도<br />분석원</th>
-                    <th width="3%">1rpm</th>
-                    <th width="3%">10rpm</th>
-                    <th width="3%">30rpm</th>
-                    <th width="3%">100rpm</th>
-                    <th width="3%">1rpm_2</th>
-                    <th width="3%">10rpm_2</th>
-                    <th width="3%">30rpm_2</th>
-                    <th width="3%">100rpm_2</th>
-                    <th width="4%">탄성<br />분석원</th>
-                    <th width="5%">G' Low</th>
-                    <th width="3%">G' High</th>
-                    <th width="3%">YSP</th>
-                    <th width="3%">G' Low_2</th>
-                    <th width="3%">G' High_2</th>
-                    <th width="3%">YSP_2</th>
+                    <th width="">Paste<br /> No</th>
+                    <th width="">Aging<br /> Time</th>
+                    <th width="">Aging<br /> Temp</th>
+                    <th width="">전처리</th>
+                    <th width="">Date</th>
+                    <th width="">점도<br />분석원</th>
+                    <th width="">1rpm</th>
+                    <th width="">10rpm</th>
+                    <th width="">30rpm</th>
+                    <th width="">100rpm</th>
+                    <th width="">1rpm_2</th>
+                    <th width="">10rpm_2</th>
+                    <th width="">30rpm_2</th>
+                    <th width="">100rpm_2</th>
+                    <th width="">탄성<br />분석원</th>
+                    <th width="">G' Low</th>
+                    <th width="">G' High</th>
+                    <th width="">YSP</th>
+                    <th width="">G' Low_2</th>
+                    <th width="">G' High_2</th>
+                    <th width="">YSP_2</th>
                     <th width="">Etc</th>
-                    <th width="6%">Edit</th>
+                    <th width="">Edit</th>
                    </tr>
                   </thead>
                 </table>
