@@ -38,9 +38,7 @@ if($result === false){
 
 </head>
 <body class="bg-dark">
-
     <div class="card w-50 mt-5 mx-auto">
-
         <div class="card text-center">
           <div class="card-header">
             Silver Powder Databases Management
@@ -51,8 +49,6 @@ if($result === false){
             <a href="../login.html" class="btn btn-primary">Go login</a>
           </div>
         </div>
-
     </div>
-
 </body>
 </html>
