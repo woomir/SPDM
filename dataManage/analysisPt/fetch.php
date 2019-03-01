@@ -1,7 +1,7 @@
 
 <?php
 //fetch.php
-$connect = mysqli_connect("localhost", "root", "52telecast", "woomir");
+$connect = mysqli_connect("localhost", "root", "$52Telecast", "woomir");
 $column = array('pasteNo', 'timeAging', 'tempAging', 'preCon', 'dateAnalysis',
 'visAnalyzer', 'rpm1', 'rpm10', 'rpm30', 'rpm100', 'rpm1_2', 'rpm10_2', 'rpm30_2',
 'rpm100_2', 'dssAnalyzer', 'lowG', 'highG', 'ysp', 'lowG2', 'highG2', 'ysp2', 'etc');

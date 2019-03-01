@@ -1,7 +1,7 @@
 
 <?php
 //fetch.php
-$connect = mysqli_connect("localhost", "root", "52telecast", "woomir");
+$connect = mysqli_connect("localhost", "root", "$52Telecast", "woomir");
 $column = array('sampleNo', 'powderType', 'd10', 'd50', 'd90', 'dmax',
 'tIgl', 'pIgl', 'cIgl', 'dtaPeak', 'enthalphy', 'bet', 'td', 'xrd', 'etc');
 $query = "SELECT * FROM analysispwtbl";

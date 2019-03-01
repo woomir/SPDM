@@ -20,7 +20,7 @@
  <body class="bg-dark">
 
    <?php
-   $conn = mysqli_connect("localhost", "root", "52telecast", "woomir");
+   $conn = mysqli_connect("localhost", "root", "$52Telecast", "woomir");
     $_SESSION['id']=$_POST['id'];
     $_SESSION['password']=$_POST['password'];
 

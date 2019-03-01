@@ -1,7 +1,7 @@
 
 <?php
 //fetch.php
-$connect = mysqli_connect("localhost", "root", "52telecast", "woomir");
+$connect = mysqli_connect("localhost", "root", "$52Telecast", "woomir");
 $column = array('pasteNo', 'powderLot', 'powderType', 'dateMake', 'maker',
 'object', 'amount', 'recipe', 'etc');
 $query = "SELECT * FROM makelistpastetbl";

@@ -2,7 +2,7 @@
 session_start();
 if ($_SESSION['role_id']<3){
 
- $connect = mysqli_connect("localhost", "root", "52telecast", "woomir");
+ $connect = mysqli_connect("localhost", "root", "$52Telecast", "woomir");
  if(!empty($_POST))
  {
       $output = '';

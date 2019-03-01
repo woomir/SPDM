@@ -5,7 +5,7 @@ $username = $_POST['username'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-$conn = mysqli_connect("localhost", "root", "52telecast", "woomir");
+$conn = mysqli_connect("localhost", "root", "$52Telecast", "woomir");
 if (mysqli_connect_errno($conn)) {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
