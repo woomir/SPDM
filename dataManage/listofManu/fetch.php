@@ -14,7 +14,6 @@ if(isset($_POST["search"]["value"]))
  WHERE pasteNo LIKE "%'.$_POST["search"]["value"].'%"
  OR powderLot LIKE "%'.$_POST["search"]["value"].'%"
  OR powderType LIKE "%'.$_POST["search"]["value"].'%"
- OR dateMake LIKE "%'.$_POST["search"]["value"].'%"
  OR maker LIKE "%'.$_POST["search"]["value"].'%"
  OR object LIKE "%'.$_POST["search"]["value"].'%"
  OR amount LIKE "%'.$_POST["search"]["value"].'%"

@@ -34,6 +34,7 @@ footer.sticky-footer {
 body.sidebar-toggled footer.sticky-footer {
   width: calc(100% - 225px);
 }
+
 </style>
 
 
@@ -125,6 +126,7 @@ body.sidebar-toggled footer.sticky-footer {
                     <th width="">Edit</th>
                    </tr>
                   </thead>
+
                 </table>
               </div>
           </div>
@@ -295,6 +297,7 @@ $(document).ready(function(){
   function fetch_data()
   {
    var dataTable = $('#PasteTable').DataTable({
+
     "processing" : true,
     "serverSide" : true,
     "order" : [[3,'asc']],
@@ -315,9 +318,6 @@ $(document).ready(function(){
         }]
    });
   }
-
-
-
       $('#add').click(function(){
            $('#insert').val("Insert");
            $('#insert_form')[0].reset();

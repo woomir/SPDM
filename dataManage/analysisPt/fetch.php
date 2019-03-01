@@ -16,7 +16,6 @@ if(isset($_POST["search"]["value"]))
  OR timeAging LIKE "%'.$_POST["search"]["value"].'%"
  OR tempAging LIKE "%'.$_POST["search"]["value"].'%"
  OR preCon LIKE "%'.$_POST["search"]["value"].'%"
- OR dateAnalysis LIKE "%'.$_POST["search"]["value"].'%"
  OR visAnalyzer LIKE "%'.$_POST["search"]["value"].'%"
  OR rpm1 LIKE "%'.$_POST["search"]["value"].'%"
  OR rpm10 LIKE "%'.$_POST["search"]["value"].'%"
