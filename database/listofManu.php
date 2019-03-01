@@ -301,6 +301,7 @@ $(document).ready(function(){
     "processing" : true,
     "serverSide" : true,
     "order" : [[3,'asc']],
+    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "columnDefs": [{
     orderable: false,
     targets: [8,9],
