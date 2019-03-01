@@ -49,7 +49,7 @@ body.sidebar-toggled footer.sticky-footer {
     </button>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link active mb-0" href=""><?php echo $_SESSION['id']; ?></a>
+              <a class="nav-link active mb-0" href=""><?php echo $_SESSION['id']." : ".$_SESSION['role'];?></a>
             </li>
             <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="tooltip" data-placement="bottom" title="Password Change" aria-haspopup="true" aria-expanded="false">

@@ -23,22 +23,25 @@
    $conn = mysqli_connect("localhost", "root", "52telecast", "woomir");
     $_SESSION['id']=$_POST['id'];
     $_SESSION['password']=$_POST['password'];
-    $_SESSION['username']=$_POST['username'];
 
    if (mysqli_connect_errno($conn)) {
        echo "Failed to connect to MySQL: " . mysqli_connect_error();
    }
 
    if (isset($_SESSION['id']) && isset($_SESSION['password'])) {
-      //  $_SESSION['id'] = $_POST['id'];
-      //  $_SESSION['password'] = $_POST['password'];
+
        $id = $_SESSION['id'];
        $password = $_SESSION['password'];
 
        $sql = "SELECT * from users where id='".$id."' AND password='".$password."'";
        $result = mysqli_query($conn,$sql);
        $role_id=mysqli_fetch_assoc($result);
+       $role_id_select = $role_id['role_id'];
+       $permission = "SELECT * from permission where role_id='".$role_id_select."'";
+       $result_permission = mysqli_query($conn,$permission);
+       $permission_role= mysqli_fetch_assoc($result_permission);
        $row = mysqli_num_rows($result);
+       $_SESSION['role']=$permission_role['role'];
 
        if ($row==1){
      header('location:../database/listofManu.php');
