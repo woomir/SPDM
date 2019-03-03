@@ -34,9 +34,8 @@
        $query = "SELECT * from users where id='".$id."';";
        $res = mysqli_query($conn,$query);
        $pw = mysqli_fetch_assoc($res);
-       var_dump($res);
-       if(password_verify($p, $pw['password'])){
 
+       if(password_verify($p, $pw['password'])){
        $sql = "SELECT * from users where id='".$id."' AND password='".$p."'";
        $result = mysqli_query($conn,$sql);
        $role_id=mysqli_fetch_assoc($result);
@@ -46,26 +45,26 @@
        $permission_role= mysqli_fetch_assoc($result_permission);
        $row = mysqli_num_rows($result);
        $_SESSION['role']=$permission_role['role'];
+       $_SESSION['role_id']=$role_id['role_id']; ?>
 
-  //     if ($row==1){
-     header('location:../database/listofManu.php');
-   } else { ?>
+       <form method ="post">
+       <input type="hidden" id="role_id" name="role_id" value=" <?php echo $role_id['role_id'] ?> ">
+       </form>
+       <?php header('location:../database/listofManu.php');
+       } else { ?>
 
-     <div class="card card-login mt-5 mx-auto">
-         <div class="card text-center">
-           <div class="card-header">Silver Powder Databases Management</div>
-           <div class="card-body">
-             <h5 class="card-title">Login Failed</h5>
-             <p class="card-text">Please verify your ID and password</p>
-             <a href="../login.html" class="btn btn-primary">Go login</a>
+       <div class="card card-login mt-5 mx-auto">
+           <div class="card text-center">
+             <div class="card-header">Silver Powder Databases Management</div>
+             <div class="card-body">
+               <h5 class="card-title">Login Failed</h5>
+               <p class="card-text">Please verify your ID and password</p>
+               <a href="../login.html" class="btn btn-primary">Go login</a>
+             </div>
            </div>
-         </div>
-     </div>
-     <?php
-   }} ?>
-   <?php $_SESSION['role_id']=$role_id['role_id']; ?>
-<form method ="post">
-<input type="hidden" id="role_id" name="role_id" value=" <?php echo $role_id['role_id'] ?> ">
-</form>
+       </div>
+     <?php }} ?>
+
+
  </body>
  </html>
