@@ -29,11 +29,15 @@
    }
 
    if (isset($_SESSION['id']) && isset($_SESSION['password'])) {
-
        $id = $_SESSION['id'];
-       $password = $_SESSION['password'];
+       $p = $_SESSION['password'];
+       $query = "SELECT * from users where id='".$id."';";
+       $res = mysqli_query($conn,$query);
+       $pw = mysqli_fetch_assoc($res);
+       var_dump($res);
+       if(password_verify($p, $pw['password'])){
 
-       $sql = "SELECT * from users where id='".$id."' AND password='".$password."'";
+       $sql = "SELECT * from users where id='".$id."' AND password='".$p."'";
        $result = mysqli_query($conn,$sql);
        $role_id=mysqli_fetch_assoc($result);
        $role_id_select = $role_id['role_id'];
@@ -43,7 +47,7 @@
        $row = mysqli_num_rows($result);
        $_SESSION['role']=$permission_role['role'];
 
-       if ($row==1){
+  //     if ($row==1){
      header('location:../database/listofManu.php');
    } else { ?>
 

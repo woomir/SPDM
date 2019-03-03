@@ -3,7 +3,7 @@
 $id = $_POST['id'];
 $username = $_POST['username'];
 $email = $_POST['email'];
-$password = $_POST['password'];
+$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
 $conn = mysqli_connect("localhost", "root", "$52Telecast", "woomir");
 if (mysqli_connect_errno($conn)) {
