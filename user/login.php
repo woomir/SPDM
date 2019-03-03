@@ -32,25 +32,17 @@
        $id = $_SESSION['id'];
        $p = $_SESSION['password'];
        $query = "SELECT * from users where id='".$id."';";
-       $res = mysqli_query($conn,$query);
-       $pw = mysqli_fetch_assoc($res);
+       $result = mysqli_query($conn,$query);
+       $user = mysqli_fetch_assoc($result);
 
-       if(password_verify($p, $pw['password'])){
-       $sql = "SELECT * from users where id='".$id."' AND password='".$p."'";
-       $result = mysqli_query($conn,$sql);
-       $role_id=mysqli_fetch_assoc($result);
-       $role_id_select = $role_id['role_id'];
+       if(password_verify($p, $user['password'])){
+       $role_id_select = $user['role_id'];
        $permission = "SELECT * from permission where role_id='".$role_id_select."'";
        $result_permission = mysqli_query($conn,$permission);
        $permission_role= mysqli_fetch_assoc($result_permission);
-       $row = mysqli_num_rows($result);
        $_SESSION['role']=$permission_role['role'];
-       $_SESSION['role_id']=$role_id['role_id']; ?>
-
-       <form method ="post">
-       <input type="hidden" id="role_id" name="role_id" value=" <?php echo $role_id['role_id'] ?> ">
-       </form>
-       <?php header('location:../database/listofManu.php');
+       $_SESSION['role_id']=$role_id['role_id'];
+       header('location:../database/listofManu.php');
        } else { ?>
 
        <div class="card card-login mt-5 mx-auto">
