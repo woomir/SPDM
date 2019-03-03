@@ -34,7 +34,6 @@ footer.sticky-footer {
 body.sidebar-toggled footer.sticky-footer {
   width: calc(100% - 225px);
 }
-
 </style>
 
 
@@ -180,7 +179,7 @@ body.sidebar-toggled footer.sticky-footer {
        <div class="card-body">
          <h5 class="card-title">Login Failed</h5>
          <p class="card-text">Invaild access</p>
-         <a href="../login.html" class="btn btn-primary">Go login</a>
+         <a href="../index.html" class="btn btn-primary">Go login</a>
        </div>
      </div>
  </div>

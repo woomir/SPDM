@@ -46,7 +46,7 @@ if($result === false){
           <div class="card-body">
             <h5 class="card-title">Welcome</h5>
             <p class="card-text"></p>
-            <a href="../login.html" class="btn btn-primary">Go login</a>
+            <a href="../index.html" class="btn btn-primary">Go login</a>
           </div>
         </div>
     </div>

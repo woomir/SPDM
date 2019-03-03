@@ -59,7 +59,7 @@
              <div class="card-body">
                <h5 class="card-title">Login Failed</h5>
                <p class="card-text">Please verify your ID and password</p>
-               <a href="../login.html" class="btn btn-primary">Go login</a>
+               <a href="../index.html" class="btn btn-primary">Go login</a>
              </div>
            </div>
        </div>

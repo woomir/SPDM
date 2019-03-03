@@ -63,7 +63,7 @@ if(isset($_POST['id']) && isset($_POST['inputEmail'])){
             <input class="btn btn-primary btn-block" type="submit" name="submit" id="submit" value="Chanege Password">
           </form>
           <div class="text-center">
-            <a class="d-block small mt-3" href="../login.html">Login Page</a>
+            <a class="d-block small mt-3" href="../index.html">Login Page</a>
             <a class="d-block small" href="../forgot-password.html">Forgot Password?</a>
           </div>
           </div>
@@ -82,7 +82,7 @@ if(isset($_POST['id']) && isset($_POST['inputEmail'])){
           </form>
           <div class="text-center">
             <a class="d-block small mt-3" href="../register.html">Register an Account</a>
-            <a class="d-block small" href="../login.html">Login Page</a>
+            <a class="d-block small" href="../index.html">Login Page</a>
           </div>
         </div>
       </div>
@@ -110,7 +110,7 @@ if(isset($_POST['password'])){
           <div class="text-center mb-4">
             <h5>Success</h5>
           </div>
-          <form action="../login.html">
+          <form action="../index.html">
             <input class="btn btn-primary btn-block" type="submit" name="submit" id="submit" value="Go login">
           </form>
         </div>
