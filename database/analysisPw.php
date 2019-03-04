@@ -75,7 +75,7 @@
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
               <h6 class="dropdown-header">Mass Powder</h6>
               <a class="dropdown-item" href=#>Conditions of Manu</a>
-              <a class="dropdown-item" href=#>Analysis</a>
+              <a class="dropdown-item" href="analysisPwMass.php">Analysis</a>
               <div class="dropdown-divider"></div>
               <h6 class="dropdown-header">Lab Powder</h6>
               <a class="dropdown-item" href=#>Conditions of Manu</a>
