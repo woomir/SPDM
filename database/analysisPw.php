@@ -37,6 +37,9 @@
   body.sidebar-toggled footer.sticky-footer {
     width: calc(100% - 225px);
   }
+  table {
+    font-size: 14px;
+  }
   </style>
 
 </head>
