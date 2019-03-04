@@ -14,9 +14,9 @@
 
   <!-- Custom fonts for this template-->
   <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" rel="stylesheet"/>
-  <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet"/>
-  <link href="https://cdn.datatables.net/buttons/1.5.4/css/buttons.bootstrap4.min.css" rel="stylesheet"/>
+  <link href="../css/bootstrap.css" rel="stylesheet"/>
+  <link href="../css/dataTables.bootstrap4.min.css" rel="stylesheet"/>
+  <link href="../css/buttons.bootstrap4.min.css" rel="stylesheet"/>
   <!-- Page level plugin CSS-->
   <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
@@ -352,13 +352,13 @@
       </div>
  </div>
 
- <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
- <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
- <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
- <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
- <script src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.html5.min.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
- <script src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.bootstrap4.min.js"></script>
+ <script src="../js/jquery-3.3.1.js"></script>
+ <script src="../js/jquery.dataTables.min.js"></script>
+ <script src="../js/dataTables.buttons.min.js"></script>
+ <script src="../js/buttons.colVis.min.js"></script>
+ <script src="../js/buttons.html5.min.js"></script>
+ <script src="../js/jszip.min.js"></script>
+ <script src="../js/buttons.bootstrap4.min.js"></script>
 
  <!-- Bootstrap core JavaScript-->
  <script src="../vendor/bootstrap/js/bootstrap.bundle.js"></script>
