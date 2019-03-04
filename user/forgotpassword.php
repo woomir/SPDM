@@ -40,35 +40,32 @@ if(isset($_POST['id']) && isset($_POST['inputEmail'])){
 	$count = mysqli_num_rows($res);
 	if($count == 1){ ?>
     <div class="container">
-      <div class="card card-register mx-auto mt-5">
+      <div class="card card-login mx-auto mt-5">
         <div class="card-header">Change Password</div>
-    <div class="card-body">
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            <div class="form-group">
-              <div class="form-row">
-                <div class="col-md-6">
-                  <div class="form-label-group">
-                    <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="required">
-                    <label for="password">Password</label>
+          <div class="card-body">
+              <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                  <div class="form-group">
+                        <div class="form-label-group">
+                          <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="required">
+                          <label for="password">Password</label>
+                        </div>
                   </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-label-group">
-                    <input type="password" id="confirmpassword" name="confirmpassword" class="form-control" placeholder="Confirm password" required="required">
-                    <label for="confirmpassword">Confirm password</label>
+                  <div class="form-group">
+                      <div class="form-label-group">
+                        <input type="password" id="confirmpassword" name="confirmpassword" class="form-control" placeholder="Confirm password" required="required">
+                        <label for="confirmpassword">Confirm password</label>
+                      </div>
                   </div>
-                </div>
-              </div>
-            </div>
-            <input class="btn btn-primary btn-block" type="submit" name="submit" id="submit" value="Chanege Password">
-          </form>
-          <div class="text-center">
-            <a class="d-block small mt-3" href="../index.html">Login Page</a>
-            <a class="d-block small" href="../forgot-password.html">Forgot Password?</a>
-          </div>
-          </div>
+                  <input class="btn btn-primary btn-block" type="submit" name="submit" id="submit" value="Chanege Password">
+              </form>
+                  <div class="text-center">
+                    <a class="d-block small mt-3" href="../index.html">Login Page</a>
+                    <a class="d-block small" href="../forgot-password.html">Forgot Password?</a>
+                  </div>
+         </div>
         </div>
       </div>
+
 	<?php }else{ ?>
     <div class="container">
       <div class="card card-login mx-auto mt-5">
