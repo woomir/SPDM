@@ -48,6 +48,6 @@ if ($_SESSION['role_id']<3){
       echo $output;
  }
 } else {
-  echo '데이터 추가 권한이 없습니다.';
+  echo '데이터 입력 권한이 없습니다.';
 }
  ?>
