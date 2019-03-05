@@ -3,6 +3,8 @@ session_start();
 if ($_SESSION['role_id']<3){
 
  $connect = mysqli_connect("localhost", "root", "$52Telecast", "woomir");
+ var_dump($_POST);
+
  if(!empty($_POST))
  {
       $output = '';
@@ -104,9 +106,8 @@ if ($_SESSION['role_id']<3){
       {
            $output .= $message;
 
-      } else {echo 'fail';}
+      }
       echo $output;
-      echo $query;
  }
 } else {
   echo '데이터 입력 권한이 없습니다.';
