@@ -83,7 +83,7 @@
               <a class="dropdown-item" href="analysisPw.php">Analysis</a>
               <div class="dropdown-divider"></div>
               <h6 class="dropdown-header">Paste</h6>
-              <a class="dropdown-item" href=#>Recipe</a>
+              <a class="dropdown-item" href="recipe.php">Recipe</a>
               <a class="dropdown-item" href="listofManu.php">List of Manu</a>
               <a class="dropdown-item" href="analysisPt.php">Analysis</a>
           </div>
