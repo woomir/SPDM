@@ -239,7 +239,7 @@ table {
                          </div>
                          <div class="col-md-3">
                            <label>*Amount</label>
-                           <input type="number" name="amount" id="amount" class="form-control" min="100" max="500" placeholder="g" />
+                           <input type="number" name="amount" id="amount" class="form-control" min="100" max="500" value="200" />
                          </div>
                        </div>
                        <br />

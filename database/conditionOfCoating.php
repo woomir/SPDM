@@ -228,7 +228,7 @@ table {
 
 <!--Modal add-->
 <div id="add_data_Modal" class="modal fade" tabindex="-1" role="dialog">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
            <div class="modal-content">
                 <div class="modal-header">
                      <h4 class="modal-title" id="gridModalLabel">Data Insert</h4>
@@ -262,7 +262,7 @@ table {
                          </div>
                          <div class="col-md-3">
                            <label>*Amount</label>
-                           <input type="number" name="amountPw" id="amountPw" class="form-control" min="100" max="500" placeholder="g" />
+                           <input type="number" name="amountPw" id="amountPw" class="form-control" min="100" max="500" value="300" />
                          </div>
                        </div>
                        <br />
@@ -340,7 +340,7 @@ table {
                          </div>
                          <div class="col-md-4">
                           <label>코팅제 용매양</label>
-                          <input type="number" name="amountSolLubri" id="amountSolLubri" class="form-control" />
+                          <input type="number" name="amountSolLubri" id="amountSolLubri" class="form-control" placeholder="ml" />
                         </div>
                         <div class="col-md-4">
                           <label>코팅제 용액온도</label>
@@ -355,7 +355,7 @@ table {
                         </div>
                         <div class="col-md-4">
                          <label>분말분산 용매양</label>
-                         <input type="number" name="amountSolPw" id="amountSolPw" class="form-control" />
+                         <input type="number" name="amountSolPw" id="amountSolPw" class="form-control" value="600" />
                        </div>
                        </div>
                        </br>
@@ -371,7 +371,7 @@ table {
                          </div>
                          <div class="col-md-4">
                           <label>코팅온도</label>
-                          <input type="number" name="tempCoating" id="tempCoating" class="form-control" />
+                          <input type="number" name="tempCoating" id="tempCoating" class="form-control" placeholder="&#8451;"/>
                         </div>
                        </div>
                        </br>
@@ -382,7 +382,7 @@ table {
                          </div>
                          <div class="col-md-3">
                            <label>분말 Time</label>
-                            <input type="number" name="timePw" id="timePw" class="form-control" />
+                            <input type="number" name="timePw" id="timePw" class="form-control" placeholder="min" />
                          </div>
                          <div class="col-md-3">
                           <label>환원제 RPM</label>
@@ -390,7 +390,7 @@ table {
                         </div>
                         <div class="col-md-3">
                          <label>환원제 Time</label>
-                         <input type="number" name="timeRed" id="timeRed" class="form-control" />
+                         <input type="number" name="timeRed" id="timeRed" class="form-control" placeholder="min" />
                        </div>
                        </div>
                        </br>
@@ -401,7 +401,7 @@ table {
                          </div>
                          <div class="col-md-3">
                           <label>AmineTime</label>
-                          <input type="number" name="timeAmine" id="timeAmine" class="form-control" />
+                          <input type="number" name="timeAmine" id="timeAmine" class="form-control" placeholder="min" />
                         </div>
                         <div class="col-md-3">
                          <label>코팅 RPM</label>
@@ -409,22 +409,22 @@ table {
                        </div>
                        <div class="col-md-3">
                          <label>코팅1 Time</label>
-                          <input type="number" name="timeCoating1" id="timeCoating1" class="form-control" />
+                          <input type="number" name="timeCoating1" id="timeCoating1" class="form-control" placeholder="min" />
                        </div>
                        </div>
                        </br>
                        <div class="row">
                          <div class="col-md-3">
                           <label>코팅2 Time</label>
-                          <input type="number" name="timeCoating2" id="timeCoating2" class="form-control" />
+                          <input type="number" name="timeCoating2" id="timeCoating2" class="form-control" placeholder="min" />
                         </div>
                         <div class="col-md-3">
                          <label>분말 전도도</label>
-                         <input type="number" name="conductivityAfterPw" id="conductivityAfterPw" class="form-control" />
+                         <input type="number" name="conductivityAfterPw" id="conductivityAfterPw" class="form-control" placeholder="&#181;S/cm" />
                        </div>
                        <div class="col-md-3">
                          <label>분말 온도</label>
-                          <input type="number" name="tempAfterPw" id="tempAfterPw" class="form-control" />
+                          <input type="number" name="tempAfterPw" id="tempAfterPw" class="form-control" placeholder="&#8451;" />
                        </div>
                        <div class="col-md-3">
                         <label>코팅전 pH</label>

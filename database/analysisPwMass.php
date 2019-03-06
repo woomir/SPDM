@@ -224,37 +224,37 @@
                         </div>
                         <div class="col-md-6">
                           <label>*후처리 공정</label>
-                          <input type="text" name="classPost" id="classPost" class="form-control" placeholder="JET, CL, C-CL, F-CL" />
+                          <input type="text" name="classPost" id="classPost" class="form-control" placeholder="ex) JET, CL, C-CL, F-CL" />
                         </div>
                       </div>
                       <br>
                       <div class="row">
                         <div class="col-md-6">
                          <label>SEM size</label>
-                         <input type="number" name="sizeSem" id="sizeSem" class="form-control" placeholder="um" step="0.01"/>
+                         <input type="number" name="sizeSem" id="sizeSem" class="form-control" placeholder="&#181;m" step="0.01"/>
                         </div>
                         <div class="col-md-6">
                           <label>STD</label>
-                          <input type="number" name="stdSem" id="stdSem" class="form-control" placeholder="um" step="0.01"/>
+                          <input type="number" name="stdSem" id="stdSem" class="form-control" placeholder="&#181;m" step="0.01"/>
                         </div>
                       </div>
                        <br />
                        <div class="row">
                          <div class="col-md-3">
                            <label>D10</label>
-                           <input type="number" name="dt" id="dt" class="form-control" placeholder="um" step="0.001"></input>
+                           <input type="number" name="dt" id="dt" class="form-control" placeholder="&#181;m" step="0.001"></input>
                          </div>
                          <div class="col-md-3">
                            <label>D50</label>
-                           <input type="number" name="df" id="df" class="form-control" placeholder="um" step="0.001"></input>
+                           <input type="number" name="df" id="df" class="form-control" placeholder="&#181;m" step="0.001"></input>
                          </div>
                          <div class="col-md-3">
                            <label>D90</label>
-                           <input type="number" name="dn" id="dn" class="form-control" placeholder="um" step="0.001"></input>
+                           <input type="number" name="dn" id="dn" class="form-control" placeholder="&#181;m" step="0.001"></input>
                          </div>
                          <div class="col-md-3">
                            <label>Dmax</label>
-                           <input type="number" name="dmax" id="dmax" class="form-control" placeholder="um" step="0.01"></input>
+                           <input type="number" name="dmax" id="dmax" class="form-control" placeholder="&#181;m" step="0.01"></input>
                          </div>
                        </div>
                        <br />
@@ -287,7 +287,7 @@
                        <div class="row">
                          <div class="col-md-4">
                             <label>DTA Peak</label>
-                            <input type="number" name="dtaPeak" id="dtaPeak" class="form-control" placeholder="C" step="0.1"/>
+                            <input type="number" name="dtaPeak" id="dtaPeak" class="form-control" placeholder="&#8451;" step="0.1"/>
                          </div>
                          <div class="col-md-4">
                           <label>Enthalphy</label>
@@ -298,7 +298,7 @@
                        <div class="row">
                          <div class="col-md-4">
                             <label>BET</label>
-                            <input type="number" name="bet" id="bet" class="form-control" placeholder="m2/g" step="0.0001"/>
+                            <input type="number" name="bet" id="bet" class="form-control" placeholder="m&sup2/g" step="0.0001"/>
                          </div>
                          <div class="col-md-4">
                           <label>TD</label>
@@ -306,7 +306,7 @@
                         </div>
                         <div class="col-md-4">
                          <label>XRD</label>
-                         <input type="number" name="xrd" id="xrd" class="form-control"/>
+                         <input type="number" name="xrd" id="xrd" class="form-control" placeholder="&#8491;"/>
                         </div>
                        </div></br>
                        <div class="row">
@@ -320,7 +320,7 @@
                         </div>
                         <div class="col-md-4">
                          <label>Na</label>
-                         <input type="number" name="na" id="na" class="form-control" placeholder="mg/L"/>
+                         <input type="number" name="na" id="na" class="form-control" placeholder="mg/&#8467;"/>
                         </div>
                        </div></br>
                          <label>Etc</label>

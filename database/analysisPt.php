@@ -332,7 +332,7 @@
                              <input type="number" name="lowG2" id="lowG2" class="form-control" />
                           </div>
                          <div class="col-md-4">
-                           <label>G'High_2</label>
+                           <label>G' High_2</label>
                            <input type="number" name="highG2" id="highG2" class="form-control" />
                          </div>
                          <div class="col-md-4">
