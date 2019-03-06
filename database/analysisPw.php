@@ -328,7 +328,7 @@ $(document).ready(function(){
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "columnDefs": [{
     orderable: false,
-    targets: [13,14]
+    targets: [14,15]
   }],
     "ajax" : {
      url:"../dataManage/analysisPw/fetch.php",

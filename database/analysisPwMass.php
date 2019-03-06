@@ -370,7 +370,7 @@ $(document).ready(function(){
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "columnDefs": [{
     orderable: false,
-    targets: [13,14]
+    targets: [21,22]
   }],
     "ajax" : {
      url:"../dataManage/analysisPwMass/fetch.php",
