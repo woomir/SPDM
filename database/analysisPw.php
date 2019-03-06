@@ -324,7 +324,7 @@ $(document).ready(function(){
    var dataTable = $('#PasteTable').DataTable({
     "processing" : true,
     "serverSide" : true,
-    "order" : [[1,'asc']],
+    "order" : [[0,'desc']],
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "columnDefs": [{
     orderable: false,
