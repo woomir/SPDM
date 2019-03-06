@@ -251,6 +251,7 @@ table {
                          <div class="col-md-4">
                           <label>*Recipe</label>
                           <select name="recipe" id="recipe" class="form-control">
+                               <option >H0125-F01</option>
                                <option >S2Y9</option>
                                <option >HS6A4</option>
                           </select>
