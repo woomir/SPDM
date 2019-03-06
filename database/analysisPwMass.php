@@ -371,7 +371,9 @@ $(document).ready(function(){
     "columnDefs": [{
     orderable: false,
     targets: [21,22]
-  }],
+  },
+  {targets: [7,13,14,-2,-3,-5],
+       visible: false}],
     "ajax" : {
      url:"../dataManage/analysisPwMass/fetch.php",
      type:"POST"
@@ -381,7 +383,8 @@ $(document).ready(function(){
          buttons: ['copy', 'excel',
          {
            extend: 'colvis',
-           text: 'Show / Hide columns'
+           text: 'Show / Hide columns',
+           postfixButtons: [ 'colvisRestore' ]
          }]
    });
   }

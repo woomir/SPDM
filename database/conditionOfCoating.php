@@ -500,8 +500,13 @@ $(document).ready(function(){
         buttons: ['copy', 'excel',
         {
           extend: 'colvis',
-          text: 'Show / Hide columns'
-        }]
+          text: 'Show / Hide columns',
+          postfixButtons: [ 'colvisRestore' ]
+        }],
+        columnDefs: [
+            {targets: [5,8,9,14,17,20,21,23,-2],
+             visible: false}
+        ]
    });
   }
       $('#add').click(function(){

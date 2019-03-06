@@ -329,7 +329,9 @@ $(document).ready(function(){
     "columnDefs": [{
     orderable: false,
     targets: [14,15]
-  }],
+  },
+  {targets: [5,9,10,-2],
+       visible: false}],
     "ajax" : {
      url:"../dataManage/analysisPw/fetch.php",
      type:"POST"
@@ -339,7 +341,8 @@ $(document).ready(function(){
          buttons: ['copy', 'excel',
          {
            extend: 'colvis',
-           text: 'Show / Hide columns'
+           text: 'Show / Hide columns',
+           postfixButtons: [ 'colvisRestore' ]
          }]
    });
   }
