@@ -78,7 +78,6 @@ if ($_SESSION['role_id']<3){
       if(mysqli_query($connect, $query))
       {
            $output .= $message;
-
       }
       echo $output;
  }

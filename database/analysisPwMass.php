@@ -388,6 +388,7 @@ $(document).ready(function(){
       $('#add').click(function(){
            $('#insert').val("Insert");
            $('#insert_form')[0].reset();
+           $('#id').val("");
       });
       $(document).on('click', '.edit_data', function(){
            var id = $(this).attr("id");
