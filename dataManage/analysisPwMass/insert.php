@@ -74,8 +74,8 @@ if ($_SESSION['role_id']<3){
            UPDATE analysispwmasstbl
            SET lotNo='$lotNo',
            classPost='$classPost',
-           sizeSem='$sizeSem',
-           stdSem='$stdSem',
+           sizeSem=$sizeSem,
+           stdSem=$stdSem,
            d10=$d10,
            d50=$d50,
            d90 = $d90,
