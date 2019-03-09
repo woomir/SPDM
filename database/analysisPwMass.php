@@ -101,16 +101,21 @@
               </ol>
             </nav>
             <div class="card-body">
+              <?php
+              settype($_SESSION['role_id'],'int');
+              ?>
+              <div class="row justify-content-between">
+                <div class="col-4">
+                  <h3>양산 분말 분석 데이터</h3>
+                </div>
+                <div align="col-4">
+                 <?php if ($_SESSION['role_id']<3){ ?>
+                 <button type="button" name="add" id="add" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-info btn-xs">Add</button>&nbsp;&nbsp;&nbsp;
+               <?php } ?>
+                </div>
+              </div>
+            <br>
                 <div class="table-responsive">
-                  <?php
-                  settype($_SESSION['role_id'],'int');
-                  ?>
-                   <div align="right">
-                    <?php if ($_SESSION['role_id']<3){ ?>
-                    <button type="button" name="add" id="add" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-info btn-xs">Add</button>
-                  <?php } ?>
-                   </div>
-                   <br />
                    <div id="alert_message"></div>
                   <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover">
                    <thead align="center">
