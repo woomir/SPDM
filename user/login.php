@@ -35,6 +35,8 @@
        $result = mysqli_query($conn,$query);
        $user = mysqli_fetch_assoc($result);
        $_SESSION['username']=$user['username'];
+       $_SESSION['role_id']=$user['role_id'];
+
 
        if(password_verify($p, $user['password'])){
        $role_id_select = $user['role_id'];
@@ -42,7 +44,6 @@
        $result_permission = mysqli_query($conn,$permission);
        $permission_role= mysqli_fetch_assoc($result_permission);
        $_SESSION['role']=$permission_role['role'];
-       $_SESSION['role_id']=$role_id['role_id'];
        header('location:../database/listofManu.php');
        } else { ?>
 
