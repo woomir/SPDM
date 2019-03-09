@@ -114,7 +114,7 @@ table {
                <button type="button" name="add" id="add" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-info btn-xs">Add</button>&nbsp;&nbsp;&nbsp;
              <?php } ?>
               </div>
-            </div>
+            </div> <br>
               <div class="table-responsive">
                  <div id="alert_message"></div>
                 <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover">
@@ -229,7 +229,6 @@ table {
                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                        <span aria-hidden="true">×</span>
                      </button>
-
                 </div>
                 <div class="modal-body">
                   <div class="container-fluid">
