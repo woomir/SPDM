@@ -1,6 +1,7 @@
 
 <?php
 //fetch.php
+session_start();
 $connect = mysqli_connect("localhost", "root", "$52Telecast", "woomir");
 $column = array('pasteNo', 'timeAging', 'tempAging', 'preCon', 'dateAnalysis',
 'visAnalyzer', 'rpm1', 'rpm10', 'rpm30', 'rpm100', 'rpm1_2', 'rpm10_2', 'rpm30_2',
@@ -84,8 +85,14 @@ while($row = mysqli_fetch_array($result))
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="highG2">' . $row["highG2"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ysp2">' . $row["ysp2"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="etc">' . $row["etc"] . '</div>';
+ if ($_SESSION['role_id']==1){
  $sub_array[] = '<div align="center"><input type="button" name="edit" value="Edit" id="'.$row["id"] .'" class="btn btn-info btn-sm edit_data" />
                 <input type="button" name="delete" value="Delete" id="'.$row["id"] .'" class="btn btn-sm btn-danger btn_delete" /></div>';
+              } else if ($_SESSION['role_id']==2) {
+                $sub_array[] = '<div align="center"><input type="button" name="edit" value="Edit" id="'.$row["id"] .'" class="btn btn-info btn-sm edit_data" />';
+              } else {
+                $sub_array[]='';
+              }
  $data[] = $sub_array;
 }
 
