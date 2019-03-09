@@ -344,6 +344,7 @@
                           <input type="text" name="etc" id="etc" class="form-control" />
                           <br />
                           <input type="hidden" name="id" id="id" />
+                          <input type="hidden" name="username" id="username" value="<?php echo $_SESSION['username']; ?>" />
                           <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />
                      </form>
                 </div>

@@ -45,6 +45,7 @@ if ($_SESSION['role_id']<3){
       $xrd = mysqli_real_escape_string($connect, $_POST["xrd"]);
     } else {$xrd = 'NULL';}
       $etc = mysqli_real_escape_string($connect, $_POST["etc"]);
+      $username = $_POST["username"];
 
       if($_POST["id"] != '')
       {
@@ -64,14 +65,17 @@ if ($_SESSION['role_id']<3){
            bet = $bet,
            td = $td,
            xrd = $xrd,
-           etc = '$etc'
+           etc = '$etc',
+           updateUser = '$username'
            WHERE id='".$_POST["id"]."'";
            $message = 'Data Updated';
       }
       else
       {
-           $query = "INSERT INTO analysispwtbl (sampleNo, powderType, d10, d50, d90, dmax, tIgl, pIgl, cIgl, dtaPeak, enthalphy, bet, td, xrd, etc)
-           VALUES('$sampleNo', '$powderType', $d10, $d50, $d90, $dmax, $tIgl, $pIgl, $cIgl, $dtaPeak, $enthalphy, $bet, $td, $xrd, '$etc');
+           $query = "INSERT INTO analysispwtbl (sampleNo, powderType, d10, d50,
+             d90, dmax, tIgl, pIgl, cIgl, dtaPeak, enthalphy, bet, td, xrd, etc, updateUser)
+           VALUES('$sampleNo', '$powderType', $d10, $d50, $d90, $dmax, $tIgl,
+             $pIgl, $cIgl, $dtaPeak, $enthalphy, $bet, $td, $xrd, '$etc','$username');
            ";
            $message = 'Data Inserted';
       }

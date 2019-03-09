@@ -102,6 +102,7 @@ if ($_SESSION['role_id']<3){
     } else {$ratioPw = 'NULL';}
 
       $etc = mysqli_real_escape_string($connect, $_POST["etc"]);
+      $username = $_POST["username"];
 
       if($_POST["id"] != '')
       {
@@ -139,7 +140,8 @@ if ($_SESSION['role_id']<3){
            nameGF2 = '$nameGF2',
            ratioGF2 = $ratioGF2,
            ratioPw = $ratioPw,
-           etc = '$etc'
+           etc = '$etc',
+           updateUser = '$username'
            WHERE id='".$_POST["id"]."'";
            $message = 'Data Updated';
       }
@@ -151,7 +153,7 @@ if ($_SESSION['role_id']<3){
             nameSolvent4, ratioSolvent4, nameAdd1, ratioAdd1, nameAdd2,
             ratioAdd2, nameAdd3, ratioAdd3, nameAdd4, ratioAdd4,
             nameAdd5, ratioAdd5, nameAdd6, ratioAdd6, nameGF1, ratioGF1, nameGF2,
-            ratioGF2, ratioPw, etc)
+            ratioGF2, ratioPw, etc, updateUser)
            VALUES('$nameRecipe', '$nameBinder1', $ratioBinder1, '$nameBinder2',
              $ratioBinder2, '$nameBinder3', $ratioBinder3, '$nameSolvent1',
              $ratioSolvent1, '$nameSolvent2', $ratioSolvent2, '$nameSolvent3',
@@ -159,7 +161,7 @@ if ($_SESSION['role_id']<3){
              $ratioAdd1, '$nameAdd2', $ratioAdd2, '$nameAdd3',
              $ratioAdd3, '$nameAdd4', $ratioAdd4, '$nameAdd5', $ratioAdd5,
              '$nameAdd6', $ratioAdd6, '$nameGF1', $ratioGF1, '$nameGF2', $ratioGF2,
-             $ratioPw, '$etc');
+             $ratioPw, '$etc','$username');
            ";
            $message = 'Data Inserted';
       }

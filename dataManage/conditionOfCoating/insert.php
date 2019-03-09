@@ -90,6 +90,7 @@ if ($_SESSION['role_id']<3){
     } else {$pHBeforeCoating = 'NULL';}
       $maker = mysqli_real_escape_string($connect, $_POST["maker"]);
       $etc = mysqli_real_escape_string($connect, $_POST["etc"]);
+      $username = $_POST["username"];
 
       if($_POST["id"] != '')
       {
@@ -132,7 +133,8 @@ if ($_SESSION['role_id']<3){
            tempAfterPw = $tempAfterPw,
            pHBeforeCoating = $pHBeforeCoating,
            maker = '$maker',
-           etc = '$etc'
+           etc = '$etc',
+           updateUser = '$username'
            WHERE id='".$_POST["id"]."'";
            $message = 'Data Updated';
       }
@@ -144,7 +146,7 @@ if ($_SESSION['role_id']<3){
              ratioSA, ratioPA, nameSolLubri, amountSolLubri, tempSolLubri, nameSolPw,
             amountSolPw, orderAdd, tempCoating, rpmPw, timePw, rpmRed, timeRed,
             rpmAmine, timeAmine, rpmCoating, timeCoating1, timeCoating2, conductivityAfterPw,
-            tempAfterPw, pHBeforeCoating, maker, etc)
+            tempAfterPw, pHBeforeCoating, maker, etc, updateUser)
            VALUES('$sampleNo', '$concept', '$dateMake', '$ncpwLot', $amountPw,
              '$conditionWash', '$nameRed', $ratioRed, '$lotRed', '$nameAmine',
              $amountAmine, '$nameLubricant1', $ratioLubricant1, '$nameLubricant2',
@@ -152,7 +154,7 @@ if ($_SESSION['role_id']<3){
              $tempSolLubri, '$nameSolPw', $amountSolPw, '$orderAdd', $tempCoating,
              $rpmPw, $timePw, $rpmRed, $timeRed, $rpmAmine, $timeAmine, $rpmCoating,
              $timeCoating1, $timeCoating2, $conductivityAfterPw, $tempAfterPw,
-             $pHBeforeCoating, '$maker', '$etc');
+             $pHBeforeCoating, '$maker', '$etc','$username');
            ";
            $message = 'Data Inserted';
       }

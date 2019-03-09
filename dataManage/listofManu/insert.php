@@ -1,7 +1,6 @@
 <?php
 session_start();
 if ($_SESSION['role_id']<3){
-
  $connect = mysqli_connect("localhost", "root", "$52Telecast", "woomir");
  if(!empty($_POST))
  {
@@ -16,6 +15,7 @@ if ($_SESSION['role_id']<3){
       $amount = mysqli_real_escape_string($connect, $_POST["amount"]);
       $recipe = mysqli_real_escape_string($connect, $_POST["recipe"]);
       $etc = mysqli_real_escape_string($connect, $_POST["etc"]);
+      $username = $_POST["username"];
 
       if($_POST["id"] != '')
       {
@@ -29,14 +29,17 @@ if ($_SESSION['role_id']<3){
            object = '$object',
            amount = '$amount',
            recipe = '$recipe',
-           etc = '$etc'
+           etc = '$etc',
+           updateUser = '$username'
            WHERE id='".$_POST["id"]."'";
            $message = 'Data Updated';
       }
       else
       {
-           $query = "INSERT INTO makelistpastetbl (pasteNo, powderLot, powderType, dateMake, maker, object, amount, recipe, etc)
-           VALUES('$pasteNo', '$powderLot', '$powderType', '$dateMake', '$maker', '$object', '$amount', '$recipe', '$etc');
+           $query = "INSERT INTO makelistpastetbl (pasteNo, powderLot, powderType,
+             dateMake, maker, object, amount, recipe, etc, updateUser)
+           VALUES('$pasteNo', '$powderLot', '$powderType', '$dateMake', '$maker',
+             '$object', '$amount', '$recipe', '$etc', '$username');
            ";
            $message = 'Data Inserted';
       }

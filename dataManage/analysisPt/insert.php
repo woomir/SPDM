@@ -58,6 +58,7 @@ if ($_SESSION['role_id']<3){
       $ysp2 = mysqli_real_escape_string($connect, $_POST["ysp2"]);
     } else {$ysp2 = 'NULL';}
       $etc = mysqli_real_escape_string($connect, $_POST["etc"]);
+      $username = $_POST["username"];
 
       if($_POST["id"] != '')
       {
@@ -84,7 +85,8 @@ if ($_SESSION['role_id']<3){
            lowG2 = $lowG2,
            highG2 = $highG2,
            ysp2 = $ysp2,
-           etc = '$etc'
+           etc = '$etc',
+           updateUser = '$username'
            WHERE id='".$_POST["id"]."'";
            $message = 'Data Updated';
       }
@@ -92,11 +94,11 @@ if ($_SESSION['role_id']<3){
       {
            $query = "INSERT INTO analysispttbl (pasteNo, timeAging, tempAging, preCon,
              dateAnalysis, visAnalyzer,rpm1, rpm10 , rpm30, rpm100, rpm1_2, rpm10_2, rpm30_2,
-             rpm100_2, dssAnalyzer, lowG, highG, ysp, lowG2, highG2, ysp2, etc)
+             rpm100_2, dssAnalyzer, lowG, highG, ysp, lowG2, highG2, ysp2, etc, updateUser)
            VALUES('$pasteNo', $timeAging, $tempAging, '$preCon', '$dateAnalysis',
              '$visAnalyzer', $rpm1, $rpm10, $rpm30, $rpm100, $rpm1_2, $rpm10_2,
              $rpm30_2, $rpm100_2, '$dssAnalyzer', $lowG, $highG, $ysp, $lowG2, $highG2, $ysp2,
-             '$etc');
+             '$etc','$username');
            ";
            $message = 'Data Inserted';
 

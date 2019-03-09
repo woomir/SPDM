@@ -34,6 +34,7 @@
        $query = "SELECT * from users where id='".$id."';";
        $result = mysqli_query($conn,$query);
        $user = mysqli_fetch_assoc($result);
+       $_SESSION['username']=$user['username'];
 
        if(password_verify($p, $user['password'])){
        $role_id_select = $user['role_id'];
