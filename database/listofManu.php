@@ -217,10 +217,7 @@ table {
                          </div>
                          <div class="col-md-4">
                            <label>*Powder Type</label>
-                           <select name="powderType" id="powderType" class="form-control">
-                                <option >JET</option>
-                                <option >CL</option>
-                           </select>
+                           <input type="text" name="powderType" id="powderType" class="form-control" value="JET"></input>
                          </div>
                        </div>
                        <br />
@@ -426,7 +423,6 @@ $(document).ready(function(){
                      }, 5000);
                  }
             });
-
  });
 
 //Dropdown버튼의 속도 조절
@@ -441,4 +437,5 @@ $(document).ready(function(){
  $(function () {
    $('[data-toggle="tooltip"]').tooltip()
  });
+
 </script>
