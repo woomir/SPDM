@@ -5,42 +5,40 @@
 <head>
 
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
 
   <title>Silver Powder Database Management</title>
 
-  <!-- Custom fonts for this template-->
-  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="../css/bootstrap.css" rel="stylesheet"/>
-  <link href="../css/dataTables.bootstrap4.min.css" rel="stylesheet"/>
-  <link href="../css/buttons.bootstrap4.min.css" rel="stylesheet"/>
-  <!-- Page level plugin CSS-->
-  <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-  <!-- Custom styles for this template-->
-  <link href="../css/sb-admin.css" rel="stylesheet">
+      <!-- Custom fonts for this template-->
+      <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+      <link href="../css/bootstrap.css" rel="stylesheet"/>
+      <link href="../css/dataTables.bootstrap4.min.css" rel="stylesheet"/>
+      <link href="../css/buttons.bootstrap4.min.css" rel="stylesheet"/>
+      <!-- Page level plugin CSS-->
+      <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+      <!-- Custom styles for this template-->
+      <link href="../css/sb-admin.css" rel="stylesheet">
 
-  <style>
-  footer.sticky-footer {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: calc(100% - 90px);
-    height: 80px;
-    background-color: #e9ecef;
-  }
-  body.sidebar-toggled footer.sticky-footer {
-    width: calc(100% - 225px);
-  }
-  table {
-    font-size: 14px;
-  }
-  </style>
+<!--sidebar class에 toggled가 있을 때 사용-->
+<style>
+footer.sticky-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: calc(100% - 90px);
+  height: 80px;
+  background-color: #e9ecef;
+}
+body.sidebar-toggled footer.sticky-footer {
+  width: calc(100% - 225px);
+}
+table {
+  font-size: 14px;
+}
+</style>
+
 
 </head>
 <?php
@@ -53,7 +51,7 @@
     </button>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link active mb-0" href=""><?php echo $_SESSION['id']." : ".$_SESSION['role'];?></a>
+              <a class="nav-link active mb-0" href=""><?php echo $_SESSION['id']." : ".$_SESSION['role'];?></a>
             </li>
             <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="tooltip" data-placement="bottom" title="Password Change" aria-haspopup="true" aria-expanded="false">
@@ -67,6 +65,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
+
     <ul class="sidebar navbar-nav toggled">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="tablesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -77,7 +76,7 @@
               <a class="dropdown-item" href="makePwMass.php">Conditions of Manu</a>
               <a class="dropdown-item" href="analysisPwMass.php">Analysis</a>
               <div class="dropdown-divider"></div>
-              <h6 class="dropdown-header">Lab Powder</h6>
+              <h6 class="dropdown-header">Lab powder</h6>
               <a class="dropdown-item" href=#>Conditions of Manu</a>
               <a class="dropdown-item" href="conditionOfCoating.php">Conditions of Coating</a>
               <a class="dropdown-item" href="analysisPw.php">Analysis</a>
@@ -88,7 +87,9 @@
               <a class="dropdown-item" href="analysisPt.php">Analysis</a>
           </div>
       </li>
+
     </ul>
+
 
     <div id="content-wrapper">
       <div class="container-fluid">
@@ -96,46 +97,47 @@
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">Databases</li>
-                <li class="breadcrumb-item">Lab Powder</li>
-                <li class="breadcrumb-item active" aria-current="page">Analysis</li>
+                <li class="breadcrumb-item">Mass Powder</li>
+                <li class="breadcrumb-item active" aria-current="page">Conditions of Manu</li>
               </ol>
             </nav>
-            <div class="card-body">
-                <div class="table-responsive">
-                  <?php
-                  settype($_SESSION['role_id'],'int');
-                  ?>
-                   <div align="right">
-                    <?php if ($_SESSION['role_id']<3){ ?>
-                    <button type="button" name="add" id="add" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-info btn-xs">Add</button>
-                  <?php } ?>
-                   </div>
-                   <br />
-                   <div id="alert_message"></div>
-                  <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover">
-                   <thead align="center">
-                    <tr>
-                      <th width="">Sample No </th>
-                      <th width="">Powder Type </th>
-                      <th width="">D10 </th>
-                      <th width="">D50 </th>
-                      <th width="">D90 </th>
-                      <th width="">Dmax</th>
-                      <th width="">T-IGL</th>
-                      <th width="">P-IGL</th>
-                      <th width="">C-IGL</th>
-                      <th width="">DTA Peak</th>
-                      <th width="">Enthalphy</th>
-                      <th width="">BET</th>
-                      <th width="">TD</th>
-                      <th width="">XRD</th>
-                      <th width="">Etc</th>
-                      <th width="">Edit</th>
-                     </tr>
-                    </thead>
-                  </table>
-                </div>
-            </div>
+          <div class="card-body">
+              <div class="table-responsive">
+                <?php
+                settype($_SESSION['role_id'],'int');
+                ?>
+                 <div align="right">
+                  <?php if ($_SESSION['role_id']<3){ ?>
+                  <button type="button" name="add" id="add" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-info btn-xs">Add</button>
+                <?php } ?>
+                 </div>
+                 <br />
+                 <div id="alert_message"></div>
+                <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover">
+                 <thead align="center">
+                  <tr>
+                    <th width="">Lot<br>No</th>
+                    <th width="">제품<br>분류</th>
+                    <th width="">특징</th>
+                    <th width="">코팅제1</th>
+                    <th width="">코팅제1<br>비율</th>
+                    <th width="">코팅제2 </th>
+                    <th width="">코팅제2<br>비율</th>
+                    <th width="">SAPA<br>비율</th>
+                    <th width="">코팅온도</th>
+                    <th>해쇄<br>투입속도</th>
+                    <th>해쇄압</th>
+                    <th>해쇄<br>회수율</th>
+                    <th>미분<br>회수율</th>
+                    <th>조분<br>회수율</th>
+                    <th width="">Etc</th>
+                    <th width="">Edit</th>
+                   </tr>
+                  </thead>
+
+                </table>
+              </div>
+          </div>
         </div>
       </div><!-- /.container-fluid -->
 
@@ -198,7 +200,7 @@
 
 <!--Modal add-->
 <div id="add_data_Modal" class="modal fade" tabindex="-1" role="dialog">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
            <div class="modal-content">
                 <div class="modal-header">
                      <h4 class="modal-title" id="gridModalLabel">Data Insert</h4>
@@ -210,80 +212,82 @@
                 <div class="modal-body">
                   <div class="container-fluid">
                      <form method="post" id="insert_form">
-                      <div class="row">
-                        <div class="col-md-6">
-                         <label>*Sample No</label>
-                         <input type="text" name="sampleNo" id="sampleNo" class="form-control" />
-                        </div>
-                        <div class="col-md-6">
-                          <label>*Powder Type</label>
-                          <input type="text" name="powderType" id="powderType" class="form-control" value="JET"/>
-                        </div>
-                      </div>
-                       <br />
                        <div class="row">
-                         <div class="col-md-3">
-                           <label>D10</label>
-                           <input type="number" name="dt" id="dt" class="form-control" placeholder="&#181;m" step="0.001"></input>
+                         <div class="col-md-4">
+                           <label>*Lot No</label>
+                           <input type="text" name="lotNo" id="lotNo" class="form-control" />
                          </div>
-                         <div class="col-md-3">
-                           <label>D50</label>
-                           <input type="number" name="df" id="df" class="form-control" placeholder="&#181;m" step="0.001"></input>
+                         <div class="col-md-4">
+                           <label>*제품 분류</label>
+                           <input type="text" name="nameProduct" id="nameProduct" class="form-control"></input>
                          </div>
-                         <div class="col-md-3">
-                           <label>D90</label>
-                           <input type="number" name="dn" id="dn" class="form-control" placeholder="&#181;m" step="0.001"></input>
-                         </div>
-                         <div class="col-md-3">
-                           <label>Dmax</label>
-                           <input type="number" name="dmax" id="dmax" class="form-control" placeholder="&#181;m" step="0.01"></input>
+                         <div class="col-md-4">
+                           <label>*특징</label>
+                           <input type="text" name="characteristic" id="characteristic" class="form-control"></input>
                          </div>
                        </div>
                        <br />
                        <div class="row">
-                         <div class="col-md-4">
-                           <label>T-IGL</label>
-                           <input type="number" name="tIgl" id="tIgl" class="form-control" placeholder="%" step="0.001"/>
+                         <div class="col-md-3">
+                            <label>코팅제1</label>
+                            <input type="text" name="nameLubricant1" id="nameLubricant1" class="form-control" />
                          </div>
-                         <div class="col-md-4">
-                           <label>P-IGL</label>
-                           <input type="number" name="pIgl" id="pIgl" class="form-control" placeholder="%" step="0.001"/>
-                         </div>
-                         <div class="col-md-4">
-                           <label>C-IGL</label>
-                           <input type="number" name="cIgl" id="cIgl" class="form-control" placeholder="%" step="0.001"/>
-                         </div>
+                         <div class="col-md-3">
+                          <label>코팅제1 비율</label>
+                          <input type="number" name="ratioLubricant1" id="ratioLubricant1" class="form-control" placeholder="wt% / Ag" step="0.01"/>
+                        </div>
+                        <div class="col-md-3">
+                           <label>코팅제2</label>
+                           <input type="text" name="nameLubricant2" id="nameLubricant2" class="form-control" />
+                        </div>
+                        <div class="col-md-3">
+                         <label>코팅제2 비율</label>
+                         <input type="number" name="ratioLubricant2" id="ratioLubricant2" class="form-control" placeholder="wt% / Ag" step="0.01" />
                        </div>
-                       <br />
+                       </div>
+                       </br>
+
                        <div class="row">
-                         <div class="col-md-4">
-                            <label>DTA Peak</label>
-                            <input type="number" name="dtaPeak" id="dtaPeak" class="form-control" placeholder="&#8451;" step="0.1"/>
+                         <div class="col-md-3">
+                           <label>SAPA 비율</label>
+                            <input type="number" name="ratioSAPA" id="ratioSAPA" class="form-control" placeholder="%" step="0.1"/>
                          </div>
-                         <div class="col-md-4">
-                          <label>Enthalphy</label>
-                          <input type="number" name="enthalphy" id="enthalphy" class="form-control" placeholder="J/g" step="0.1"/>
+                         <div class="col-md-3">
+                          <label>코팅온도</label>
+                          <input type="number" name="tempCoating" id="tempCoating" class="form-control" placeholder="&#8451;"/>
+                        </div>
+                        <div class="col-md-3">
+                          <label>해쇄 투입속도</label>
+                           <input type="number" name="rateAddJet" id="rateAddJet" class="form-control" placeholder="Hz" step="0.1"/>
+                        </div>
+                        <div class="col-md-3">
+                         <label>해쇄압</label>
+                         <input type="number" name="pressureJet" id="pressureJet" class="form-control" placeholder="bar"/>
+                       </div>
+                       </div>
+                       </br>
+                       <div class="row">
+                        <div class="col-md-4">
+                         <label>해쇄 회수율</label>
+                         <input type="number" name="yieldJet" id="yieldJet" class="form-control" placeholder="%"/>
+                       </div>
+                        <div class="col-md-4">
+                          <label>미분 회수율</label>
+                          <input type="number" name="yieldSmall" id="yieldSmall" class="form-control" placeholder="%"/>
+                        </div>
+                        <div class="col-md-4">
+                          <label>조분 회수율</label>
+                          <input type="number" name="yieldBig" id="yieldBig" class="form-control" placeholder="%"/>
                         </div>
                        </div>
                        </br>
                        <div class="row">
-                         <div class="col-md-4">
-                            <label>BET</label>
-                            <input type="number" name="bet" id="bet" class="form-control" placeholder="m&sup2/g" step="0.0001"/>
-                         </div>
-                         <div class="col-md-4">
-                          <label>TD</label>
-                          <input type="number" name="td" id="td" class="form-control" step="0.1"/>
-                        </div>
-                        <div class="col-md-4">
-                         <label>XRD</label>
-                         <input type="number" name="xrd" id="xrd" class="form-control" placeholder="&#8491;"/>
-                        </div>
-                       </div></br>
-
+                       <div class="col-md-12">
                          <label>Etc</label>
                          <input type="text" name="etc" id="etc" class="form-control" />
-                       <br />
+                      </div>
+                       </div>
+                       </br>
                           <input type="hidden" name="id" id="id" />
                           <input type="hidden" name="username" id="username" value="<?php echo $_SESSION['username']; ?>" />
                           <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />
@@ -316,35 +320,39 @@
  <script src="../js/sb-admin.js"></script>
 
 
-<script>
+<script type="text/javascript">
 $(document).ready(function(){
+
   fetch_data();
 
   function fetch_data()
   {
    var dataTable = $('#PasteTable').DataTable({
+
     "processing" : true,
     "serverSide" : true,
-    "order" : [[0,'desc']],
+    "order" : [[2,'desc']],
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "columnDefs": [{
     orderable: false,
-    targets: [14,15]
-  },
-  {targets: [5,9,10,-2],
-       visible: false}],
+    targets: [11,12]
+    }],
     "ajax" : {
-     url:"../dataManage/analysisPw/fetch.php",
+     url:"../dataManage/makePwMass/fetch.php",
      type:"POST"
-    },
-    dom: "<'row'<'col-sm-12 col-md-auto'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4 ml-auto'f>>" +
-         "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-         buttons: ['copy', 'excel',
-         {
-           extend: 'colvis',
-           text: 'Show / Hide columns',
-           postfixButtons: [ 'colvisRestore' ]
-         }]
+   },
+   dom: "<'row'<'col-sm-12 col-md-auto'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4 ml-auto'f>>" +
+        "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+        buttons: ['copy', 'excel',
+        {
+          extend: 'colvis',
+          text: 'Show / Hide columns',
+          postfixButtons: [ 'colvisRestore' ]
+        }],
+        columnDefs: [
+            {targets: [-2],
+             visible: false}
+        ]
    });
   }
       $('#add').click(function(){
@@ -352,29 +360,28 @@ $(document).ready(function(){
            $('#insert_form')[0].reset();
            $('#id').val("");
       });
-
       $(document).on('click', '.edit_data', function(){
            var id = $(this).attr("id");
            $.ajax({
-                url:"../dataManage/analysisPw/edit.php",
+                url:"../dataManage/makePwMass/edit.php",
                 method:"POST",
                 data:{id:id},
                 dataType:"json",
                 success:function(data){
-                     $('#sampleNo').val(data.sampleNo);
-                     $('#powderType').val(data.powderType);
-                     $('#dt').val(data.d10);
-                     $('#df').val(data.d50);
-                     $('#dn').val(data.d90);
-                     $('#dmax').val(data.dmax);
-                     $('#tIgl').val(data.tIgl);
-                     $('#pIgl').val(data.pIgl);
-                     $('#cIgl').val(data.cIgl);
-                     $('#dtaPeak').val(data.dtaPeak);
-                     $('#enthalphy').val(data.enthalphy);
-                     $('#bet').val(data.bet);
-                     $('#td').val(data.td);
-                     $('#xrd').val(data.xrd);
+                     $('#lotNo').val(data.lotNo);
+                     $('#nameProduct').val(data.nameProduct);
+                     $('#characteristic').val(data.characteristic);
+                     $('#nameLubricant1').val(data.nameLubricant1);
+                     $('#ratioLubricant1').val(data.ratioLubricant1);
+                     $('#nameLubricant2').val(data.nameLubricant2);
+                     $('#ratioLubricant2').val(data.ratioLubricant2);
+                     $('#ratioSAPA').val(data.ratioSA);
+                     $('#tempCoating').val(data.tempCoating);
+                     $('#rateAddJet').val(data.rateAddJet);
+                     $('#pressureJet').val(data.pressureJet);
+                     $('#yieldJet').val(data.yieldJet);
+                     $('#yieldSmall').val(data.yieldSmall);
+                     $('#yieldBig').val(data.yieldBig);
                      $('#etc').val(data.etc);
                      $('#id').val(data.id);
                      $('#insert').val("Update");
@@ -382,21 +389,24 @@ $(document).ready(function(){
                 }
            });
       });
-
       $('#insert_form').on("submit", function(event){
            event.preventDefault();
-           if($('#sampleNo').val() == "")
+           if($('#lotNo').val() == "")
            {
-                alert("Sample No is required");
+                alert("Lot No is required");
            }
-           else if($('#powderType').val() == '')
+           else if($('#nameProduct').val() == '')
            {
-                alert("Powder Type is required");
+                alert("제품 분류 is required");
+           }
+           else if($('#characteristic').val() == '')
+           {
+                alert("특징 is required");
            }
            else
            {
                 $.ajax({
-                     url:"../dataManage/analysisPw/insert.php",
+                     url:"../dataManage/makePwMass/insert.php",
                      method:"POST",
                      data:$('#insert_form').serialize(),
                      beforeSend:function(){
@@ -421,7 +431,7 @@ $(document).ready(function(){
                  if(confirm("Are you sure you want to delete this?"))
                  {
                       $.ajax({
-                           url:"../dataManage/analysisPw/delete.php",
+                           url:"../dataManage/makePwMass/delete.php",
                            method:"POST",
                            data:{id:id},
                            success:function(data){
@@ -438,16 +448,16 @@ $(document).ready(function(){
 
  });
 
- //Dropdown버튼의 속도 조절
-  $('.dropdown').on('show.bs.dropdown', function(e){
-    $(this).find('.dropdown-menu').first().stop(true, true).slideDown(300);
-  });
+//Dropdown버튼의 속도 조절
+ $('.dropdown').on('show.bs.dropdown', function(e){
+   $(this).find('.dropdown-menu').first().stop(true, true).slideDown(300);
+ });
 
-  $('.dropdown').on('hide.bs.dropdown', function(e){
-    $(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
-  });
+ $('.dropdown').on('hide.bs.dropdown', function(e){
+   $(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+ });
 
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  });
+ $(function () {
+   $('[data-toggle="tooltip"]').tooltip()
+ });
 </script>
