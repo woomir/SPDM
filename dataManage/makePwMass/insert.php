@@ -17,9 +17,9 @@ if ($_SESSION['role_id']<3){
       if ($_POST["ratioLubricant2"]!=""){
       $ratioLubricant2 = mysqli_real_escape_string($connect, $_POST["ratioLubricant2"]);
     } else {$ratioLubricant2 = 'NULL';}
-      if ($_POST["ratioSAPA"]!=""){
+
       $ratioSAPA = mysqli_real_escape_string($connect, $_POST["ratioSAPA"]);
-    } else {$ratioSAPA = 'NULL';}
+
       if ($_POST["tempCoating"]!=""){
       $tempCoating = mysqli_real_escape_string($connect, $_POST["tempCoating"]);
     } else {$tempCoating = 'NULL';}
@@ -52,7 +52,7 @@ if ($_SESSION['role_id']<3){
            ratioLubricant1 = $ratioLubricant1,
            nameLubricant2 = '$nameLubricant2',
            ratioLubricant2 = $ratioLubricant2,
-           ratioSAPA = $ratioSAPA,
+           ratioSAPA = '$ratioSAPA',
            tempCoating = $tempCoating,
            rateAddJet = $rateAddJet,
            pressureJet = $pressureJet,
@@ -71,7 +71,7 @@ if ($_SESSION['role_id']<3){
              ratioSAPA, tempCoating, rateAddJet, pressureJet, yieldJet, yieldSmall,
              yieldBig, etc, updateUser)
            VALUES('$lotNo', '$nameProduct', '$characteristic', '$nameLubricant1', $ratioLubricant1,
-            '$nameLubricant2', $ratioLubricant2, $ratioSAPA, $tempCoating, $rateAddJet, $pressureJet,
+            '$nameLubricant2', $ratioLubricant2, '$ratioSAPA', $tempCoating, $rateAddJet, $pressureJet,
             $yieldJet, $yieldSmall, $yieldBig, '$etc','$username');
            ";
            $message = 'Data Inserted';

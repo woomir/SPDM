@@ -248,7 +248,7 @@ table {
                        <div class="row">
                          <div class="col-md-3">
                            <label>SAPA 비율</label>
-                            <input type="number" name="ratioSAPA" id="ratioSAPA" class="form-control" placeholder="%" step="0.1"/>
+                            <input type="text" name="ratioSAPA" id="ratioSAPA" class="form-control" value="2:1"/>
                          </div>
                          <div class="col-md-3">
                           <label>코팅온도</label>
