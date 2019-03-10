@@ -58,7 +58,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 160px; margin-right: 30px;">
+        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 160px; margin-right: 30px;">
         <i class="fas fa-industry"></i>&nbsp;&nbsp;Mass powder
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -67,7 +67,7 @@
         </div>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 145px; margin-right: 30px;">
+        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 145px; margin-right: 30px;">
         <i class="fas fa-flask"></i>&nbsp;&nbsp;Lab powder
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -77,7 +77,7 @@
         </div>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 110px; margin-right: 30px;">
+        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 110px; margin-right: 30px;">
         <i class="fas fa-solar-panel"></i>&nbsp;&nbsp;Paste
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -88,7 +88,7 @@
       </li>
     </ul>
   </div>
-</nav> <br>
+  </nav> <br>
 
 <div id="wrapper">
     <div id="content-wrapper">
