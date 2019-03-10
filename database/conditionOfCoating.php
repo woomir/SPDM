@@ -13,10 +13,6 @@
       <link href="../css/bootstrap.css" rel="stylesheet"/>
       <link href="../css/dataTables.bootstrap4.min.css" rel="stylesheet"/>
       <link href="../css/buttons.bootstrap4.min.css" rel="stylesheet"/>
-      <!-- Page level plugin CSS-->
-      <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-      <!-- Custom styles for this template-->
-      <link href="../css/sb-admin.css" rel="stylesheet">
 
 <!--sidebar class에 toggled가 있을 때 사용-->
 <style>
@@ -49,7 +45,7 @@ table {
               <a class="nav-link active mb-0" style="font-weight:500;"><?php echo $_SESSION['id']." : ".$_SESSION['role'];?></a>
             </li>
             <li class="nav-item dropdown no-arrow">
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="tooltip" data-placement="bottom" title="Password Change" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link" href="#" id="userDropdown" role="button" data-toggle="tooltip" data-placement="bottom" title="Password Change" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-cog"></i>
                 </a>
             </li>
@@ -91,7 +87,7 @@ table {
       </li>
     </ul>
   </div>
-  </nav>
+</nav> <br>
 
 <div id="wrapper">
     <div id="content-wrapper">
@@ -188,11 +184,6 @@ table {
 
     </div> <!-- /.content-wrapper -->
   </div> <!-- /#wrapper -->
-
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
 
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
