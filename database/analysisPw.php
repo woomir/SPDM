@@ -17,6 +17,7 @@
   <link href="../css/bootstrap.css" rel="stylesheet"/>
   <link href="../css/dataTables.bootstrap4.min.css" rel="stylesheet"/>
   <link href="../css/buttons.bootstrap4.min.css" rel="stylesheet"/>
+  <link href="../css/responsive.bootstrap4.min.css" rel="stylesheet"/>
 
   <style>
   footer.sticky-footer {
@@ -305,6 +306,8 @@
  <script src="../js/buttons.html5.min.js"></script>
  <script src="../js/jszip.min.js"></script>
  <script src="../js/buttons.bootstrap4.min.js"></script>
+ <script src="../js/responsive.bootstrap4.min.js"></script>
+ <script src="../js/dataTables.responsive.min.js"></script>
 
  <!-- Bootstrap core JavaScript-->
  <script src="../vendor/bootstrap/js/bootstrap.bundle.js"></script>
