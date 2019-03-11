@@ -23,7 +23,7 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    position: absolute;
+    position: fixed;
     right: 0;
     bottom: 0;
     width: 100%;

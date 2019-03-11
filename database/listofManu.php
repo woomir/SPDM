@@ -20,7 +20,7 @@ footer.sticky-footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  position: absolute;
+  position: fixed;
   right: 0;
   bottom: 0;
   width: 100%;
@@ -296,6 +296,7 @@ $(document).ready(function(){
    var dataTable = $('#PasteTable').DataTable({
 
     "processing" : true,
+    "responsive" : true,
     "serverSide" : true,
     "order" : [[0,'desc']],
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
