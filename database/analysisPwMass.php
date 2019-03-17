@@ -88,7 +88,7 @@
           <a class="dropdown-item" href="analysisPt.php">Analysis</a>
           <div class="dropdown-divider"></div>
           <h6 class="dropdown-header">Report</h6>
-          <a class="dropdown-item" href="#">Rheology</a>
+          <a class="dropdown-item" href="analysisPtView.php">Analysis</a>
           <a class="dropdown-item disabled" href="#">Chart (preparing)</a>
         </div>
       </li>
