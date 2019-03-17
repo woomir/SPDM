@@ -270,22 +270,22 @@ table {
                         </div>
                         <div class="col-md-3">
                          <label>해쇄압</label>
-                         <input type="number" name="pressureJet" id="pressureJet" class="form-control" placeholder="bar"/>
+                         <input type="number" name="pressureJet" id="pressureJet" class="form-control" placeholder="bar" step="0.1"/>
                        </div>
                        </div>
                        </br>
                        <div class="row">
                         <div class="col-md-4">
                          <label>해쇄 회수율</label>
-                         <input type="number" name="yieldJet" id="yieldJet" class="form-control" placeholder="%"/>
+                         <input type="number" name="yieldJet" id="yieldJet" class="form-control" placeholder="%" step="0.1"/>
                        </div>
                         <div class="col-md-4">
                           <label>미분 회수율</label>
-                          <input type="number" name="yieldSmall" id="yieldSmall" class="form-control" placeholder="%"/>
+                          <input type="number" name="yieldSmall" id="yieldSmall" class="form-control" placeholder="%" step="0.1"/>
                         </div>
                         <div class="col-md-4">
                           <label>조분 회수율</label>
-                          <input type="number" name="yieldBig" id="yieldBig" class="form-control" placeholder="%"/>
+                          <input type="number" name="yieldBig" id="yieldBig" class="form-control" placeholder="%" step="0.1"/>
                         </div>
                        </div>
                        </br>
