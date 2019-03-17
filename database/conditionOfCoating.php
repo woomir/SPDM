@@ -499,6 +499,7 @@ $(document).ready(function(){
     "serverSide" : true,
     "order" : [[2,'desc']],
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    "iDisplayLength": 25,
     "columnDefs": [{
     orderable: false,
     targets: [42,43],

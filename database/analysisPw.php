@@ -336,6 +336,7 @@ $(document).ready(function(){
     "serverSide" : true,
     "order" : [[0,'desc']],
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    "iDisplayLength": 25,
     "columnDefs": [{
     orderable: false,
     targets: [14,15]
