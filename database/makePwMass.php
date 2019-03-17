@@ -386,7 +386,7 @@ $(document).ready(function(){
                      $('#ratioLubricant1').val(data.ratioLubricant1);
                      $('#nameLubricant2').val(data.nameLubricant2);
                      $('#ratioLubricant2').val(data.ratioLubricant2);
-                     $('#ratioSAPA').val(data.ratioSA);
+                     $('#ratioSAPA').val(data.ratioSAPA);
                      $('#tempCoating').val(data.tempCoating);
                      $('#rateAddJet').val(data.rateAddJet);
                      $('#pressureJet').val(data.pressureJet);
