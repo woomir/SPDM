@@ -82,9 +82,14 @@
         <i class="fas fa-solar-panel"></i>&nbsp;&nbsp;Paste
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <h6 class="dropdown-header">Database</h6>
           <a class="dropdown-item" href="recipe.php">Recipe</a>
           <a class="dropdown-item" href="listofManu.php">List of Manu</a>
           <a class="dropdown-item" href="analysisPt.php">Analysis</a>
+          <div class="dropdown-divider"></div>
+          <h6 class="dropdown-header">Report</h6>
+          <a class="dropdown-item" href="#">Rheology</a>
+          <a class="dropdown-item disabled" href="#">Chart (preparing)</a>
         </div>
       </li>
     </ul>
