@@ -92,7 +92,7 @@ while($row = mysqli_fetch_array($result))
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="amountPw">' . $row["amountPw"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="conditionWash">' . $row["conditionWash"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="nameRed">' . $row["nameRed"] . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ratioRed">' . $row["ratioRed"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ratioRed">' . sprintf("%.2f",$row["ratioRed"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="amountRed">' . $row["amountRed"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="lotRed">' . $row["lotRed"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="nameAmine">' . $row["nameAmine"] . '</div>';
