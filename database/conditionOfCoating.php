@@ -25,7 +25,6 @@ footer.sticky-footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  position: fixed;
   right: 0;
   bottom: 0;
   width: 100%;
