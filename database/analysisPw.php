@@ -123,7 +123,7 @@
               <br>
                 <div class="table-responsive">
                    <div id="alert_message"></div>
-                  <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover">
+                  <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover" style="width: 100%;">
                    <thead align="center">
                     <tr>
                       <th width="">Sample No </th>
