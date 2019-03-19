@@ -496,7 +496,7 @@ $(document).ready(function(){
 
     "processing" : true,
     "serverSide" : true,
-    "order" : [[2,'desc']],
+    "order" : [[0,'desc']],
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "iDisplayLength": 25,
     "columnDefs": [{
