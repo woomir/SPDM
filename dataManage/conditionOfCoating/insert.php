@@ -44,7 +44,7 @@ if ($_SESSION['role_id']<3){
       if ($_POST["tempSolLubri"]!=""){
       $tempSolLubri = mysqli_real_escape_string($connect, $_POST["tempSolLubri"]);
     } else {$tempSolLubri = 'NULL';}
-      $nameadd = mysqli_real_escape_string($connect, $_POST["nameadd"]);
+      $nameAdd = mysqli_real_escape_string($connect, $_POST["nameAdd"]);
       if ($_POST["ratioAdd"]!=""){
       $ratioAdd = mysqli_real_escape_string($connect, $_POST["ratioAdd"]);
     } else {$ratioAdd = 'NULL';}
@@ -111,7 +111,7 @@ if ($_SESSION['role_id']<3){
            nameSolLubri = '$nameSolLubri',
            amountSolLubri = $amountSolLubri,
            tempSolLubri = $tempSolLubri,
-           nameAdd = $nameAdd,
+           nameAdd = '$nameAdd',
            ratioAdd = $ratioAdd,
            nameSolPw = '$nameSolPw',
            amountSolPw = $amountSolPw,

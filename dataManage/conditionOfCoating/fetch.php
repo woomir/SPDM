@@ -103,8 +103,8 @@ while($row = mysqli_fetch_array($result))
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="nameLubricant2">' . $row["nameLubricant2"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ratioLubricant2">' . sprintf("%.2f",$row["ratioLubricant2"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ratioLubricant1">' . sprintf("%.2f",$row["amountLubricant2"]) . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ratioSA">' . sprintf("%.2f",$row["ratioSA"]) . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ratioPA">' . sprintf("%.2f",$row["ratioPA"]) . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ratioSA">' . sprintf("%.1f",$row["ratioSA"]) . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ratioPA">' . sprintf("%.1f",$row["ratioPA"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="amountSA">' . sprintf("%.2f",$row["amountSA"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="amountPA">' . sprintf("%.2f",$row["amountPA"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="nameSolLubri">' . $row["nameSolLubri"] . '</div>';
