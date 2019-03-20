@@ -154,17 +154,17 @@ table {
                     <th width="">코팅제<br>용매종류</th>
                     <th width="">코팅제<br>용매사용량</th>
                     <th width="">코팅제<br>용액온도</th>
+                    <th>첨가제</th>
+                    <th>첨가제<br>비율</th>
+                    <th>첨가제<br>사용량</th>
                     <th width="">분말분산<br>용매</th>
                     <th width="">분말분산<br>용매사용량</th>
                     <th width="">투입순서</th>
                     <th width="">코팅온도</th>
-                    <th width="">분말<br>RPM</th>
+                    <th width="">교반속도</th>
                     <th width="">분말<br>Time</th>
-                    <th width="">환원제<br>RPM</th>
                     <th width="">환원제<br>Time</th>
-                    <th width="">Amine<br>RPM</th>
                     <th width="">Amine<br>Time</th>
-                    <th width="">코팅<br>RPM</th>
                     <th width="">코팅1<br>Time</th>
                     <th width="">코팅2<br>Time</th>
                     <th width="">분말<br>전도도</th>
@@ -260,11 +260,11 @@ table {
                        </div>
                        <br />
                        <div class="row">
-                         <div class="col-md-6">
+                         <div class="col-md-5">
                            <label>*제조일자</label>
                            <input type="date" name="dateMake" id="dateMake" class="form-control" value="<?php echo date("Y-m-d");?>"/>
                          </div>
-                         <div class="col-md-3">
+                         <div class="col-md-4">
                            <label>*Lot No</label>
                            <input type="text" name="ncpwLot" id="ncpwLot" class="form-control"></input>
                          </div>
@@ -275,177 +275,165 @@ table {
                        </div>
                        <br />
                        <div class="row">
-                         <div class="col-md-4">
+                         <div class="col-md-3">
                             <label>세척조건</label>
                             <input type="text" name="conditionWash" id="conditionWash" class="form-control" value="DMW원심"/>
                          </div>
-                         <div class="col-md-4">
+                         <div class="col-md-3">
                           <label>환원제 이름</label>
                           <select name="nameRed" id="nameRed" class="form-control">
                                <option ></option>
                                <option >G.Ox</option>
-                               <option >A.A</option>
+                               <option >AA</option>
                           </select>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                            <label>환원제 비율</label>
                            <input type="number" name="ratioRed" id="ratioRed" class="form-control" placeholder="wt% / Ag" step="0.01" />
                         </div>
+                        <div class="col-md-3">
+                         <label>환원제 Lot</label>
+                         <input type="text" name="lotRed" id="lotRed" class="form-control" />
+                       </div>
                        </div>
                        </br>
                        <div class="row">
-                         <div class="col-md-4">
-                          <label>환원제 Lot</label>
-                          <input type="text" name="lotRed" id="lotRed" class="form-control" />
-                        </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                            <label>Amine 이름</label>
                            <input type="text" name="nameAmine" id="nameAmine" class="form-control" />
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                          <label>Amine 사용량</label>
                          <input type="number" name="amountAmine" id="amountAmine" class="form-control" placeholder="g or ml" step="0.1"/>
                        </div>
+                       <div class="col-md-3">
+                          <label>코팅제1</label>
+                          <input type="text" name="nameLubricant1" id="nameLubricant1" class="form-control" />
+                       </div>
+                       <div class="col-md-3">
+                        <label>코팅제1 비율</label>
+                        <input type="number" name="ratioLubricant1" id="ratioLubricant1" class="form-control" placeholder="wt% / Ag" step="0.01"/>
+                      </div>
                        </div>
                        </br>
                        <div class="row">
-                         <div class="col-md-4">
-                            <label>코팅제1</label>
-                            <input type="text" name="nameLubricant1" id="nameLubricant1" class="form-control" />
-                         </div>
-                         <div class="col-md-4">
-                          <label>코팅제1 비율</label>
-                          <input type="number" name="ratioLubricant1" id="ratioLubricant1" class="form-control" placeholder="wt% / Ag" step="0.01"/>
-                        </div>
-                       </div>
-                       </br>
-                       <div class="row">
-                         <div class="col-md-4">
+                         <div class="col-md-3">
                             <label>코팅제2</label>
                             <input type="text" name="nameLubricant2" id="nameLubricant2" class="form-control" />
                          </div>
-                         <div class="col-md-4">
+                         <div class="col-md-3">
                           <label>코팅제2 비율</label>
                           <input type="number" name="ratioLubricant2" id="ratioLubricant2" class="form-control" placeholder="wt% / Ag" step="0.01" />
                         </div>
-                       </div>
-                       </br>
-                       <div class="row">
-                         <div class="col-md-4">
-                           <label>SA 비율</label>
-                            <input type="number" name="ratioSA" id="ratioSA" class="form-control" placeholder="%" step="0.1"/>
-                         </div>
-                         <div class="col-md-4">
-                          <label>PA 비율</label>
-                          <input type="number" name="ratioPA" id="ratioPA" class="form-control" placeholder="%" step="0.1" />
+                        <div class="col-md-3">
+                          <label>SA 비율</label>
+                           <input type="number" name="ratioSA" id="ratioSA" class="form-control" placeholder="%" step="0.1"/>
                         </div>
-                       </div>
-                       </br>
-                       <div class="row">
-                         <div class="col-md-4">
-                           <label>코팅제 용매 종류</label>
-                            <input type="text" name="nameSolLubri" id="nameSolLubri" class="form-control" value="EtOH"/>
-                         </div>
-                         <div class="col-md-4">
-                          <label>코팅제 용매양</label>
-                          <input type="number" name="amountSolLubri" id="amountSolLubri" class="form-control" placeholder="ml" />
-                        </div>
-                        <div class="col-md-4">
-                          <label>코팅제 용액온도</label>
-                           <input type="number" name="tempSolLubri" id="tempSolLubri" class="form-control" value="65"/>
-                        </div>
-                       </div>
-                       </br>
-                       <div class="row">
-                         <div class="col-md-4">
-                          <label>분말분산 용매</label>
-                          <input type="text" name="nameSolPw" id="nameSolPw" class="form-control" value="DMW"/>
-                        </div>
-                        <div class="col-md-4">
-                         <label>분말분산 용매양</label>
-                         <input type="number" name="amountSolPw" id="amountSolPw" class="form-control" value="600" />
+                        <div class="col-md-3">
+                         <label>PA 비율</label>
+                         <input type="number" name="ratioPA" id="ratioPA" class="form-control" placeholder="%" step="0.1" />
                        </div>
                        </div>
                        </br>
                        <div class="row">
-                         <div class="col-md-8">
+                        <div class="col-md-3">
+                          <label>코팅제 용매 종류</label>
+                           <input type="text" name="nameSolLubri" id="nameSolLubri" class="form-control" value="EtOH"/>
+                        </div>
+                        <div class="col-md-3">
+                         <label>코팅제 용매양</label>
+                         <input type="number" name="amountSolLubri" id="amountSolLubri" class="form-control" placeholder="ml" />
+                       </div>
+                       <div class="col-md-3">
+                         <label>코팅제 용액온도</label>
+                          <input type="number" name="tempSolLubri" id="tempSolLubri" class="form-control" value="65"/>
+                       </div>
+                       <div class="col-md-3">
+                        <label>분말분산 용매</label>
+                        <input type="text" name="nameSolPw" id="nameSolPw" class="form-control" value="DMW"/>
+                      </div>
+                       </div>
+                       </br>
+                       <div class="row">
+                       <div class="col-md-3">
+                        <label>분말분산 용매양</label>
+                        <input type="number" name="amountSolPw" id="amountSolPw" class="form-control" value="600" />
+                      </div>
+                      <div class="col-md-3">
+                        <label>첨가제 이름</label>
+                        <input type="text" name="nameAdd" id="nameAdd" class="form-control" />
+                      </div>
+                      <div class="col-md-3">
+                        <label>첨가제 비율</label>
+                        <input type="number" name="ratioAdd" id="ratioAdd" class="form-control" step="0.01" />
+                      </div>
+                      <div class="col-md-3">
+                       <label>코팅온도</label>
+                       <input type="number" name="tempCoating" id="tempCoating" class="form-control" placeholder="&#8451;"/>
+                     </div>
+                       </div>
+                       </br>
+                       <div class="row">
+                         <div class="col-md-6">
                            <label>투입순서</label>
                             <select name="orderAdd" id="orderAdd" class="form-control">
                                  <option ></option>
                                  <option >DMW-PW-Red-Coating</option>
                                  <option >DMW-Red-PW-AM-Coating</option>
                                  <option >DMW-PW-AM-Coating</option>
+                                 <option >DMW-Add-Red-PW-AM-Coating</option>
                             </select>
                          </div>
-                         <div class="col-md-4">
-                          <label>코팅온도</label>
-                          <input type="number" name="tempCoating" id="tempCoating" class="form-control" placeholder="&#8451;"/>
-                        </div>
-                       </div>
-                       </br>
-                       <div class="row">
                          <div class="col-md-3">
-                          <label>분말 RPM</label>
+                          <label>교반속도 (RPM)</label>
                           <input type="number" name="rpmPw" id="rpmPw" class="form-control" value="1500" />
                          </div>
                          <div class="col-md-3">
                            <label>분말 Time</label>
                             <input type="number" name="timePw" id="timePw" class="form-control" placeholder="min" />
                          </div>
-                         <div class="col-md-3">
-                          <label>환원제 RPM</label>
-                          <input type="number" name="rpmRed" id="rpmRed" class="form-control" />
-                        </div>
+                       </div>
+                       </br>
+                       <div class="row">
                         <div class="col-md-3">
                          <label>환원제 Time</label>
                          <input type="number" name="timeRed" id="timeRed" class="form-control" placeholder="min" />
                        </div>
-                       </div>
-                       </br>
-                       <div class="row">
-                         <div class="col-md-3">
-                           <label>Amine RPM</label>
-                            <input type="number" name="rpmAmine" id="rpmAmine" class="form-control" />
-                         </div>
                          <div class="col-md-3">
                           <label>Amine Time</label>
                           <input type="number" name="timeAmine" id="timeAmine" class="form-control" placeholder="min" />
-                        </div>
-                        <div class="col-md-3">
-                         <label>코팅 RPM</label>
-                         <input type="number" name="rpmCoating" id="rpmCoating" class="form-control" value="1500" />
-                       </div>
-                       <div class="col-md-3">
-                         <label>코팅1 Time</label>
-                          <input type="number" name="timeCoating1" id="timeCoating1" class="form-control" placeholder="min" />
-                       </div>
-                       </div>
-                       </br>
-                       <div class="row">
+                         </div>
+                         <div class="col-md-3">
+                           <label>코팅1 Time</label>
+                            <input type="number" name="timeCoating1" id="timeCoating1" class="form-control" placeholder="min" />
+                         </div>
                          <div class="col-md-3">
                           <label>코팅2 Time</label>
                           <input type="number" name="timeCoating2" id="timeCoating2" class="form-control" placeholder="min" />
                         </div>
-                        <div class="col-md-3">
-                         <label>분말 전도도</label>
-                         <input type="number" name="conductivityAfterPw" id="conductivityAfterPw" class="form-control" placeholder="&#181;S/cm" />
-                       </div>
-                       <div class="col-md-3">
-                         <label>분말 온도</label>
-                          <input type="number" name="tempAfterPw" id="tempAfterPw" class="form-control" placeholder="&#8451;" />
-                       </div>
-                       <div class="col-md-3">
-                        <label>코팅전 pH</label>
-                        <input type="number" name="pHBeforeCoating" id="pHBeforeCoating" class="form-control" />
-                      </div>
                        </div>
                        </br>
                        <div class="row">
-                        <div class="col-md-4">
-                         <label>실험담당자</label>
-                         <input type="text" name="maker" id="maker" class="form-control" />
+                      <div class="col-md-3">
+                       <label>분말 전도도</label>
+                       <input type="number" name="conductivityAfterPw" id="conductivityAfterPw" class="form-control" placeholder="&#181;S/cm" />
+                     </div>
+                     <div class="col-md-3">
+                       <label>분말 온도</label>
+                        <input type="number" name="tempAfterPw" id="tempAfterPw" class="form-control" placeholder="&#8451;" />
+                     </div>
+                     <div class="col-md-3">
+                      <label>코팅전 pH</label>
+                      <input type="number" name="pHBeforeCoating" id="pHBeforeCoating" class="form-control" />
+                    </div>
+                    <div class="col-md-3">
+                     <label>실험담당자</label>
+                     <input type="text" name="maker" id="maker" class="form-control" />
+                    </div>
                        </div>
-                       <div class="col-md-8">
+                       </br>
+                       <div class="row">
+                       <div class="col-md-12">
                          <label>Etc</label>
                          <input type="text" name="etc" id="etc" class="form-control" />
                       </div>
@@ -516,7 +504,7 @@ $(document).ready(function(){
           postfixButtons: [ 'colvisRestore' ]
         }],
         columnDefs: [
-            {targets: [5,8,9,14,17,18,19,20,21,22,23,24,25,26,27,29,30,31,32,33,34,35,36,37,38,39,40,-2],
+            {targets: [5,8,9,14,17,18,19,20,21,22,23,24,25,26,27,29,30,32,34,36,37,38,39,40,-2],
              visible: false}
         ]
    });
@@ -554,17 +542,16 @@ $(document).ready(function(){
                      $('#nameSolLubri').val(data.nameSolLubri);
                      $('#amountSolLubri').val(data.amountSolLubri);
                      $('#tempSolLubri').val(data.tempSolLubri);
+                     $('#nameAdd').val(data.nameAdd);
+                     $('#ratioAdd').val(data.ratioAdd);
                      $('#nameSolPw').val(data.nameSolPw);
                      $('#amountSolPw').val(data.amountSolPw);
                      $('#orderAdd').val(data.orderAdd);
                      $('#tempCoating').val(data.tempCoating);
                      $('#rpmPw').val(data.rpmPw);
                      $('#timePw').val(data.timePw);
-                     $('#rpmRed').val(data.rpmRed);
                      $('#timeRed').val(data.timeRed);
-                     $('#rpmAmine').val(data.rpmAmine);
                      $('#timeAmine').val(data.timeAmine);
-                     $('#rpmCoating').val(data.rpmCoating);
                      $('#timeCoating1').val(data.timeCoating1);
                      $('#timeCoating2').val(data.timeCoating2);
                      $('#conductivityAfterPw').val(data.conductivityAfterPw);

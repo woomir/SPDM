@@ -44,6 +44,10 @@ if ($_SESSION['role_id']<3){
       if ($_POST["tempSolLubri"]!=""){
       $tempSolLubri = mysqli_real_escape_string($connect, $_POST["tempSolLubri"]);
     } else {$tempSolLubri = 'NULL';}
+      $nameadd = mysqli_real_escape_string($connect, $_POST["nameadd"]);
+      if ($_POST["ratioAdd"]!=""){
+      $ratioAdd = mysqli_real_escape_string($connect, $_POST["ratioAdd"]);
+    } else {$ratioAdd = 'NULL';}
       $nameSolPw = mysqli_real_escape_string($connect, $_POST["nameSolPw"]);
       if ($_POST["amountSolPw"]!=""){
       $amountSolPw = mysqli_real_escape_string($connect, $_POST["amountSolPw"]);
@@ -58,21 +62,12 @@ if ($_SESSION['role_id']<3){
       if ($_POST["timePw"]!=""){
       $timePw = mysqli_real_escape_string($connect, $_POST["timePw"]);
     } else {$timePw = 'NULL';}
-      if ($_POST["rpmRed"]!=""){
-      $rpmRed = mysqli_real_escape_string($connect, $_POST["rpmRed"]);
-    } else {$rpmRed = 'NULL';}
       if ($_POST["timeRed"]!=""){
       $timeRed = mysqli_real_escape_string($connect, $_POST["timeRed"]);
     } else {$timeRed = 'NULL';}
-      if ($_POST["rpmAmine"]!=""){
-      $rpmAmine = mysqli_real_escape_string($connect, $_POST["rpmAmine"]);
-    } else {$rpmAmine = 'NULL';}
       if ($_POST["timeAmine"]!=""){
       $timeAmine = mysqli_real_escape_string($connect, $_POST["timeAmine"]);
     } else {$timeAmine = 'NULL';}
-      if ($_POST["rpmCoating"]!=""){
-      $rpmCoating = mysqli_real_escape_string($connect, $_POST["rpmCoating"]);
-    } else {$rpmCoating = 'NULL';}
       if ($_POST["timeCoating1"]!=""){
       $timeCoating1 = mysqli_real_escape_string($connect, $_POST["timeCoating1"]);
     } else {$timeCoating1 = 'NULL';}
@@ -116,17 +111,16 @@ if ($_SESSION['role_id']<3){
            nameSolLubri = '$nameSolLubri',
            amountSolLubri = $amountSolLubri,
            tempSolLubri = $tempSolLubri,
+           nameAdd = $nameAdd,
+           ratioAdd = $ratioAdd,
            nameSolPw = '$nameSolPw',
            amountSolPw = $amountSolPw,
            orderAdd = '$orderAdd',
            tempCoating = $tempCoating,
            rpmPw = $rpmPw,
            timePw = $timePw,
-           rpmRed = $rpmRed,
            timeRed = $timeRed,
-           rpmAmine = $rpmAmine,
            timeAmine = $timeAmine,
-           rpmCoating = $rpmCoating,
            timeCoating1 = $timeCoating1,
            timeCoating2 = $timeCoating2,
            conductivityAfterPw = $conductivityAfterPw,
@@ -143,16 +137,16 @@ if ($_SESSION['role_id']<3){
            $query = "INSERT INTO conditioncoatingtbl (sampleNo, concept, dateMake,
              ncpwLot, amountPw, conditionWash, nameRed, ratioRed, lotRed, nameAmine,
              amountAmine, nameLubricant1, ratioLubricant1, nameLubricant2, ratioLubricant2,
-             ratioSA, ratioPA, nameSolLubri, amountSolLubri, tempSolLubri, nameSolPw,
-            amountSolPw, orderAdd, tempCoating, rpmPw, timePw, rpmRed, timeRed,
-            rpmAmine, timeAmine, rpmCoating, timeCoating1, timeCoating2, conductivityAfterPw,
+             ratioSA, ratioPA, nameSolLubri, amountSolLubri, tempSolLubri, nameAdd,
+            ratioAdd, nameSolPw,amountSolPw, orderAdd, tempCoating, rpmPw, timePw, timeRed,
+            timeAmine, timeCoating1, timeCoating2, conductivityAfterPw,
             tempAfterPw, pHBeforeCoating, maker, etc, updateUser)
            VALUES('$sampleNo', '$concept', '$dateMake', '$ncpwLot', $amountPw,
              '$conditionWash', '$nameRed', $ratioRed, '$lotRed', '$nameAmine',
              $amountAmine, '$nameLubricant1', $ratioLubricant1, '$nameLubricant2',
              $ratioLubricant2, $ratioSA, $ratioPA, '$nameSolLubri', $amountSolLubri,
-             $tempSolLubri, '$nameSolPw', $amountSolPw, '$orderAdd', $tempCoating,
-             $rpmPw, $timePw, $rpmRed, $timeRed, $rpmAmine, $timeAmine, $rpmCoating,
+             $tempSolLubri, '$nameAdd', $ratioAdd, '$nameSolPw', $amountSolPw, '$orderAdd', $tempCoating,
+             $rpmPw, $timePw, $timeRed, $timeAmine,
              $timeCoating1, $timeCoating2, $conductivityAfterPw, $tempAfterPw,
              $pHBeforeCoating, '$maker', '$etc','$username');
            ";

@@ -6,9 +6,10 @@ $connect = mysqli_connect("localhost", "root", "$52Telecast", "woomir");
 $column = array('sampleNo', 'concept', 'dateMake', 'ncpwLot', 'amountPw',
 'conditionWash', 'nameRed', 'ratioRed', 'amountRed', 'lotRed', 'nameAmine', 'amountAmine',
 'nameLubricant1', 'ratioLubricant1', 'amountLubricant1', 'nameLubricant2', 'ratioLubricant2',
-'amountLubricant2', 'ratioSA', 'ratioPA', 'amountSA', 'amountPA', 'nameSolLubri', 'amountSolLubri', 'tempSolLubri',
+'amountLubricant2', 'ratioSA', 'ratioPA', 'amountSA', 'amountPA', 'nameSolLubri',
+'amountSolLubri', 'tempSolLubri', 'nameAdd', 'ratioAdd','amountAdd',
 'nameSolPw', 'amountSolPw', 'orderAdd', 'tempCoating', 'rpmPw', 'timePw',
-'rpmRed', 'timeRed', 'rpmAmine', 'timeAmine', 'rpmCoating', 'timeCoating1',
+'timeRed', 'timeAmine', 'timeCoating1',
 'timeCoating2', 'conductivityAfterPw', 'tempAfterPw', 'pHBeforeCoating',
 'maker', 'etc');
 $query = "SELECT * FROM conditioncoatingtbl";
@@ -38,17 +39,16 @@ if(isset($_POST["search"]["value"]))
  OR nameSolLubri LIKE "%'.$_POST["search"]["value"].'%"
  OR amountSolLubri LIKE "%'.$_POST["search"]["value"].'%"
  OR tempSolLubri LIKE "%'.$_POST["search"]["value"].'%"
+ OR nameAdd LIKE "%'.$_POST["search"]["value"].'%"
+ OR ratioAdd LIKE "%'.$_POST["search"]["value"].'%"
  OR nameSolPw LIKE "%'.$_POST["search"]["value"].'%"
  OR amountSolPw LIKE "%'.$_POST["search"]["value"].'%"
  OR orderAdd LIKE "%'.$_POST["search"]["value"].'%"
  OR tempCoating LIKE "%'.$_POST["search"]["value"].'%"
  OR rpmPw LIKE "%'.$_POST["search"]["value"].'%"
  OR timePw LIKE "%'.$_POST["search"]["value"].'%"
- OR rpmRed LIKE "%'.$_POST["search"]["value"].'%"
  OR timeRed LIKE "%'.$_POST["search"]["value"].'%"
- OR rpmAmine LIKE "%'.$_POST["search"]["value"].'%"
  OR timeAmine LIKE "%'.$_POST["search"]["value"].'%"
- OR rpmCoating LIKE "%'.$_POST["search"]["value"].'%"
  OR timeCoating1 LIKE "%'.$_POST["search"]["value"].'%"
  OR timeCoating2 LIKE "%'.$_POST["search"]["value"].'%"
  OR conductivityAfterPw LIKE "%'.$_POST["search"]["value"].'%"
@@ -93,34 +93,34 @@ while($row = mysqli_fetch_array($result))
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="conditionWash">' . $row["conditionWash"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="nameRed">' . $row["nameRed"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ratioRed">' . sprintf("%.2f",$row["ratioRed"]) . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="amountRed">' . $row["amountRed"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="amountRed">' . sprintf("%.1f",$row["amountRed"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="lotRed">' . $row["lotRed"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="nameAmine">' . $row["nameAmine"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="amountAmine">' . $row["amountAmine"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="nameLubricant1">' . $row["nameLubricant1"] . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ratioLubricant1">' . $row["ratioLubricant1"] . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ratioLubricant1">' . $row["amountLubricant1"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ratioLubricant1">' . sprintf("%.2f",$row["ratioLubricant1"]) . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ratioLubricant1">' . sprintf("%.2f",$row["amountLubricant1"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="nameLubricant2">' . $row["nameLubricant2"] . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ratioLubricant2">' . $row["ratioLubricant2"] . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ratioLubricant1">' . $row["amountLubricant2"] . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ratioSA">' . $row["ratioSA"] . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ratioPA">' . $row["ratioPA"] . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="amountSA">' . $row["amountSA"] . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="amountPA">' . $row["amountPA"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ratioLubricant2">' . sprintf("%.2f",$row["ratioLubricant2"]) . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ratioLubricant1">' . sprintf("%.2f",$row["amountLubricant2"]) . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ratioSA">' . sprintf("%.2f",$row["ratioSA"]) . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ratioPA">' . sprintf("%.2f",$row["ratioPA"]) . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="amountSA">' . sprintf("%.2f",$row["amountSA"]) . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="amountPA">' . sprintf("%.2f",$row["amountPA"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="nameSolLubri">' . $row["nameSolLubri"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="amountSolLubri">' . $row["amountSolLubri"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="tempSolLubri">' . $row["tempSolLubri"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="nameAdd">' . $row["nameAdd"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ratioAdd">' . sprintf("%.2f",$row["ratioAdd"]) . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="amountAdd">' . $row["amountAdd"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="nameSolPw">' . $row["nameSolPw"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="amountSolPw">' . $row["amountSolPw"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="orderAdd">' . $row["orderAdd"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="tempCoating">' . $row["tempCoating"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="rpmPw">' . $row["rpmPw"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="timePw">' . $row["timePw"] . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="rpmRed">' . $row["rpmRed"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="timeRed">' . $row["timeRed"] . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="rpmAmine">' . $row["rpmAmine"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="timeAmine">' . $row["timeAmine"] . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="rpmCoating">' . $row["rpmCoating"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="timeCoating1">' . $row["timeCoating1"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="timeCoating2">' . $row["timeCoating2"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="conductivityAfterPw">' . $row["conductivityAfterPw"] . '</div>';
