@@ -124,7 +124,7 @@ table {
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">Databases</li>
-                <li class="breadcrumb-item">Paste</li>
+                <li class="breadcrumb-item">Lab powder</li>
                 <li class="breadcrumb-item">Report</li>
                 <li class="breadcrumb-item active" aria-current="page">Analysis</li>
               </ol>
@@ -135,7 +135,7 @@ table {
             ?>
             <div class="row justify-content-between">
               <div class="col-4">
-                <h3>Paste 분석 데이터 정리</h3>
+                <h3>Lab 분말 분석 데이터 정리</h3>
               </div>
             </div> <br>
               <div class="table-responsive">
@@ -143,24 +143,37 @@ table {
                 <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover" style="width: 100%;">
                  <thead align="center">
                   <tr>
-                    <th>Paste No</th>
-                    <th>Powder Lot</th>
-                    <th>Powder Type</th>
-                    <th>object</th>
-                    <th>배합</th>
-                    <th>Aging Time</th>
-                    <th>1rpm</th>
-                    <th>10rpm</th>
-                    <th>30rpm</th>
-                    <th>100rpm</th>
-                    <th>Aging 10rpm</th>
-                    <th>Aging 30rpm</th>
-                    <th>G' Low</th>
-                    <th>G' High</th>
-                    <th>YSP</th>
-                    <th>Aging G' Low</th>
-                    <th>Aging G' High</th>
-                    <th>Aging YSP</th>
+                    <th>Sample<br>No</th>
+                    <th>Concept</th>
+                    <th>Powder<br>Type</th>
+                    <th>Date</th>
+                    <th>Lot<br>No</th>
+                    <th>환원제</th>
+                    <th>환원제<br>비율</th>
+                    <th>환원제<br>사용량</th>
+                    <th>Amine</th>
+                    <th>Amine<br>사용량</th>
+                    <th>코팅제1</th>
+                    <th>코팅제1<br>비율</th>
+                    <th>코팅제2</th>
+                    <th>코팅제2<br>비율</th>
+                    <th>SA비율</th>
+                    <th>PA비율</th>
+                    <th>첨가제</th>
+                    <th>첨가제<br>비율</th>
+                    <th>첨가제<br>사용량</th>
+                    <th>코팅온도</th>
+                    <th>교반속도</th>
+                    <th>D10</th>
+                    <th>D50</th>
+                    <th>D90</th>
+                    <th>Dmax</th>
+                    <th>T-IGL</th>
+                    <th>P-IGL</th>
+                    <th>C-IGL</th>
+                    <th>BET</th>
+                    <th>TD</th>
+                    <th>XRD</th>
                    </tr>
                   </thead>
                 </table>
@@ -256,12 +269,12 @@ $(document).ready(function(){
     "order" : [[0,'desc'],[5,'asc']],
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "iDisplayLength": 25,
-    "columnDefs": [{
-    // orderable: false,
-    // targets: [8,9],
-    }],
+    "columnDefs": [
+      {targets: [3,4,7,12,13,14,15,16,17,18,20,-1],
+           visible: false}
+    ],
     "ajax" : {
-     url:"../dataManage/analysisPtView/fetch.php",
+     url:"../dataManage/analysisPwView/fetch.php",
      type:"POST"
    },
    dom: "<'row'<'col-sm-12 col-md-auto'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4 ml-auto'f>>" +

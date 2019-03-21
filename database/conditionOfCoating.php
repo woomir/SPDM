@@ -89,9 +89,13 @@ table {
            <i class="fas fa-flask"></i>&nbsp;&nbsp;Lab powder
            </a>
            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+             <h6 class="dropdown-header">Database</h6>
              <a class="dropdown-item" href=#>Conditions of Manu</a>
              <a class="dropdown-item" href="conditionOfCoating.php">Conditions of Coating</a>
              <a class="dropdown-item" href="analysisPw.php">Analysis</a>
+             <div class="dropdown-divider"></div>
+             <h6 class="dropdown-header">Report</h6>
+             <a class="dropdown-item" href="analysisPwView.php">Analysis</a>
            </div>
          </li>
          <li class="nav-item dropdown">
@@ -151,11 +155,11 @@ table {
                     <th width="">Lot<br>No</th>
                     <th width="">Amount</th>
                     <th width="">세척<br>조건</th>
-                    <th width="">환원제<br>이름</th>
+                    <th width="">환원제</th>
                     <th width="">환원제<br>비율</th>
                     <th width="">환원제<br>사용량</th>
                     <th width="">환원제<br>Lot</th>
-                    <th width="">Amine<br>이름</th>
+                    <th width="">Amine</th>
                     <th width="">Amine<br>사용량</th>
                     <th width="">코팅제1</th>
                     <th width="">코팅제1<br>비율</th>

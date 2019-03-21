@@ -89,9 +89,13 @@ table {
         <i class="fas fa-flask"></i>&nbsp;&nbsp;Lab powder
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <h6 class="dropdown-header">Database</h6>
           <a class="dropdown-item" href=#>Conditions of Manu</a>
           <a class="dropdown-item" href="conditionOfCoating.php">Conditions of Coating</a>
           <a class="dropdown-item" href="analysisPw.php">Analysis</a>
+          <div class="dropdown-divider"></div>
+          <h6 class="dropdown-header">Report</h6>
+          <a class="dropdown-item" href="analysisPwView.php">Analysis</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -160,7 +164,7 @@ table {
               </div>
           </div>
         </div>
-      </div> 
+      </div>
 
       <!-- Sticky Footer -->
       <footer class="sticky-footer">
