@@ -79,8 +79,12 @@ table {
            <i class="fas fa-industry"></i>&nbsp;&nbsp;Mass powder
            </a>
            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+             <h6 class="dropdown-header">Database</h6>
              <a class="dropdown-item" href="makePwMass.php">Conditions of Manu</a>
              <a class="dropdown-item" href="analysisPwMass.php">Analysis</a>
+             <div class="dropdown-divider"></div>
+             <h6 class="dropdown-header">Report</h6>
+             <a class="dropdown-item" href="analysisPwMassView.php">Analysis</a>
            </div>
          </li>
          <li class="nav-item dropdown">
@@ -123,8 +127,8 @@ table {
         <div class="card mb-3">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item">Databases</li>
                 <li class="breadcrumb-item">Mass Powder</li>
+                <li class="breadcrumb-item">Database</li>
                 <li class="breadcrumb-item active" aria-current="page">Conditions of Manu</li>
               </ol>
             </nav>
