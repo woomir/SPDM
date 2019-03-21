@@ -78,8 +78,8 @@ while($row = mysqli_fetch_array($result))
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="tIgl">' . sprintf("%.2f",$row["tIgl"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="pIgl">' . sprintf("%.2f",$row["pIgl"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="cIgl">' . sprintf("%.2f",$row["cIgl"]) . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="dtaPeak">' . sprintf("%.2f",$row["dtaPeak"]) . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="enthalphy">' . sprintf("%.2f",$row["enthalphy"]) . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="dtaPeak">' . sprintf("%.1f",$row["dtaPeak"]) . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="enthalphy">' . sprintf("%.1f",$row["enthalphy"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="bet">' . sprintf("%.2f",$row["bet"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="td">' . sprintf("%.1f",$row["td"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="xrd">' . $row["xrd"] . '</div>';

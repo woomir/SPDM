@@ -399,7 +399,7 @@ $(document).ready(function(){
     orderable: false,
     targets: [21,22]
   },
-  {targets: [3,7,13,14,-2,-3,-5],
+  {targets: [3,7,14,15,-2,-3,-5],
        visible: false}],
     "ajax" : {
      url:"../dataManage/analysisPwMass/fetch.php",
