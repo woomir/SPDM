@@ -150,6 +150,7 @@
                       <th width="">D50</th>
                       <th width="">D90</th>
                       <th width="">Dmax</th>
+                      <th>응집도</th>
                       <th width="">NC-IGL</th>
                       <th width="">QC-IGL</th>
                       <th width="">T-IGL</th>
@@ -398,7 +399,7 @@ $(document).ready(function(){
     orderable: false,
     targets: [21,22]
   },
-  {targets: [7,13,14,-2,-3,-5],
+  {targets: [3,7,13,14,-2,-3,-5],
        visible: false}],
     "ajax" : {
      url:"../dataManage/analysisPwMass/fetch.php",

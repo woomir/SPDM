@@ -3,7 +3,7 @@
 session_start();
 //fetch.php
 $connect = mysqli_connect("localhost", "root", "$52Telecast", "woomir");
-$column = array('lotNo', 'classPost', 'sizeSem', 'stdSem', 'd10', 'd50', 'd90', 'dmax',
+$column = array('lotNo', 'classPost', 'sizeSem', 'stdSem', 'd10', 'd50', 'd90', 'dmax','cohesion',
 'ncIgl', 'qcIgl', 'tIgl', 'pIgl', 'cIgl', 'dtaPeak', 'enthalphy', 'bet', 'td', 'xrd', 'pcuR', 'pcuNc', 'na', 'etc');
 $query = "SELECT * FROM analysispwmasstbl";
 
@@ -20,6 +20,7 @@ if(isset($_POST["search"]["value"]))
  OR d50 LIKE "%'.$_POST["search"]["value"].'%"
  OR d90 LIKE "%'.$_POST["search"]["value"].'%"
  OR dmax LIKE "%'.$_POST["search"]["value"].'%"
+ OR cohesion LIKE "%'.$_POST["search"]["value"].'%"
  OR ncIgl LIKE "%'.$_POST["search"]["value"].'%"
  OR qcIgl LIKE "%'.$_POST["search"]["value"].'%"
  OR tIgl LIKE "%'.$_POST["search"]["value"].'%"
@@ -71,6 +72,7 @@ while($row = mysqli_fetch_array($result))
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="d50">' . sprintf("%.2f",$row["d50"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="d90">' . sprintf("%.2f",$row["d90"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="dmax">' . sprintf("%.2f",$row["dmax"]) . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="cohesion">' . $row["cohesion"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ncIgl">' . sprintf("%.2f",$row["ncIgl"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="qcIgl">' . sprintf("%.2f",$row["qcIgl"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="tIgl">' . sprintf("%.2f",$row["tIgl"]) . '</div>';
