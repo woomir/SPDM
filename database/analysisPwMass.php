@@ -151,7 +151,7 @@
                    <thead align="center">
                     <tr>
                       <th width="">Lot No </th>
-                      <th width="">후처리<br />공정</th>
+                      <th>Powder<br>Type</th>
                       <th width="">SEM<br />size </th>
                       <th width="">STD</th>
                       <th width="">D10</th>
