@@ -440,7 +440,7 @@ table {
                      </div>
                      <div class="col-md-3">
                       <label>코팅전 pH</label>
-                      <input type="number" name="pHBeforeCoating" id="pHBeforeCoating" class="form-control" />
+                      <input type="number" name="pHBeforeCoating" id="pHBeforeCoating" class="form-control" step="0.1"/>
                     </div>
                     <div class="col-md-3">
                      <label>실험담당자</label>
