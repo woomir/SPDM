@@ -41,62 +41,78 @@ table {
 </head>
 <?php
  if(isset($_SESSION['id']) && isset($_SESSION['password'])){?>
-<body id="page-top">
-  <nav class="navbar navbar-expand navbar-light" style="background-color: #ffde00; height:60px;">
-    <a class="navbar-brand mr-2" href="" style="font-size:150%; font-weight:600;"><i class="fas fa-database"></i>&nbsp;&nbsp;Silver Powder Database Management</a>
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link active mb-0" style="font-weight:500;"><?php echo $_SESSION['id']." : ".$_SESSION['role'];?></a>
-            </li>
-            <li class="nav-item dropdown no-arrow">
-                <a class="nav-link" href="#" id="userDropdown" role="button" data-toggle="tooltip" data-placement="bottom" title="Password Change" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-cog"></i>
-                </a>
-            </li>
-            &nbsp; &nbsp; <button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#logoutModal">Logout</button>
-          </ul>
-  </nav>
+   <body id="page-top">
+     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffde00; height:60px;">
+       <a class="navbar-brand" href="" style="font-size:150%; font-weight:600;"><i class="fas fa-database"></i>&nbsp;&nbsp;Silver Powder Database Management</a>
+       <button class=" navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-haspopup="true" aria-expanded="false">
+       <span class="navbar-toggler-icon"></span>
+       </button>
 
-  <nav class="navbar navbar-expand navbar-dark bg-dark" style="height:40px; padding-left: 80px;">
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown">
-        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 160px; margin-right: 30px;">
-        <i class="fas fa-industry"></i>&nbsp;&nbsp;Mass powder
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="makePwMass.php">Conditions of Manu</a>
-          <a class="dropdown-item" href="analysisPwMass.php">Analysis</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 145px; margin-right: 30px;">
-        <i class="fas fa-flask"></i>&nbsp;&nbsp;Lab powder
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href=#>Conditions of Manu</a>
-          <a class="dropdown-item" href="conditionOfCoating.php">Conditions of Coating</a>
-          <a class="dropdown-item" href="analysisPw.php">Analysis</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 110px; margin-right: 30px;">
-        <i class="fas fa-solar-panel"></i>&nbsp;&nbsp;Paste
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <h6 class="dropdown-header">Database</h6>
-          <a class="dropdown-item" href="recipe.php">Recipe</a>
-          <a class="dropdown-item" href="listofManu.php">List of Manu</a>
-          <a class="dropdown-item" href="analysisPt.php">Analysis</a>
-          <div class="dropdown-divider"></div>
-          <h6 class="dropdown-header">Report</h6>
-          <a class="dropdown-item" href="analysisPtView.php">Analysis</a>
-          <a class="dropdown-item disabled" href="#">Chart (preparing)</a>
-        </div>
-      </li>
-    </ul>
-  </div>
-</nav> <br>
+     <div class="collapse navbar-collapse" id="navbarNav">
+           <ul class="navbar-nav ml-auto">
+             <li class="nav-item">
+               <a class="nav-link active" style="font-weight:500;"><?php echo $_SESSION['id']." : ".$_SESSION['role'];?></a>
+             </li>
+             <li class="nav-item">
+                 <a class="nav-link" href="#" id="userDropdown" role="button" data-toggle="tooltip" data-placement="bottom" title="Password Change" aria-haspopup="true" aria-expanded="false">
+                 <i class="fas fa-cog"></i>
+                 </a>
+             </li>
+             <li>
+             &nbsp; &nbsp; <button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#logoutModal">Logout</button>
+             </li>
+           </ul>
+     </div>
+     </nav>
+
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height:40px; padding-left: 40px;">
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+       </button>
+     <div class="collapse navbar-collapse" id="navbarMenu">
+       <ul class="navbar-nav">
+         <li class="nav-item active">
+           <a class="nav-link" href="#" style="width: 90px; margin-right: 30px;">
+             <i class="fas fa-home"></i>&nbsp;&nbsp;Home</a>
+         </li>
+         <li class="nav-item dropdown">
+           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 160px; margin-right: 30px;">
+           <i class="fas fa-industry"></i>&nbsp;&nbsp;Mass powder
+           </a>
+           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+             <a class="dropdown-item" href="makePwMass.php">Conditions of Manu</a>
+             <a class="dropdown-item" href="analysisPwMass.php">Analysis</a>
+           </div>
+         </li>
+         <li class="nav-item dropdown">
+           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 145px; margin-right: 30px;">
+           <i class="fas fa-flask"></i>&nbsp;&nbsp;Lab powder
+           </a>
+           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+             <a class="dropdown-item" href=#>Conditions of Manu</a>
+             <a class="dropdown-item" href="conditionOfCoating.php">Conditions of Coating</a>
+             <a class="dropdown-item" href="analysisPw.php">Analysis</a>
+           </div>
+         </li>
+         <li class="nav-item dropdown">
+           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+           style="width: 110px; margin-right: 30px;">
+           <i class="fas fa-solar-panel"></i>&nbsp;&nbsp;Paste
+           </a>
+           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+             <h6 class="dropdown-header">Database</h6>
+             <a class="dropdown-item" href="recipe.php">Recipe</a>
+             <a class="dropdown-item" href="listofManu.php">List of Manu</a>
+             <a class="dropdown-item" href="analysisPt.php">Analysis</a>
+             <div class="dropdown-divider"></div>
+             <h6 class="dropdown-header">Report</h6>
+             <a class="dropdown-item" href="analysisPtView.php">Analysis</a>
+             <a class="dropdown-item disabled" href="#">Chart (preparing)</a>
+           </div>
+         </li>
+       </ul>
+     </div>
+   </nav> <br>
 
 <div id="wrapper">
     <div id="content-wrapper">
