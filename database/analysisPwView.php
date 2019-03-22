@@ -28,7 +28,8 @@ footer.sticky-footer {
   right: 0;
   bottom: 0;
   width: 100%;
-  height: 50px;
+  height: 30px;
+  font-size: 10px;
   background-color: #e9ecef;
 }
 table {
@@ -80,7 +81,7 @@ table {
            </a>
            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
              <h6 class="dropdown-header">Database</h6>
-             <a class="dropdown-item" href="makePwMass.php">Conditions of Manu</a>
+             <a class="dropdown-item" href="makePwMass.php">Manufacturing</a>
              <a class="dropdown-item" href="analysisPwMass.php">Analysis</a>
              <div class="dropdown-divider"></div>
              <h6 class="dropdown-header">Report</h6>
@@ -93,12 +94,12 @@ table {
            </a>
            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
              <h6 class="dropdown-header">Database</h6>
-             <a class="dropdown-item" href=#>Conditions of Manu</a>
-             <a class="dropdown-item" href="conditionOfCoating.php">Conditions of Coating</a>
+             <a class="dropdown-item" href=#>Manufacturing</a>
+             <a class="dropdown-item" href="conditionOfCoating.php">Coating</a>
              <a class="dropdown-item" href="analysisPw.php">Analysis</a>
              <div class="dropdown-divider"></div>
              <h6 class="dropdown-header">Report</h6>
-             <a class="dropdown-item" href="analysisPwView.php">Analysis</a>
+             <a class="dropdown-item" href="analysisPwView.php">Data Analysis</a>
            </div>
          </li>
          <li class="nav-item dropdown">
@@ -109,12 +110,11 @@ table {
            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
              <h6 class="dropdown-header">Database</h6>
              <a class="dropdown-item" href="recipe.php">Recipe</a>
-             <a class="dropdown-item" href="listofManu.php">List of Manu</a>
+             <a class="dropdown-item" href="listofManu.php">List</a>
              <a class="dropdown-item" href="analysisPt.php">Analysis</a>
              <div class="dropdown-divider"></div>
              <h6 class="dropdown-header">Report</h6>
-             <a class="dropdown-item" href="analysisPtView.php">Analysis</a>
-             <a class="dropdown-item disabled" href="#">Chart (preparing)</a>
+             <a class="dropdown-item" href="analysisPtView.php">Data Analysis</a>
            </div>
          </li>
        </ul>

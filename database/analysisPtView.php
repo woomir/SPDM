@@ -28,7 +28,8 @@ footer.sticky-footer {
   right: 0;
   bottom: 0;
   width: 100%;
-  height: 50px;
+  height: 30px;
+  font-size: 10px;
   background-color: #e9ecef;
 }
 table {
@@ -80,7 +81,7 @@ table {
            </a>
            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
              <h6 class="dropdown-header">Database</h6>
-             <a class="dropdown-item" href="makePwMass.php">Conditions of Manu</a>
+             <a class="dropdown-item" href="makePwMass.php">Manufacturing</a>
              <a class="dropdown-item" href="analysisPwMass.php">Analysis</a>
              <div class="dropdown-divider"></div>
              <h6 class="dropdown-header">Report</h6>
@@ -93,12 +94,12 @@ table {
            </a>
            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
              <h6 class="dropdown-header">Database</h6>
-             <a class="dropdown-item" href=#>Conditions of Manu</a>
-             <a class="dropdown-item" href="conditionOfCoating.php">Conditions of Coating</a>
+             <a class="dropdown-item" href=#>Manufacturing</a>
+             <a class="dropdown-item" href="conditionOfCoating.php">Coating</a>
              <a class="dropdown-item" href="analysisPw.php">Analysis</a>
              <div class="dropdown-divider"></div>
              <h6 class="dropdown-header">Report</h6>
-             <a class="dropdown-item" href="analysisPwView.php">Analysis</a>
+             <a class="dropdown-item" href="analysisPwView.php">Data Analysis</a>
            </div>
          </li>
          <li class="nav-item dropdown">
@@ -109,185 +110,179 @@ table {
            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
              <h6 class="dropdown-header">Database</h6>
              <a class="dropdown-item" href="recipe.php">Recipe</a>
-             <a class="dropdown-item" href="listofManu.php">List of Manu</a>
+             <a class="dropdown-item" href="listofManu.php">List</a>
              <a class="dropdown-item" href="analysisPt.php">Analysis</a>
              <div class="dropdown-divider"></div>
              <h6 class="dropdown-header">Report</h6>
-             <a class="dropdown-item" href="analysisPtView.php">Analysis</a>
-             <a class="dropdown-item disabled" href="#">Chart (preparing)</a>
+             <a class="dropdown-item" href="analysisPtView.php">Data Analysis</a>
            </div>
          </li>
        </ul>
      </div>
    </nav> <br>
 
+
 <div id="wrapper">
-    <div id="content-wrapper">
-      <div class="container-fluid">
-        <div class="card mb-3">
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item">Paste</li>
-                <li class="breadcrumb-item">Report</li>
-                <li class="breadcrumb-item active" aria-current="page">Analysis</li>
-              </ol>
-            </nav>
-          <div class="card-body">
-            <?php
-            settype($_SESSION['role_id'],'int');
-            ?>
-            <div class="row justify-content-between">
-              <div class="col-4">
-                <h3>Paste 분석 데이터 정리</h3>
-              </div>
-            </div> <br>
-              <div class="table-responsive">
-                 <div id="alert_message"></div>
-                <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover" style="width: 100%;">
-                 <thead align="center">
-                  <tr>
-                    <th>Paste No</th>
-                    <th>Powder Lot</th>
-                    <th>Powder Type</th>
-                    <th>object</th>
-                    <th>배합</th>
-                    <th>Aging Time</th>
-                    <th>1rpm</th>
-                    <th>10rpm</th>
-                    <th>30rpm</th>
-                    <th>100rpm</th>
-                    <th>Aging 10rpm</th>
-                    <th>Aging 30rpm</th>
-                    <th>G' Low</th>
-                    <th>G' High</th>
-                    <th>YSP</th>
-                    <th>Aging G' Low</th>
-                    <th>Aging G' High</th>
-                    <th>Aging YSP</th>
-                   </tr>
-                  </thead>
-                </table>
-              </div>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
+   <div id="content-wrapper">
+     <div class="container-fluid">
+       <div class="card mb-3">
+           <nav aria-label="breadcrumb">
+             <ol class="breadcrumb">
+               <li class="breadcrumb-item">Paste</li>
+               <li class="breadcrumb-item">Report</li>
+               <li class="breadcrumb-item active" aria-current="page">Analysis</li>
+             </ol>
+           </nav>
+         <div class="card-body">
+           <?php
+           settype($_SESSION['role_id'],'int');
+           ?>
+           <div class="row justify-content-between">
+             <div class="col-4">
+               <h3>Paste 분석 데이터 정리</h3>
+             </div>
+           </div> <br>
+             <div class="table-responsive">
+                <div id="alert_message"></div>
+               <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover" style="width: 100%;">
+                <thead align="center">
+                 <tr>
+                   <th>Paste No</th>
+                   <th>Powder Lot</th>
+                   <th>Powder Type</th>
+                   <th>object</th>
+                   <th>배합</th>
+                   <th>Aging Time</th>
+                   <th>1rpm</th>
+                   <th>10rpm</th>
+                   <th>30rpm</th>
+                   <th>100rpm</th>
+                   <th>Aging 10rpm</th>
+                   <th>Aging 30rpm</th>
+                   <th>G' Low</th>
+                   <th>G' High</th>
+                   <th>YSP</th>
+                   <th>Aging G' Low</th>
+                   <th>Aging G' High</th>
+                   <th>Aging YSP</th>
+                  </tr>
+                 </thead>
+               </table>
+             </div>
+         </div>
+       </div>
+     </div><!-- /.container-fluid -->
 
-      <!-- Sticky Footer -->
-      <footer class="sticky-footer">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright © WOOMIR 2019</span>
-          </div>
-        </div>
-      </footer>
+     <!-- Sticky Footer -->
+     <footer class="sticky-footer">
+       <div class="container my-auto">
+         <div class="copyright text-center my-auto">
+           <span>Copyright © WOOMIR 2019</span>
+         </div>
+       </div>
+     </footer>
 
-    </div> <!-- /.content-wrapper -->
-  </div> <!-- /#wrapper -->
+   </div> <!-- /.content-wrapper -->
+ </div> <!-- /#wrapper -->
 
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="../logout.php">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
+ <!-- Logout Modal-->
+ <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">×</span>
+         </button>
+       </div>
+       <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+       <div class="modal-footer">
+         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+         <a class="btn btn-primary" href="../logout.php">Logout</a>
+       </div>
+     </div>
+   </div>
+ </div>
 
 <?php }else{ ?>
 
 <!-- invalid access-->
 <div class="card card-login mt-5 mx-auto">
-     <div class="card text-center">
-       <div class="card-header">
-         Silver Powder Databases Management
-       </div>
-       <div class="card-body">
-         <h5 class="card-title">Login Failed</h5>
-         <p class="card-text">Invaild access</p>
-         <a href="../index.html" class="btn btn-primary">Go login</a>
-       </div>
-     </div>
- </div>
+    <div class="card text-center">
+      <div class="card-header">
+        Silver Powder Databases Management
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Login Failed</h5>
+        <p class="card-text">Invaild access</p>
+        <a href="../index.html" class="btn btn-primary">Go login</a>
+      </div>
+    </div>
+</div>
 <?php }
 ?>
 
 </body>
 </html>
 
- <script src="../js/jquery-3.3.1.js"></script>
- <script src="../js/jquery.dataTables.min.js"></script>
- <script src="../js/dataTables.buttons.min.js"></script>
- <script src="../js/buttons.colVis.min.js"></script>
- <script src="../js/buttons.html5.min.js"></script>
- <script src="../js/jszip.min.js"></script>
- <script src="../js/buttons.bootstrap4.min.js"></script>
- <script src="../js/responsive.bootstrap4.min.js"></script>
- <script src="../js/dataTables.responsive.min.js"></script>
+<script src="../js/jquery-3.3.1.js"></script>
+<script src="../js/jquery.dataTables.min.js"></script>
+<script src="../js/dataTables.buttons.min.js"></script>
+<script src="../js/buttons.colVis.min.js"></script>
+<script src="../js/buttons.html5.min.js"></script>
+<script src="../js/jszip.min.js"></script>
+<script src="../js/buttons.bootstrap4.min.js"></script>
+<script src="../js/responsive.bootstrap4.min.js"></script>
+<script src="../js/dataTables.responsive.min.js"></script>
 
- <!-- Bootstrap core JavaScript-->
- <script src="../vendor/bootstrap/js/bootstrap.bundle.js"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="../vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
- <!-- Core plugin JavaScript-->
- <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
- <!-- Page level plugin JavaScript-->
- <script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
- <!-- Custom scripts for all pages-->
- <script src="../js/sb-admin.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Page level plugin JavaScript-->
+<script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="../js/sb-admin.js"></script>
 
 
 <script type="text/javascript">
 $(document).ready(function(){
-
-  fetch_data();
-
-  function fetch_data()
-  {
-   var dataTable = $('#PasteTable').DataTable({
-
-    "processing" : true,
-    "serverSide" : true,
-    "order" : [[0,'desc'],[5,'asc']],
-    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-    "iDisplayLength": 25,
-    "columnDefs": [{
-    // orderable: false,
-    // targets: [8,9],
-    }],
-    "ajax" : {
-     url:"../dataManage/analysisPtView/fetch.php",
-     type:"POST"
-   },
-   dom: "<'row'<'col-sm-12 col-md-auto'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4 ml-auto'f>>" +
-        "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-        buttons: ['copy', 'excel',
-        {
-          extend: 'colvis',
-          text: 'Show / Hide columns'
-        }]
-   });
-  }
- });
-
+ fetch_data();
+ function fetch_data()
+ {
+  var dataTable = $('#PasteTable').DataTable({
+   "processing" : true,
+   "serverSide" : true,
+   "order" : [[0,'desc'],[5,'asc']],
+   "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+   "iDisplayLength": 25,
+   "columnDefs": [{
+   // orderable: false,
+   // targets: [8,9],
+   }],
+   "ajax" : {
+    url:"../dataManage/analysisPtView/fetch.php",
+    type:"POST"
+  },
+  dom: "<'row'<'col-sm-12 col-md-auto'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4 ml-auto'f>>" +
+       "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+       buttons: ['copy', 'excel',
+       {
+         extend: 'colvis',
+         text: 'Show / Hide columns'
+       }]
+  });
+ }
+});
 //Dropdown버튼의 속도 조절
- $('.dropdown').on('show.bs.dropdown', function(e){
-   $(this).find('.dropdown-menu').first().stop(true, true).slideDown(300);
- });
-
- $('.dropdown').on('hide.bs.dropdown', function(e){
-   $(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
- });
-
- $(function () {
-   $('[data-toggle="tooltip"]').tooltip()
- });
+$('.dropdown').on('show.bs.dropdown', function(e){
+  $(this).find('.dropdown-menu').first().stop(true, true).slideDown(300);
+});
+$('.dropdown').on('hide.bs.dropdown', function(e){
+  $(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
+});
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+});
 </script>
