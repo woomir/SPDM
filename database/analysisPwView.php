@@ -18,32 +18,14 @@
       <link href="../css/dataTables.bootstrap4.min.css" rel="stylesheet"/>
       <link href="../css/buttons.bootstrap4.min.css" rel="stylesheet"/>
       <link href="../css/responsive.bootstrap4.min.css" rel="stylesheet"/>
-
-<!--sidebar class에 toggled가 있을 때 사용-->
-<style>
-footer.sticky-footer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 30px;
-  font-size: 10px;
-  background-color: #e9ecef;
-}
-table {
-  font-size: 14px;
-}
-</style>
-
+      <link href="../css/woomir_custom.css" rel="stylesheet"/>
 
 </head>
 <?php
  if(isset($_SESSION['id']) && isset($_SESSION['password'])){?>
    <body id="page-top">
-     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffde00; height:60px;">
-       <a class="navbar-brand" href="" style="font-size:150%; font-weight:600;"><i class="fas fa-database"></i>&nbsp;&nbsp;Silver Powder Database Management</a>
+     <nav id="titleNavbar" class="navbar navbar-expand-lg navbar-light" >
+       <a id="titleText" class="navbar-brand" href=""><i class="fas fa-database"></i>&nbsp;&nbsp;Silver Powder Database Management</a>
        <button class=" navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-haspopup="true" aria-expanded="false">
        <span class="navbar-toggler-icon"></span>
        </button>
@@ -51,7 +33,7 @@ table {
      <div class="collapse navbar-collapse" id="navbarNav">
            <ul class="navbar-nav ml-auto">
              <li class="nav-item">
-               <a class="nav-link active" style="font-weight:500;"><?php echo $_SESSION['id']." : ".$_SESSION['role'];?></a>
+               <a id="useridcss" class="nav-link active"><?php echo $_SESSION['id']." : ".$_SESSION['role'];?></a>
              </li>
              <li class="nav-item">
                  <a class="nav-link" href="#" id="userDropdown" role="button" data-toggle="tooltip" data-placement="bottom" title="Password Change" aria-haspopup="true" aria-expanded="false">
@@ -65,18 +47,18 @@ table {
      </div>
      </nav>
 
-     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height:40px; padding-left: 40px;">
+     <nav id="menuNavbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon"></span>
        </button>
      <div class="collapse navbar-collapse" id="navbarMenu">
        <ul class="navbar-nav">
          <li class="nav-item active">
-           <a class="nav-link" href="#" style="width: 90px; margin-right: 30px;">
+           <a id="menuHome" class="nav-link" href="#" >
              <i class="fas fa-home"></i>&nbsp;&nbsp;Home</a>
          </li>
          <li class="nav-item dropdown">
-           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 160px; margin-right: 30px;">
+           <a id="menuMasspowder" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            <i class="fas fa-industry"></i>&nbsp;&nbsp;Mass powder
            </a>
            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -89,7 +71,7 @@ table {
            </div>
          </li>
          <li class="nav-item dropdown">
-           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 145px; margin-right: 30px;">
+           <a id="menuLabpowder" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            <i class="fas fa-flask"></i>&nbsp;&nbsp;Lab powder
            </a>
            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -103,8 +85,7 @@ table {
            </div>
          </li>
          <li class="nav-item dropdown">
-           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-           style="width: 110px; margin-right: 30px;">
+           <a id="menuPaste" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            <i class="fas fa-solar-panel"></i>&nbsp;&nbsp;Paste
            </a>
            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
