@@ -1,214 +1,47 @@
-<?php session_start(); ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Silver Powder Database Management</title>
-
-      <!-- Custom fonts for this template-->
-      <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-      <link href="../css/bootstrap.css" rel="stylesheet"/>
-      <link href="../css/dataTables.bootstrap4.min.css" rel="stylesheet"/>
-      <link href="../css/buttons.bootstrap4.min.css" rel="stylesheet"/>
-      <link href="../css/responsive.bootstrap4.min.css" rel="stylesheet"/>
-      <link href="../css/woomir_custom.css" rel="stylesheet"/>
-
-</head>
-<?php
- if(isset($_SESSION['id']) && isset($_SESSION['password'])){?>
-   <body id="page-top">
-     <nav id="titleNavbar" class="navbar navbar-expand-lg navbar-light" >
-       <a id="titleText" class="navbar-brand" href=""><i class="fas fa-database"></i>&nbsp;&nbsp;Silver Powder Database Management</a>
-       <button class=" navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-haspopup="true" aria-expanded="false">
-       <span class="navbar-toggler-icon"></span>
-       </button>
-
-     <div class="collapse navbar-collapse" id="navbarNav">
-           <ul class="navbar-nav ml-auto">
-             <li class="nav-item">
-               <a id="useridcss" class="nav-link active"><?php echo $_SESSION['id']." : ".$_SESSION['role'];?></a>
-             </li>
-             <li class="nav-item">
-                 <a class="nav-link" href="#" id="userDropdown" role="button" data-toggle="tooltip" data-placement="bottom" title="Password Change" aria-haspopup="true" aria-expanded="false">
-                 <i class="fas fa-cog"></i>
-                 </a>
-             </li>
-             <li>
-             &nbsp; &nbsp; <button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#logoutModal">Logout</button>
-             </li>
-           </ul>
-     </div>
-     </nav>
-
-     <nav id="menuNavbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
-       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
-       <span class="navbar-toggler-icon"></span>
-       </button>
-     <div class="collapse navbar-collapse" id="navbarMenu">
-       <ul class="navbar-nav">
-         <li class="nav-item active">
-           <a id="menuHome" class="nav-link" href="#" >
-             <i class="fas fa-home"></i>&nbsp;&nbsp;Home</a>
-         </li>
-         <li class="nav-item dropdown">
-           <a id="menuMasspowder" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           <i class="fas fa-industry"></i>&nbsp;&nbsp;Mass powder
-           </a>
-           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-             <h6 class="dropdown-header">Database</h6>
-             <a class="dropdown-item" href="makePwMass.php">Manufacturing</a>
-             <a class="dropdown-item" href="analysisPwMass.php">Analysis</a>
-             <div class="dropdown-divider"></div>
-             <h6 class="dropdown-header">Report</h6>
-             <a class="dropdown-item" href="analysisPwMassView.php">Analysis</a>
-           </div>
-         </li>
-         <li class="nav-item dropdown">
-           <a id="menuLabpowder" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           <i class="fas fa-flask"></i>&nbsp;&nbsp;Lab powder
-           </a>
-           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-             <h6 class="dropdown-header">Database</h6>
-             <a class="dropdown-item" href=#>Manufacturing</a>
-             <a class="dropdown-item" href="conditionOfCoating.php">Coating</a>
-             <a class="dropdown-item" href="analysisPw.php">Analysis</a>
-             <div class="dropdown-divider"></div>
-             <h6 class="dropdown-header">Report</h6>
-             <a class="dropdown-item" href="analysisPwView.php">Data Analysis</a>
-           </div>
-         </li>
-         <li class="nav-item dropdown">
-           <a id="menuPaste" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           <i class="fas fa-solar-panel"></i>&nbsp;&nbsp;Paste
-           </a>
-           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-             <h6 class="dropdown-header">Database</h6>
-             <a class="dropdown-item" href="recipe.php">Recipe</a>
-             <a class="dropdown-item" href="listofManu.php">List</a>
-             <a class="dropdown-item" href="analysisPt.php">Analysis</a>
-             <div class="dropdown-divider"></div>
-             <h6 class="dropdown-header">Report</h6>
-             <a class="dropdown-item" href="analysisPtView.php">Data Analysis</a>
-           </div>
-         </li>
-       </ul>
-     </div>
-   </nav> <br>
-
-<div id="wrapper">
-    <div id="content-wrapper">
-      <div class="container-fluid">
-        <div class="card mb-3">
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item">Mass Powder</li>
-                <li class="breadcrumb-item">Database</li>
-                <li class="breadcrumb-item active" aria-current="page">Manufacturing</li>
-              </ol>
-            </nav>
-          <div class="card-body">
-            <?php
-            settype($_SESSION['role_id'],'int');
-            ?>
-            <div class="row justify-content-between">
-              <div class="col-4">
-                <h3>양산 분말 제조 조건</h3>
-              </div>
-              <div align="col-4">
-               <?php if ($_SESSION['role_id']<3){ ?>
-               <button type="button" name="add" id="add" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-info btn-xs">Add</button>&nbsp;&nbsp;&nbsp;
-             <?php } ?>
-              </div>
-            </div>
-            <br>
-              <div class="table-responsive">
-                <div id="alert_message"></div>
-                <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover" style="width: 100%;">
-                 <thead align="center">
-                  <tr>
-                    <th width="">Lot<br>No</th>
-                    <th width="">제품<br>분류</th>
-                    <th width="">특징</th>
-                    <th width="">코팅제1</th>
-                    <th width="">코팅제1<br>비율</th>
-                    <th width="">코팅제2 </th>
-                    <th width="">코팅제2<br>비율</th>
-                    <th width="">SAPA<br>비율</th>
-                    <th width="">코팅온도</th>
-                    <th>해쇄<br>투입속도</th>
-                    <th>해쇄압</th>
-                    <th>해쇄<br>회수율</th>
-                    <th>미분<br>회수율</th>
-                    <th>조분<br>회수율</th>
-                    <th width="">Etc</th>
-                    <th width="">Edit</th>
-                   </tr>
-                  </thead>
-
-                </table>
-              </div>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-
-      <!-- Sticky Footer -->
-      <footer class="sticky-footer">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright © WOOMIR 2019</span>
-          </div>
-        </div>
-      </footer>
-
-    </div> <!-- /.content-wrapper -->
-  </div> <!-- /#wrapper -->
-
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="../logout.php">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-<?php }else{ ?>
-
-<!-- invalid access-->
-<div class="card card-login mt-5 mx-auto">
-     <div class="card text-center">
-       <div class="card-header">
-         Silver Powder Databases Management
-       </div>
-       <div class="card-body">
-         <h5 class="card-title">Login Failed</h5>
-         <p class="card-text">Invaild access</p>
-         <a href="../index.html" class="btn btn-primary">Go login</a>
-       </div>
-     </div>
- </div>
-<?php }
+<?php session_start();
+   require_once('../lib/top.php');
+ if(isset($_SESSION['id']) && isset($_SESSION['password'])){
+   settype($_SESSION['role_id'],'int');
+   require_once('../lib/menu.php');
 ?>
 
-</body>
-</html>
+<div class="table-responsive">
+  <div id="alert_message"></div>
+  <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover" style="width: 100%;">
+   <thead align="center">
+    <tr>
+      <th width="">Lot<br>No</th>
+      <th width="">제품<br>분류</th>
+      <th width="">특징</th>
+      <th width="">코팅제1</th>
+      <th width="">코팅제1<br>비율</th>
+      <th width="">코팅제2 </th>
+      <th width="">코팅제2<br>비율</th>
+      <th width="">SAPA<br>비율</th>
+      <th width="">코팅온도</th>
+      <th>해쇄<br>투입속도</th>
+      <th>해쇄압</th>
+      <th>해쇄<br>회수율</th>
+      <th>미분<br>회수율</th>
+      <th>조분<br>회수율</th>
+      <th width="">Etc</th>
+      <th width="">Edit</th>
+     </tr>
+    </thead>
+  </table>
+</div>
+</div>
+</div>
+</div><!-- /.container-fluid -->
+
+  <?php
+    require_once('../lib/bottom.php');
+  }else{
+    require_once('../lib/invalid_access.php');
+  }
+  ?>
+  </body>
+  </html>
 
 <!--Modal add-->
 <div id="add_data_Modal" class="modal fade" tabindex="-1" role="dialog">
@@ -219,7 +52,6 @@
                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                        <span aria-hidden="true">×</span>
                      </button>
-
                 </div>
                 <div class="modal-body">
                   <div class="container-fluid">
@@ -258,7 +90,6 @@
                        </div>
                        </div>
                        </br>
-
                        <div class="row">
                          <div class="col-md-3">
                            <label>SAPA 비율</label>
@@ -313,26 +144,9 @@
       </div>
  </div>
 
- <script src="../js/jquery-3.3.1.js"></script>
- <script src="../js/jquery.dataTables.min.js"></script>
- <script src="../js/dataTables.buttons.min.js"></script>
- <script src="../js/buttons.colVis.min.js"></script>
- <script src="../js/buttons.html5.min.js"></script>
- <script src="../js/jszip.min.js"></script>
- <script src="../js/buttons.bootstrap4.min.js"></script>
- <script src="../js/responsive.bootstrap4.min.js"></script>
- <script src="../js/dataTables.responsive.min.js"></script>
-
- <!-- Bootstrap core JavaScript-->
- <script src="../vendor/bootstrap/js/bootstrap.bundle.js"></script>
-
- <!-- Core plugin JavaScript-->
- <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
- <!-- Page level plugin JavaScript-->
- <script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
- <!-- Custom scripts for all pages-->
- <script src="../js/sb-admin.js"></script>
-
+ <?php
+ require_once('../lib/script_src.php');
+ ?>
 
 <script type="text/javascript">
 $(document).ready(function(){
@@ -461,18 +275,5 @@ $(document).ready(function(){
                  }
             });
 
- });
-
-//Dropdown버튼의 속도 조절
- $('.dropdown').on('show.bs.dropdown', function(e){
-   $(this).find('.dropdown-menu').first().stop(true, true).slideDown(300);
- });
-
- $('.dropdown').on('hide.bs.dropdown', function(e){
-   $(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
- });
-
- $(function () {
-   $('[data-toggle="tooltip"]').tooltip()
  });
 </script>
