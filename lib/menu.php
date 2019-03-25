@@ -78,7 +78,7 @@
 </nav> <br>
 
 <?php
-$uri = substr($_SERVER['REQUEST_URI'],23);
+$uri = substr($_SERVER['REQUEST_URI'],15);
 $bread = [];
 if ($uri == 'makePwMass.php'){
   $bread = ['Mass Powder', 'Database', 'Manufacturing', '양산 분말 제조 조건'];
@@ -121,9 +121,9 @@ if ($uri == 'makePwMass.php'){
               <div class="col-4">
                 <h3><?php echo $bread[3]; ?></h3>
               </div>
-              <div align="col-4">
-               <?php if ($_SESSION['role_id']<3){ ?>
-               <button type="button" name="add" id="add" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-info btn-xs">Add</button>&nbsp;&nbsp;&nbsp;
-             <?php } ?>
-              </div>
+                <div align="col-4">
+                <?php if ($_SESSION['role_id']<3){ ?>
+                <button type="button" name="add" id="add" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-info btn-xs">Add</button>&nbsp;&nbsp;&nbsp;
+                  <?php } ?>
+                </div>
             </div> <br>

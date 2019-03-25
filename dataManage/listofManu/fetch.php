@@ -7,8 +7,6 @@ $column = array('pasteNo', 'powderLot', 'powderType', 'dateMake', 'maker',
 'object', 'amount', 'recipe', 'etc');
 $query = "SELECT * FROM makelistpastetbl";
 
-
-
 if(isset($_POST["search"]["value"]))
 {
  $query .= '
@@ -76,7 +74,6 @@ $query = "SELECT * FROM makelistpastetbl";
  $result = mysqli_query($connect, $query);
  return mysqli_num_rows($result);
 }
-
 $output = array(
  "draw"    => intval($_POST["draw"]),
  "recordsTotal"  =>  get_all_data($connect),
@@ -84,8 +81,5 @@ $output = array(
  "data"    => $data
 
 );
-
 echo json_encode($output);
-
-
 ?>

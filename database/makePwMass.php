@@ -15,7 +15,7 @@
       <th width="">특징</th>
       <th width="">코팅제1</th>
       <th width="">코팅제1<br>비율</th>
-      <th width="">코팅제2 </th>
+      <th width="">코팅제2</th>
       <th width="">코팅제2<br>비율</th>
       <th width="">SAPA<br>비율</th>
       <th width="">코팅온도</th>
