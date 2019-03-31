@@ -28,11 +28,11 @@ table {
 
 #menuNavbar{
   background-color: #333;
-    top: 60px;
-    z-index: 70;
-    position: fixed;
-    width: 100%;
-    left: 0;
+  top: 60px;
+  z-index: 70;
+  position: fixed;
+  width: 100%;
+  left: 0;
 }
 
 #menuHome{
