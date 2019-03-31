@@ -1,5 +1,83 @@
+<style>
+header {
+  background-color:#ffde00; 
+  height:50px;
+  padding: 12px 15px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 1000;
+}
+
+.brand-main{
+  width:500px;
+  font-size: 25px; 
+  font-weight:bold; 
+  float:left; 
+  text-decoration:none; 
+  pointer-events: none; 
+  color:black;
+  display: inline-block;
+  margin: 0 auto;
+  height: 50px;
+  vertical-align: middle;
+}
+ul.action-list{
+  float: right;
+    list-style: none;
+    margin: 0;
+
+}
+li.action{
+  display: block;
+  float: left;
+  position: relative;
+  height: 36px;
+  margin: 0;
+  padding: 0 4px;
+}
+
+#userDropdown{
+  color:black;
+}
+
+</style>
+
 <body id="page-top">
-  <nav id="titleNavbar" class="navbar navbar-expand-lg navbar-light" >
+<header class="site-header">
+
+  <a href="#" class="brand-main">
+    <i class="fas fa-database" style="padding: 8px;"></i>
+    <span>Silver Powder Database Management</span>
+  </a>
+  
+  <a href="#" class="nav-toggle" style="display:none;">
+    <div class="hamburger hamburger--arrowturn">
+      <div class="hamburger-box">
+        <div class="hamburger-inner"></div>
+      </div>
+    </div>
+  </a>
+
+  <ul class="action-list">
+          <li class="action" >
+            <a id="useridcss" style="margin: 10px 0px 0px 0px;"><?php echo $_SESSION['id']." : ".$_SESSION['role'];?></a>
+          </li>
+          <li class="action">
+              <a class="" href="#" id="userDropdown" role="button" data-toggle="tooltip" data-placement="bottom" title="Password Change" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-cog"></i>
+              </a>
+          </li>
+          <li class="action">
+              <button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#logoutModal" style="margin-left:20px;">Logout</button>
+          </li>
+  </ul>
+
+</header> 
+
+
+<!-- <nav id="titleNavbar" class="navbar navbar-expand-lg navbar-light" >
     <a id="titleText" class="navbar-brand" href=""><i class="fas fa-database"></i>&nbsp;&nbsp;Silver Powder Database Management</a>
     <button class=" navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-haspopup="true" aria-expanded="false">
     <span class="navbar-toggler-icon"></span>
@@ -20,9 +98,9 @@
           </li>
         </ul>
   </div>
-  </nav>
+  </nav> -->
 
-  <nav id="menuNavbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav id="menuNavbar" class="navbar navbar-expand-lg navbar-dark bg-dark" style="clear:both; position: fixed;">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>

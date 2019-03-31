@@ -14,7 +14,7 @@ table {
 }
 
 #titleNavbar {
-  background-color: #ffde00; height:60px;
+  background-color: #ffde00; height:50px;
 }
 
 #titleText{
@@ -22,11 +22,17 @@ table {
 }
 
 #useridcss{
-  font-weight:500;
+  font-weight:600;
+  margin: 5px;
 }
 
 #menuNavbar{
-  height:40px; padding-left: 40px;
+  background-color: #333;
+    top: 60px;
+    z-index: 70;
+    position: fixed;
+    width: 100%;
+    left: 0;
 }
 
 #menuHome{
