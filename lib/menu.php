@@ -1,13 +1,14 @@
 <style>
 header {
   background-color:#ffde00; 
-  height:50px;
-  padding: 12px 15px;
+  height:60px;
+  padding: 0px 0px;
   width: 100%;
   top: 0;
   left: 0;
   position: fixed;
   z-index: 1000;
+  display: block;
 }
 
 .brand-main{
@@ -19,88 +20,133 @@ header {
   pointer-events: none; 
   color:black;
   display: inline-block;
-  margin: 0 auto;
+  top: 10px;  
   height: 50px;
-  vertical-align: middle;
-}
-ul.action-list{
-  float: right;
-    list-style: none;
-    margin: 0;
+  position: relative;
+  padding-left: 20px;
 
+}
+
+ul.action-list{
+  display: inline-block;
+  list-style: none;
+  top: 10px;
+  right: 10px;
+  margin: 0;
+  height: 50px;
+  position: relative;
+  float: right;
 }
 li.action{
   display: block;
   float: left;
   position: relative;
-  height: 36px;
+  height: 40px;
   margin: 0;
-  padding: 0 4px;
+  padding: 5px 8px;
+}
+
+#logoutbtn{
+  height: 30px;
+}
+
+#useridcss{
+  font-weight:600;
+  position: relative;
+  top: 2px;
 }
 
 #userDropdown{
   color:black;
 }
 
+#wrapper{
+  position: absolute; 
+  top: 120px; 
+  width: 100%;
+}
+
+.nav-item:hover{
+  background-color: #3C3B3B;
+}
+.nav-link:active{
+  color: #ffde00;
+}
+
+#menuNavbar{
+  background-color: #333;
+  top: 60px;
+  z-index: 70;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  height: 50px;
+  padding: 0px 0px;
+}
+
+#navbarMenu{
+  padding: 0px 15px;
+  margin: 0;
+}
+
+#menuHome{
+  width: 100px; 
+  padding: 5px 5px;
+  top: 5px;
+  position: relative;
+}
+
+#menuMasspowder{
+  width: 160px; 
+  padding: 10px 10px;
+  margin: 0px 10px 0px 10px;
+}
+#menuLabpowder{
+   width: 145px; 
+   padding: 10px 10px;
+   margin: 0px 10px 0px 10px;
+}
+#menuPaste{
+  width: 110px; 
+  padding: 10px 10px;
+  margin: 0px 10px 0px 10px;
+}
+
 </style>
 
 <body id="page-top">
-<header class="site-header">
-
-  <a href="#" class="brand-main">
-    <i class="fas fa-database" style="padding: 8px;"></i>
-    <span>Silver Powder Database Management</span>
-  </a>
-  
-  <a href="#" class="nav-toggle" style="display:none;">
-    <div class="hamburger hamburger--arrowturn">
-      <div class="hamburger-box">
-        <div class="hamburger-inner"></div>
+  <header class="site-header">
+    <a href="#" class="brand-main">
+      <i class="fas fa-database" ></i>
+      <span>Silver Powder Database Management</span>
+    </a>
+    
+    <a href="#" class="nav-toggle" style="display:none;">
+      <div class="hamburger hamburger--arrowturn">
+        <div class="hamburger-box">
+          <div class="hamburger-inner"></div>
+        </div>
       </div>
-    </div>
-  </a>
+    </a>
 
-  <ul class="action-list">
-          <li class="action" >
-            <a id="useridcss" style="margin: 10px 0px 0px 0px;"><?php echo $_SESSION['id']." : ".$_SESSION['role'];?></a>
-          </li>
-          <li class="action">
-              <a class="" href="#" id="userDropdown" role="button" data-toggle="tooltip" data-placement="bottom" title="Password Change" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-cog"></i>
-              </a>
-          </li>
-          <li class="action">
-              <button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#logoutModal" style="margin-left:20px;">Logout</button>
-          </li>
-  </ul>
+    <ul class="action-list">
+      <li class="action" >
+        <div id="useridcss"><?php echo $_SESSION['id']." : ".$_SESSION['role'];?></div>
+      </li>
+      <li class="action">
+        <div style="position: relative; top: 2px;"> 
+          <a class="" href="#" id="userDropdown" role="button" data-toggle="tooltip" data-placement="bottom" title="Password Change" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-cog"></i>
+          </a>
+        </div>
+      </li>
+      <li class="action">
+          <button id="logoutbtn" type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#logoutModal">Logout</button>
+      </li>
+    </ul>
+  </header>   
 
-</header> 
-
-
-<!-- <nav id="titleNavbar" class="navbar navbar-expand-lg navbar-light" >
-    <a id="titleText" class="navbar-brand" href=""><i class="fas fa-database"></i>&nbsp;&nbsp;Silver Powder Database Management</a>
-    <button class=" navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-haspopup="true" aria-expanded="false">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-
-  <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a id="useridcss" class="nav-link active"><?php echo $_SESSION['id']." : ".$_SESSION['role'];?></a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="#" id="userDropdown" role="button" data-toggle="tooltip" data-placement="bottom" title="Password Change" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-cog"></i>
-              </a>
-          </li>
-          <li>
-          &nbsp; &nbsp; <button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#logoutModal">Logout</button>
-          </li>
-        </ul>
-  </div>
-  </nav> -->
-
-  <nav id="menuNavbar" class="navbar navbar-expand-lg navbar-dark bg-dark" >
+  <nav id="menuNavbar" class="navbar navbar-expand-lg navbar-dark">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
@@ -110,7 +156,7 @@ li.action{
         <a id="menuHome" class="nav-link" href="#" >
           <i class="fas fa-home"></i>&nbsp;&nbsp;Home</a>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown active">
         <a id="menuMasspowder" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-industry"></i>&nbsp;&nbsp;Mass powder
         </a>
@@ -123,7 +169,7 @@ li.action{
           <a class="dropdown-item" href="analysisPwMassView.php">Data Analysis</a>
         </div>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown active">
         <a id="menuLabpowder" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-flask"></i>&nbsp;&nbsp;Lab powder
         </a>
@@ -137,7 +183,7 @@ li.action{
           <a class="dropdown-item" href="analysisPwView.php">Data Analysis</a>
         </div>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown active">
         <a id="menuPaste" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-solar-panel"></i>&nbsp;&nbsp;Paste
         </a>

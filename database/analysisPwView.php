@@ -77,7 +77,7 @@ $(document).ready(function(){
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "iDisplayLength": 25,
     "columnDefs": [
-      {targets: [3,4,7,12,13,14,15,16,17,18,20,-1],
+      {targets: [3,4,6,12,13,14,15,16,17,18,20,-1],
            visible: false}
     ],
     "ajax" : {
