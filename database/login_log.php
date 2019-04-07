@@ -32,9 +32,3 @@
 <?php
 require_once('../lib/script_src.php');
 ?>
-
-<script type="text/javascript">
-$(document).ready(function(){
-
- });
-</script>
