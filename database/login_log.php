@@ -7,7 +7,7 @@
 
 <div class="table-responsive">
    <div id="alert_message"></div>
-  <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover" style="width: 100%;">
+  <table id="login-log-table" class="table table-bordered table-striped table-sm table-hover" style="width: 100%;">
    <thead align="center">
     <tr>
       <th>이름</th>
@@ -32,3 +32,31 @@
 <?php
 require_once('../lib/script_src.php');
 ?>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+  fetch_data();
+
+  function fetch_data()
+  {
+   var dataTable = $('#login-log-table').DataTable({
+    "processing" : true,
+    "serverSide" : true,
+    "order" : [[0,'asc']],
+    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    "iDisplayLength": 25,
+    "columnDefs": [{
+    //orderable: false,
+    //targets: [8,9],
+    }],
+    "ajax" : {
+     url:"../dataManage/Admin/login-log-fetch.php",
+     type:"POST"
+   }
+   });
+  }
+ });
+
+</script>

@@ -35,7 +35,10 @@
        $result = mysqli_query($conn,$query);
        $user = mysqli_fetch_assoc($result);
        $_SESSION['username']=$user['username'];
+       $conn_user = $user['username'];
        $_SESSION['role_id']=$user['role_id'];
+       $query_login = "INSERT INTO connect (username) VALUES ('".$conn_user."');";
+       mysqli_query($conn,$query_login);
 
 
        if(password_verify($p, $user['password'])){

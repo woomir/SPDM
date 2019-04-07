@@ -54,7 +54,7 @@ $(document).ready(function(){
     //targets: [8,9],
     }],
     "ajax" : {
-     url:"../dataManage/Admin/fetch.php",
+     url:"../dataManage/Admin/users-fetch.php",
      type:"POST"
    }
    });
