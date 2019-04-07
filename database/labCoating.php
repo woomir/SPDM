@@ -313,7 +313,7 @@ $(document).ready(function(){
     targets: [42,43],
   }],
     "ajax" : {
-     url:"../dataManage/conditionOfCoating/fetch.php",
+     url:"../dataManage/labCoating/fetch.php",
      type:"POST"
    },
    dom: "<'row'<'col-sm-12 col-md-auto'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4 ml-auto'f>>" +
@@ -338,7 +338,7 @@ $(document).ready(function(){
       $(document).on('click', '.edit_data', function(){
            var id = $(this).attr("id");
            $.ajax({
-                url:"../dataManage/conditionOfCoating/edit.php",
+                url:"../dataManage/labCoating/edit.php",
                 method:"POST",
                 data:{id:id},
                 dataType:"json",
@@ -411,7 +411,7 @@ $(document).ready(function(){
            else
            {
                 $.ajax({
-                     url:"../dataManage/conditionOfCoating/insert.php",
+                     url:"../dataManage/labCoating/insert.php",
                      method:"POST",
                      data:$('#insert_form').serialize(),
                      beforeSend:function(){
@@ -436,7 +436,7 @@ $(document).ready(function(){
                  if(confirm("Are you sure you want to delete this?"))
                  {
                       $.ajax({
-                           url:"../dataManage/conditionOfCoating/delete.php",
+                           url:"../dataManage/labCoating/delete.php",
                            method:"POST",
                            data:{id:id},
                            success:function(data){

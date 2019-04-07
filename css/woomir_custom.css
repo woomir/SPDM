@@ -8,6 +8,7 @@ footer.sticky-footer {
   height: 30px;
   font-size: 10px;
   background-color: #e9ecef;
+  position: fixed;
 }
 table {
   font-size: 14px;

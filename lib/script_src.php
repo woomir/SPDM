@@ -9,6 +9,7 @@
  <script src="../js/responsive.bootstrap4.min.js"></script>
  <script src="../js/dataTables.responsive.min.js"></script>
  <script src="../js/dropdown_speed.js"></script>
+ <script src="../js/custom_js.js"></script>
 
  <!-- Bootstrap core JavaScript-->
  <script src="../vendor/bootstrap/js/bootstrap.bundle.js"></script>
@@ -17,3 +18,4 @@
  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
  <!-- Page level plugin JavaScript-->
  <script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
+ 

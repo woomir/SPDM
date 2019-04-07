@@ -81,7 +81,7 @@ $(document).ready(function(){
            visible: false}
     ],
     "ajax" : {
-     url:"../dataManage/analysisPwView/fetch.php",
+     url:"../dataManage/analysisPwlabView/fetch.php",
      type:"POST"
    },
    dom: "<'row'<'col-sm-12 col-md-auto'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4 ml-auto'f>>" +

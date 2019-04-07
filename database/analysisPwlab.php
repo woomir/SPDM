@@ -166,7 +166,7 @@ $(document).ready(function(){
   {targets: [5,9,10,-2],
        visible: false}],
     "ajax" : {
-     url:"../dataManage/analysisPw/fetch.php",
+     url:"../dataManage/analysisPwlab/fetch.php",
      type:"POST"
     },
     dom: "<'row'<'col-sm-12 col-md-auto'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4 ml-auto'f>>" +
@@ -188,7 +188,7 @@ $(document).ready(function(){
       $(document).on('click', '.edit_data', function(){
            var id = $(this).attr("id");
            $.ajax({
-                url:"../dataManage/analysisPw/edit.php",
+                url:"../dataManage/analysisPwlab/edit.php",
                 method:"POST",
                 data:{id:id},
                 dataType:"json",
@@ -228,7 +228,7 @@ $(document).ready(function(){
            else
            {
                 $.ajax({
-                     url:"../dataManage/analysisPw/insert.php",
+                     url:"../dataManage/analysisPwlab/insert.php",
                      method:"POST",
                      data:$('#insert_form').serialize(),
                      beforeSend:function(){
@@ -253,7 +253,7 @@ $(document).ready(function(){
                  if(confirm("Are you sure you want to delete this?"))
                  {
                       $.ajax({
-                           url:"../dataManage/analysisPw/delete.php",
+                           url:"../dataManage/analysisPwlab/delete.php",
                            method:"POST",
                            data:{id:id},
                            success:function(data){
