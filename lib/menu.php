@@ -130,10 +130,10 @@ li.action{
   color: #ffde00;
 }
 
-.dropdown-item{
+li > .dropdown-menu > .dropdown-item{
   color: #F8F8FF;
 }
-.dropdown-item:hover{
+li > .dropdown-menu > .dropdown-item:hover{
   color: #F8F8FF;
 }
 
