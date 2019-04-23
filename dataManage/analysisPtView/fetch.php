@@ -8,29 +8,86 @@ $column = array('pasteNo', 'powderLot', 'powderType','object', 'recipe',
 'agingRpm30', 'avgLowG', 'avgHighG', 'avgYsp', 'agingLowG', 'agingHighG',
 'agingYsp');
 $query = "SELECT * FROM analysispt_view";
+$query .= " WHERE 1=1 ";
 
-if(isset($_POST["search"]["value"]))
+
+/* if(isset($_POST["search"]["value"]))
 {
  $query .= '
- WHERE pasteNo LIKE "%'.$_POST["search"]["value"].'%"
- OR powderLot LIKE "%'.$_POST["search"]["value"].'%"
- OR powderType LIKE "%'.$_POST["search"]["value"].'%"
- OR object LIKE "%'.$_POST["search"]["value"].'%"
- OR recipe LIKE "%'.$_POST["search"]["value"].'%"
- OR timeAging LIKE "%'.$_POST["search"]["value"].'%"
- OR avgRpm1 LIKE "%'.$_POST["search"]["value"].'%"
- OR avgRpm10 LIKE "%'.$_POST["search"]["value"].'%"
- OR avgRpm30 LIKE "%'.$_POST["search"]["value"].'%"
- OR avgRpm100 LIKE "%'.$_POST["search"]["value"].'%"
- OR agingRpm10 LIKE "%'.$_POST["search"]["value"].'%"
- OR agingRpm30 LIKE "%'.$_POST["search"]["value"].'%"
- OR avgLowG LIKE "%'.$_POST["search"]["value"].'%"
- OR avgHighG LIKE "%'.$_POST["search"]["value"].'%"
- OR avgYsp LIKE "%'.$_POST["search"]["value"].'%"
- OR agingLowG LIKE "%'.$_POST["search"]["value"].'%"
- OR agingHighG LIKE "%'.$_POST["search"]["value"].'%"
- OR agingYsp LIKE "%'.$_POST["search"]["value"].'%"
+ or pasteNo LIKE "%'.$_POST["search"]["value"].'%"
+ or powderLot LIKE "%'.$_POST["search"]["value"].'%"
+ or powderType LIKE "%'.$_POST["search"]["value"].'%"
+ or object LIKE "%'.$_POST["search"]["value"].'%"
+ or recipe LIKE "%'.$_POST["search"]["value"].'%"
+ or timeAging LIKE "%'.$_POST["search"]["value"].'%"
+ or avgRpm1 LIKE "%'.$_POST["search"]["value"].'%"
+ or avgRpm10 LIKE "%'.$_POST["search"]["value"].'%"
+ or avgRpm30 LIKE "%'.$_POST["search"]["value"].'%"
+ or avgRpm100 LIKE "%'.$_POST["search"]["value"].'%"
+ or agingRpm10 LIKE "%'.$_POST["search"]["value"].'%"
+ or agingRpm30 LIKE "%'.$_POST["search"]["value"].'%"
+ or avgLowG LIKE "%'.$_POST["search"]["value"].'%"
+ or avgHighG LIKE "%'.$_POST["search"]["value"].'%"
+ or avgYsp LIKE "%'.$_POST["search"]["value"].'%"
+ or agingLowG LIKE "%'.$_POST["search"]["value"].'%"
+ or agingHighG LIKE "%'.$_POST["search"]["value"].'%"
+ or agingYsp LIKE "%'.$_POST["search"]["value"].'%"
  ';
+} */
+
+if( !empty($_POST["columns"][0]["search"]["value"]) ){
+    $query.='and pasteNo LIKE "%'.$_POST["columns"][0]["search"]["value"].'%"';
+}
+if( !empty($_POST["columns"][1]["search"]["value"]) ){
+    $query.='and powderLot LIKE "%'.$_POST["columns"][1]["search"]["value"].'%"';
+}
+if( !empty($_POST["columns"][2]["search"]["value"]) ){
+    $query.='and powderType LIKE "%'.$_POST["columns"][2]["search"]["value"].'%"';
+}
+if( !empty($_POST["columns"][3]["search"]["value"]) ){
+    $query.='and object LIKE "%'.$_POST["columns"][3]["search"]["value"].'%"';
+}
+if( !empty($_POST["columns"][4]["search"]["value"]) ){
+    $query.='and recipe LIKE "%'.$_POST["columns"][4]["search"]["value"].'%"';
+}
+if( !empty($_POST["columns"][5]["search"]["value"]) ){
+    $query.='and timeAging LIKE "%'.$_POST["columns"][5]["search"]["value"].'%"';
+}
+if( !empty($_POST["columns"][6]["search"]["value"]) ){
+    $query.='and avgRpm1 LIKE "%'.$_POST["columns"][6]["search"]["value"].'%"';
+}
+if( !empty($_POST["columns"][7]["search"]["value"]) ){
+    $query.='and avgRpm10 LIKE "%'.$_POST["columns"][7]["search"]["value"].'%"';
+}
+if( !empty($_POST["columns"][8]["search"]["value"]) ){
+    $query.='and avgRpm30 LIKE "%'.$_POST["columns"][8]["search"]["value"].'%"';
+}
+if( !empty($_POST["columns"][9]["search"]["value"]) ){
+    $query.='and avgRpm100 LIKE "%'.$_POST["columns"][9]["search"]["value"].'%"';
+}
+if( !empty($_POST["columns"][10]["search"]["value"]) ){
+    $query.='and agingRpm10 LIKE "%'.$_POST["columns"][10]["search"]["value"].'%"';
+}
+if( !empty($_POST["columns"][11]["search"]["value"]) ){
+    $query.='and agingRpm30 LIKE "%'.$_POST["columns"][11]["search"]["value"].'%"';
+}
+if( !empty($_POST["columns"][12]["search"]["value"]) ){
+    $query.='and avgLowG LIKE "%'.$_POST["columns"][12]["search"]["value"].'%"';
+}
+if( !empty($_POST["columns"][13]["search"]["value"]) ){
+    $query.='and avgHighG LIKE "%'.$_POST["columns"][13]["search"]["value"].'%"';
+}
+if( !empty($_POST["columns"][14]["search"]["value"]) ){
+    $query.='and avgYsp LIKE "%'.$_POST["columns"][14]["search"]["value"].'%"';
+}
+if( !empty($_POST["columns"][15]["search"]["value"]) ){
+    $query.='and agingLowG LIKE "%'.$_POST["columns"][15]["search"]["value"].'%"';
+}
+if( !empty($_POST["columns"][16]["search"]["value"]) ){
+    $query.='and agingHighG LIKE "%'.$_POST["columns"][16]["search"]["value"].'%"';
+}
+if( !empty($_POST["columns"][17]["search"]["value"]) ){
+    $query.='and agingYsp LIKE "%'.$_POST["columns"][17]["search"]["value"].'%"';
 }
 
 if(isset($_POST["order"]))
@@ -59,24 +116,24 @@ $data = array();
 while($row = mysqli_fetch_array($result))
 {
  $sub_array = array();
- $sub_array[] = '<div data-column="pasteNo">' . $row["pasteNo"] . '</div>';
- $sub_array[] = '<div data-column="powderLot">' . $row["powderLot"] . '</div>';
- $sub_array[] = '<div data-column="powderType">' . $row["powderType"] . '</div>';
- $sub_array[] = '<div data-column="object">' . $row["object"] . '</div>';
- $sub_array[] = '<div data-column="recipe">' . $row["recipe"] . '</div>';
- $sub_array[] = '<div data-column="timeAging">' . $row["timeAging"] . '</div>';
- $sub_array[] = '<div data-column="avgRpm1">' . $row["avgRpm1"] . '</div>';
- $sub_array[] = '<div data-column="avgRpm10">' . $row["avgRpm10"] . '</div>';
- $sub_array[] = '<div data-column="avgRpm30">' . $row["avgRpm30"] . '</div>';
- $sub_array[] = '<div data-column="avgRpm100">' . $row["avgRpm100"] . '</div>';
- $sub_array[] = '<div data-column="agingRpm10">' . $row["agingRpm10"] . '</div>';
- $sub_array[] = '<div data-column="agingRpm30">' . $row["agingRpm30"] . '</div>';
- $sub_array[] = '<div data-column="avgLowG">' . $row["avgLowG"] . '</div>';
- $sub_array[] = '<div data-column="avgHighG">' . $row["avgHighG"] . '</div>';
- $sub_array[] = '<div data-column="avgYsp">' . $row["avgYsp"] . '</div>';
- $sub_array[] = '<div data-column="agingLowG">' . $row["agingLowG"] . '</div>';
- $sub_array[] = '<div data-column="agingHighG">' . $row["agingHighG"] . '</div>';
- $sub_array[] = '<div data-column="agingYsp">' . $row["agingYsp"] . '</div>';
+ $sub_array[] = $row["pasteNo"];
+ $sub_array[] = $row["powderLot"];
+ $sub_array[] = $row["powderType"];
+ $sub_array[] = $row["object"];
+ $sub_array[] = $row["recipe"];
+ $sub_array[] = $row["timeAging"];
+ $sub_array[] = $row["avgRpm1"];
+ $sub_array[] = $row["avgRpm10"];
+ $sub_array[] = $row["avgRpm30"];
+ $sub_array[] = $row["avgRpm100"];
+ $sub_array[] = $row["agingRpm10"];
+ $sub_array[] = $row["agingRpm30"];
+ $sub_array[] = $row["avgLowG"];
+ $sub_array[] = $row["avgHighG"];
+ $sub_array[] = $row["avgYsp"];
+ $sub_array[] = $row["agingLowG"];
+ $sub_array[] = $row["agingHighG"];
+ $sub_array[] = $row["agingYsp"];
 
  $data[] = $sub_array;
 }
