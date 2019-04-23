@@ -77,11 +77,11 @@ $(document).ready(function(){
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "iDisplayLength": 25,
     "columnDefs": [
-      {targets: [3,4,7,12,13,14,15,16,17,18,20,-1],
+      {targets: [3,4,6,12,13,14,15,16,17,18,20,-1],
            visible: false}
     ],
     "ajax" : {
-     url:"../dataManage/analysisPwView/fetch.php",
+     url:"../dataManage/analysisPwlabView/fetch.php",
      type:"POST"
    },
    dom: "<'row'<'col-sm-12 col-md-auto'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4 ml-auto'f>>" +
