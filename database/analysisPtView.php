@@ -38,6 +38,12 @@ if(isset($_SESSION['id']) && isset($_SESSION['password'])){
        <td><input type="text" data-column="3" class="search-input"></td>
        <td><input type="text" data-column="4" class="search-input"></td>
        <td><input type="text" data-column="5" class="search-input"></td>
+       <!-- <td><select type="text" data-column="5" class="search-input-select">
+              <option value="0">0hr</option>
+              <option value="12">12hr</option>
+              <option value="72">72hr</option>
+            </select>
+       </td> -->
        <td><input type="text" data-column="6" class="search-input"></td>
        <td><input type="text" data-column="7" class="search-input"></td>
        <td><input type="text" data-column="8" class="search-input"></td>
@@ -89,12 +95,12 @@ $(document).ready(function(){
     url:"../dataManage/analysisPtView/fetch.php",
     type:"POST"
   },
-  "columnDefs":[
+  /* "columnDefs":[
     {
      "targets":[4],
      "orderable":false,
     }
-   ],
+   ], */
   dom: "<'row'<'col-sm-12 col-md-auto'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4 ml-auto'f>>" +
        "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
        buttons: ['copy', 'excel',
@@ -104,14 +110,20 @@ $(document).ready(function(){
        }]
   });
 
-  // 
+  //individual columns search - input type
   $('.search-input').on( 'keyup', function () {
 					var i =$(this).attr('data-column');  
 					var v =$(this).val();  
           dataTable.columns(i).search(v).draw();
           // console.log(i,v);
-				} );
- }
+        } );
+  //individual columns search - select type
+  /* $('.search-input-select').on( 'change', function () {
+    var i =$(this).attr('data-column');  
+    var v =$(this).val();  
+    dataTable.columns(i).search(v).draw();
+  } );*/
+ } 
 
 });
 </script>
