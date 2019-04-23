@@ -44,7 +44,7 @@ $(document).ready(function(){
    var dataTable = $('#login-log-table').DataTable({
     "processing" : true,
     "serverSide" : true,
-    "order" : [[0,'asc']],
+    "order" : [[1,'asc']],
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "iDisplayLength": 25,
     "columnDefs": [{
