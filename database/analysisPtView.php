@@ -30,7 +30,7 @@ if(isset($_SESSION['id']) && isset($_SESSION['password'])){
      <th>Aging YSP</th>
     </tr>
    </thead>
-   <thead>
+   <!-- <thead>
      <tr>
        <td><input type="text" data-column="0" class="search-input"></td>
        <td><input type="text" data-column="1" class="search-input"></td>
@@ -38,12 +38,12 @@ if(isset($_SESSION['id']) && isset($_SESSION['password'])){
        <td><input type="text" data-column="3" class="search-input"></td>
        <td><input type="text" data-column="4" class="search-input"></td>
        <td><input type="text" data-column="5" class="search-input"></td>
-       <!-- <td><select type="text" data-column="5" class="search-input-select">
+       <td><select type="text" data-column="5" class="search-input-select">
               <option value="0">0hr</option>
               <option value="12">12hr</option>
               <option value="72">72hr</option>
             </select>
-       </td> -->
+       </td>
        <td><input type="text" data-column="6" class="search-input"></td>
        <td><input type="text" data-column="7" class="search-input"></td>
        <td><input type="text" data-column="8" class="search-input"></td>
@@ -57,7 +57,7 @@ if(isset($_SESSION['id']) && isset($_SESSION['password'])){
        <td><input type="text" data-column="16" class="search-input"></td>
        <td><input type="text" data-column="17" class="search-input"></td>
      </tr>
-   </thead>
+   </thead> -->
  </table>
 </div>
 </div>
@@ -88,7 +88,7 @@ $(document).ready(function(){
    "processing" : true,
    "serverSide" : true,
    "orderMulti" : true,
-      //"order" : [[0,'desc'],[5,'asc']],
+   "order" : [[0,'desc'],[5,'asc']],
    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
    "iDisplayLength": 25,
    "ajax" : {
@@ -109,6 +109,8 @@ $(document).ready(function(){
          text: 'Show / Hide columns'
        }]
   });
+
+  // $("#PasteTable_filter").css("display","none");
 
   //individual columns search - input type
   $('.search-input').on( 'keyup', function () {

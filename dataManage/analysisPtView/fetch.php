@@ -8,13 +8,12 @@ $column = array('pasteNo', 'powderLot', 'powderType','object', 'recipe',
 'agingRpm30', 'avgLowG', 'avgHighG', 'avgYsp', 'agingLowG', 'agingHighG',
 'agingYsp');
 $query = "SELECT * FROM analysispt_view";
-$query .= " WHERE 1=1 ";
+$query .= " WHERE ";
 
-
-/* if(isset($_POST["search"]["value"]))
+if(isset($_POST["search"]["value"]))
 {
  $query .= '
- or pasteNo LIKE "%'.$_POST["search"]["value"].'%"
+ pasteNo LIKE "%'.$_POST["search"]["value"].'%"
  or powderLot LIKE "%'.$_POST["search"]["value"].'%"
  or powderType LIKE "%'.$_POST["search"]["value"].'%"
  or object LIKE "%'.$_POST["search"]["value"].'%"
@@ -33,62 +32,62 @@ $query .= " WHERE 1=1 ";
  or agingHighG LIKE "%'.$_POST["search"]["value"].'%"
  or agingYsp LIKE "%'.$_POST["search"]["value"].'%"
  ';
-} */
+}
 
-if( !empty($_POST["columns"][0]["search"]["value"]) ){
-    $query.='and pasteNo LIKE "%'.$_POST["columns"][0]["search"]["value"].'%"';
+/* if( !empty($_POST["columns"][0]["search"]["value"]) ){
+    $query.=' and pasteNo LIKE "%'.$_POST["columns"][0]["search"]["value"].'%"';
 }
 if( !empty($_POST["columns"][1]["search"]["value"]) ){
-    $query.='and powderLot LIKE "%'.$_POST["columns"][1]["search"]["value"].'%"';
+    $query.=' and powderLot LIKE "%'.$_POST["columns"][1]["search"]["value"].'%"';
 }
 if( !empty($_POST["columns"][2]["search"]["value"]) ){
-    $query.='and powderType LIKE "%'.$_POST["columns"][2]["search"]["value"].'%"';
+    $query.=' and powderType LIKE "%'.$_POST["columns"][2]["search"]["value"].'%"';
 }
 if( !empty($_POST["columns"][3]["search"]["value"]) ){
-    $query.='and object LIKE "%'.$_POST["columns"][3]["search"]["value"].'%"';
+    $query.=' and object LIKE "%'.$_POST["columns"][3]["search"]["value"].'%"';
 }
 if( !empty($_POST["columns"][4]["search"]["value"]) ){
-    $query.='and recipe LIKE "%'.$_POST["columns"][4]["search"]["value"].'%"';
+    $query.=' and recipe LIKE "%'.$_POST["columns"][4]["search"]["value"].'%"';
 }
 if( !empty($_POST["columns"][5]["search"]["value"]) ){
-    $query.='and timeAging LIKE "%'.$_POST["columns"][5]["search"]["value"].'%"';
+    $query.=' and timeAging LIKE "%'.$_POST["columns"][5]["search"]["value"].'%"';
 }
 if( !empty($_POST["columns"][6]["search"]["value"]) ){
-    $query.='and avgRpm1 LIKE "%'.$_POST["columns"][6]["search"]["value"].'%"';
+    $query.=' and avgRpm1 LIKE "%'.$_POST["columns"][6]["search"]["value"].'%"';
 }
 if( !empty($_POST["columns"][7]["search"]["value"]) ){
-    $query.='and avgRpm10 LIKE "%'.$_POST["columns"][7]["search"]["value"].'%"';
+    $query.=' and avgRpm10 LIKE "%'.$_POST["columns"][7]["search"]["value"].'%"';
 }
 if( !empty($_POST["columns"][8]["search"]["value"]) ){
-    $query.='and avgRpm30 LIKE "%'.$_POST["columns"][8]["search"]["value"].'%"';
+    $query.=' and avgRpm30 LIKE "%'.$_POST["columns"][8]["search"]["value"].'%"';
 }
 if( !empty($_POST["columns"][9]["search"]["value"]) ){
-    $query.='and avgRpm100 LIKE "%'.$_POST["columns"][9]["search"]["value"].'%"';
+    $query.=' and avgRpm100 LIKE "%'.$_POST["columns"][9]["search"]["value"].'%"';
 }
 if( !empty($_POST["columns"][10]["search"]["value"]) ){
-    $query.='and agingRpm10 LIKE "%'.$_POST["columns"][10]["search"]["value"].'%"';
+    $query.=' and agingRpm10 LIKE "%'.$_POST["columns"][10]["search"]["value"].'%"';
 }
 if( !empty($_POST["columns"][11]["search"]["value"]) ){
-    $query.='and agingRpm30 LIKE "%'.$_POST["columns"][11]["search"]["value"].'%"';
+    $query.=' and agingRpm30 LIKE "%'.$_POST["columns"][11]["search"]["value"].'%"';
 }
 if( !empty($_POST["columns"][12]["search"]["value"]) ){
-    $query.='and avgLowG LIKE "%'.$_POST["columns"][12]["search"]["value"].'%"';
+    $query.=' and avgLowG LIKE "%'.$_POST["columns"][12]["search"]["value"].'%"';
 }
 if( !empty($_POST["columns"][13]["search"]["value"]) ){
-    $query.='and avgHighG LIKE "%'.$_POST["columns"][13]["search"]["value"].'%"';
+    $query.=' and avgHighG LIKE "%'.$_POST["columns"][13]["search"]["value"].'%"';
 }
 if( !empty($_POST["columns"][14]["search"]["value"]) ){
-    $query.='and avgYsp LIKE "%'.$_POST["columns"][14]["search"]["value"].'%"';
+    $query.=' and avgYsp LIKE "%'.$_POST["columns"][14]["search"]["value"].'%"';
 }
 if( !empty($_POST["columns"][15]["search"]["value"]) ){
-    $query.='and agingLowG LIKE "%'.$_POST["columns"][15]["search"]["value"].'%"';
+    $query.=' and agingLowG LIKE "%'.$_POST["columns"][15]["search"]["value"].'%"';
 }
 if( !empty($_POST["columns"][16]["search"]["value"]) ){
-    $query.='and agingHighG LIKE "%'.$_POST["columns"][16]["search"]["value"].'%"';
+    $query.=' and agingHighG LIKE "%'.$_POST["columns"][16]["search"]["value"].'%"';
 }
 if( !empty($_POST["columns"][17]["search"]["value"]) ){
-    $query.='and agingYsp LIKE "%'.$_POST["columns"][17]["search"]["value"].'%"';
-}
+    $query.=' and agingYsp LIKE "%'.$_POST["columns"][17]["search"]["value"].'%"';
+} */
 
 if(isset($_POST["order"]))
 {
