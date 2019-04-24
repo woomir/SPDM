@@ -24,7 +24,21 @@ header {
   height: 50px;
   position: relative;
   padding-left: 20px;
+}
 
+.brand-main-short{
+  width: 500px;
+  font-size: 25px;
+  font-weight: bold;
+  float: left;
+  text-decoration: none;
+  pointer-events: none;
+  color: black;
+  display: none;
+  top: 10px;
+  height: 50px;
+  position: relative;
+  padding-left: 20px;
 }
 
 ul.action-list{
@@ -87,6 +101,7 @@ li.action{
 #navbarMenu{
   padding: 0px 15px;
   margin: 0;
+  background-color: #333;
 }
 
 #menuHome{
@@ -130,11 +145,24 @@ li.action{
   color: #ffde00;
 }
 
-li > .dropdown-menu > .dropdown-item{
+.dropdown-item{
   color: #F8F8FF;
 }
-li > .dropdown-menu > .dropdown-item:hover{
+.dropdown-item:hover{
   color: #F8F8FF;
+}
+
+@media (max-width: 800px){
+  .brand-main{
+    display: none;
+  }
+  .brand-main-short{
+    display: inline;
+    width: 160px;
+  }
+  #useridcss{
+    display: none;
+  }
 }
 
 </style>
@@ -145,8 +173,12 @@ li > .dropdown-menu > .dropdown-item:hover{
       <i class="fas fa-database" ></i>
       <span>Silver Powder Database Management</span>
     </a>
-    
-    <a href="#" class="nav-toggle" style="display:none;">
+    <a href="#" class="brand-main-short">
+      <i class="fas fa-database"></i>
+      <span>SPDM</span>
+    </a>
+
+    <a href="#" class="nav-toggle">
       <div class="hamburger hamburger--arrowturn">
         <div class="hamburger-box">
           <div class="hamburger-inner"></div>

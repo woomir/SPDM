@@ -88,6 +88,7 @@ $(document).ready(function(){
    "processing" : true,
    "serverSide" : true,
    "orderMulti" : true,
+   "responsive" : true,
    "order" : [[0,'desc'],[5,'asc']],
    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
    "iDisplayLength": 25,
