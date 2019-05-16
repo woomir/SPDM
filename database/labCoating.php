@@ -220,6 +220,7 @@
                                  <option >DMW-Red-PW-AM-Coating</option>
                                  <option >DMW-PW-AM-Coating</option>
                                  <option >DMW-Add-Red-PW-AM-Coating</option>
+                                 <option >DMW-PW-Coating</option>
                             </select>
                          </div>
                          <div class="col-md-3">
@@ -450,6 +451,10 @@ $(document).ready(function(){
                      }, 5000);
                  }
             });
+    
+    $(".modal").draggable({
+      handle: ".modal-header"
+    });
 
  });
 

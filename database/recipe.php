@@ -444,5 +444,9 @@ $(document).ready(function(){
                  }
             });
 
+    $(".modal").draggable({
+      handle: ".modal-header"
+    });
+
  });
 </script>

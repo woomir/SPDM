@@ -10,6 +10,7 @@
  <script src="../js/dataTables.responsive.min.js"></script>
  <script src="../js/dropdown_speed.js"></script>
  <script src="../js/custom_js.js"></script>
+ <script src="../js/jquery-ui.min.js"></script>
 
  <!-- Bootstrap core JavaScript-->
  <script src="../vendor/bootstrap/js/bootstrap.bundle.js"></script>

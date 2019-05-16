@@ -316,7 +316,11 @@ $(document).ready(function(){
                      }, 5000);
                  }
             });
-
+    
+    $(".modal").draggable({
+      handle: ".modal-header"
+    });
+            
  });
 
 </script>
