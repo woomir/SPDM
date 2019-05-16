@@ -1,9 +1,8 @@
 <?php
 //fetch.php
 session_start();
+include '../db.php';
 if ($_SESSION['role_id']<3){
-
-  $connect = mysqli_connect("localhost", "root", "$52Telecast", "woomir");
   if(isset($_POST["id"]))
   {
        $query = "SELECT * FROM analysispwtbl WHERE id = '".$_POST["id"]."'";

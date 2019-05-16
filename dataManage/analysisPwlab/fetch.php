@@ -2,7 +2,7 @@
 <?php
 session_start();
 //fetch.php
-$connect = mysqli_connect("localhost", "root", "$52Telecast", "woomir");
+include '../db.php';
 $column = array('sampleNo', 'powderType', 'd10', 'd50', 'd90', 'dmax',
 'tIgl', 'pIgl', 'cIgl', 'dtaPeak', 'enthalphy', 'bet', 'td', 'xrd', 'etc');
 $query = "SELECT * FROM analysispwtbl";
@@ -70,14 +70,23 @@ while($row = mysqli_fetch_array($result))
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="td">' . sprintf("%.1f",$row["td"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="xrd">' . $row["xrd"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="etc">' . $row["etc"] . '</div>';
+
  if ($_SESSION['role_id']==1){
- $sub_array[] = '<div align="center"><input type="button" name="edit" value="Edit" id="'.$row["id"] .'" class="btn btn-info btn-sm edit_data" />
-                <input type="button" name="delete" value="Delete" id="'.$row["id"] .'" class="btn btn-sm btn-danger btn_delete" /></div>';
+  $sub_array[] = '<div align="center">
+                  <input type="button" name="file" value="File" id="'.$row["id"] .'" class="btn btn-sm btn-secondary btn_file"/>
+                  <input type="button" name="edit" value="Edit" id="'.$row["id"] .'" class="btn btn-info btn-sm edit_data" />
+                  <input type="button" name="delete" value="Delete" id="'.$row["id"] .'" class="btn btn-sm btn-danger btn_delete" /></div>';
               } else if ($_SESSION['role_id']==2) {
-                $sub_array[] = '<div align="center"><input type="button" name="edit" value="Edit" id="'.$row["id"] .'" class="btn btn-info btn-sm edit_data" />';
+                $sub_array[] = '<div align="center">
+                <input type="button" name="file" value="File" id="'.$row["id"] .'" class="btn btn-sm btn-secondary btn_file" />
+                <input type="button" name="edit" value="Edit" id="'.$row["id"] .'" class="btn btn-info btn-sm edit_data" /></div>';
+              } else if ($_SESSION['role_id']==3) {
+                $sub_array[] = '<div align="center">
+                <input type="button" name="file" value="File" id="'.$row["id"] .'" class="btn btn-sm btn-secondary btn_file" /></div>';
               } else {
                 $sub_array[]='';
               }
+
  $data[] = $sub_array;
 }
 
@@ -94,7 +103,6 @@ $output = array(
  "recordsTotal"  =>  get_all_data($connect),
  "recordsFiltered" => $number_filter_row,
  "data"    => $data
-
 );
 
 echo json_encode($output);

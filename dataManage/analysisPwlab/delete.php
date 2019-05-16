@@ -1,7 +1,7 @@
 <?php
 session_start();
+include '../db.php';
 if ($_SESSION['role_id']<2){
- $connect = mysqli_connect("localhost", "root", "$52Telecast", "woomir");
  $sql = "DELETE FROM analysispwtbl WHERE id = '".$_POST["id"]."'";
  if(mysqli_query($connect, $sql))
  {

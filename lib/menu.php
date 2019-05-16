@@ -145,10 +145,10 @@ li.action{
   color: #ffde00;
 }
 
-.dropdown-item{
+li > .dropdown-menu > .dropdown-item{
   color: #F8F8FF;
 }
-.dropdown-item:hover{
+li > .dropdown-menu > .dropdown-item:hover{
   color: #F8F8FF;
 }
 
@@ -165,9 +165,34 @@ li.action{
   }
 }
 
+.fileinput-button {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+.fileinput-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  -ms-filter: 'alpha(opacity=0)';
+  font-size: 200px !important;
+  direction: ltr;
+  cursor: pointer;
+}
+/* Fixes for IE < 8 */
+@media screen\9 {
+  .fileinput-button input {
+    filter: alpha(opacity=0);
+    font-size: 100%;
+    height: 100%;
+  }
+}
+
 </style>
 
-<body id="page-top">
+<body id="page-top" onload="myFunction()">
   <header class="site-header">
     <a href="#" class="brand-main">
       <i class="fas fa-database" ></i>
