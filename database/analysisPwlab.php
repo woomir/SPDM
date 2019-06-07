@@ -337,6 +337,7 @@ $(document).ready(function(){
                  }
             });
 
+//file button 동작
   $(document).on('click', '.btn_file', function(){
       var id = $(this).attr("id");
       $('#save').val("Save");
@@ -393,6 +394,7 @@ $(document).ready(function(){
            });
   });
 
+  //file 삭제
   $(document).on('click', '.file-delete', function(){
     var id = $('#file-save-id').val(); 
     var filename = $(this).attr("name");
@@ -455,6 +457,7 @@ $(document).ready(function(){
     }
   })
 
+  //file save
   $('#file_form').on("submit", function(event){
           var id = $('#file-save-id').val(); 
            event.preventDefault();
