@@ -16,7 +16,7 @@ $uploadOk = 1;
 $total = count($_FILES['files']['name']);
 
 for ($i=0; $i < $total; $i++){
-  $file_name - iconv('UTF-8', 'cp949', $_FILES["files"]["name"][$i]);
+  $file_name = iconv('UTF-8', 'cp949', $_FILES["files"]["name"][$i]);
   $file_name = str_replace(array("#","%"),"", $file_name);
   $file_raw_name = $_FILES["files"]["name"][$i];
   $file_raw_name = str_replace(array("#","%"), "", $file_raw_name);
