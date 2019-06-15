@@ -240,8 +240,7 @@ li > .dropdown-menu > .dropdown-item:hover{
       </li>
       <li id="liMasspowder" class="nav-item dropdown active">
         <a id="menuMasspowder" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-industry"></i>&nbsp;&nbsp;Mass powder
-        </a>
+        <i class="fas fa-industry"></i>&nbsp;&nbsp;Mass powder</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <h6 class="dropdown-header">Database</h6>
           <a class="dropdown-item" href="makePwMass.php">Manufacturing</a>
@@ -253,11 +252,11 @@ li > .dropdown-menu > .dropdown-item:hover{
       </li>
       <li id="liLabpowder" class="nav-item dropdown active">
         <a id="menuLabpowder" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-flask"></i>&nbsp;&nbsp;Lab powder
-        </a>
+        <i class="fas fa-flask"></i>&nbsp;&nbsp;Lab powder</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <h6 class="dropdown-header">Database</h6>
-          <a class="dropdown-item" href=#>Manufacturing</a>
+          <a class="dropdown-item" href=#>Reaction</a>
+          <a class="dropdown-item" href="labWashing.php">Washing</a>
           <a class="dropdown-item" href="labCoating.php">Coating</a>
           <a class="dropdown-item" href="analysisPwlab.php">Analysis</a>
           <div class="dropdown-divider"></div>
@@ -267,8 +266,7 @@ li > .dropdown-menu > .dropdown-item:hover{
       </li>
       <li id="liPaste" class="nav-item dropdown active">
         <a id="menuPaste" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-solar-panel"></i>&nbsp;&nbsp;Paste
-        </a>
+        <i class="fas fa-solar-panel"></i>&nbsp;&nbsp;Paste</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <h6 class="dropdown-header">Database</h6>
           <a class="dropdown-item" href="recipe.php">Recipe</a>
@@ -282,8 +280,7 @@ li > .dropdown-menu > .dropdown-item:hover{
       <?php if ($_SESSION['role_id']==1){ ?>
       <li id="liAdmin" class="nav-item dropdown active">
         <a id="menuAdmin" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-user-friends"></i>&nbsp;&nbsp;Administrator
-        </a>
+        <i class="fas fa-user-friends"></i>&nbsp;&nbsp;Administrator</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="users.php">가입자 정보</a>
           <a class="dropdown-item" href="login_log.php">로그인 정보</a>
@@ -304,7 +301,7 @@ if ($uri == 'makePwMass.php'){
 } elseif ($uri == 'analysisPwMassView.php'){
   $bread = ['Mass Powder', 'Report', 'Data Analysis', '양산 분말 분석 데이터 정리'];
 } elseif ($uri == '#.php'){
-  $bread = ['Lab Powder', 'Database', 'Manufacturing', 'Lab 분말 제조 조건'];
+  $bread = ['Lab Powder', 'Database', 'Reaction', 'Lab 분말 반응 조건'];
 } elseif ($uri == 'labCoating.php'){
   $bread = ['Lab Powder', 'Database', 'Coating', 'Coating 조건'];
 } elseif ($uri == 'analysisPwlab.php'){
@@ -321,6 +318,8 @@ if ($uri == 'makePwMass.php'){
   $bread = ['Paste', 'Report', 'Data Analysis', 'Paste 분석 데이터 정리'];
 } elseif ($uri == 'users.php') {
   $bread = ['Admin', '가입자 정보', '', '가입자 정보'];
+} elseif ($uri == 'labWashing.php') {
+  $bread = ['Lab powder', 'Database', 'Washing', '세척 조건'];
 } else {
   $bread = ['Admin', '로그인 정보', '', '로그인 정보'];
 }
