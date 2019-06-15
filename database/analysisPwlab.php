@@ -140,7 +140,6 @@
            </div>
       </div>
  </div>
-</div>
 
  <!--Modal file-->
  <div id="file_Modal" class="modal fade" tabindex="-1" role="dialog" >
@@ -206,7 +205,6 @@
       </div>
     </div>
   </div>
-</div>
   
 
  <?php
