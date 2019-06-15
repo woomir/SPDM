@@ -187,6 +187,65 @@
       </div>
  </div>
 
+<!--Modal file-->
+<div id="file_Modal" class="modal fade" tabindex="-1" role="dialog" >
+  <div class="modal-dialog modal-lg" >
+    <div class="modal-content" style="width:100%; height:100%; margin:0; padding:0;">
+      <div class="modal-header">
+        <h4 class="modal-title" id="gridModalLabel">File Management</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="card mb-3">
+            <!-- <div class="card-header">SEM Images</div> -->
+            <div class="card-body">
+              <form method="post" id="file_form" enctype="multipart/form-data" action="../dataManage/analysisPwMass/file_manage.php">
+                <?php if ($_SESSION['role_id'] < 3){ ?>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div><br>
+                  <span class="btn btn-success fileinput-button">
+                    <i class="glyphicon glyphicon-plus"></i>
+                    <span>Add files...</span>
+                    <!-- The file input field used as target for the file upload widget -->
+                    <input id="fileupload" type="file" name="files[]" multiple onchange="myFunction()">
+                  </span><br><br>
+                  <p id="file-list"></p>
+                <?php } ?>
+                <div>
+                  <h6>< Image Files ></h6>
+                  <div class="panel-body">
+                    <ul class="list-group" id="savedfiles">
+                    </ul>
+                  </div>
+                </div><br>
+                <div>
+                  <h6>< Other Files ></h6>
+                  <div class="panel-body">
+                    <ul class="other-list-group" id="otherfiles" style="padding:0px;">
+                    </ul>
+                  </div>
+                </div>
+                <div id="file_message"></div>
+                <input type="hidden" name="username" id="username" value="<?php echo $_SESSION['username']; ?>" />
+                <input type="hidden" name="file-lotNo" id="file-lotNo" value="" />
+                <input type="hidden" name="file-classPost" id="file-classPost" value="" />
+                <input type="hidden" name="file-save-id" id="file-save-id" value="">
+                <?php if ($_SESSION['role_id'] < 3){ ?>
+                  <input type="submit" name="save" id="save" value="Save" class="btn btn-primary" style="float: right;"/>
+                <?php } ?>
+              </form>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
  <?php
  require_once('../lib/script_src.php');
  ?>
@@ -317,10 +376,253 @@ $(document).ready(function(){
                  }
             });
     
+//file button 동작
+$(document).on('click', '.btn_file', function(){
+      var id = $(this).attr("id");
+      $('#save').val("Save");
+      $('#file_form')[0].reset();
+      $('#id').val("");
+      $('#file-list').text("Select one or more files.");
+      $('#savedfiles').html('');
+      $('#otherfiles').html('');
+      $('.progress-bar').attr('aria-valuenow', '0').css('width', '0%').text('');
+      $.ajax({
+                url:"../dataManage/analysisPwMass/file_view.php",
+                method:"POST",
+                data:{id:id},
+                dataType:"json",
+                success:function(data){
+                      var i = Object.keys(data).length;
+                      if (data[0].check == 0){ // check가 '0'이면 첨부 파일이 존재함.
+                        var imageCount = 0;
+                        var otherCount = 0;
+                        for(var a = 0; a < i; a++){
+                          var fileType = data[a].fileType;
+                          if (data[a].fileType === 'image'){
+                            $('#savedfiles').append('<li class="list-group-item"><div><a href="../dataManage/analysisPwMass/uploads/' + 
+                            data[a].fileName + '" class="fileList-fileName" style="color:black;" download>' + 
+                            data[a].fileName + '</a><div class="pull-right action buttons" style="display:inline; padding: 20px;"><a href="#" class="file-delete" name="' +
+                            data[a].fileName + '" style="color:black; "><i class="fas fa-trash-alt"></i></a></div></li>');
+                            imageCount++;
+                          } else {
+                            $('#otherfiles').append('<li class="list-group-item"><div><a href="../dataManage/analysisPwMass/uploads/' + 
+                            data[a].fileName + '" class="fileList-fileName" style="color:black;" download>' + 
+                            data[a].fileName + '</a><div class="pull-right action buttons" style="display:inline; padding: 20px;"><a href="#" class="file-delete" name="' +
+                            data[a].fileName + '" style="color:black; "><i class="fas fa-trash-alt"></i></a></div></li>');
+                            otherCount++;
+                          }
+                        }
+                          if (imageCount === 0){
+                            $('#savedfiles').append('<li class="list-group-item"><div>첨부파일 없음</div></li>');
+                          } else if (otherCount === 0){
+                            $('#otherfiles').append('<li class="list-group-item"><div>첨부파일 없음</div></li>');
+                          }
+                        } else { 
+                          $('#savedfiles').append('<li class="list-group-item"><div>' + 
+                          data[0].fileName + '</div></li>');
+                          $('#otherfiles').append('<li class="list-group-item"><div>' + 
+                          data[0].fileName + '</div></li>');
+                      }
+                      $('#file-lotNo').val(data[0].lotNo);
+                      $('#file-classPost').val(data[0].classPost);
+                      $('#file_Modal').modal('show');
+                      $('#file_message').text('');
+                      $('#file-save-id').val(id);
+
+                }
+           });
+  });
+
+  //file 삭제
+  $(document).on('click', '.file-delete', function(){
+    var id = $('#file-save-id').val(); 
+    var filename = $(this).attr("name");
+    if(confirm("Are you sure you want to delete this?")){
+    $.ajax({
+                url:"../dataManage/analysisPwMass/file_manage.php",
+                method:"POST",
+                data:{filename:filename},
+                success:function(data){
+                  // console.log(data);
+                  $('#file_message').html('<div class="alert alert-success">'+data+'</div>');
+                  $.ajax({
+                          url:"../dataManage/analysisPwMass/file_view.php",
+                          method:"POST",
+                          data:{id:id},
+                          dataType:"json",
+                          success:function(data2){
+                              $("#savedfiles").html('');
+                              $("#otherfiles").html('');
+                              var i = Object.keys(data2).length;
+                              if (data2[0].check == 0){ // check가 '0'이면 첨부 파일이 존재함.
+                                var imageCount = 0;
+                                var otherCount = 0;
+                                for(var a = 0; a < i; a++){
+                                  var fileType = data2[a].fileType;
+                                  if (data2[a].fileType === 'image'){
+                                    $('#savedfiles').append('<li class="list-group-item"><div><a href="../dataManage/analysisPwMass/uploads/' + 
+                                    data2[a].fileName + '" class="fileList-fileName" style="color:black;" download>' + 
+                                    data2[a].fileName + '</a><div class="pull-right action buttons" style="display:inline; padding: 20px;"><a href="#" class="file-delete" name="' +
+                                    data2[a].fileName + '" style="color:black; "><i class="fas fa-trash-alt"></i></a></div></li>');
+                                    imageCount++;
+                                  } else {
+                                    $('#otherfiles').append('<li class="list-group-item"><div><a href="../dataManage/analysisPwMass/uploads/' + 
+                                    data2[a].fileName + '" class="fileList-fileName" style="color:black;" download>' + 
+                                    data2[a].fileName + '</a><div class="pull-right action buttons" style="display:inline; padding: 20px;"><a href="#" class="file-delete" name="' +
+                                    data2[a].fileName + '" style="color:black; "><i class="fas fa-trash-alt"></i></a></div></li>');
+                                    otherCount++;
+                                  }
+                                }
+                                  if (imageCount === 0){
+                                    $('#savedfiles').append('<li class="list-group-item"><div>첨부파일 없음</div></li>');
+                                  } else if (otherCount === 0){
+                                    $('#otherfiles').append('<li class="list-group-item"><div>첨부파일 없음</div></li>');
+                                  }
+                                } else { 
+                                  $('#savedfiles').append('<li class="list-group-item"><div>' + 
+                                  data2[0].fileName + '</div></li>');
+                                  $('#otherfiles').append('<li class="list-group-item"><div>' + 
+                                  data2[0].fileName + '</div></li>');
+                              }
+                              $('#file-lotNo').val(data2[0].lotNo);
+                              $('#file-classPost').val(data2[0].classPost);
+                            }/* ,
+                            error: function(error){
+                              alert('error');
+                            } */
+                      });
+                }
+           });
+    }
+  })
+
+  //file save
+  $('#file_form').on("submit", function(event){
+          var id = $('#file-save-id').val(); 
+           event.preventDefault();
+           if($('#fileupload').val() == "")
+           {
+                alert("File is required");
+           }
+           else
+           {
+                $.ajax({
+                  xhr: function(){
+                    var xhr = new window.XMLHttpRequest();  
+                    xhr.upload.addEventListener('progress',function(e) {
+                      if (e.lengthComputable){
+
+                        /* console.log('Bytes Loaded: ' + e.loaded);
+                        console.log('Total size: ' + e.total);
+                        console.log('Percentage Uploaded: ' + (e.loaded / e.total)); */
+
+                        var percent = Math.round((e.loaded / e.total) * 100);
+
+                        $('.progress-bar').attr('aria-valuenow', percent).css('width', percent + '%').text(percent + '%');
+                      }
+                    });
+                    return xhr;
+                  },
+                    url:"../dataManage/analysisPwMass/file_manage.php",
+                     method:"POST",
+                     data: new FormData($("#file_form")[0]),
+                     processData : false,
+                     contentType : false,
+                    //  beforeSend:function(){
+                    //       $('#save').val("Saving");
+                    //  },
+                     success:function(data){
+                          $('#file_form')[0].reset();
+                          $('#file-list').text('Select one or more files.');
+                          $('#file_message').html('<div class="alert alert-success">'+data+'</div>');
+                          $.ajax({
+                                  url:"../dataManage/analysisPwMass/file_view.php",
+                                  method:"POST",
+                                  data:{id:id},
+                                  dataType:"json",
+                                  success:function(data2){
+                                      $("#savedfiles").html('');
+                                      $("#otherfiles").html('');
+                                      var i = Object.keys(data2).length;
+                                      if (data2[0].check == 0){ // check가 '0'이면 첨부 파일이 존재함.
+                                        var imageCount = 0;
+                                        var otherCount = 0;
+                                        for(var a = 0; a < i; a++){
+                                          var fileType = data2[a].fileType;
+                                          if (data2[a].fileType === 'image'){
+                                            $('#savedfiles').append('<li class="list-group-item"><div><a href="../dataManage/analysisPwMass/uploads/' + 
+                                            data2[a].fileName + '" class="fileList-fileName" style="color:black;" download>' + 
+                                            data2[a].fileName + '</a><div class="pull-right action buttons" style="display:inline; padding: 20px;"><a href="#" class="file-delete" name="' +
+                                            data2[a].fileName + '" style="color:black; "><i class="fas fa-trash-alt"></i></a></div></li>');
+                                            imageCount++;
+                                          } else {
+                                            $('#otherfiles').append('<li class="list-group-item"><div><a href="../dataManage/analysisPwMass/uploads/' + 
+                                            data2[a].fileName + '" class="fileList-fileName" style="color:black;" download>' + 
+                                            data2[a].fileName + '</a><div class="pull-right action buttons" style="display:inline; padding: 20px;"><a href="#" class="file-delete" name="' +
+                                            data2[a].fileName + '" style="color:black; "><i class="fas fa-trash-alt"></i></a></div></li>');
+                                            otherCount++;
+                                          }
+                                        }
+                                          if (imageCount === 0){
+                                            $('#savedfiles').append('<li class="list-group-item"><div>첨부파일 없음</div></li>');
+                                          } else if (otherCount === 0){
+                                            $('#otherfiles').append('<li class="list-group-item"><div>첨부파일 없음</div></li>');
+                                          }
+                                        } else { 
+                                          $('#savedfiles').append('<li class="list-group-item"><div>' + 
+                                          data2[0].fileName + '</div></li>');
+                                          $('#otherfiles').append('<li class="list-group-item"><div>' + 
+                                          data2[0].fileName + '</div></li>');
+                                      }
+                                      $('#file-lotNo').val(data2[0].lotNo);
+                                      $('#file-classPost').val(data2[0].classPost);
+                                    }/* ,
+                                    error: function(error){
+                                      alert('error');
+                                    } */
+                                });
+                     }
+                });
+                setInterval(function(){
+                 $('#file_message').html('');
+               }, 5000);
+           }
+      });
+
     $(".modal").draggable({
       handle: ".modal-header"
     });
             
  });
+
+ function myFunction(){
+  var x = document.getElementById("fileupload");
+  var txt = "";
+  if ('files' in x) {
+    if (x.files.length == 0) {
+      txt = "Select one or more files.";
+    } else {
+      for (var i = 0; i < x.files.length; i++) {
+        txt += "<br>" + (i+1) +  ". ";
+        var file = x.files[i];
+        if ('name' in file) {
+          txt += file.name + " ";
+        }
+        if ('size' in file) {
+          txt += "(" + (file.size/1024).toFixed() + " KB)";
+        }
+      }
+    }
+  } 
+  else {
+    if (x.value == "") {
+      txt += "Select one or more files.";
+    } else {
+      txt += "The files property is not supported by your browser!";
+      txt  += "<br>The path of the selected file: " + x.value; // If the browser does not support the files property, it will return the path of the selected file instead. 
+    }
+  }
+  document.getElementById("file-list").innerHTML = txt;
+}
 
 </script>
