@@ -4,6 +4,23 @@
    settype($_SESSION['role_id'],'int');
    require_once('../lib/menu.php');
 ?>
+<div id="wrapper">
+    <div id="content-wrapper">
+      <div class="container-fluid">
+        <div class="card mb-3">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><?php echo $bread[0]; ?></li>
+                <li class="breadcrumb-item"><?php echo $bread[1]; ?></li>
+                <li class="breadcrumb-item active" aria-current="page"><?php echo $bread[2]; ?></li>
+              </ol>
+            </nav>
+          <div class="card-body">
+            <div class="row justify-content-between">
+              <div class="col-4">
+                <h3><?php echo $bread[3]; ?></h3>
+              </div>
+            </div> <br>
 
 <div class="table-responsive">
    <div id="alert_message"></div>

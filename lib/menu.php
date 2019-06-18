@@ -132,6 +132,12 @@ li.action{
   margin: 0px 10px 0px 10px;
 }
 
+#menuChange{
+  width: 130px; 
+  padding: 10px 10px;
+  margin: 0px 10px 0px 10px;
+}
+
 
 .navbar-nav > li > .dropdown-menu{
   background-color: #333;
@@ -188,6 +194,10 @@ li > .dropdown-menu > .dropdown-item:hover{
     font-size: 100%;
     height: 100%;
   }
+}
+
+.card.mb-3 {
+  height: 86.7vh;
 }
 
 </style>
@@ -287,6 +297,10 @@ li > .dropdown-menu > .dropdown-item:hover{
         </div>
       </li>
       <?php } ?>
+      <li class="nav-item active">
+        <a id="menuChange" class="nav-link" href="changeLog.php" >
+          <i class="fas fa-clipboard-list"></i>&nbsp;&nbsp;Change Log</a>
+      </li>
     </ul>
   </div>
 </nav> <br>
@@ -325,26 +339,5 @@ if ($uri == 'makePwMass.php'){
 }
 ?>
 
-<div id="wrapper">
-    <div id="content-wrapper">
-      <div class="container-fluid">
-        <div class="card mb-3">
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><?php echo $bread[0]; ?></li>
-                <li class="breadcrumb-item"><?php echo $bread[1]; ?></li>
-                <li class="breadcrumb-item active" aria-current="page"><?php echo $bread[2]; ?></li>
-              </ol>
-            </nav>
-          <div class="card-body">
-            <div class="row justify-content-between">
-              <div class="col-4">
-                <h3><?php echo $bread[3]; ?></h3>
-              </div>
-                <div align="col-4">
-                <?php if ($_SESSION['role_id']<3){ ?>
-                <button type="button" name="add" id="add" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-info btn-xs">Add</button>&nbsp;&nbsp;&nbsp;
-                  <?php } ?>
-                </div>
-            </div> <br>
+
 

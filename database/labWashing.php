@@ -4,7 +4,29 @@
    settype($_SESSION['role_id'],'int');
    require_once('../lib/menu.php');
 ?>
-
+<div id="wrapper">
+    <div id="content-wrapper">
+      <div class="container-fluid">
+        <div class="card mb-3">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><?php echo $bread[0]; ?></li>
+                <li class="breadcrumb-item"><?php echo $bread[1]; ?></li>
+                <li class="breadcrumb-item active" aria-current="page"><?php echo $bread[2]; ?></li>
+              </ol>
+            </nav>
+          <div class="card-body">
+            <div class="row justify-content-between">
+              <div class="col-4">
+                <h3><?php echo $bread[3]; ?></h3>
+              </div>
+                <div align="col-4">
+                <?php if ($_SESSION['role_id']<3){ ?>
+                <button type="button" name="add" id="add" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-info btn-xs">Add</button>&nbsp;&nbsp;&nbsp;
+                  <?php } ?>
+                </div>
+            </div> <br>
+            
 <div class="table-responsive">
    <div id="alert_message"></div>
   <table id="WashTable" class="table table-bordered table-striped table-sm table-hover" style="width: 100%;">
