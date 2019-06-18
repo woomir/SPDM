@@ -62,7 +62,7 @@
                         </div>
                         <div class="col-md-6">
                           <label>*Powder Type</label>
-                          <input type="text" name="powderType" id="powderType" class="form-control" value="JET"/>
+                          <input type="text" name="powderType" id="powderType" class="form-control" placeholder="Ex) R / NC / JET / CL"/>
                         </div>
                       </div>
                        <br />
