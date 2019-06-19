@@ -9,6 +9,9 @@ if ($_SESSION['role_id']<3){
       $message = '';
       $sampleNo = mysqli_real_escape_string($connect, $_POST["sampleNo"]);
       $powderType = mysqli_real_escape_string($connect, $_POST["powderType"]);
+      if ($_POST["sizeSem"]!=""){
+        $sizeSem = mysqli_real_escape_string($connect, $_POST["sizeSem"]);
+        } else {$sizeSem = 'NULL';}
       if ($_POST["dt"]!=""){
       $d10 = mysqli_real_escape_string($connect, $_POST["dt"]);
       } else {$d10 = 'NULL';}
@@ -45,6 +48,12 @@ if ($_SESSION['role_id']<3){
       if ($_POST["xrd"]!=""){
       $xrd = mysqli_real_escape_string($connect, $_POST["xrd"]);
     } else {$xrd = 'NULL';}
+      if ($_POST["pcu"]!=""){
+        $pcu = mysqli_real_escape_string($connect, $_POST["pcu"]);
+      } else {$pcu = 'NULL';}
+      if ($_POST["na"]!=""){
+        $na = mysqli_real_escape_string($connect, $_POST["na"]);
+      } else {$na = 'NULL';}
       $etc = mysqli_real_escape_string($connect, $_POST["etc"]);
       $username = $_POST["username"];
 
@@ -54,6 +63,7 @@ if ($_SESSION['role_id']<3){
            UPDATE analysispwtbl
            SET sampleNo='$sampleNo',
            powderType='$powderType',
+           sizeSem='$sizeSem',
            d10=$d10,
            d50=$d50,
            d90 = $d90,
@@ -66,6 +76,8 @@ if ($_SESSION['role_id']<3){
            bet = $bet,
            td = $td,
            xrd = $xrd,
+           pcu = $pcu,
+           na = $na,
            etc = '$etc',
            updateUser = '$username'
            WHERE id='".$_POST["id"]."'";
@@ -73,10 +85,10 @@ if ($_SESSION['role_id']<3){
       }
       else
       {
-           $query = "INSERT INTO analysispwtbl (sampleNo, powderType, d10, d50,
-             d90, dmax, tIgl, pIgl, cIgl, dtaPeak, enthalphy, bet, td, xrd, etc, updateUser)
-           VALUES('$sampleNo', '$powderType', $d10, $d50, $d90, $dmax, $tIgl,
-             $pIgl, $cIgl, $dtaPeak, $enthalphy, $bet, $td, $xrd, '$etc','$username');
+           $query = "INSERT INTO analysispwtbl (sampleNo, powderType, sizeSem, d10, d50,
+             d90, dmax, tIgl, pIgl, cIgl, dtaPeak, enthalphy, bet, td, xrd, pcu, na, etc, updateUser)
+           VALUES('$sampleNo', '$powderType', $sizeSem, $d10, $d50, $d90, $dmax, $tIgl,
+             $pIgl, $cIgl, $dtaPeak, $enthalphy, $bet, $td, $xrd, $pcu, $na, '$etc','$username');
            ";
            $message = 'Data Inserted';
       }

@@ -35,6 +35,8 @@
     <tr>
       <th width="">Sample No </th>
       <th width="">Powder Type </th>
+      <th width="">SEM size</th>
+      <th width="">응집도 </th>
       <th width="">D10 </th>
       <th width="">D50 </th>
       <th width="">D90 </th>
@@ -47,6 +49,8 @@
       <th width="">BET</th>
       <th width="">TD</th>
       <th width="">XRD</th>
+      <th width="">PCU</th>
+      <th width="">Na</th>
       <th width="">Etc</th>
       <th width="">Manage</th>
      </tr>
@@ -142,11 +146,25 @@
                          <div class="col-md-4">
                           <label>TD</label>
                           <input type="number" name="td" id="td" class="form-control" step="0.1"/>
-                        </div>
-                        <div class="col-md-4">
-                         <label>XRD</label>
-                         <input type="number" name="xrd" id="xrd" class="form-control" placeholder="&#8491;"/>
-                        </div>
+                         </div>
+                          <div class="col-md-4">
+                          <label>XRD</label>
+                          <input type="number" name="xrd" id="xrd" class="form-control" placeholder="&#8491;"/>
+                          </div>
+                       </div></br>
+                       <div class="row">
+                         <div class="col-md-4">
+                            <label>PCU</label>
+                            <input type="number" name="pcu" id="pcu" class="form-control" placeholder=""/>
+                         </div>
+                         <div class="col-md-4">
+                          <label>Na</label>
+                          <input type="number" name="na" id="na" class="form-control" placeholder="ppm"/>
+                         </div>
+                         <div class="col-md-4">
+                          <label>SEM size</label>
+                          <input type="number" name="sizeSem" id="sizeSem" class="form-control" placeholder="&#181;m" step="0.001" />
+                         </div>
                        </div></br>
                          <label>Etc</label>
                          <input type="text" name="etc" id="etc" class="form-control" />
@@ -248,9 +266,9 @@ $(document).ready(function(){
     "iDisplayLength": 25,
     "columnDefs": [{
     orderable: false,
-    targets: [14,15]
+    targets: [18,19]
   },
-  {targets: [5,9,10,-2],
+  {targets: [4,6,7,11,12,-2,-3],
        visible: false}],
     "ajax" : {
      url:"../dataManage/analysisPwlab/fetch.php",
@@ -293,6 +311,9 @@ $(document).ready(function(){
                      $('#bet').val(data.bet);
                      $('#td').val(data.td);
                      $('#xrd').val(data.xrd);
+                     $('#pcu').val(data.pcu);
+                     $('#na').val(data.na);
+                     $('#sizeSem').val(data.sizeSem);
                      $('#etc').val(data.etc);
                      $('#id').val(data.id);
                      $('#insert').val("Update");

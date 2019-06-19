@@ -3,8 +3,8 @@
 session_start();
 //fetch.php
 include '../db.php';
-$column = array('sampleNo', 'powderType', 'd10', 'd50', 'd90', 'dmax',
-'tIgl', 'pIgl', 'cIgl', 'dtaPeak', 'enthalphy', 'bet', 'td', 'xrd', 'etc');
+$column = array('sampleNo', 'powderType', 'sizeSem', 'cohesion', 'd10', 'd50', 'd90', 'dmax',
+'tIgl', 'pIgl', 'cIgl', 'dtaPeak', 'enthalphy', 'bet', 'td', 'xrd', 'pcu', 'na', 'etc');
 $query = "SELECT * FROM analysispwtbl";
 
 
@@ -13,6 +13,9 @@ if(isset($_POST["search"]["value"]))
 {
  $query .= '
  WHERE sampleNo LIKE "%'.$_POST["search"]["value"].'%"
+ OR powderType LIKE "%'.$_POST["search"]["value"].'%"
+ OR sizeSem LIKE "%'.$_POST["search"]["value"].'%"
+ OR cohesion LIKE "%'.$_POST["search"]["value"].'%"
  OR d10 LIKE "%'.$_POST["search"]["value"].'%"
  OR d50 LIKE "%'.$_POST["search"]["value"].'%"
  OR d90 LIKE "%'.$_POST["search"]["value"].'%"
@@ -25,6 +28,8 @@ if(isset($_POST["search"]["value"]))
  OR bet LIKE "%'.$_POST["search"]["value"].'%"
  OR td LIKE "%'.$_POST["search"]["value"].'%"
  OR xrd LIKE "%'.$_POST["search"]["value"].'%"
+ OR pcu LIKE "%'.$_POST["search"]["value"].'%"
+ OR na LIKE "%'.$_POST["search"]["value"].'%"
  OR etc LIKE "%'.$_POST["search"]["value"].'%"
  ';
 }
@@ -57,18 +62,22 @@ while($row = mysqli_fetch_array($result))
  $sub_array = array();
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="sampleNo">' . $row["sampleNo"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="powderType">' . $row["powderType"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="sizeSem">' . sprintf("%.2f",$row["sizeSem"]) . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="cohesion">' . sprintf("%.2f",$row["cohesion"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="d10">' . sprintf("%.2f",$row["d10"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="d50">' . sprintf("%.2f",$row["d50"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="d90">' . sprintf("%.2f",$row["d90"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="dmax">' . sprintf("%.2f",$row["dmax"]) . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="tIgl">' . sprintf("%.2f",$row["tIgl"]) . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="pIgl">' . sprintf("%.2f",$row["pIgl"]) . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="cIgl">' . sprintf("%.2f",$row["cIgl"]) . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="tIgl">' . sprintf("%.3f",$row["tIgl"]) . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="pIgl">' . sprintf("%.3f",$row["pIgl"]) . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="cIgl">' . sprintf("%.3f",$row["cIgl"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="dtaPeak">' . sprintf("%.2f",$row["dtaPeak"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="enthalphy">' . sprintf("%.2f",$row["enthalphy"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="bet">' . sprintf("%.2f",$row["bet"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="td">' . sprintf("%.1f",$row["td"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="xrd">' . $row["xrd"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="pcu">' . $row["pcu"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="na">' . $row["na"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="etc">' . $row["etc"] . '</div>';
 
  if ($_SESSION['role_id']==1){
