@@ -35,7 +35,7 @@
       <th width="">Sample<br>No</th>
       <th width="">Concept</th>
       <th width="">Date</th>
-      <th width="">반응분말<br>Lot No</th>
+      <th width="">반응 분말<br>Lot No</th>
       <th width="">DMW<br>사용량</th>
       <th width="">분말<br>사용량</th>
       <th width="">세척제<br>종류</th>
@@ -46,7 +46,7 @@
       <th width="">교반 속도</th>
       <th width="">세척제 용해<br>Time</th>
       <th width="">분말 분산<br>Time</th>
-      <th width="">실험<>담당자</th>
+      <th width="">실험<br>담당자</th>
       <th width="">Etc</th>
       <th width="">Edit</th>
      </tr>

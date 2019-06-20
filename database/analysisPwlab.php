@@ -5,6 +5,24 @@
    settype($_SESSION['role_id'],'int');
    require_once('../lib/menu.php');
 ?>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">reaction
+    <a class="nav-link active" id="R-tab" data-toggle="tab" href="#reaction" role="tab" aria-controls="reaction" aria-selected="flase">Reaction</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="W-tab" data-toggle="tab" href="#wash" role="tab" aria-controls="washcoating" aria-selected="false">Washcoating</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="C-tab" data-toggle="tab" href="#coating" role="tab" aria-controls="coating" aria-selected="true">Coating</a>
+  </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="reaction" role="tabpanel" aria-labelledby="R-tab">...</div>
+  <div class="tab-pane fade" id="wash" role="tabpanel" aria-labelledby="W-tab">...</div>
+  <div class="tab-pane fade" id="coating" role="tabpanel" aria-labelledby="C-tab">...</div>
+</div>
+
 <div id="wrapper">
     <div id="content-wrapper">
       <div class="container-fluid">

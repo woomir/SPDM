@@ -2,7 +2,7 @@
 <?php
 session_start();
 //fetch.php
-$connect = mysqli_connect("localhost", "root", "$52Telecast", "woomir");
+include '../db.php';
 $column = array('sampleNo', 'concept', 'powderType','dateMake', 'ncpwLot',
 'nameRed', 'ratioRed', 'amountRed', 'nameAmine', 'amountAmine', 'nameLubricant1',
 'ratioLubricant1', 'nameLubricant2', 'ratioLubricant2', 'ratioSA', 'ratioPA', 'nameAdd',
