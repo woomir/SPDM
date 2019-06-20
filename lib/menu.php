@@ -196,10 +196,6 @@ li > .dropdown-menu > .dropdown-item:hover{
   }
 }
 
-.card.mb-3 {
-  height: 86.7vh;
-}
-
 </style>
 
 <body id="page-top" onload="myFunction()">
