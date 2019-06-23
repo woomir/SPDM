@@ -262,7 +262,7 @@ li > .dropdown-menu > .dropdown-item:hover{
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <h6 class="dropdown-header">Database</h6>
           <a class="dropdown-item" href=#>Reaction</a>
-          <a class="dropdown-item" href="labWashing.php">Washing</a>
+          <a class="dropdown-item" href="labWashing.php">Wash</a>
           <a class="dropdown-item" href="labCoating.php">Coating</a>
           <a class="dropdown-item" href="analysisPwlab.php">Analysis</a>
           <div class="dropdown-divider"></div>
@@ -293,8 +293,8 @@ li > .dropdown-menu > .dropdown-item:hover{
         </div>
       </li>
       <?php } ?>
-      <li class="nav-item active">
-        <a id="menuChange" class="nav-link" href="changeLog.php" >
+      <li id="menuChangeLog" class="nav-item dropdown active">
+        <a id="menuChange" class="nav-link" href="changeLog.php" role="button" >
           <i class="fas fa-clipboard-list"></i>&nbsp;&nbsp;Change Log</a>
       </li>
     </ul>
@@ -329,7 +329,7 @@ if ($uri == 'makePwMass.php'){
 } elseif ($uri == 'users.php') {
   $bread = ['Admin', '가입자 정보', '', '가입자 정보'];
 } elseif ($uri == 'labWashing.php') {
-  $bread = ['Lab powder', 'Database', 'Washing', '세척 조건'];
+  $bread = ['Lab powder', 'Database', 'Wash', '세척 조건'];
 } else {
   $bread = ['Admin', '로그인 정보', '', '로그인 정보'];
 }

@@ -18,3 +18,7 @@ else if(v_url.match('users') || v_url.match('login'))
 {
     $("#liAdmin").addClass('show');
 }
+else if(v_url.match('change'))
+{
+    $("#menuChangeLog").addClass('show');
+}
