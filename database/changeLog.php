@@ -16,6 +16,10 @@
                 <h3>Change Log</h3>
                 <hr>
                 <br>
+                <strong>2019-06-21</strong>
+                <ul>
+                  <li>Add web page : Data Analysis - Wash.</li>
+                </ul>
                 <strong>2019-06-18</strong>
                 <ul>
                   <li>Add web page : Chang Log.</li>
