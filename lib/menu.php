@@ -261,7 +261,8 @@ li > .dropdown-menu > .dropdown-item:hover{
         <i class="fas fa-flask"></i>&nbsp;&nbsp;Lab powder</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <h6 class="dropdown-header">Database</h6>
-          <a class="dropdown-item" href=#>Reaction</a>
+          <a class="dropdown-item" href="infoAgno3.php">AgNO<sub>3</sub></a>
+          <a class="dropdown-item" href="labReaction.php">Reaction</a>
           <a class="dropdown-item" href="labWashing.php">Wash</a>
           <a class="dropdown-item" href="labCoating.php">Coating</a>
           <a class="dropdown-item" href="analysisPwlab.php">Analysis</a>
@@ -310,8 +311,10 @@ if ($uri == 'makePwMass.php'){
   $bread = ['Mass Powder', 'Database', 'Analysis', '양산 분말 분석 데이터'];
 } elseif ($uri == 'analysisPwMassView.php'){
   $bread = ['Mass Powder', 'Report', 'Data Analysis', '양산 분말 분석 데이터 정리'];
-} elseif ($uri == '#.php'){
-  $bread = ['Lab Powder', 'Database', 'Reaction', 'Lab 분말 반응 조건'];
+} elseif ($uri == 'infoAgno3.php'){
+  $bread = ['Lab Powder', 'Database', 'AgNO3', '질산은 정보'];
+}elseif ($uri == 'labReaction.php'){
+  $bread = ['Lab Powder', 'Database', 'Reaction', '반응 조건'];
 } elseif ($uri == 'labCoating.php'){
   $bread = ['Lab Powder', 'Database', 'Coating', 'Coating 조건'];
 } elseif ($uri == 'analysisPwlab.php'){
