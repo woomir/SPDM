@@ -16,6 +16,11 @@
                 <h3>Change Log</h3>
                 <hr>
                 <br>
+                <strong>2019-06-30</strong>
+                <ul>
+                  <li>Add web page : Reaction - Lab powder</li>
+                  <li>Add web page : AgNO<sub>3</sub></li>
+                </ul>
                 <strong>2019-06-21</strong>
                 <ul>
                   <li>Add web page : Data Analysis - Wash.</li>
