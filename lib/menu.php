@@ -83,9 +83,9 @@ li.action{
 .nav-item:hover{
   background-color: #3C3B3B;
 }
-.nav-link:active{
+/* .nav-link:active{
   color: #ffde00;
-}
+} */
 
 #menuNavbar{
   background-color: #333;

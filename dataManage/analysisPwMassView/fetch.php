@@ -5,6 +5,7 @@ session_start();
 $connect = mysqli_connect("localhost", "root", "$52Telecast", "woomir");
 $column = array('lotNo', 'classPost', 'characteristic','sizeSem','d10','d50',
 'd90','dmax','cohesion','ncIgl','qcIgl','tIgl','pIgl','cIgl','bet','td','xrd');
+
 $query = "SELECT * FROM analysispwmass_view";
 
 if(isset($_POST["search"]["value"]))
