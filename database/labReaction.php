@@ -29,10 +29,10 @@
             </div> <br>
 
             <ul class="nav nav-tabs" id="reactionTab" role="tablist">
-              <li class="nav-item">
+              <li class="navitem">
                 <a class="nav-link active" id="wpotab" data-toggle="tab" href="#wporeaction" role="tab" aria-controls="wporeaction" aria-selected="true">WPO 제조</a>
               </li>
-              <li class="nav-item">
+              <li class="navitem">
                 <a class="nav-link" id="newtab" data-toggle="tab" href="#newreaction" role="tab" aria-controls="newreaction" aria-selected="false">신규환원제</a>
               </li>
             </ul>
@@ -344,6 +344,7 @@ $(document).ready(function(){
 
     "processing" : true,
     "serverSide" : true,
+    "responsive" : true,
     "order" : [[0,'desc']],
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "iDisplayLength": 25,

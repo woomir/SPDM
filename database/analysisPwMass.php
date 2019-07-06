@@ -281,6 +281,7 @@ $(document).ready(function(){
    var dataTable = $('#PasteTable').DataTable({
     "processing" : true,
     "serverSide" : true,
+    "responsive" : true,
     "order" : [[0,'desc'],[1,'asc']],
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "iDisplayLength": 25,
