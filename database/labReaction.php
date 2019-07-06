@@ -252,7 +252,7 @@
                         </div>
                         <div class="col-md-3">
                           <label>환원제 농도</label>
-                          <input type="number" name="redC" id="redC" class="form-control" placeholder = "g/L"/>
+                          <input type="number" name="redC" id="redC" class="form-control" placeholder = "g/L" step="0.1"/>
                         </div>
                         <div class="col-md-3">
                             <label>첨가제1 종류</label>
@@ -416,7 +416,7 @@ $(document).ready(function(){
                      $('#reactionTemp').val(data.reactionTemp);
                      $('#maker').val(data.maker);
                      $('#etc').val(data.etc);
-                     $('#id').val(data.id);
+                     $('#id').val("edit");
                      $('#insert').val("Update");
                      $('#add_data_Modal').modal('show');
                 }

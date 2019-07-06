@@ -3,17 +3,15 @@ session_start();
 if ($_SESSION['role_id']<3){
   include '../db.php';
 
-  // var_dump($_POST);
-  
  if(!empty($_POST))
  {
-   echo 'test1';
       $output = '';
       $message = '';
       $sampleNo = mysqli_real_escape_string($connect, $_POST["sampleNo"]);
 
       $check = "SELECT sampleNo from reactionpw where sampleNo = '$sampleNo'";
       $check_result = mysqli_num_rows(mysqli_query($connect, $check));
+      $check_sampleNo = mysqli_fetch_array(mysqli_query($connect, $check));
 
       $object = mysqli_real_escape_string($connect, $_POST["object"]);
       $date = mysqli_real_escape_string($connect, $_POST["date"]);
@@ -103,10 +101,8 @@ if ($_SESSION['role_id']<3){
       $maker = mysqli_real_escape_string($connect, $_POST["maker"]);
       $username = $_POST["username"];
 
-      if($_POST["id"] != '')
-      {
-        echo 'test2';
-        if ($check_result == 1){
+    
+        if ($_POST["id"] == 'edit'){
            $query = "
            UPDATE reactionpw
            SET object='$object',
@@ -146,21 +142,18 @@ if ($_SESSION['role_id']<3){
            WHERE sampleNo='".$_POST["sampleNo"]."'";
            $message = 'Data Updated';
 
-           if(mysqli_query($connect, $query))
+           if($check_sampleNo["sampleNo"] == $sampleNo )
            {
-            echo 'test3';
-               $output .= $message;
+              mysqli_query($connect, $query);
+              $output .= $message;
            }
-         } else {
-          echo 'test4';
+          else {
            $output = 'Sample No는 변경할 수 없습니다.<br> 데이터 삭제 후 재입력 바랍니다.';
          }
        }
        else
        {
-        echo 'test5';
-         if($check_result == 0) {
-          echo 'test6';
+         if($check_result == 0){
            $query = "INSERT INTO reactionpw (sampleNo, object, date, scale, agC,
            agTvol, amEq, kindAdd1, ratioAdd1, kindAdd2, ratioAdd2, kindAdd3,
            ratioAdd3, kindAdd4, ratioAdd4, agTemp, agRpm,
@@ -175,21 +168,16 @@ if ($_SESSION['role_id']<3){
              $redTemp, $redRpm, $ratioReactionNaOH, '$redEtc',
              $reactionpH, $reactionTemp, '$infoAgno3_lotNo', '$maker','$username');
            ";
-           echo $query;
            $message = 'Data Inserted';
 
-      if(mysqli_query($connect, $query))
-          {
-            echo 'test7';
-              $output .= $message;
-          }
-
+            if(mysqli_query($connect, $query))
+                {
+                    $output .= $message;
+                } 
         } else {
-          echo "동일한 Sample No가 존재합니다.";
+          $output = '동일한 Sample No가 존재합니다.<br>확인 후 재입력 바랍니다.';
         }
-
       }
-      
       echo $output;
  }
 } else {
