@@ -235,7 +235,7 @@ $(document).ready(function(){
                      $('#yieldSmall').val(data.yieldSmall);
                      $('#yieldBig').val(data.yieldBig);
                      $('#etc').val(data.etc);
-                     $('#id').val(data.id);
+                     $('#id').val("edit");
                      $('#insert').val("Update");
                      $('#add_data_Modal').modal('show');
                 }

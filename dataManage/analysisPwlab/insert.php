@@ -9,6 +9,10 @@ if ($_SESSION['role_id']<3){
       $message = '';
       $sampleNo = mysqli_real_escape_string($connect, $_POST["sampleNo"]);
       $powderType = mysqli_real_escape_string($connect, $_POST["powderType"]);
+
+      $check = "SELECT sampleNo from analysispwtbl where sampleNo = '$sampleNo' and powderType = '$powderType'";
+      $check_result = mysqli_num_rows(mysqli_query($connect, $check));
+
       if ($_POST["sizeSem"]!=""){
         $sizeSem = mysqli_real_escape_string($connect, $_POST["sizeSem"]);
         } else {$sizeSem = 'NULL';}
@@ -57,12 +61,12 @@ if ($_SESSION['role_id']<3){
       $etc = mysqli_real_escape_string($connect, $_POST["etc"]);
       $username = $_POST["username"];
 
-      if($_POST["id"] != '')
+      if($_POST["id"] === 'edit')
       {
+        if ($check_result > 0){
            $query = "
            UPDATE analysispwtbl
-           SET sampleNo='$sampleNo',
-           powderType='$powderType',
+           SET 
            sizeSem='$sizeSem',
            d10=$d10,
            d50=$d50,
@@ -80,22 +84,35 @@ if ($_SESSION['role_id']<3){
            na = $na,
            etc = '$etc',
            updateUser = '$username'
-           WHERE id='".$_POST["id"]."'";
+           WHERE sampleNo='$sampleNo' and powderType = '$powderType'";
            $message = 'Data Updated';
+
+           if(mysqli_query($connect, $query))
+          {
+              $output .= $message;
+          }
+        } else {
+          $output = 'Sample No는 변경할 수 없습니다.<br> 데이터 삭제 후 재입력 바랍니다.';
+        }
       }
       else
       {
+        if($check_result == 0) {
            $query = "INSERT INTO analysispwtbl (sampleNo, powderType, sizeSem, d10, d50,
              d90, dmax, tIgl, pIgl, cIgl, dtaPeak, enthalphy, bet, td, xrd, pcu, na, etc, updateUser)
            VALUES('$sampleNo', '$powderType', $sizeSem, $d10, $d50, $d90, $dmax, $tIgl,
              $pIgl, $cIgl, $dtaPeak, $enthalphy, $bet, $td, $xrd, $pcu, $na, '$etc','$username');
            ";
            $message = 'Data Inserted';
-      }
+      
       if(mysqli_query($connect, $query))
       {
            $output .= $message;
       }
+    } else {
+      echo "동일한 Sample No와 Powder Type이 존재합니다.";
+    }
+  }
       echo $output;
  }
 } else {

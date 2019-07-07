@@ -340,7 +340,7 @@ $(document).ready(function(){
                      $('#pcuNc').val(data.pcuNc);
                      $('#na').val(data.na);
                      $('#etc').val(data.etc);
-                     $('#id').val(data.id);
+                     $('#id').val("edit");
                      $('#insert').val("Update");
                      $('#add_data_Modal').modal('show');
                 }

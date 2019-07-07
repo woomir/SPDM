@@ -103,6 +103,7 @@ if ($_SESSION['role_id']<3){
 
     
         if ($_POST["id"] == 'edit'){
+          if ($check_result > 0){
            $query = "
            UPDATE reactionpw
            SET object='$object',
@@ -142,12 +143,11 @@ if ($_SESSION['role_id']<3){
            WHERE sampleNo='".$_POST["sampleNo"]."'";
            $message = 'Data Updated';
 
-           if($check_sampleNo["sampleNo"] == $sampleNo )
-           {
-              mysqli_query($connect, $query);
+           if(mysqli_query($connect, $query))
+          {
               $output .= $message;
-           }
-          else {
+          }
+         } else {
            $output = 'Sample No는 변경할 수 없습니다.<br> 데이터 삭제 후 재입력 바랍니다.';
          }
        }

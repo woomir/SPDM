@@ -196,7 +196,7 @@ $(document).ready(function(){
                      $('#amount').val(data.amount);
                      $('#recipe').val(data.recipe);
                      $('#etc').val(data.etc);
-                     $('#id').val(data.id);
+                     $('#id').val("edit");
                      $('#insert').val("Update");
                      $('#add_data_Modal').modal('show');
                 }

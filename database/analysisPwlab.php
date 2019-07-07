@@ -317,7 +317,7 @@ $(document).ready(function(){
                      $('#na').val(data.na);
                      $('#sizeSem').val(data.sizeSem);
                      $('#etc').val(data.etc);
-                     $('#id').val(data.id);
+                     $('#id').val("edit");
                      $('#insert').val("Update");
                      $('#add_data_Modal').modal('show');
                 }

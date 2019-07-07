@@ -9,6 +9,10 @@ if ($_SESSION['role_id']<3){
       $message = '';
       $lotNo = mysqli_real_escape_string($connect, $_POST["lotNo"]);
       $classPost = mysqli_real_escape_string($connect, $_POST["classPost"]);
+
+      $check = "SELECT * from analysispwmasstbl where lotNo = '$lotNo' AND classPost = '$classPost'";
+      $check_result = mysqli_num_rows(mysqli_query($connect, $check));
+
       if ($_POST["sizeSem"]!=""){
       $sizeSem = mysqli_real_escape_string($connect, $_POST["sizeSem"]);
     } else {$sizeSem = 'NULL';}
@@ -69,12 +73,12 @@ if ($_SESSION['role_id']<3){
       $etc = mysqli_real_escape_string($connect, $_POST["etc"]);
       $username = $_POST["username"];
 
-      if($_POST["id"] != '')
+      if($_POST["id"] === 'edit')
       {
+        if ($check_result > 0){
            $query = "
            UPDATE analysispwmasstbl
-           SET lotNo='$lotNo',
-           classPost='$classPost',
+           SET 
            sizeSem=$sizeSem,
            stdSem=$stdSem,
            d10=$d10,
@@ -96,11 +100,19 @@ if ($_SESSION['role_id']<3){
            na = $na,
            etc = '$etc',
            updateUser = '$username'
-           WHERE id='".$_POST["id"]."'";
+           WHERE lotNo = '$lotNo' and classPost = '$classPost'";
            $message = 'Data Updated';
+           if(mysqli_query($connect, $query))
+          {
+              $output .= $message;
+          }
+        } else {
+          $output = 'Lot No 또는 Powder Type을 변경할 수 없습니다.<br> 데이터 삭제 후 재입력 바랍니다.';
+        }
       }
       else
       {
+        if($check_result == 0) {
            $query = "INSERT INTO analysispwmasstbl (lotNo, classPost, sizeSem,
              stdSem, d10, d50, d90, dmax, ncIgl, qcIgl, tIgl, pIgl, cIgl, dtaPeak,
              enthalphy, bet, td, xrd, pcuR, pcuNc, na, etc, updateUser)
@@ -109,12 +121,16 @@ if ($_SESSION['role_id']<3){
              $bet, $td, $xrd, $pcuR, $pcuNc, $na, '$etc','$username');
            ";
            $message = 'Data Inserted';
-      }
+
       if(mysqli_query($connect, $query))
       {
            $output .= $message;
-
       }
+    } else {
+      echo "동일한 Lot No와 Powder Type이 존재합니다.";
+    }
+
+  }
       echo $output;
  }
 } else {

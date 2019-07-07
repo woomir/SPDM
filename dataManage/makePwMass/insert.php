@@ -7,6 +7,10 @@ if ($_SESSION['role_id']<3){
       $output = '';
       $message = '';
       $lotNo = mysqli_real_escape_string($connect, $_POST["lotNo"]);
+
+      $check = "SELECT lotNo from makepwmasstbl where lotNo = '$lotNo'";
+      $check_result = mysqli_num_rows(mysqli_query($connect, $check));
+
       $nameProduct = mysqli_real_escape_string($connect, $_POST["nameProduct"]);
       $characteristic = mysqli_real_escape_string($connect, $_POST["characteristic"]);
       $nameLubricant1 = mysqli_real_escape_string($connect, $_POST["nameLubricant1"]);
@@ -41,11 +45,12 @@ if ($_SESSION['role_id']<3){
         $etc = mysqli_real_escape_string($connect, $_POST["etc"]);
         $username = $_POST["username"];
 
-      if($_POST["id"] != '')
+      if($_POST["id"] === 'edit')
       {
+        if ($check_result > 0){
            $query = "
            UPDATE makepwmasstbl
-           SET lotNo='$lotNo',
+           SET 
            nameProduct='$nameProduct',
            characteristic='$characteristic',
            nameLubricant1 = '$nameLubricant1',
@@ -61,11 +66,20 @@ if ($_SESSION['role_id']<3){
            yieldBig = $yieldBig,
            etc = '$etc',
            updateUser = '$username'
-           WHERE id='".$_POST["id"]."'";
+           WHERE lotNo='$lotNo'";
            $message = 'Data Updated';
+
+           if(mysqli_query($connect, $query))
+          {
+              $output .= $message;
+          }
+      } else {
+        $output = 'Sample No는 변경할 수 없습니다.<br> 데이터 삭제 후 재입력 바랍니다.';
       }
+    }
       else
       {
+        if($check_result == 0) {
            $query = "INSERT INTO makepwmasstbl (lotNo, nameProduct, characteristic,
              nameLubricant1, ratioLubricant1, nameLubricant2, ratioLubricant2,
              ratioSAPA, tempCoating, rateAddJet, pressureJet, yieldJet, yieldSmall,
@@ -75,12 +89,15 @@ if ($_SESSION['role_id']<3){
             $yieldJet, $yieldSmall, $yieldBig, '$etc','$username');
            ";
            $message = 'Data Inserted';
-      }
+
       if(mysqli_query($connect, $query))
       {
            $output .= $message;
-
       }
+    } else {
+      echo "동일한 Sample No가 존재합니다.";
+    }
+  }
       echo $output;
  }
 } else {
