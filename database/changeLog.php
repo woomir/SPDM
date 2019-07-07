@@ -8,14 +8,23 @@
 <div id="wrapper">
     <div id="content-wrapper">
       <div class="container-fluid">
-        <div class="card mb-3">
+        <div class="card mb-5">
             
           <div class="card-body">
             <div class="row justify-content-between">
-              <div class="col-4">
+              <div class="col-5">
                 <h3>Change Log</h3>
                 <hr>
                 <br>
+                <strong>2019-07-07</strong>
+                <ul>
+                  <li>Add Function (Select previous data) in Insert Form</li>
+                  <ol>
+                    <li>Mass powder - Manufacturing</li>
+                    <li>Lab powder - Reaction, Wash, Coating</li>
+                    <li>Paste - List</li>
+                  </ol>
+                </ul>
                 <strong>2019-07-06</strong>
                 <ul>
                   <li>Add web page : Data Analysis - Reaction</li>
