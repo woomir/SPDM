@@ -1,5 +1,6 @@
 <?php session_start();
    require_once('../lib/top.php');
+   include '../dataManage/db.php';
  if(isset($_SESSION['id']) && isset($_SESSION['password'])){
    settype($_SESSION['role_id'],'int');
    require_once('../lib/menu.php');
@@ -73,6 +74,18 @@
                 <div class="modal-body">
                   <div class="container-fluid">
                      <form method="post" id="insert_form">
+                     <div style="display:inline-block; position:absolute; right:170px; top:22px; font-weight:bold;">이전 데이터 가져오기</div>
+                            <select name="existCondition" id="existCondition" class="form-control" style="width:30%; display:inline-block; float:right;">
+                            <option value="">Paste No</option>
+                            <?php 
+                              $query = "SELECT id, pasteNo from makelistpastetbl ORDER BY dateMake DESC";
+                              $result = mysqli_query($connect,$query);
+                              while($row = mysqli_fetch_array($result)){
+                                echo "<option value='".$row["id"]."'>".$row["pasteNo"]."</option>";
+                              }
+                            ?>    
+                            </select>
+                     <br><br><br>
                        <div class="row">
                          <div class="col-md-3">
                            <label>*Paste No</label>
@@ -178,9 +191,11 @@ $(document).ready(function(){
            $('#insert').val("Insert");
            $('#insert_form')[0].reset();
            $('#id').val("");
+           $('#existCondition').val("");
       });
       $(document).on('click', '.edit_data', function(){
            var id = $(this).attr("id");
+           $('#existCondition').val("");
            $.ajax({
                 url:"../dataManage/listofManu/edit.php",
                 method:"POST",
@@ -283,6 +298,29 @@ $(document).ready(function(){
       handle: ".modal-header"
     });
     
+    $("#existCondition").change(function(){
+      var id = this.value;
+      $.ajax({
+                url:"../dataManage/listofManu/edit.php",
+                method:"POST",
+                data:{id:id},
+                dataType:"json",
+                success:function(data){
+                    $('#pasteNo').val(data.pasteNo);
+                     $('#powderLot').val(data.powderLot);
+                     $('#powderType').val(data.powderType);
+                     $('#dateMake').val(data.dateMake);
+                     $('#maker').val(data.maker);
+                     $('#object').val(data.object);
+                     $('#amount').val(data.amount);
+                     $('#recipe').val(data.recipe);
+                     $('#etc').val(data.etc);
+                     $('#id').val(data.id);
+                     $('#add_data_Modal').show().formValidation('resetForm');
+                }
+           });
+    });
+
  });
 
 </script>

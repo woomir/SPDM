@@ -127,6 +127,18 @@
                 <div class="modal-body">
                   <div class="container-fluid">
                      <form method="post" id="insert_form">
+                     <div style="display:inline-block; position:absolute; right:190px; top:22px; font-weight:bold;">이전 데이터 가져오기</div>
+                            <select name="existCondition" id="existCondition" class="form-control" style="width:20%; display:inline-block; float:right;">
+                            <option value="">Sample No</option>
+                            <?php 
+                              $query = "SELECT sampleNo from reactionpw ORDER BY date DESC";
+                              $result = mysqli_query($connect,$query);
+                              while($row = mysqli_fetch_array($result)){
+                                echo "<option value='".$row["sampleNo"]."'>".$row["sampleNo"]."</option>";
+                              }
+                            ?>    
+                            </select>
+                     <br><br>
                        <div class="row">
                          <div class="col-md-6">
                            <label>*Sample No</label>
@@ -372,9 +384,11 @@ $(document).ready(function(){
            $('#insert').val("Insert");
            $('#insert_form')[0].reset();
            $('#id').val("");
+           $('#existCondition').val("");
       });
       $(document).on('click', '.edit_data', function(){
            var id = $(this).attr("id");
+           $('#existCondition').val("");
            $.ajax({
                 url:"../dataManage/labReaction/edit.php",
                 method:"POST",
@@ -489,6 +503,55 @@ $(document).ready(function(){
     
     $(".modal").draggable({
       handle: ".modal-header"
+    });
+
+    $("#existCondition").change(function(){
+      var id = this.value;
+      $.ajax({
+                url:"../dataManage/labReaction/edit.php",
+                method:"POST",
+                data:{id:id},
+                dataType:"json",
+                success:function(data){
+                    $('#sampleNo').val(data.sampleNo);
+                     $('#object').val(data.object);
+                     $('#date').val(data.date);
+                     $('#scale').val(data.scale);
+                     $('#infoAgno3_lotNo').val(data.infoAgno3_lotNo);
+                     $('#agC').val(data.agC);
+                     $('#agTvol').val(data.agTvol);
+                     $('#amEq').val(data.amEq);
+                     $('#kindAdd1').val(data.kindAdd1);
+                     $('#ratioAdd1').val(data.ratioAdd1);
+                     $('#kindAdd2').val(data.kindAdd2);
+                     $('#ratioAdd2').val(data.ratioAdd2);
+                     $('#kindAdd3').val(data.kindAdd3);
+                     $('#ratioAdd3').val(data.ratioAdd3);
+                     $('#kindAdd4').val(data.kindAdd4);
+                     $('#ratioAdd4').val(data.ratioAdd4);
+                     $('#agTemp').val(data.agTemp);
+                     $('#agRpm').val(data.agRpm);
+                     $('#agOrder').val(data.agOrder);
+                     $('#agEtc').val(data.agEtc);
+                     $('#redTvol').val(data.redTvol);
+                     $('#kindRed').val(data.kindRed);
+                     $('#redC').val(data.redC);
+                     $('#kindRedAdd1').val(data.kindRedAdd1);
+                     $('#ratioRedAdd1').val(data.ratioRedAdd1);
+                     $('#kindRedAdd2').val(data.kindRedAdd2);
+                     $('#ratioRedAdd2').val(data.ratioRedAdd2);
+                     $('#redTemp').val(data.redTemp);
+                     $('#redRpm').val(data.redRpm);
+                     $('#ratioReactionNaOH').val(data.ratioReactionNaOH);
+                     $('#redEtc').val(data.redEtc);
+                     $('#reactionpH').val(data.reactionpH);
+                     $('#reactionTemp').val(data.reactionTemp);
+                     $('#maker').val(data.maker);
+                     $('#etc').val(data.etc);
+                     $('#id').val(data.id);
+                     $('#add_data_Modal').show().formValidation('resetForm');
+                }
+           });
     });
 
  });

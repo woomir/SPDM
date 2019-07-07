@@ -1,5 +1,6 @@
 <?php session_start();
    require_once('../lib/top.php');
+   include '../dataManage/db.php';
  if(isset($_SESSION['id']) && isset($_SESSION['password'])){
    settype($_SESSION['role_id'],'int');
    require_once('../lib/menu.php');
@@ -99,15 +100,27 @@
       <div class="modal-dialog modal-lg">
            <div class="modal-content">
                 <div class="modal-header">
-                     <h4 class="modal-title" id="gridModalLabel">Data Insert</h4>
-                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                       <span aria-hidden="true">×</span>
-                     </button>
-
+                      <h4 class="modal-title" id="gridModalLabel">Data Insert</h4>
+                            
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
                 </div>
                 <div class="modal-body">
                   <div class="container-fluid">
                      <form method="post" id="insert_form">
+                     <div style="display:inline-block; position:absolute; right:190px; top:22px; font-weight:bold;">이전 데이터 가져오기</div>
+                            <select name="existCondition" id="existCondition" class="form-control" style="width:20%; display:inline-block; float:right;">
+                            <option value="">Sample No</option>
+                            <?php 
+                              $query = "SELECT id, sampleNo from conditioncoatingtbl ORDER BY dateMake DESC";
+                              $result = mysqli_query($connect,$query);
+                              while($row = mysqli_fetch_array($result)){
+                                echo "<option value='".$row["id"]."'>".$row["sampleNo"]."</option>";
+                              }
+                            ?>    
+                            </select>
+                     <br><br>
                        <div class="row">
                          <div class="col-md-6">
                            <label>*Sample No</label>
@@ -358,9 +371,11 @@ $(document).ready(function(){
            $('#insert').val("Insert");
            $('#insert_form')[0].reset();
            $('#id').val("");
+           $('#existCondition').val("");
       });
       $(document).on('click', '.edit_data', function(){
            var id = $(this).attr("id");
+           $('#existCondition').val("");
            $.ajax({
                 url:"../dataManage/labCoating/edit.php",
                 method:"POST",
@@ -478,6 +493,59 @@ $(document).ready(function(){
     $(".modal").draggable({
       handle: ".modal-header"
     });
+
+    $("#existCondition").change(function(){
+      var id = this.value;
+      $.ajax({
+                url:"../dataManage/labCoating/edit.php",
+                method:"POST",
+                data:{id:id},
+                dataType:"json",
+                success:function(data){
+                     $('#sampleNo').val(data.sampleNo);
+                     $('#concept').val(data.concept);
+                     $('#dateMake').val(data.dateMake);
+                     $('#ncpwLot').val(data.ncpwLot);
+                     $('#amountPw').val(data.amountPw);
+                     $('#conditionWash').val(data.conditionWash);
+                     $('#nameRed').val(data.nameRed);
+                     $('#ratioRed').val(data.ratioRed);
+                     $('#lotRed').val(data.lotRed);
+                     $('#nameAmine').val(data.nameAmine);
+                     $('#amountAmine').val(data.amountAmine);
+                     $('#nameLubricant1').val(data.nameLubricant1);
+                     $('#ratioLubricant1').val(data.ratioLubricant1);
+                     $('#nameLubricant2').val(data.nameLubricant2);
+                     $('#ratioLubricant2').val(data.ratioLubricant2);
+                     $('#ratioSA').val(data.ratioSA);
+                     $('#ratioPA').val(data.ratioPA);
+                     $('#nameSolLubri').val(data.nameSolLubri);
+                     $('#amountSolLubri').val(data.amountSolLubri);
+                     $('#tempSolLubri').val(data.tempSolLubri);
+                     $('#nameAdd').val(data.nameAdd);
+                     $('#ratioAdd').val(data.ratioAdd);
+                     $('#nameSolPw').val(data.nameSolPw);
+                     $('#amountSolPw').val(data.amountSolPw);
+                     $('#orderAdd').val(data.orderAdd);
+                     $('#tempCoating').val(data.tempCoating);
+                     $('#rpmPw').val(data.rpmPw);
+                     $('#timePw').val(data.timePw);
+                     $('#timeRed').val(data.timeRed);
+                     $('#timeAmine').val(data.timeAmine);
+                     $('#timeCoating1').val(data.timeCoating1);
+                     $('#timeCoating2').val(data.timeCoating2);
+                     $('#conductivityAfterPw').val(data.conductivityAfterPw);
+                     $('#tempAfterPw').val(data.tempAfterPw);
+                     $('#pHBeforeCoating').val(data.pHBeforeCoating);
+                     $('#maker').val(data.maker);
+                     $('#etc').val(data.etc);
+                     $('#id').val(data.id);
+                     $('#add_data_Modal').show().formValidation('resetForm');
+                }
+           });
+    });
+
+
 
  });
 

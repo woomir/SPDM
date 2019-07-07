@@ -1,5 +1,6 @@
 <?php session_start();
    require_once('../lib/top.php');
+   include '../dataManage/db.php';
  if(isset($_SESSION['id']) && isset($_SESSION['password'])){
    settype($_SESSION['role_id'],'int');
    require_once('../lib/menu.php');
@@ -80,6 +81,18 @@
       <div class="modal-body">
         <div class="container-fluid">
           <form method="post" id="insert_form">
+          <div style="display:inline-block; position:absolute; right:190px; top:22px; font-weight:bold;">이전 데이터 가져오기</div>
+                            <select name="existCondition" id="existCondition" class="form-control" style="width:20%; display:inline-block; float:right;">
+                            <option value="">Sample No</option>
+                            <?php 
+                              $query = "SELECT sampleNo from washtbl ORDER BY dateWashing DESC";
+                              $result = mysqli_query($connect,$query);
+                              while($row = mysqli_fetch_array($result)){
+                                echo "<option value='".$row["sampleNo"]."'>".$row["sampleNo"]."</option>";
+                              }
+                            ?>    
+                            </select>
+                     <br><br>
             <div class="row">
               <div class="col-md-4">
                 <label>*Sample No</label>
@@ -272,10 +285,12 @@ $(document).ready(function(){
         $('#insert').val("Insert");
         $('#insert_form')[0].reset();
         $('#id').val("");
+        $('#existCondition').val("");
   });
 
   $(document).on('click', '.edit_data', function(){
         var id = $(this).attr("id");
+        $('#existCondition').val("");
         $.ajax({
             url:"../dataManage/labWashing/edit.php",
             method:"POST",
@@ -372,6 +387,36 @@ $(document).ready(function(){
                   }, 5000);
               }
   });
+
+  $("#existCondition").change(function(){
+      var id = this.value;
+      $.ajax({
+                url:"../dataManage/labWashing/edit.php",
+                method:"POST",
+                data:{id:id},
+                dataType:"json",
+                success:function(data){
+                  $('#sampleNo').val(data.sampleNo);
+                  $('#concept').val(data.concept);
+                  $('#dateWashing').val(data.dateWashing);
+                  $('#pwLot').val(data.pwLot);
+                  $('#amountDMW').val(data.amountDMW);
+                  $('#amountPw').val(data.amountPw);
+                  $('#kindsWash').val(data.kindsWash);
+                  $('#ratioWash').val(data.ratioWash);
+                  $('#temp').val(data.temp);
+                  $('#orderAdd').val(data.orderAdd);
+                  $('#rpm').val(data.rpm);
+                  $('#timeDissol').val(data.timeDissol);
+                  $('#timePw').val(data.timePw);
+                  $('#maker').val(data.maker);
+                  $('#etc').val(data.etc);
+                  $('#id').val(data.id);
+                  $('#add_data_Modal').show().formValidation('resetForm');
+                }
+           });
+    });
+
 
       //file button 동작
   $(document).on('click', '.btn_file', function(){

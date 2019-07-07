@@ -1,5 +1,6 @@
 <?php session_start();
    require_once('../lib/top.php');
+   include '../dataManage/db.php';
  if(isset($_SESSION['id']) && isset($_SESSION['password'])){
    settype($_SESSION['role_id'],'int');
    require_once('../lib/menu.php');
@@ -78,6 +79,18 @@
                 <div class="modal-body">
                   <div class="container-fluid">
                      <form method="post" id="insert_form">
+                     <div style="display:inline-block; position:absolute; right:190px; top:22px; font-weight:bold;">이전 데이터 가져오기</div>
+                            <select name="existCondition" id="existCondition" class="form-control" style="width:20%; display:inline-block; float:right;">
+                            <option value="">Lot No</option>
+                            <?php 
+                              $query = "SELECT id, lotNo from makepwmasstbl ORDER BY lotNo DESC";
+                              $result = mysqli_query($connect,$query);
+                              while($row = mysqli_fetch_array($result)){
+                                echo "<option value='".$row["id"]."'>".$row["lotNo"]."</option>";
+                              }
+                            ?>    
+                            </select>
+                     <br><br>
                        <div class="row">
                          <div class="col-md-4">
                            <label>*Lot No</label>
@@ -211,9 +224,11 @@ $(document).ready(function(){
            $('#insert').val("Insert");
            $('#insert_form')[0].reset();
            $('#id').val("");
+           $('#existCondition').val("");
       });
       $(document).on('click', '.edit_data', function(){
            var id = $(this).attr("id");
+           $('#existCondition').val("");
            $.ajax({
                 url:"../dataManage/makePwMass/edit.php",
                 method:"POST",
@@ -300,6 +315,35 @@ $(document).ready(function(){
 
     $(".modal").draggable({
       handle: ".modal-header"
+    });
+
+    $("#existCondition").change(function(){
+      var id = this.value;
+      $.ajax({
+                url:"../dataManage/makePwMass/edit.php",
+                method:"POST",
+                data:{id:id},
+                dataType:"json",
+                success:function(data){
+                  $('#lotNo').val(data.lotNo);
+                     $('#nameProduct').val(data.nameProduct);
+                     $('#characteristic').val(data.characteristic);
+                     $('#nameLubricant1').val(data.nameLubricant1);
+                     $('#ratioLubricant1').val(data.ratioLubricant1);
+                     $('#nameLubricant2').val(data.nameLubricant2);
+                     $('#ratioLubricant2').val(data.ratioLubricant2);
+                     $('#ratioSAPA').val(data.ratioSAPA);
+                     $('#tempCoating').val(data.tempCoating);
+                     $('#rateAddJet').val(data.rateAddJet);
+                     $('#pressureJet').val(data.pressureJet);
+                     $('#yieldJet').val(data.yieldJet);
+                     $('#yieldSmall').val(data.yieldSmall);
+                     $('#yieldBig').val(data.yieldBig);
+                     $('#etc').val(data.etc);
+                     $('#id').val(data.id);
+                     $('#add_data_Modal').show().formValidation('resetForm');
+                }
+           });
     });
 
  });
