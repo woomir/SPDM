@@ -16,9 +16,14 @@
                 <h3>Change Log</h3>
                 <hr>
                 <br>
+                <strong>2019-07-11</strong>
+                <ul>
+                  <li>Add function of fixed header at all tables</li>
+                  <li>Change position of menu-bar to relative</li>
+                </ul>
                 <strong>2019-07-07</strong>
                 <ul>
-                  <li>Add Function (Select previous data) in Insert Form</li>
+                  <li>Add function of selecting previous data at insert Form</li>
                   <ol>
                     <li>Mass powder - Manufacturing</li>
                     <li>Lab powder - Reaction, Wash, Coating</li>

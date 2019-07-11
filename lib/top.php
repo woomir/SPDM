@@ -16,4 +16,5 @@
   <link href="../css/buttons.bootstrap4.min.css" rel="stylesheet"/>
   <link href="../css/responsive.bootstrap4.min.css" rel="stylesheet"/>
   <link href="../css/woomir_custom.css" rel="stylesheet"/>
+  <link href="../css/fixedHeader.bootstrap4.min.css" rel="stylesheet"/>
 </head>

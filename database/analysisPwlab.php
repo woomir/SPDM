@@ -263,6 +263,7 @@ $(document).ready(function(){
     "processing" : true,
     "serverSide" : true,
     "responsive" : true,
+    "fixedHeader" : true,
     "order" : [[0,'desc']],
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "iDisplayLength": 25,

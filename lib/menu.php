@@ -6,7 +6,7 @@ header {
   width: 100%;
   top: 0;
   left: 0;
-  position: fixed;
+  position: relative;
   z-index: 1000;
   display: block;
 }
@@ -89,9 +89,8 @@ li.action{
 
 #menuNavbar{
   background-color: #333;
-  top: 60px;
   z-index: 70;
-  position: fixed;
+  position: relative;
   width: 100%;
   left: 0;
   height: 45px;
