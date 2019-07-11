@@ -137,6 +137,12 @@ li.action{
   margin: 0px 10px 0px 10px;
 }
 
+#menuArchive{
+  width: 105px; 
+  padding: 10px 10px;
+  margin: 0px 10px 0px 10px;
+}
+
 
 .navbar-nav > li > .dropdown-menu{
   background-color: #333;
@@ -283,6 +289,17 @@ li > .dropdown-menu > .dropdown-item:hover{
           <a class="dropdown-item" href="analysisPtView.php">Data Analysis</a>
         </div>
       </li>
+      
+      <li id="liArchive" class="nav-item dropdown active">
+        <a id="menuArchive" class="nav-link" href="archive.php" role="button" >
+          <i class="fas fa-archive"></i>&nbsp;&nbsp;Archive</a>
+      </li>
+
+      <li id="menuChangeLog" class="nav-item dropdown active">
+        <a id="menuChange" class="nav-link" href="changeLog.php" role="button" >
+          <i class="fas fa-clipboard-list"></i>&nbsp;&nbsp;Change Log</a>
+      </li>
+
       <?php if ($_SESSION['role_id']==1){ ?>
       <li id="liAdmin" class="nav-item dropdown active">
         <a id="menuAdmin" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -293,10 +310,6 @@ li > .dropdown-menu > .dropdown-item:hover{
         </div>
       </li>
       <?php } ?>
-      <li id="menuChangeLog" class="nav-item dropdown active">
-        <a id="menuChange" class="nav-link" href="changeLog.php" role="button" >
-          <i class="fas fa-clipboard-list"></i>&nbsp;&nbsp;Change Log</a>
-      </li>
     </ul>
   </div>
 </nav> <br>

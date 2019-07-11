@@ -20,6 +20,7 @@
                 <ul>
                   <li>Add function of fixed header at all tables</li>
                   <li>Change position of menu-bar to relative</li>
+                  <li>Add page : Archive </li>
                 </ul>
                 <strong>2019-07-07</strong>
                 <ul>
@@ -32,20 +33,20 @@
                 </ul>
                 <strong>2019-07-06</strong>
                 <ul>
-                  <li>Add web page : Data Analysis - Reaction</li>
+                  <li>Add page : Data Analysis - Reaction</li>
                 </ul>
                 <strong>2019-06-30</strong>
                 <ul>
-                  <li>Add web page : Reaction of Lab powder</li>
-                  <li>Add web page : AgNO<sub>3</sub></li>
+                  <li>Add page : Reaction of Lab powder</li>
+                  <li>Add page : AgNO<sub>3</sub></li>
                 </ul>
                 <strong>2019-06-21</strong>
                 <ul>
-                  <li>Add web page : Data Analysis - Wash</li>
+                  <li>Add page : Data Analysis - Wash</li>
                 </ul>
                 <strong>2019-06-18</strong>
                 <ul>
-                  <li>Add web page : Chang Log</li>
+                  <li>Add page : Chang Log</li>
                 </ul>
                 <strong>2019-06-16</strong>
                 <ul>
@@ -53,7 +54,7 @@
                 </ul>
                 <strong>2019-06-15</strong>
                 <ul>
-                  <li>Add web page : Washing (Lab)</li>
+                  <li>Add page : Washing (Lab)</li>
                 </ul>
                 <strong>2019-06-12</strong>
                 <ul>
@@ -69,13 +70,13 @@
                 </ul>
                 <strong>2019-04-08</strong>
                 <ul>
-                  <li>Add web page : Information of Users</li>
-                  <li>Add web page : Information of Login</li>
+                  <li>Add page : Information of Users</li>
+                  <li>Add page : Information of Login</li>
                 </ul>
                 <strong>2019-03-22</strong>
                 <ul>
-                  <li>Add web page : Data analysis of Lab powder</li>
-                  <li>Add web page : Data analysis of Mass powder</li>
+                  <li>Add page : Data analysis of Lab powder</li>
+                  <li>Add page : Data analysis of Mass powder</li>
                 </ul>
                 <strong>2019-03-21</strong>
                 <ul>
