@@ -48,7 +48,7 @@
               </div>
               
               <!-- Lab 테이블 -->
-              <div class="tab-pane fade" id="lab" role="tabpanel" aria-labelledby="L-tab"><br>
+              <div class="tab-pane fade show active" id="lab" role="tabpanel" aria-labelledby="L-tab"><br>
               <div class="table-responsive">
                   <table id="LabTable" class="table table-bordered table-striped table-hover" style="width: 100%;">
                   <thead align="center">
@@ -67,7 +67,7 @@
               </div>
               
               <!-- Paste 테이블 -->
-              <div class="tab-pane fade show active" id="paste" role="tabpanel" aria-labelledby="P-tab"><br>      
+              <div class="tab-pane fade" id="paste" role="tabpanel" aria-labelledby="P-tab"><br>      
                 <div class="table-responsive">
                   <table id="PasteTable" class="table table-bordered table-striped table-hover" style="width: 100%;">
                   <thead align="center">
