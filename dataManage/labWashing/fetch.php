@@ -78,16 +78,11 @@ while($row = mysqli_fetch_array($result))
  
  if ($_SESSION['role_id']==1){
   $sub_array[] = '<div align="center">
-                  <input type="button" name="file" value="File" id="'.$row["sampleNo"] .'" class="btn btn-sm btn-secondary btn_file"/>
                   <input type="button" name="edit" value="Edit" id="'.$row["sampleNo"] .'" class="btn btn-info btn-sm edit_data" />
                   <input type="button" name="delete" value="Delete" id="'.$row["sampleNo"] .'" class="btn btn-sm btn-danger btn_delete" /></div>';
               } else if ($_SESSION['role_id']==2) {
                 $sub_array[] = '<div align="center">
-                <input type="button" name="file" value="File" id="'.$row["sampleNo"] .'" class="btn btn-sm btn-secondary btn_file" />
                 <input type="button" name="edit" value="Edit" id="'.$row["sampleNo"] .'" class="btn btn-info btn-sm edit_data" /></div>';
-              } else if ($_SESSION['role_id']==3) {
-                $sub_array[] = '<div align="center">
-                <input type="button" name="file" value="File" id="'.$row["sampleNo"] .'" class="btn btn-sm btn-secondary btn_file" /></div>';
               } else {
                 $sub_array[]='';
               }
