@@ -224,6 +224,7 @@
           <div class="card mb-3">
             <!-- <div class="card-header">SEM Images</div> -->
             <div class="card-body">
+              <h4 id="filehead" style="font-style:italic;"></h4><br>
               <form method="post" id="file_form" enctype="multipart/form-data" action="../dataManage/analysisPwMass/file_manage.php">
                 <?php if ($_SESSION['role_id'] < 3){ ?>
                   <div class="progress">
@@ -416,6 +417,7 @@ $(document).on('click', '.btn_file', function(){
                 data:{id:id},
                 dataType:"json",
                 success:function(data){
+                      $('#filehead').html(data[0].lotNo + ' ' + data[0].classPost);
                       var i = Object.keys(data).length;
                       if (data[0].check == 0){ // check가 '0'이면 첨부 파일이 존재함.
                         var imageCount = 0;
