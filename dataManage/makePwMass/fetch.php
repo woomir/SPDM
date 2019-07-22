@@ -3,7 +3,7 @@
 session_start();
 //fetch.php
 $connect = mysqli_connect("localhost", "root", "$52Telecast", "woomir");
-$column = array('lotNo', 'nameProduct', 'characteristic', 'nameLubricant1',
+$column = array('lotNo', 'nameProduct', 'characteristic', 'makeDate', 'nameLubricant1',
 'ratioLubricant1', 'nameLubricant2', 'ratioLubricant2', 'ratioSAPA', 'tempCoating',
 'rateAddJet', 'pressureJet', 'yieldJet', 'yieldSmall', 'yieldBig', 'etc');
 $query = "SELECT * FROM makepwmasstbl";
@@ -16,6 +16,7 @@ if(isset($_POST["search"]["value"]))
  WHERE lotNo LIKE "%'.$_POST["search"]["value"].'%"
  OR nameProduct LIKE "%'.$_POST["search"]["value"].'%"
  OR characteristic LIKE "%'.$_POST["search"]["value"].'%"
+ OR makeDate LIKE "%'.$_POST["search"]["value"].'%"
  OR nameLubricant1 LIKE "%'.$_POST["search"]["value"].'%"
  OR ratioLubricant1 LIKE "%'.$_POST["search"]["value"].'%"
  OR nameLubricant2 LIKE "%'.$_POST["search"]["value"].'%"
@@ -60,6 +61,7 @@ while($row = mysqli_fetch_array($result))
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="lotNo">' . $row["lotNo"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="nameProduct">' . $row["nameProduct"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="characteristic">' . $row["characteristic"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="makeDate">' . $row["makeDate"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="nameLubricant1">' . $row["nameLubricant1"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="ratioLubricant1">' . $row["ratioLubricant1"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="nameLubricant2">' . $row["nameLubricant2"] . '</div>';

@@ -36,6 +36,7 @@
       <th width="">Lot<br>No</th>
       <th width="">제품<br>분류</th>
       <th width="">특징</th>
+      <th>제조일자</th>
       <th width="">코팅제1</th>
       <th width="">코팅제1<br>비율</th>
       <th width="">코팅제2</th>
@@ -92,19 +93,23 @@
                             </select>
                      <br><br>
                        <div class="row">
-                         <div class="col-md-4">
+                         <div class="col-md-3">
                            <label>*Lot No</label>
                            <input type="text" name="lotNo" id="lotNo" class="form-control" />
                          </div>
-                         <div class="col-md-4">
+                         <div class="col-md-2">
                            <label>*제품 분류</label>
-                           <input type="text" name="nameProduct" id="nameProduct" class="form-control"></input>
+                           <input type="text" name="nameProduct" id="nameProduct" class="form-control" placeholder="CP6"></input>
                          </div>
                          <div class="col-md-4">
                            <label>*특징</label>
                            <input type="text" name="characteristic" id="characteristic" class="form-control"></input>
                          </div>
-                       </div>
+                         <div class="col-md-3">
+                           <label>*제조일자</label>
+                           <input type="date" name="makeDate" id="makeDate" class="form-control"></input>
+                         </div>
+                       </div> 
                        <br />
                        <div class="row">
                          <div class="col-md-3">
@@ -239,6 +244,7 @@ $(document).ready(function(){
                      $('#lotNo').val(data.lotNo);
                      $('#nameProduct').val(data.nameProduct);
                      $('#characteristic').val(data.characteristic);
+                     $('#makeDate').val(data.makeDate);
                      $('#nameLubricant1').val(data.nameLubricant1);
                      $('#ratioLubricant1').val(data.ratioLubricant1);
                      $('#nameLubricant2').val(data.nameLubricant2);
@@ -270,6 +276,10 @@ $(document).ready(function(){
            else if($('#characteristic').val() == '')
            {
                 alert("특징 is required");
+           }
+           else if($('#makeDate').val() == '')
+           {
+                alert("제조일자 is required");
            }
            else
            {
@@ -329,6 +339,7 @@ $(document).ready(function(){
                   $('#lotNo').val(data.lotNo);
                      $('#nameProduct').val(data.nameProduct);
                      $('#characteristic').val(data.characteristic);
+                     $('#makeDate').val(data.makeDate);
                      $('#nameLubricant1').val(data.nameLubricant1);
                      $('#ratioLubricant1').val(data.ratioLubricant1);
                      $('#nameLubricant2').val(data.nameLubricant2);

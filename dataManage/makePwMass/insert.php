@@ -13,6 +13,7 @@ if ($_SESSION['role_id']<3){
 
       $nameProduct = mysqli_real_escape_string($connect, $_POST["nameProduct"]);
       $characteristic = mysqli_real_escape_string($connect, $_POST["characteristic"]);
+      $makeDate = mysqli_real_escape_string($connect, $_POST["makeDate"]);
       $nameLubricant1 = mysqli_real_escape_string($connect, $_POST["nameLubricant1"]);
       if ($_POST["ratioLubricant1"]!=""){
       $ratioLubricant1 = mysqli_real_escape_string($connect, $_POST["ratioLubricant1"]);
@@ -53,6 +54,7 @@ if ($_SESSION['role_id']<3){
            SET 
            nameProduct='$nameProduct',
            characteristic='$characteristic',
+           makeDate='$makeDate',
            nameLubricant1 = '$nameLubricant1',
            ratioLubricant1 = $ratioLubricant1,
            nameLubricant2 = '$nameLubricant2',
@@ -80,11 +82,11 @@ if ($_SESSION['role_id']<3){
       else
       {
         if($check_result == 0) {
-           $query = "INSERT INTO makepwmasstbl (lotNo, nameProduct, characteristic,
+           $query = "INSERT INTO makepwmasstbl (lotNo, nameProduct, characteristic,makeDate,
              nameLubricant1, ratioLubricant1, nameLubricant2, ratioLubricant2,
              ratioSAPA, tempCoating, rateAddJet, pressureJet, yieldJet, yieldSmall,
              yieldBig, etc, updateUser)
-           VALUES('$lotNo', '$nameProduct', '$characteristic', '$nameLubricant1', $ratioLubricant1,
+           VALUES('$lotNo', '$nameProduct', '$characteristic', '$makeDate', '$nameLubricant1', $ratioLubricant1,
             '$nameLubricant2', $ratioLubricant2, '$ratioSAPA', $tempCoating, $rateAddJet, $pressureJet,
             $yieldJet, $yieldSmall, $yieldBig, '$etc','$username');
            ";
