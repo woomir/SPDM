@@ -540,7 +540,7 @@ $(document).ready(function(){
                      $('#pHBeforeCoating').val(data.pHBeforeCoating);
                      $('#maker').val(data.maker);
                      $('#etc').val(data.etc);
-                     $('#id').val(data.id);
+                     $('#id').val("");
                      $('#add_data_Modal').show().formValidation('resetForm');
                 }
            });
