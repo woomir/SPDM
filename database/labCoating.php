@@ -122,11 +122,11 @@
                             </select>
                      <br><br>
                        <div class="row">
-                         <div class="col-md-6">
+                         <div class="col-md-4">
                            <label>*Sample No</label>
                            <input type="text" name="sampleNo" id="sampleNo" class="form-control" />
                          </div>
-                         <div class="col-md-6">
+                         <div class="col-md-8">
                            <label>*Concept</label>
                            <input type="text" name="concept" id="concept" class="form-control"></input>
                          </div>
