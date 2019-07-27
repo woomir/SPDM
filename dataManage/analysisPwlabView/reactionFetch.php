@@ -10,7 +10,7 @@ $column = array('sampleNo', 'object', 'date', 'scale', 'agC',
 'ratioAdd4', 'amountAdd4', 'agTemp', 'agRpm', 'agOrder', 'agEtc', 'redTvol', 'kindRed', 
 'redC', 'amountRed', 'kindRedAdd1', 'ratioRedAdd1', 'amountRedAdd1', 'kindRedAdd2', 
 'ratioRedAdd2', 'amountRedAdd2', 'redTemp','redRpm', 'ratioReactionNaOH', 'redEtc', 
-'reactionpH', 'reactionTemp', 'infoAgno3_lotNo', 'maker','d10', 'd50', 'd90', 'dmax',
+'reactionpH', 'reactionTemp', 'infoAgno3_lotNo', 'maker', 'sizeSem', 'd10', 'd50', 'd90', 'dmax',
 'tIgl', 'pIgl', 'cIgl', 'dtaPeak', 'enthalphy', 'bet', 'td', 'xrd', 'pcu', 'na', 'etc');
 
 $query = "SELECT * FROM analysispwreaction_view";
@@ -60,6 +60,7 @@ if(isset($_POST["search"]["value"]))
  OR reactionTemp LIKE "%'.$_POST["search"]["value"].'%"
  OR infoAgno3_lotNo LIKE "%'.$_POST["search"]["value"].'%"
  OR maker LIKE "%'.$_POST["search"]["value"].'%"
+ OR sizeSem LIKE "%'.$_POST["search"]["value"].'%"
  OR d10 LIKE "%'.$_POST["search"]["value"].'%"
  OR d50 LIKE "%'.$_POST["search"]["value"].'%"
  OR d90 LIKE "%'.$_POST["search"]["value"].'%"
@@ -148,6 +149,7 @@ while($row = mysqli_fetch_array($result))
  $sub_array[] = '<div data-column="reactionTemp">' . $row["reactionTemp"] . '</div>';
  $sub_array[] = '<div data-column="reactionpH">' . $row["reactionpH"] . '</div>';
  $sub_array[] = '<div data-column="maker">' . $row["maker"] . '</div>';
+ $sub_array[] = '<div data-column="sizeSem">' . sprintf("%.2f",$row["sizeSem"]) . '</div>';
  $sub_array[] = '<div data-column="d10">' . sprintf("%.2f",$row["d10"]) . '</div>';
  $sub_array[] = '<div data-column="d50">' . sprintf("%.2f",$row["d50"]) . '</div>';
  $sub_array[] = '<div data-column="d90">' . sprintf("%.2f",$row["d90"]) . '</div>';
@@ -158,7 +160,7 @@ while($row = mysqli_fetch_array($result))
  $sub_array[] = '<div data-column="dtaPeak">' . sprintf("%.2f",$row["dtaPeak"]) . '</div>';
  $sub_array[] = '<div data-column="enthalphy">' . sprintf("%.2f",$row["enthalphy"]) . '</div>';
  $sub_array[] = '<div data-column="bet">' . sprintf("%.2f",$row["bet"]) . '</div>';
- $sub_array[] = '<div data-column="td">' . sprintf("%.1f",$row["td"]) . '</div>';
+ $sub_array[] = '<div data-column="td">' . sprintf("%.2f",$row["td"]) . '</div>';
  $sub_array[] = '<div data-column="xrd">' . $row["xrd"] . '</div>';
  $sub_array[] = '<div data-column="pcu">' . $row["pcu"] . '</div>';
  $sub_array[] = '<div data-column="na">' . $row["na"] . '</div>';

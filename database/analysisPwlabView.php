@@ -1,5 +1,6 @@
 <?php session_start();
    require_once('../lib/top.php');
+   include '../dataManage/db.php';
  if(isset($_SESSION['id']) && isset($_SESSION['password'])){
    settype($_SESSION['role_id'],'int');
    require_once('../lib/menu.php');
@@ -84,6 +85,7 @@
                         <th width="">반응액<br>온도</th>
                         <th width="">반응pH</th>
                         <th width="">실험담당자</th>
+                        <th>SEM size</th>
                         <th width="">D10 </th>
                         <th width="">D50 </th>
                         <th width="">D90 </th>
@@ -192,8 +194,69 @@
             </div>
           </div> <!-- card -->
         </div>
+        
+        <div class="row">
+          <div class="col-lg-12 col-xl-9 mt-2">
+            <div class="card">
+              <div class="card-header"><i class="fas fa-chart-line"></i>&nbsp&nbspGraph</div>
+              <div class="card-body">
+                <div style="width:100%;">
+                      <!-- <nav aria-label="breadcrumb">
+                      <ol class="breadcrumb">
+                          <li class="breadcrumb-item">Graph</li>
+                        </ol>
+                      </nav> -->
+                    <canvas id="myChart"></canvas>
+                  </div> 
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 col-xl-3 mt-2">
+            <div class="card">
+              <div class="card-header"><i class="fas fa-cog"></i>&nbsp&nbspSetup</div>
+              <div class="card-body">
+                <div>
+                  <label for="">&nbspChart type</label>
+                  <select name="charttype" id="charttype" class="form-control">
+                    <option value="line">Line</option>
+                    <option value="scatter">Scatter</option>
+                    <option value="bar">bar</option>
+                    <option value="pie">Pie</option>
+                  </select>
+                </div>
+                <br>
+                <div>
+                  <label for="">X-AXIS</label>
+                  <select name="" id="xAxis" class="form-control">
+                    <?php 
+                      $query = "SHOW COLUMNS FROM analysispw_view";
+                      $result = mysqli_query($connect,$query);
+                      while($row = mysqli_fetch_assoc($result)){
+                        echo "<option value=''>".$row['Field']."</option>";
+                      }
+                    ?>  
+                  </select>
+                </div>
+                <br>
+                <div>
+                  <label for="">Y-AXIS</label>
+                  <select name="" id="yAxis" class="form-control">
+                  <?php 
+                      $query = "SHOW COLUMNS FROM analysispw_view";
+                      $result = mysqli_query($connect,$query);
+                      while($row = mysqli_fetch_assoc($result)){
+                        echo "<option value=''>".$row['Field']."</option>";
+                      }
+                    ?>  
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          
       </div><!-- /.container-fluid -->
-
+<br>
 <?php
   require_once('../lib/bottom.php');
 }else{
@@ -210,114 +273,157 @@ require_once('../lib/script_src.php');
 <script type="text/javascript">
 $(document).ready(function(){
 
-  coating_fetch_data();
+      coating_fetch_data();
 
-  $(document).on('click', '#R-tab', function(){
-    $('#ReactionTable').DataTable().destroy();
-    reaction_fetch_data();
-  });
+      $(document).on('click', '#R-tab', function(){
+        $('#ReactionTable').DataTable().destroy();
+        reaction_fetch_data();
+      });
 
-  $(document).on('click', '#C-tab', function(){
-    $('#CoatingTable').DataTable().destroy();
-    coating_fetch_data();
-  });
-  
-  
-  $(document).on('click', '#W-tab', function(){
-    $('#WashTable').DataTable().destroy();
-    wash_fetch_data();
-  });
+      $(document).on('click', '#C-tab', function(){
+        $('#CoatingTable').DataTable().destroy();
+        coating_fetch_data();
+      });
+      
+      
+      $(document).on('click', '#W-tab', function(){
+        $('#WashTable').DataTable().destroy();
+        wash_fetch_data();
+      });
 
-  function reaction_fetch_data()
-  {
-   var dataTable = $('#ReactionTable').DataTable({
+      function reaction_fetch_data()
+      {
+      var dataTable = $('#ReactionTable').DataTable({
 
-    "processing" : true,
-    "serverSide" : true,
-    "responsive" : true,
-    "fixedHeader" : true,
-    "order" : [2,'desc'],
-    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-    "iDisplayLength": 25,
-    "columnDefs": [
-      {targets: [4,6,8,11,14,17,18,19,20,22,23,24,25,28,31,32,33,34,36,38,41,42,43,44,45,47,48,49,50,51,52,55,56],
-           visible: false}
-    ],
+        "processing" : true,
+        "serverSide" : true,
+        "responsive" : true,
+        "fixedHeader" : true,
+        "order" : [2,'desc'],
+        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        "iDisplayLength": 25,
+        "columnDefs": [
+          {targets: [4,6,8,11,14,17,18,19,20,22,23,24,25,28,31,32,33,34,36,38,41,43,45,46,48,49,50,51,52,53,55,56],
+              visible: false}
+        ],
+            "ajax" : {
+            url:"../dataManage/analysisPwlabView/reactionFetch.php",
+            type:"POST"
+          },
+      dom: "<'row'<'col-sm-12 col-md-auto'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4 ml-auto'f>>" +
+            "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+            buttons: ['copy', 'excel',
+            {
+              extend: 'colvis',
+              text: 'Show / Hide columns',
+              postfixButtons: [ 'colvisRestore' ]
+            }]
+      });
+      }
+    /////////
+      function wash_fetch_data()
+      {
+      var dataTable = $('#WashTable').DataTable({
+
+        "processing" : true,
+        "serverSide" : true,
+        "responsive" : true,
+        "fixedHeader" : true,
+        "order" : [2,'desc'],
+        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        "iDisplayLength": 25,
+        "columnDefs": [
+          {targets: [10,11,12,14,15,16,17,18,19,21,22,23,27],
+              visible: false}
+        ],
         "ajax" : {
-        url:"../dataManage/analysisPwlabView/reactionFetch.php",
+        url:"../dataManage/analysisPwlabView/washFetch.php",
         type:"POST"
       },
-   dom: "<'row'<'col-sm-12 col-md-auto'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4 ml-auto'f>>" +
-        "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-        buttons: ['copy', 'excel',
-        {
-          extend: 'colvis',
-          text: 'Show / Hide columns',
-          postfixButtons: [ 'colvisRestore' ]
-        }]
-   });
-  }
-/////////
-  function wash_fetch_data()
-  {
-   var dataTable = $('#WashTable').DataTable({
-
-    "processing" : true,
-    "serverSide" : true,
-    "responsive" : true,
-    "order" : [2,'desc'],
-    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-    "iDisplayLength": 25,
-    "columnDefs": [
-      {targets: [10,11,12,14,15,16,17,18,19,21,22,23,27],
-           visible: false}
-    ],
-    "ajax" : {
-     url:"../dataManage/analysisPwlabView/washFetch.php",
-     type:"POST"
-   },
-   dom: "<'row'<'col-sm-12 col-md-auto'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4 ml-auto'f>>" +
-        "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-        buttons: ['copy', 'excel',
-        {
-          extend: 'colvis',
-          text: 'Show / Hide columns',
-          postfixButtons: [ 'colvisRestore' ]
-        }]
-   });
-  }
+      dom: "<'row'<'col-sm-12 col-md-auto'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4 ml-auto'f>>" +
+            "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+            buttons: ['copy', 'excel',
+            {
+              extend: 'colvis',
+              text: 'Show / Hide columns',
+              postfixButtons: [ 'colvisRestore' ]
+            }]
+      });
+      }
 
 
-///////
-  function coating_fetch_data()
-  {
-   var dataTable = $('#CoatingTable').DataTable({
+    ///////
+      function coating_fetch_data()
+      {
+      var dataTable = $('#CoatingTable').DataTable({
 
-    "processing" : true,
-    "serverSide" : true,
-    "order" : [0,'desc'],
-    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-    "iDisplayLength": 25,
-    "columnDefs": [
-      {targets: [3,6,12,13,14,15,16,17,18,20],
-           visible: false}
-    ],
-    "ajax" : {
-     url:"../dataManage/analysisPwlabView/coatingFetch.php",
-     type:"POST"
-   },
-   dom: "<'row'<'col-sm-12 col-md-auto'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4 ml-auto'f>>" +
-        "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-        buttons: ['copy', 'excel',
-        {
-          extend: 'colvis',
-          text: 'Show / Hide columns',
-          postfixButtons: [ 'colvisRestore' ]
-        }]
-   });
-  }
+        "processing" : true,
+        "serverSide" : true,
+        "fixedHeader" : true,
+        "responsive" : true,
+        "order" : [0,'desc'],
+        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        "iDisplayLength": 25,
+        "columnDefs": [
+          {targets: [3,6,12,13,14,15,16,17,18,20],
+              visible: false}
+        ],
+        "ajax" : {
+        url:"../dataManage/analysisPwlabView/coatingFetch.php",
+        type:"POST"
+      },
+      dom: "<'row'<'col-sm-12 col-md-auto'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4 ml-auto'f>>" +
+            "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+            buttons: ['copy', 'excel',
+            {
+              extend: 'colvis',
+              text: 'Show / Hide columns',
+              postfixButtons: [ 'colvisRestore' ]
+            }]
+      });
+      }
 
 
  });
 
+
+var ctx = document.getElementById('myChart');
+var chartType = $('#charttype').val();
+
+var myChart = new Chart(ctx, {
+    type: chartType,
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
 </script>

@@ -74,7 +74,7 @@ while($row = mysqli_fetch_array($result))
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="dtaPeak">' . sprintf("%.2f",$row["dtaPeak"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="enthalphy">' . sprintf("%.2f",$row["enthalphy"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="bet">' . sprintf("%.2f",$row["bet"]) . '</div>';
- $sub_array[] = '<div data-id="'.$row["id"].'" data-column="td">' . sprintf("%.1f",$row["td"]) . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="td">' . sprintf("%.2f",$row["td"]) . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="xrd">' . $row["xrd"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="pcu">' . $row["pcu"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="na">' . $row["na"] . '</div>';

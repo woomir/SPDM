@@ -146,7 +146,7 @@
                          </div>
                          <div class="col-md-4">
                           <label>TD</label>
-                          <input type="number" name="td" id="td" class="form-control" step="0.1"/>
+                          <input type="number" name="td" id="td" class="form-control" step="0.01"/>
                          </div>
                           <div class="col-md-4">
                           <label>XRD</label>
