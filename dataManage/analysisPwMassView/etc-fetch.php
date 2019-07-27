@@ -6,14 +6,15 @@ $connect = mysqli_connect("localhost", "root", "$52Telecast", "woomir");
 $column = array('lotNo', 'classPost', 'characteristic','sizeSem','d10','d50',
 'd90','dmax','cohesion','ncIgl','qcIgl','tIgl','pIgl','cIgl','bet','td','xrd');
 
-$query = "SELECT * FROM analysispwmass_view";
+
+$query = 'SELECT * FROM analysispwmass_etc_view';
 
 if(isset($_POST["search"]["value"]))
 {
  $query .= '
  WHERE lotNo LIKE "%'.$_POST["search"]["value"].'%"
- OR classPost LIKE "%'.$_POST["search"]["value"].'%"
  OR characteristic LIKE "%'.$_POST["search"]["value"].'%"
+ OR classPost LIKE "%'.$_POST["search"]["value"].'%"
  OR sizeSem LIKE "%'.$_POST["search"]["value"].'%"
  OR d10 LIKE "%'.$_POST["search"]["value"].'%"
  OR d50 LIKE "%'.$_POST["search"]["value"].'%"
@@ -80,8 +81,7 @@ while($row = mysqli_fetch_array($result))
 
 function get_all_data($connect)
 {
-
-$query = "SELECT * FROM analysispwmass_view";
+$query = 'SELECT * FROM analysispwmass_etc_view';
  $result = mysqli_query($connect, $query);
  return mysqli_num_rows($result);
 }
@@ -93,7 +93,6 @@ $output = array(
  "data"    => $data
 
 );
-
 echo json_encode($output);
 
 
