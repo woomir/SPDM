@@ -94,7 +94,17 @@
                         </div>
                         <div class="col-md-6">
                           <label>*후처리 공정</label>
-                          <input type="text" name="classPost" id="classPost" class="form-control" placeholder="ex) JET, CL, C-CL, F-CL" />
+                          <div class="classPost">
+                            <select name="classPost" id="classPost" class="form-control">
+                              <option value="R">Reaction</option>
+                              <option value="NC">NC</option>
+                              <option value="JET">JET</option>
+                              <option value="CL">CL</option>
+                              <option value="input">직접입력</option>
+                            </select>
+                          </div>
+                            
+                          <!-- <input type="text" name="classPost" id="classPost" class="form-control" placeholder="ex) JET, CL, C-CL, F-CL" /> -->
                         </div>
                       </div>
                       <br>
@@ -172,7 +182,7 @@
                          </div>
                          <div class="col-md-4">
                           <label>TD</label>
-                          <input type="number" name="td" id="td" class="form-control" step="0.1"/>
+                          <input type="number" name="td" id="td" class="form-control" step="0.01"/>
                         </div>
                         <div class="col-md-4">
                          <label>XRD</label>
@@ -311,6 +321,13 @@ $(document).ready(function(){
            $('#insert').val("Insert");
            $('#insert_form')[0].reset();
            $('#id').val("");
+           $('.classPost').html('<select name="classPost" id="classPost" class="form-control">'+
+                              '<option value="R">Reaction</option>'+
+                              '<option value="NC">NC</option>'+
+                              '<option value="JET">JET</option>'+
+                              '<option value="CL">CL</option>'+
+                              '<option value="input">직접입력</option>'+
+                              '</select>');
       });
       $(document).on('click', '.edit_data', function(){
            var id = $(this).attr("id");
@@ -618,6 +635,20 @@ $(document).on('click', '.btn_file', function(){
     $(".modal").draggable({
       handle: ".modal-header"
     });
+
+// function func1(){
+//   var tag = '<input type="text" name="classPost" id="classPost" class="form-control"/>';
+//   $('#test2').innerHTML("");
+//   $('#test2').innerHTML(tag);
+// }
+
+    $('#classPost').change(function(){
+      var value = $('#classPost').val();
+      if (value == "input"){
+        $('.classPost').html('<input type="text" name="classPost" id="classPost" class="form-control" placeholder="직접입력"></input>');
+      }
+    });
+
             
  });
 
