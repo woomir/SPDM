@@ -33,7 +33,7 @@
               <!-- Mass 테이블 -->
               <div class="tab-pane fade" id="mass" role="tabpanel" aria-labelledby="M-tab"><br>
                 <div class="table-responsive">
-                  <table id="MassTable" class="table table-bordered table-striped table-hover" style="width: 100%;">
+                  <table id="MassTable" class="table table-bordered table-striped table-sm table-hover" style="width: 100%;">
                     <thead align="center">
                       <tr>
                         <th width="">Lot No</th>
@@ -50,7 +50,7 @@
               <!-- Lab 테이블 -->
               <div class="tab-pane fade show active" id="lab" role="tabpanel" aria-labelledby="L-tab"><br>
               <div class="table-responsive">
-                  <table id="LabTable" class="table table-bordered table-striped table-hover" style="width: 100%;">
+                  <table id="LabTable" class="table table-bordered table-striped table-sm table-hover" style="width: 100%;">
                   <thead align="center">
                     <tr>
                     <tr>
@@ -69,7 +69,7 @@
               <!-- Paste 테이블 -->
               <div class="tab-pane fade" id="paste" role="tabpanel" aria-labelledby="P-tab"><br>      
                 <div class="table-responsive">
-                  <table id="PasteTable" class="table table-bordered table-striped table-hover" style="width: 100%;">
+                  <table id="PasteTable" class="table table-bordered table-striped table-sm table-hover" style="width: 100%;">
                   <thead align="center">
                     <tr>
                       <th>Paste No</th>

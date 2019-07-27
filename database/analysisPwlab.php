@@ -90,7 +90,16 @@
                         </div>
                         <div class="col-md-6">
                           <label>*Powder Type</label>
-                          <input type="text" name="powderType" id="powderType" class="form-control" placeholder="Ex) R / NC / JET / CL"/>
+                          <div class="powderType">
+                            <select name="powderType" id="powderType" class="form-control">
+                              <option value="R">Reaction</option>
+                              <option value="NC">NC</option>
+                              <option value="JET">JET</option>
+                              <option value="CL">CL</option>
+                              <option value="input">직접입력</option>
+                            </select>
+                          </div>
+                          <!-- <input type="text" name="powderType" id="powderType" class="form-control" placeholder="Ex) R / NC / JET / CL"/> -->
                         </div>
                       </div>
                        <br />
@@ -292,8 +301,22 @@ $(document).ready(function(){
            $('#insert').val("Insert");
            $('#insert_form')[0].reset();
            $('#id').val("");
+           $('.powderType').html('<select name="powderType" id="powderType" class="form-control">'+
+                              '<option value="R">Reaction</option>'+
+                              '<option value="NC">NC</option>'+
+                              '<option value="JET">JET</option>'+
+                              '<option value="CL">CL</option>'+
+                              '<option value="input">직접입력</option>'+
+                              '</select>');
       });
       $(document).on('click', '.edit_data', function(){
+           $('.powderType').html('<select name="powderType" id="powderType" class="form-control">'+
+                              '<option value="R">Reaction</option>'+
+                              '<option value="NC">NC</option>'+
+                              '<option value="JET">JET</option>'+
+                              '<option value="CL">CL</option>'+
+                              '<option value="input">직접입력</option>'+
+                              '</select>');
            var id = $(this).attr("id");
            $.ajax({
                 url:"../dataManage/analysisPwlab/edit.php",
@@ -301,8 +324,13 @@ $(document).ready(function(){
                 data:{id:id},
                 dataType:"json",
                 success:function(data){
+                     var a = data.powderType;
                      $('#sampleNo').val(data.sampleNo);
-                     $('#powderType').val(data.powderType);
+                     if(a!=='CL' && a!=='JET' && a!=='NC' && a!=='R'){
+                      $('.powderType').html('<input type="text" name="powderType" id="powderType" class="form-control" placeholder="직접입력" value="'+data.powderType+'"></input>');
+                     }else{
+                      $('#powderType').val(data.powderType);
+                     }
                      $('#dt').val(data.d10);
                      $('#df').val(data.d50);
                      $('#dn').val(data.d90);
@@ -621,6 +649,13 @@ $(document).ready(function(){
 
     $(".modal").draggable({
       handle: ".modal-header"
+    });
+
+    $(document).on("change","#powderType",function(){
+      var value = $('#powderType').val();
+      if (value == "input"){
+        $('.powderType').html('<input type="text" name="powderType" id="powderType" class="form-control" placeholder="직접입력"></input>');
+      }
     });
 
  });

@@ -330,6 +330,13 @@ $(document).ready(function(){
                               '</select>');
       });
       $(document).on('click', '.edit_data', function(){
+           $('.classPost').html('<select name="classPost" id="classPost" class="form-control">'+
+                              '<option value="R">Reaction</option>'+
+                              '<option value="NC">NC</option>'+
+                              '<option value="JET">JET</option>'+
+                              '<option value="CL">CL</option>'+
+                              '<option value="input">직접입력</option>'+
+                              '</select>');
            var id = $(this).attr("id");
            $.ajax({
                 url:"../dataManage/analysisPwMass/edit.php",
@@ -337,7 +344,7 @@ $(document).ready(function(){
                 data:{id:id},
                 dataType:"json",
                 success:function(data){
-                    a = data.classPost;
+                    var a = data.classPost;
                      $('#lotNo').val(data.lotNo);
                      if(a!=='CL' && a!=='JET' && a!=='NC' && a!=='R'){
                       $('.classPost').html('<input type="text" name="classPost" id="classPost" class="form-control" placeholder="직접입력" value="'+data.classPost+'"></input>');
@@ -641,7 +648,7 @@ $(document).on('click', '.btn_file', function(){
       handle: ".modal-header"
     });
 
-    $('#classPost').change(function(){
+    $(document).on("change","#classPost",function(){
       var value = $('#classPost').val();
       if (value == "input"){
         $('.classPost').html('<input type="text" name="classPost" id="classPost" class="form-control" placeholder="직접입력"></input>');
