@@ -81,16 +81,18 @@
                   <div class="container-fluid">
                      <form method="post" id="insert_form">
                      <div style="display:inline-block; position:absolute; right:190px; top:22px; font-weight:bold;">이전 데이터 가져오기</div>
-                            <select name="existCondition" id="existCondition" class="form-control" style="width:20%; display:inline-block; float:right;">
-                            <option value="">Lot No</option>
-                            <?php 
-                              $query = "SELECT id, lotNo from makepwmasstbl ORDER BY lotNo DESC";
-                              $result = mysqli_query($connect,$query);
-                              while($row = mysqli_fetch_array($result)){
-                                echo "<option value='".$row["id"]."'>".$row["lotNo"]."</option>";
-                              }
-                            ?>    
-                            </select>
+                        <div class="existCondition">    
+                               <select name="existCondition" id="existCondition" class="form-control" style="width:20%; display:inline-block; float:right;">
+                                <option value="">Lot No</option>
+                                <?php 
+                                  $query = "SELECT id, lotNo from makepwmasstbl ORDER BY lotNo DESC";
+                                  $result = mysqli_query($connect,$query);
+                                  while($row = mysqli_fetch_array($result)){
+                                    echo "<option value='".$row["id"]."'>".$row["lotNo"]."</option>";
+                                  }
+                                ?>    
+                              </select>
+                        </div>  
                      <br><br>
                        <div class="row">
                          <div class="col-md-3">
@@ -296,6 +298,7 @@ $(document).ready(function(){
                           $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
                           $('#PasteTable').DataTable().destroy();
                           fetch_data();
+                          $('.existCondition').load("makePwMass.php #existCondition");
                      }
                 });
                 setInterval(function(){
@@ -328,7 +331,7 @@ $(document).ready(function(){
       handle: ".modal-header"
     });
 
-    $("#existCondition").change(function(){
+    $(document).on('click', '#existCondition', function() {
       var id = this.value;
       $.ajax({
                 url:"../dataManage/makePwMass/edit.php",
@@ -353,7 +356,7 @@ $(document).ready(function(){
                      $('#yieldBig').val(data.yieldBig);
                      $('#etc').val(data.etc);
                      $('#id').val(data.id);
-                     $('#add_data_Modal').show().formValidation('resetForm');
+                    //  $('#add_data_Modal').show().formValidation('resetForm');
                 }
            });
     });

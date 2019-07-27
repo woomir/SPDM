@@ -75,7 +75,8 @@
                   <div class="container-fluid">
                      <form method="post" id="insert_form">
                      <div style="display:inline-block; position:absolute; right:170px; top:22px; font-weight:bold;">이전 데이터 가져오기</div>
-                            <select name="existCondition" id="existCondition" class="form-control" style="width:30%; display:inline-block; float:right;">
+                     <div class="existCondition">  
+                         <select name="existCondition" id="existCondition" class="form-control" style="width:30%; display:inline-block; float:right;">
                             <option value="">Paste No</option>
                             <?php 
                               $query = "SELECT id, pasteNo from makelistpastetbl ORDER BY dateMake DESC";
@@ -84,7 +85,8 @@
                                 echo "<option value='".$row["id"]."'>".$row["pasteNo"]."</option>";
                               }
                             ?>    
-                            </select>
+                          </select>
+                          </div>     
                      <br><br><br>
                        <div class="row">
                          <div class="col-md-3">
@@ -267,6 +269,7 @@ $(document).ready(function(){
                           $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
                           $('#PasteTable').DataTable().destroy();
                           fetch_data();
+                          $('.existCondition').load("listofManu.php #existCondition");
                      }
                 });
                 setInterval(function(){
@@ -299,7 +302,7 @@ $(document).ready(function(){
       handle: ".modal-header"
     });
     
-    $("#existCondition").change(function(){
+    $(document).on('click', '#existCondition', function() {
       var id = this.value;
       $.ajax({
                 url:"../dataManage/listofManu/edit.php",
@@ -317,7 +320,7 @@ $(document).ready(function(){
                      $('#recipe').val(data.recipe);
                      $('#etc').val(data.etc);
                      $('#id').val(data.id);
-                     $('#add_data_Modal').show().formValidation('resetForm');
+                    //  $('#add_data_Modal').show().formValidation('resetForm');
                 }
            });
     });

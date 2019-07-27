@@ -128,16 +128,19 @@
                   <div class="container-fluid">
                      <form method="post" id="insert_form">
                      <div style="display:inline-block; position:absolute; right:190px; top:22px; font-weight:bold;">이전 데이터 가져오기</div>
+                            
+                      <div class="existCondition">
                             <select name="existCondition" id="existCondition" class="form-control" style="width:20%; display:inline-block; float:right;">
-                            <option value="">Sample No</option>
-                            <?php 
+                              <option value="">Sample No</option>
+                              <?php 
                               $query = "SELECT sampleNo from reactionpw ORDER BY date DESC";
                               $result = mysqli_query($connect,$query);
                               while($row = mysqli_fetch_array($result)){
                                 echo "<option value='".$row["sampleNo"]."'>".$row["sampleNo"]."</option>";
                               }
-                            ?>    
+                             ?>    
                             </select>
+                      </div>
                      <br><br>
                        <div class="row">
                          <div class="col-md-6">
@@ -309,7 +312,7 @@
                           <div class="row">
                             <div class="col-md-3">
                             <label>반응 pH</label>
-                            <input type="number" name="reactionpH" id="reactionpH" class="form-control" placeholder="" />
+                            <input type="number" name="reactionpH" id="reactionpH" class="form-control" placeholder="" step="0.1" />
                             </div>
                             <div class="col-md-3">
                               <label>반응 온도</label>
@@ -474,6 +477,7 @@ $(document).ready(function(){
                           $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
                           $('#ReactionTable').DataTable().destroy();
                           fetch_data();
+                          $('.existCondition').load("labReaction.php #existCondition");
                      }
                 });
                 setInterval(function(){
@@ -506,7 +510,7 @@ $(document).ready(function(){
       handle: ".modal-header"
     });
 
-    $("#existCondition").change(function(){
+    $(document).on('click', '#existCondition', function() {
       var id = this.value;
       $.ajax({
                 url:"../dataManage/labReaction/edit.php",
@@ -550,7 +554,7 @@ $(document).ready(function(){
                      $('#maker').val(data.maker);
                      $('#etc').val(data.etc);
                      $('#id').val(data.id);
-                     $('#add_data_Modal').show().formValidation('resetForm');
+                    //  $('#add_data_Modal').show().formValidation('resetForm');
                 }
            });
     });

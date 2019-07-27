@@ -82,16 +82,18 @@
         <div class="container-fluid">
           <form method="post" id="insert_form">
           <div style="display:inline-block; position:absolute; right:190px; top:22px; font-weight:bold;">이전 데이터 가져오기</div>
-                            <select name="existCondition" id="existCondition" class="form-control" style="width:20%; display:inline-block; float:right;">
-                            <option value="">Sample No</option>
-                            <?php 
-                              $query = "SELECT sampleNo from washtbl ORDER BY dateWashing DESC";
-                              $result = mysqli_query($connect,$query);
-                              while($row = mysqli_fetch_array($result)){
-                                echo "<option value='".$row["sampleNo"]."'>".$row["sampleNo"]."</option>";
-                              }
-                            ?>    
-                            </select>
+              <div class="existCondition">          
+                <select name="existCondition" id="existCondition" class="form-control" style="width:20%; display:inline-block; float:right;">
+                  <option value="">Sample No</option>
+                  <?php 
+                    $query = "SELECT sampleNo from washtbl ORDER BY dateWashing DESC";
+                    $result = mysqli_query($connect,$query);
+                    while($row = mysqli_fetch_array($result)){
+                      echo "<option value='".$row["sampleNo"]."'>".$row["sampleNo"]."</option>";
+                    }
+                  ?>    
+                </select>
+            </div>
                      <br><br>
             <div class="row">
               <div class="col-md-4">
@@ -304,6 +306,7 @@ $(document).ready(function(){
                       $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
                       $('#WashTable').DataTable().destroy();
                       fetch_data();
+                      $('.existCondition').load("labWashing.php #existCondition");
                   }
             });
             setInterval(function(){
@@ -332,7 +335,7 @@ $(document).ready(function(){
               }
   });
 
-  $("#existCondition").change(function(){
+  $(document).on('click', '#existCondition', function() {
       var id = this.value;
       $.ajax({
                 url:"../dataManage/labWashing/edit.php",
@@ -356,7 +359,7 @@ $(document).ready(function(){
                   $('#maker').val(data.maker);
                   $('#etc').val(data.etc);
                   $('#id').val(data.id);
-                  $('#add_data_Modal').show().formValidation('resetForm');
+                  // $('#add_data_Modal').show().formValidation('resetForm');
                 }
            });
     });
