@@ -337,8 +337,13 @@ $(document).ready(function(){
                 data:{id:id},
                 dataType:"json",
                 success:function(data){
+                    a = data.classPost;
                      $('#lotNo').val(data.lotNo);
-                     $('#classPost').val(data.classPost);
+                     if(a!=='CL' && a!=='JET' && a!=='NC' && a!=='R'){
+                      $('.classPost').html('<input type="text" name="classPost" id="classPost" class="form-control" placeholder="직접입력" value="'+data.classPost+'"></input>');
+                     }else{
+                      $('#classPost').val(data.classPost);
+                     }
                      $('#sizeSem').val(data.sizeSem);
                      $('#stdSem').val(data.stdSem);
                      $('#dt').val(data.d10);
@@ -636,19 +641,12 @@ $(document).on('click', '.btn_file', function(){
       handle: ".modal-header"
     });
 
-// function func1(){
-//   var tag = '<input type="text" name="classPost" id="classPost" class="form-control"/>';
-//   $('#test2').innerHTML("");
-//   $('#test2').innerHTML(tag);
-// }
-
     $('#classPost').change(function(){
       var value = $('#classPost').val();
       if (value == "input"){
         $('.classPost').html('<input type="text" name="classPost" id="classPost" class="form-control" placeholder="직접입력"></input>');
       }
     });
-
             
  });
 
