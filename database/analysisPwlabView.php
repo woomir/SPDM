@@ -194,18 +194,14 @@
             </div>
           </div> <!-- card -->
         </div>
-        
-        <div class="row">
+    
+        <!-- 그래프 --> 
+        <!-- <div class="row">
           <div class="col-lg-12 col-xl-9 mt-2">
             <div class="card">
               <div class="card-header"><i class="fas fa-chart-line"></i>&nbsp&nbspGraph</div>
               <div class="card-body">
                 <div style="width:100%;">
-                      <!-- <nav aria-label="breadcrumb">
-                      <ol class="breadcrumb">
-                          <li class="breadcrumb-item">Graph</li>
-                        </ol>
-                      </nav> -->
                     <canvas id="myChart"></canvas>
                   </div> 
               </div>
@@ -229,11 +225,11 @@
                   <label for="">X-AXIS</label>
                   <select name="" id="xAxis" class="form-control">
                     <?php 
-                      $query = "SHOW COLUMNS FROM analysispw_view";
-                      $result = mysqli_query($connect,$query);
-                      while($row = mysqli_fetch_assoc($result)){
-                        echo "<option value=''>".$row['Field']."</option>";
-                      }
+                      // $query = "SHOW COLUMNS FROM analysispw_view";
+                      // $result = mysqli_query($connect,$query);
+                      // while($row = mysqli_fetch_assoc($result)){
+                        // echo "<option value=''>".$row['Field']."</option>";
+                      // }
                     ?>  
                   </select>
                 </div>
@@ -242,18 +238,18 @@
                   <label for="">Y-AXIS</label>
                   <select name="" id="yAxis" class="form-control">
                   <?php 
-                      $query = "SHOW COLUMNS FROM analysispw_view";
-                      $result = mysqli_query($connect,$query);
-                      while($row = mysqli_fetch_assoc($result)){
-                        echo "<option value=''>".$row['Field']."</option>";
-                      }
+                      // $query = "SHOW COLUMNS FROM analysispw_view";
+                      // $result = mysqli_query($connect,$query);
+                      // while($row = mysqli_fetch_assoc($result)){
+                        // echo "<option value=''>".$row['Field']."</option>";
+                      // }
                     ?>  
                   </select>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
           
       </div><!-- /.container-fluid -->
 <br>
@@ -386,44 +382,79 @@ $(document).ready(function(){
 
  });
 
+// var a = [];
+// a = $('div[data-column="sampleNo"]').text();
+// console.log(a);
+// var ctx = document.getElementById('myChart');
 
-var ctx = document.getElementById('myChart');
-var chartType = $('#charttype').val();
+// var options = {
+//   type: 'line',
+//     data: {
+//         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+//         datasets: [{
+//             label: 'SEM size',
+//             data: [12, 19, 3, 5, 2, 3],
+//             backgroundColor: [
+//                 'rgba(255, 99, 132, 0.2)',
+//                 'rgba(54, 162, 235, 0.2)',
+//                 'rgba(255, 206, 86, 0.2)',
+//                 'rgba(75, 192, 192, 0.2)',
+//                 'rgba(153, 102, 255, 0.2)',
+//                 'rgba(255, 159, 64, 0.2)'
+//             ],
+//             borderColor: [
+//                 'rgba(255, 99, 132, 1)',
+//                 'rgba(54, 162, 235, 1)',
+//                 'rgba(255, 206, 86, 1)',
+//                 'rgba(75, 192, 192, 1)',
+//                 'rgba(153, 102, 255, 1)',
+//                 'rgba(255, 159, 64, 1)'
+//             ],
+//             borderWidth: 1
+//         }]
+//     },
+//     options: {
+//         scales: {
+//             yAxes: [{
+//                 ticks: {
+//                     beginAtZero: true
+//                 }
+//             }]
+//         }
+//     }
+// }
 
-var myChart = new Chart(ctx, {
-    type: chartType,
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
+// var myChart = new Chart(ctx, options);
+// var reData = {"data":[10, 8, 5, 8, 8, 12 ]};
+
+// function changeData(chart, data) {		
+// 			var new_data = data.data;
+// 			chart.data.datasets.push({
+//           data : new_data,
+//           borderWidth : 2 //선굵기
+// 			  });
+// 		    // console.dir(chart.data.datasets);
+// 		    chart.update();
+// 		}
+
+// function removeData(chart, data){
+//   chart.data.datasets.pop({
+//     data : data
+//   });
+//   console.log(chart.data);
+//   chart.update();
+// }
+
+// function changeType(chart, type){
+//   chart.config.type = type;
+//   chart.update();
+// }
+
+// $(document).on('change','#charttype', function(){
+//   chartType = $('#charttype').val();
+//   //  console.log(chartType);
+//   // changeData(myChart,reData);
+//   changeType(myChart,chartType);
+// });
+
 </script>

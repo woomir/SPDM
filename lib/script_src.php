@@ -12,6 +12,7 @@
  <script src="../js/custom_js.js"></script>
  <script src="../js/jquery-ui.min.js"></script>
  <script src="../js/dataTables.fixedHeader.min.js"></script>
+ <script src="../js/Chart.bundle.min.js"></script>
 
  <!-- Bootstrap core JavaScript-->
  <script src="../vendor/bootstrap/js/bootstrap.bundle.js"></script>
