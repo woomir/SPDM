@@ -16,6 +16,11 @@
                 <h3>Change Log</h3>
                 <hr>
                 <br>
+                <strong>2019-07-31</strong>
+                <ul>
+                  <li>Add column (date) to manufacturing table of mass powder</li>
+                  <li>Sorting data of mass powder into powder type </li>
+                </ul>
                 <strong>2019-07-11</strong>
                 <ul>
                   <li>Add function of fixed header at all tables</li>
