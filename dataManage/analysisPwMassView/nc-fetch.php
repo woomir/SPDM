@@ -2,22 +2,44 @@
 <?php
 session_start();
 //fetch.php
-$connect = mysqli_connect("localhost", "root", "$52Telecast", "woomir");
-$column = array('lotNo', 'classPost', 'characteristic','sizeSem','tIgl','pcuNc','etc');
+include '../db.php';
 
+$column = array('lotNo', 'nameProduct', 'characteristic', 'makeDate', 'nameLubricant1',
+'ratioLubricant1', 'nameLubricant2', 'ratioLubricant2', 'ratioSAPA', 'tempCoating',
+'rateAddJet', 'pressureJet', 'yieldJet', 'yieldSmall', 'yieldBig', 'makeEtc', 'sizeSem','tIgl','pcuNc','analysisEtc');
 
 $query = 'SELECT * FROM analysispwmass_nc_view';
+
+$query .= " WHERE ";
+
+if(isset($_POST["is_massPwType"]))
+{
+ $query .= "nameProduct = '".$_POST["is_massPwType"]."' AND ";
+}
 
 if(isset($_POST["search"]["value"]))
 {
  $query .= '
- WHERE lotNo LIKE "%'.$_POST["search"]["value"].'%"
+ (lotNo LIKE "%'.$_POST["search"]["value"].'%"
+ OR nameProduct LIKE "%'.$_POST["search"]["value"].'%"
  OR characteristic LIKE "%'.$_POST["search"]["value"].'%"
- OR classPost LIKE "%'.$_POST["search"]["value"].'%"
+ OR makeDate LIKE "%'.$_POST["search"]["value"].'%"
+ OR nameLubricant1 LIKE "%'.$_POST["search"]["value"].'%"
+ OR ratioLubricant1 LIKE "%'.$_POST["search"]["value"].'%"
+ OR nameLubricant2 LIKE "%'.$_POST["search"]["value"].'%"
+ OR ratioLubricant2 LIKE "%'.$_POST["search"]["value"].'%"
+ OR ratioSAPA LIKE "%'.$_POST["search"]["value"].'%"
+ OR tempCoating LIKE "%'.$_POST["search"]["value"].'%"
+ OR rateAddJet LIKE "%'.$_POST["search"]["value"].'%"
+ OR pressureJet LIKE "%'.$_POST["search"]["value"].'%"
+ OR yieldJet LIKE "%'.$_POST["search"]["value"].'%"
+ OR yieldSmall LIKE "%'.$_POST["search"]["value"].'%"
+ OR yieldBig LIKE "%'.$_POST["search"]["value"].'%"
+ OR makeEtc LIKE "%'.$_POST["search"]["value"].'%"
  OR sizeSem LIKE "%'.$_POST["search"]["value"].'%"
  OR tIgl LIKE "%'.$_POST["search"]["value"].'%"
  OR pcuNc LIKE "%'.$_POST["search"]["value"].'%"
- OR etc LIKE "%'.$_POST["search"]["value"].'%"
+ OR analysisEtc LIKE "%'.$_POST["search"]["value"].'%")
  ';
 }
 
@@ -48,12 +70,25 @@ while($row = mysqli_fetch_array($result))
 {
  $sub_array = array();
  $sub_array[] = '<div data-column="lotNo">' . $row["lotNo"] . '</div>';
- $sub_array[] = '<div data-column="classPost">' . $row["classPost"] . '</div>';
+ $sub_array[] = '<div data-column="nameProduct">' . $row["nameProduct"] . '</div>';
  $sub_array[] = '<div data-column="characteristic">' . $row["characteristic"] . '</div>';
+ $sub_array[] = '<div data-column="makeDate">' . $row["makeDate"] . '</div>';
+ $sub_array[] = '<div data-column="nameLubricant1">' . $row["nameLubricant1"] . '</div>';
+ $sub_array[] = '<div data-column="ratioLubricant1">' . $row["ratioLubricant1"] . '</div>';
+ $sub_array[] = '<div data-column="nameLubricant2">' . $row["nameLubricant2"] . '</div>';
+ $sub_array[] = '<div data-column="ratioLubricant2">' . $row["ratioLubricant2"] . '</div>';
+ $sub_array[] = '<div data-column="ratioSAPA">' . $row["ratioSAPA"] . '</div>';
+ $sub_array[] = '<div data-column="tempCoating">' . $row["tempCoating"] . '</div>';
+ $sub_array[] = '<div data-column="rateAddJet">' . $row["rateAddJet"] . '</div>';
+ $sub_array[] = '<div data-column="pressureJet">' . $row["pressureJet"] . '</div>';
+ $sub_array[] = '<div data-column="yieldJet">' . $row["yieldJet"] . '</div>';
+ $sub_array[] = '<div data-column="yieldSmall">' . $row["yieldSmall"] . '</div>';
+ $sub_array[] = '<div data-column="yieldBig">' . $row["yieldBig"] . '</div>';
+ $sub_array[] = '<div data-column="makeEtc">' . $row["makeEtc"] . '</div>';
  $sub_array[] = '<div data-column="sizeSem">' . $row["sizeSem"] . '</div>';
  $sub_array[] = '<div data-column="tIgl">' . $row["tIgl"] . '</div>';
  $sub_array[] = '<div data-column="pcuNc">' . $row["pcuNc"] . '</div>';
- $sub_array[] = '<div data-column="etc">' . $row["etc"] . '</div>';
+ $sub_array[] = '<div data-column="analysisEtc">' . $row["analysisEtc"] . '</div>';
 
  $data[] = $sub_array;
 }

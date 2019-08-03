@@ -2,18 +2,24 @@
 <?php
 session_start();
 //fetch.php
-$connect = mysqli_connect("localhost", "root", "$52Telecast", "woomir");
+include '../db.php';
+
 $column = array('lotNo', 'nameProduct', 'characteristic', 'makeDate', 'nameLubricant1',
 'ratioLubricant1', 'nameLubricant2', 'ratioLubricant2', 'ratioSAPA', 'tempCoating',
 'rateAddJet', 'pressureJet', 'yieldJet', 'yieldSmall', 'yieldBig', 'etc');
 $query = "SELECT * FROM makepwmasstbl";
 
+$query .= " WHERE ";
 
+if(isset($_POST["is_massPwType"]))
+{
+ $query .= "nameProduct = '".$_POST["is_massPwType"]."' AND ";
+}
 
 if(isset($_POST["search"]["value"]))
 {
  $query .= '
- WHERE lotNo LIKE "%'.$_POST["search"]["value"].'%"
+ (lotNo LIKE "%'.$_POST["search"]["value"].'%"
  OR nameProduct LIKE "%'.$_POST["search"]["value"].'%"
  OR characteristic LIKE "%'.$_POST["search"]["value"].'%"
  OR makeDate LIKE "%'.$_POST["search"]["value"].'%"
@@ -28,7 +34,7 @@ if(isset($_POST["search"]["value"]))
  OR yieldJet LIKE "%'.$_POST["search"]["value"].'%"
  OR yieldSmall LIKE "%'.$_POST["search"]["value"].'%"
  OR yieldBig LIKE "%'.$_POST["search"]["value"].'%"
- OR etc LIKE "%'.$_POST["search"]["value"].'%"
+ OR etc LIKE "%'.$_POST["search"]["value"].'%")
  ';
 }
 

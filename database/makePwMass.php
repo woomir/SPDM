@@ -34,7 +34,14 @@
    <thead align="center">
     <tr>
       <th width="">Lot<br>No</th>
-      <th width="">제품<br>분류</th>
+      <th id="">
+        <select name="massPwType" id="massPwType" class="form-control">
+          <option value="">제품분류</option>
+          <option value="CP4">CP4</option>
+          <option value="CP6">CP6</option>
+        </select>
+      </th>
+      <!-- <th width="">제품<br>분류</th> -->
       <th width="">특징</th>
       <th>제조일자</th>
       <th width="">코팅제1</th>
@@ -195,7 +202,7 @@ $(document).ready(function(){
 
   fetch_data();
 
-  function fetch_data()
+  function fetch_data(is_massPwType)
   {
    var dataTable = $('#PasteTable').DataTable({
 
@@ -203,16 +210,13 @@ $(document).ready(function(){
     "serverSide" : true,
     "responsive" : true,
     "fixedHeader" : true,
-    "order" : [[0,'desc']],
+    // "order" : [[0,'desc']],
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "iDisplayLength": 25,
-    "columnDefs": [{
-    orderable: false,
-    targets: [11,12]
-    }],
     "ajax" : {
      url:"../dataManage/makePwMass/fetch.php",
-     type:"POST"
+     type:"POST",
+     data: {is_massPwType : is_massPwType}
    },
    dom: "<'row'<'col-sm-12 col-md-auto'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4 ml-auto'f>>" +
         "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
@@ -224,10 +228,26 @@ $(document).ready(function(){
         }],
         columnDefs: [
             {targets: [-2],
-             visible: false}
+             visible: false},
+             {"orderable": false,
+              "targets": [1,16]}
         ]
    });
   }
+
+      $(document).on('change', '#massPwType', function(){
+        var massPwType = $(this).val();
+        $('#PasteTable').DataTable().destroy();
+        if(massPwType != '')
+        {
+          fetch_data(massPwType);
+        }
+        else
+        {
+          fetch_data();
+        }
+      });
+
       $('#add').click(function(){
            $('#insert').val("Insert");
            $('#insert_form')[0].reset();
@@ -360,6 +380,11 @@ $(document).ready(function(){
                 }
            });
     });
+
+    
+//제품 분류 column 검색 기능
+
+
 
  });
 </script>

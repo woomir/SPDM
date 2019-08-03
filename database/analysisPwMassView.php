@@ -50,8 +50,27 @@
                 <thead align="center">
                   <tr>
                     <th>Lot<br>No</th>
-                    <th>Powder<br>Type</th>
-                    <th>특징</th>
+                    <th id="">
+                      <select name="RmassPwType" id="RmassPwType" class="form-control">
+                        <option value="">제품분류</option>
+                        <option value="CP4">CP4</option>
+                        <option value="CP6">CP6</option>
+                      </select>
+                    </th>
+                    <th width="">특징</th>
+                    <th>제조일자</th>
+                    <th width="">코팅제1</th>
+                    <th width="">코팅제1<br>비율</th>
+                    <th width="">코팅제2</th>
+                    <th width="">코팅제2<br>비율</th>
+                    <th width="">SAPA<br>비율</th>
+                    <th width="">코팅온도</th>
+                    <th>해쇄<br>투입속도</th>
+                    <th>해쇄압</th>
+                    <th>해쇄<br>회수율</th>
+                    <th>미분<br>회수율</th>
+                    <th>조분<br>회수율</th>
+                    <th width="">Etc</th>
                     <th>SEM Size</th>
                     <th>T-IGL</th>
                     <th>PCU</th>
@@ -69,8 +88,27 @@
                 <thead align="center">
                   <tr>
                     <th>Lot<br>No</th>
-                    <th>Powder<br>Type</th>
-                    <th>특징</th>
+                    <th id="">
+                      <select name="NCmassPwType" id="NCmassPwType" class="form-control">
+                        <option value="">제품분류</option>
+                        <option value="CP4">CP4</option>
+                        <option value="CP6">CP6</option>
+                      </select>
+                    </th>
+                    <th width="">특징</th>
+                    <th>제조일자</th>
+                    <th width="">코팅제1</th>
+                    <th width="">코팅제1<br>비율</th>
+                    <th width="">코팅제2</th>
+                    <th width="">코팅제2<br>비율</th>
+                    <th width="">SAPA<br>비율</th>
+                    <th width="">코팅온도</th>
+                    <th>해쇄<br>투입속도</th>
+                    <th>해쇄압</th>
+                    <th>해쇄<br>회수율</th>
+                    <th>미분<br>회수율</th>
+                    <th>조분<br>회수율</th>
+                    <th width="">Etc</th>
                     <th>SEM Size</th>
                     <th>T-IGL</th>
                     <th>PCU</th>
@@ -88,8 +126,27 @@
                 <thead align="center">
                   <tr>
                     <th>Lot<br>No</th>
-                    <th>Powder<br>Type</th>
-                    <th>특징</th>
+                    <th id="">
+                      <select name="JetmassPwType" id="JetmassPwType" class="form-control">
+                        <option value="">제품분류</option>
+                        <option value="CP4">CP4</option>
+                        <option value="CP6">CP6</option>
+                      </select>
+                    </th>
+                    <th width="">특징</th>
+                    <th>제조일자</th>
+                    <th width="">코팅제1</th>
+                    <th width="">코팅제1<br>비율</th>
+                    <th width="">코팅제2</th>
+                    <th width="">코팅제2<br>비율</th>
+                    <th width="">SAPA<br>비율</th>
+                    <th width="">코팅온도</th>
+                    <th>해쇄<br>투입속도</th>
+                    <th>해쇄압</th>
+                    <th>해쇄<br>회수율</th>
+                    <th>미분<br>회수율</th>
+                    <th>조분<br>회수율</th>
+                    <th width="">Etc</th>
                     <th>SEM<br>Size</th>
                     <th>D10</th>
                     <th>D50</th>
@@ -116,8 +173,27 @@
                 <thead align="center">
                   <tr>
                     <th>Lot<br>No</th>
-                    <th>Powder<br>Type</th>
-                    <th>특징</th>
+                    <th id="">
+                      <select name="ClmassPwType" id="ClmassPwType" class="form-control">
+                        <option value="">제품분류</option>
+                        <option value="CP4">CP4</option>
+                        <option value="CP6">CP6</option>
+                      </select>
+                    </th>
+                    <th width="">특징</th>
+                    <th>제조일자</th>
+                    <th width="">코팅제1</th>
+                    <th width="">코팅제1<br>비율</th>
+                    <th width="">코팅제2</th>
+                    <th width="">코팅제2<br>비율</th>
+                    <th width="">SAPA<br>비율</th>
+                    <th width="">코팅온도</th>
+                    <th>해쇄<br>투입속도</th>
+                    <th>해쇄압</th>
+                    <th>해쇄<br>회수율</th>
+                    <th>미분<br>회수율</th>
+                    <th>조분<br>회수율</th>
+                    <th width="">Etc</th>
                     <th>SEM<br>Size</th>
                     <th>D10</th>
                     <th>D50</th>
@@ -145,8 +221,21 @@
                 <thead align="center">
                   <tr>
                     <th>Lot<br>No</th>
-                    <th>Powder<br>Type</th>
-                    <th>특징</th>
+                    <th id="">제품분류</th>
+                    <th width="">특징</th>
+                    <th>제조일자</th>
+                    <th width="">코팅제1</th>
+                    <th width="">코팅제1<br>비율</th>
+                    <th width="">코팅제2</th>
+                    <th width="">코팅제2<br>비율</th>
+                    <th width="">SAPA<br>비율</th>
+                    <th width="">코팅온도</th>
+                    <th>해쇄<br>투입속도</th>
+                    <th>해쇄압</th>
+                    <th>해쇄<br>회수율</th>
+                    <th>미분<br>회수율</th>
+                    <th>조분<br>회수율</th>
+                    <th width="">Etc</th>
                     <th>SEM<br>Size</th>
                     <th>D10</th>
                     <th>D50</th>
@@ -217,7 +306,7 @@ $(document).ready(function(){
         etc_fetch_data();
       });
 
-  function cl_fetch_data()
+  function cl_fetch_data(is_massPwType)
   {
    var dataTable = $('#ClTable').DataTable({
    
@@ -228,13 +317,10 @@ $(document).ready(function(){
     "order" : [0,'desc'],
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "iDisplayLength": 25,
-    "columnDefs": [
-      //{targets: [3,4,7,12,13,14,15,16,17,18,20,-1],
-        //   visible: false}
-    ],
     "ajax" : {
      url:"../dataManage/analysisPwMassView/cl-fetch.php",
-     type:"POST"
+     type:"POST",
+     data: {is_massPwType : is_massPwType}
    },
    dom: "<'row'<'col-sm-12 col-md-auto'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4 ml-auto'f>>" +
         "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
@@ -242,11 +328,17 @@ $(document).ready(function(){
         {
           extend: 'colvis',
           text: 'Show / Hide columns'
-        }]
+        }],
+        columnDefs: [
+          {targets: [8, 10, 15,],
+          visible: false},
+          {"orderable": false,
+          "targets": [1]}
+        ]
    });
   }
 
-  function jet_fetch_data()
+  function jet_fetch_data(is_massPwType)
   {
    var dataTable = $('#JetTable').DataTable({
    
@@ -257,13 +349,10 @@ $(document).ready(function(){
     "order" : [0,'desc'],
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "iDisplayLength": 25,
-    "columnDefs": [
-      //{targets: [3,4,7,12,13,14,15,16,17,18,20,-1],
-        //   visible: false}
-    ],
     "ajax" : {
      url:"../dataManage/analysisPwMassView/jet-fetch.php",
-     type:"POST"
+     type:"POST",
+     data: {is_massPwType : is_massPwType}
    },
    dom: "<'row'<'col-sm-12 col-md-auto'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4 ml-auto'f>>" +
         "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
@@ -271,11 +360,17 @@ $(document).ready(function(){
         {
           extend: 'colvis',
           text: 'Show / Hide columns'
-        }]
+        }],
+        columnDefs: [
+          {targets: [8, 10, 15,],
+          visible: false},
+          {"orderable": false,
+          "targets": [1]}
+        ]
    });
   }
 
-  function reaction_fetch_data()
+  function reaction_fetch_data(is_massPwType)
   {
    var dataTable = $('#RTable').DataTable({
    
@@ -286,13 +381,10 @@ $(document).ready(function(){
     "order" : [0,'desc'],
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "iDisplayLength": 25,
-    "columnDefs": [
-      //{targets: [3,4,7,12,13,14,15,16,17,18,20,-1],
-        //   visible: false}
-    ],
     "ajax" : {
      url:"../dataManage/analysisPwMassView/reaction-fetch.php",
-     type:"POST"
+     type:"POST",
+     data: {is_massPwType : is_massPwType}
    },
    dom: "<'row'<'col-sm-12 col-md-auto'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4 ml-auto'f>>" +
         "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
@@ -300,12 +392,18 @@ $(document).ready(function(){
         {
           extend: 'colvis',
           text: 'Show / Hide columns'
-        }]
+        }],
+        columnDefs: [
+          {targets: [8, 10, 15, 19],
+          visible: false},
+          {"orderable": false,
+          "targets": [1]}
+        ]
    });
   }
 
 
-  function nc_fetch_data()
+  function nc_fetch_data(is_massPwType)
   {
    var dataTable = $('#NCTable').DataTable({
    
@@ -316,13 +414,10 @@ $(document).ready(function(){
     "order" : [0,'desc'],
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "iDisplayLength": 25,
-    "columnDefs": [
-      //{targets: [3,4,7,12,13,14,15,16,17,18,20,-1],
-        //   visible: false}
-    ],
     "ajax" : {
      url:"../dataManage/analysisPwMassView/nc-fetch.php",
-     type:"POST"
+     type:"POST",
+     data: {is_massPwType : is_massPwType}
    },
    dom: "<'row'<'col-sm-12 col-md-auto'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4 ml-auto'f>>" +
         "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
@@ -330,7 +425,13 @@ $(document).ready(function(){
         {
           extend: 'colvis',
           text: 'Show / Hide columns'
-        }]
+        }],
+        columnDefs: [
+          {targets: [8, 10, 15, 19],
+          visible: false},
+          {"orderable": false,
+          "targets": [1]}
+        ]
    });
   }
 
@@ -345,10 +446,6 @@ $(document).ready(function(){
     "order" : [0,'desc'],
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "iDisplayLength": 25,
-    "columnDefs": [
-      //{targets: [3,4,7,12,13,14,15,16,17,18,20,-1],
-        //   visible: false}
-    ],
     "ajax" : {
      url:"../dataManage/analysisPwMassView/etc-fetch.php",
      type:"POST"
@@ -359,9 +456,67 @@ $(document).ready(function(){
         {
           extend: 'colvis',
           text: 'Show / Hide columns'
-        }]
+        }],
+        columnDefs: [
+          {targets: [8, 10, 15,],
+          visible: false},
+          {"orderable": false,
+          "targets": [1]}
+        ]
    });
   }
+
+  $(document).on('change', '#RmassPwType', function(){
+        var massPwType = $(this).val();
+        $('#RTable').DataTable().destroy();
+        if(massPwType != '')
+        {
+          reaction_fetch_data(massPwType);
+        }
+        else
+        {
+          reaction_fetch_data();
+        }
+      });
+
+      $(document).on('change', '#NCmassPwType', function(){
+        var massPwType = $(this).val();
+        $('#NCTable').DataTable().destroy();
+        if(massPwType != '')
+        {
+          nc_fetch_data(massPwType);
+        }
+        else
+        {
+          nc_fetch_data();
+        }
+      });
+
+      $(document).on('change', '#JetmassPwType', function(){
+        var massPwType = $(this).val();
+        $('#JetTable').DataTable().destroy();
+        if(massPwType != '')
+        {
+          jet_fetch_data(massPwType);
+        }
+        else
+        {
+          jet_fetch_data();
+        }
+      });
+
+      $(document).on('change', '#ClmassPwType', function(){
+        var massPwType = $(this).val();
+        $('#ClTable').DataTable().destroy();
+        if(massPwType != '')
+        {
+          cl_fetch_data(massPwType);
+        }
+        else
+        {
+          cl_fetch_data();
+        }
+      });
 
  });
 
