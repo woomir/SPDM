@@ -16,6 +16,10 @@
                 <h3>Change Log</h3>
                 <hr>
                 <br>
+                <strong>2019-08-03</strong>
+                <ul>
+                  <li>Add function of filtering product name at mass table</li>
+                </ul>
                 <strong>2019-07-31</strong>
                 <ul>
                   <li>Add column (date) to manufacturing table of mass powder</li>
