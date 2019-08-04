@@ -306,7 +306,7 @@ $(document).ready(function(){
           text: 'Show / Hide columns'
         }],
         columnDefs: [
-          {targets: [8, 10, 15,],
+          {targets: [1, 8, 10, 15,],
           visible: false},
           {"orderable": false,
           "targets": [1]}
@@ -343,7 +343,7 @@ $(document).ready(function(){
           text: 'Show / Hide columns'
         }],
         columnDefs: [
-          {targets: [8, 10, 15,],
+          {targets: [1, 8, 10, 15,],
           visible: false},
           {"orderable": false,
           "targets": [1]}
@@ -378,7 +378,7 @@ $(document).ready(function(){
           text: 'Show / Hide columns'
         }],
         columnDefs: [
-          {targets: [8, 10, 15, 19],
+          {targets: [1,8, 10, 15, 19],
           visible: false},
           {"orderable": false,
           "targets": [1]}
@@ -415,7 +415,7 @@ $(document).ready(function(){
           text: 'Show / Hide columns'
         }],
         columnDefs: [
-          {targets: [8, 10, 15, 19],
+          {targets: [1, 8, 10, 15, 19],
           visible: false},
           {"orderable": false,
           "targets": [1]}
@@ -450,7 +450,7 @@ $(document).ready(function(){
           text: 'Show / Hide columns'
         }],
         columnDefs: [
-          {targets: [8, 10, 15,],
+          {targets: [1, 8, 10, 15,],
           visible: false},
           {"orderable": false,
           "targets": [1]}

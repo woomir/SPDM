@@ -14,15 +14,19 @@ $column = array('sampleNo', 'object', 'date', 'scale', 'agC',
 
 $query = "SELECT * FROM reactionpw";
 
+$query .= " WHERE ";
 
+if(isset($_POST["is_scale"]))
+{
+ $query .= "scale = '".$_POST["is_scale"]."' AND ";
+}
 
 if(isset($_POST["search"]["value"]))
 {
  $query .= '
- WHERE sampleNo LIKE "%'.$_POST["search"]["value"].'%"
+ (sampleNo LIKE "%'.$_POST["search"]["value"].'%"
  OR object LIKE "%'.$_POST["search"]["value"].'%"
  OR date LIKE "%'.$_POST["search"]["value"].'%"
- OR scale LIKE "%'.$_POST["search"]["value"].'%"
  OR agC LIKE "%'.$_POST["search"]["value"].'%"
  OR agTvol LIKE "%'.$_POST["search"]["value"].'%"
  OR amEq LIKE "%'.$_POST["search"]["value"].'%"
@@ -60,7 +64,7 @@ if(isset($_POST["search"]["value"]))
  OR reactionpH LIKE "%'.$_POST["search"]["value"].'%"
  OR reactionTemp LIKE "%'.$_POST["search"]["value"].'%"
  OR infoAgno3_lotNo LIKE "%'.$_POST["search"]["value"].'%"
- OR maker LIKE "%'.$_POST["search"]["value"].'%"
+ OR maker LIKE "%'.$_POST["search"]["value"].'%")
  ';
 }
 

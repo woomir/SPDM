@@ -353,7 +353,7 @@ $(document).ready(function(){
 
   fetch_data();
 
-  function fetch_data()
+  function fetch_data(is_scale)
   {
    var dataTable = $('#ReactionTable').DataTable({
 
@@ -368,7 +368,8 @@ $(document).ready(function(){
   }],
     "ajax" : {
      url:"../dataManage/labReaction/fetch.php",
-     type:"POST"
+     type:"POST",
+     data: {is_scale:is_scale}
    },
    dom: "<'row'<'col-sm-12 col-md-auto'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4 ml-auto'f>>" +
         "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
@@ -383,7 +384,26 @@ $(document).ready(function(){
              visible: false}
         ]
    });
+
+    //Scale 선택 기능
+    $('#ReactionTable_filter').prepend('Scale:&nbsp&nbsp&nbsp<select id="select" class="form-control form-control-sm" style="width:20%; display:inline-block;"></select>&nbsp&nbsp&nbsp');
+    $('#select').append('<option value="">All</optionv><option value="Lab">Lab</option><option value="Bench">Bench</option>');
+    $('#select').val(is_scale);
   }
+
+    $(document).on('change', '#select', function(){
+          var scale = $(this).val();
+          $('#ReactionTable').DataTable().destroy();
+          if(scale != '')
+          {
+            fetch_data(scale);
+          }
+          else
+          {
+            fetch_data();
+          }
+        });
+
       $('#add').click(function(){
            $('#insert').val("Insert");
            $('#insert_form')[0].reset();

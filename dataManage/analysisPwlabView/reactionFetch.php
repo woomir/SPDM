@@ -15,13 +15,19 @@ $column = array('sampleNo', 'object', 'date', 'scale', 'agC',
 
 $query = "SELECT * FROM analysispwreaction_view";
 
+$query .= " WHERE ";
+
+if(isset($_POST["is_scale"]))
+{
+ $query .= "scale = '".$_POST["is_scale"]."' AND ";
+}
+
 if(isset($_POST["search"]["value"]))
 {
  $query .= '
- WHERE sampleNo LIKE "%'.$_POST["search"]["value"].'%"
+ (sampleNo LIKE "%'.$_POST["search"]["value"].'%"
  OR object LIKE "%'.$_POST["search"]["value"].'%"
  OR date LIKE "%'.$_POST["search"]["value"].'%"
- OR scale LIKE "%'.$_POST["search"]["value"].'%"
  OR agC LIKE "%'.$_POST["search"]["value"].'%"
  OR agTvol LIKE "%'.$_POST["search"]["value"].'%"
  OR amEq LIKE "%'.$_POST["search"]["value"].'%"
@@ -75,7 +81,7 @@ if(isset($_POST["search"]["value"]))
  OR xrd LIKE "%'.$_POST["search"]["value"].'%"
  OR pcu LIKE "%'.$_POST["search"]["value"].'%"
  OR na LIKE "%'.$_POST["search"]["value"].'%"
- OR etc LIKE "%'.$_POST["search"]["value"].'%"
+ OR etc LIKE "%'.$_POST["search"]["value"].'%")
  ';
 }
 

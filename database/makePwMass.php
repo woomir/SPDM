@@ -97,7 +97,7 @@
                        <div class="row">
                          <div class="col-md-3">
                            <label>*Lot No</label>
-                           <input type="text" name="lotNo" id="lotNo" class="form-control" />
+                           <input type="text" name="lotNo" id="lotNo" class="form-control" placeholder="Ex) 1901BU2CP6" />
                          </div>
                          <div class="col-md-2">
                            <label>*제품 분류</label>
@@ -220,7 +220,7 @@ $(document).ready(function(){
           postfixButtons: [ 'colvisRestore' ]
         }],
         columnDefs: [
-            {targets: [-2],
+            {targets: [1,-2],
              visible: false},
              {"orderable": false,
               "targets": [1,16]}

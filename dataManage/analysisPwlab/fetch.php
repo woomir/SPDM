@@ -3,17 +3,27 @@
 session_start();
 //fetch.php
 include '../db.php';
+
 $column = array('sampleNo', 'powderType', 'sizeSem', 'cohesion', 'd10', 'd50', 'd90', 'dmax',
 'tIgl', 'pIgl', 'cIgl', 'dtaPeak', 'enthalphy', 'bet', 'td', 'xrd', 'pcu', 'na', 'etc');
 $query = "SELECT * FROM analysispwtbl";
 
+$query .= " WHERE ";
+
+if(isset($_POST["is_massPwType"]))
+{
+  if($_POST["is_massPwType"] !== "Etc"){
+ $query .= "powderType = '".$_POST["is_massPwType"]."' AND ";
+}else{
+  $query .= " NOT powderType IN ('R', 'NC', 'JET', 'CL') AND ";
+}
+}
 
 
 if(isset($_POST["search"]["value"]))
 {
  $query .= '
- WHERE sampleNo LIKE "%'.$_POST["search"]["value"].'%"
- OR powderType LIKE "%'.$_POST["search"]["value"].'%"
+ (sampleNo LIKE "%'.$_POST["search"]["value"].'%"
  OR sizeSem LIKE "%'.$_POST["search"]["value"].'%"
  OR cohesion LIKE "%'.$_POST["search"]["value"].'%"
  OR d10 LIKE "%'.$_POST["search"]["value"].'%"
@@ -30,7 +40,7 @@ if(isset($_POST["search"]["value"]))
  OR xrd LIKE "%'.$_POST["search"]["value"].'%"
  OR pcu LIKE "%'.$_POST["search"]["value"].'%"
  OR na LIKE "%'.$_POST["search"]["value"].'%"
- OR etc LIKE "%'.$_POST["search"]["value"].'%"
+ OR etc LIKE "%'.$_POST["search"]["value"].'%")
  ';
 }
 
