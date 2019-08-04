@@ -34,14 +34,7 @@
    <thead align="center">
     <tr>
       <th width="">Lot<br>No</th>
-      <th id="">
-        <select name="massPwType" id="massPwType" class="form-control">
-          <option value="">제품분류</option>
-          <option value="CP4">CP4</option>
-          <option value="CP6">CP6</option>
-        </select>
-      </th>
-      <!-- <th width="">제품<br>분류</th> -->
+      <th width="">제품<br>분류</th>
       <th width="">특징</th>
       <th>제조일자</th>
       <th width="">코팅제1</th>
@@ -233,9 +226,15 @@ $(document).ready(function(){
               "targets": [1,16]}
         ]
    });
+
+   //제품 분류 선택 기능
+    $('#PasteTable_filter').prepend('제품 분류:&nbsp&nbsp&nbsp<select id="select" class="form-control form-control-sm" style="width:20%; display:inline-block;"></select>&nbsp&nbsp&nbsp');
+    $('#select').append('<option value="">All</optionv><option value="CP4">CP4</option><option value="CP6">CP6</option>');
+    $('#select').val(is_massPwType);
+
   }
 
-      $(document).on('change', '#massPwType', function(){
+      $(document).on('change', '#select', function(){
         var massPwType = $(this).val();
         $('#PasteTable').DataTable().destroy();
         if(massPwType != '')
@@ -380,11 +379,6 @@ $(document).ready(function(){
                 }
            });
     });
-
-    
-//제품 분류 column 검색 기능
-
-
 
  });
 </script>

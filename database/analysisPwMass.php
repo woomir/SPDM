@@ -287,7 +287,7 @@
 $(document).ready(function(){
   fetch_data();
 
-  function fetch_data()
+  function fetch_data(is_massPwType)
   {
    var dataTable = $('#PasteTable').DataTable({
     "processing" : true,
@@ -305,7 +305,8 @@ $(document).ready(function(){
        visible: false}],
     "ajax" : {
      url:"../dataManage/analysisPwMass/fetch.php",
-     type:"POST"
+     type:"POST",
+     data: {is_massPwType : is_massPwType}
     },
     dom: "<'row'<'col-sm-12 col-md-auto'l><'col-sm-12 col-md-4'B><'col-sm-12 col-md-4 ml-auto'f>>" +
          "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
@@ -316,7 +317,27 @@ $(document).ready(function(){
            postfixButtons: [ 'colvisRestore' ]
          }]
    });
+
+   //Powder Type 선택 기능
+   $('#PasteTable_filter').prepend('Powder Type:&nbsp&nbsp&nbsp<select id="select" class="form-control form-control-sm" style="width:20%; display:inline-block;"></select>&nbsp&nbsp&nbsp');
+    $('#select').append('<option value="">All</optionv><option value="R">R</option><option value="NC">NC</option><option value="JET">JET</option><option value="CL">CL</option><option value="Etc">Etc</option>');
+    $('#select').val(is_massPwType);
+
   }
+
+  $(document).on('change', '#select', function(){
+        var massPwType = $(this).val();
+        $('#PasteTable').DataTable().destroy();
+        if(massPwType != '')
+        {
+          fetch_data(massPwType);
+        }
+        else
+        {
+          fetch_data();
+        }
+      });
+
       $('#add').click(function(){
            $('#insert').val("Insert");
            $('#insert_form')[0].reset();

@@ -50,13 +50,7 @@
                 <thead align="center">
                   <tr>
                     <th>Lot<br>No</th>
-                    <th id="">
-                      <select name="RmassPwType" id="RmassPwType" class="form-control">
-                        <option value="">제품분류</option>
-                        <option value="CP4">CP4</option>
-                        <option value="CP6">CP6</option>
-                      </select>
-                    </th>
+                    <th width="">제품<br>분류</th>
                     <th width="">특징</th>
                     <th>제조일자</th>
                     <th width="">코팅제1</th>
@@ -88,13 +82,7 @@
                 <thead align="center">
                   <tr>
                     <th>Lot<br>No</th>
-                    <th id="">
-                      <select name="NCmassPwType" id="NCmassPwType" class="form-control">
-                        <option value="">제품분류</option>
-                        <option value="CP4">CP4</option>
-                        <option value="CP6">CP6</option>
-                      </select>
-                    </th>
+                    <th width="">제품<br>분류</th>
                     <th width="">특징</th>
                     <th>제조일자</th>
                     <th width="">코팅제1</th>
@@ -126,13 +114,7 @@
                 <thead align="center">
                   <tr>
                     <th>Lot<br>No</th>
-                    <th id="">
-                      <select name="JetmassPwType" id="JetmassPwType" class="form-control">
-                        <option value="">제품분류</option>
-                        <option value="CP4">CP4</option>
-                        <option value="CP6">CP6</option>
-                      </select>
-                    </th>
+                    <th width="">제품<br>분류</th>
                     <th width="">특징</th>
                     <th>제조일자</th>
                     <th width="">코팅제1</th>
@@ -173,13 +155,7 @@
                 <thead align="center">
                   <tr>
                     <th>Lot<br>No</th>
-                    <th id="">
-                      <select name="ClmassPwType" id="ClmassPwType" class="form-control">
-                        <option value="">제품분류</option>
-                        <option value="CP4">CP4</option>
-                        <option value="CP6">CP6</option>
-                      </select>
-                    </th>
+                    <th width="">제품<br>분류</th>
                     <th width="">특징</th>
                     <th>제조일자</th>
                     <th width="">코팅제1</th>
@@ -221,7 +197,7 @@
                 <thead align="center">
                   <tr>
                     <th>Lot<br>No</th>
-                    <th id="">제품분류</th>
+                    <th id="">제품<br>분류</th>
                     <th width="">특징</th>
                     <th>제조일자</th>
                     <th width="">코팅제1</th>
@@ -336,6 +312,11 @@ $(document).ready(function(){
           "targets": [1]}
         ]
    });
+
+   //제품 분류 선택 기능
+   $('#ClTable_filter').prepend('제품 분류:&nbsp&nbsp&nbsp<select id="Clselect" class="form-control form-control-sm" style="width:20%; display:inline-block;"></select>&nbsp&nbsp&nbsp');
+    $('#Clselect').append('<option value="">All</optionv><option value="CP4">CP4</option><option value="CP6">CP6</option>');
+    $('#Clselect').val(is_massPwType);
   }
 
   function jet_fetch_data(is_massPwType)
@@ -367,7 +348,10 @@ $(document).ready(function(){
           {"orderable": false,
           "targets": [1]}
         ]
-   });
+   });//제품 분류 선택 기능
+   $('#JetTable_filter').prepend('제품 분류:&nbsp&nbsp&nbsp<select id="Jetselect" class="form-control form-control-sm" style="width:20%; display:inline-block;"></select>&nbsp&nbsp&nbsp');
+    $('#Jetselect').append('<option value="">All</optionv><option value="CP4">CP4</option><option value="CP6">CP6</option>');
+    $('#Jetselect').val(is_massPwType);
   }
 
   function reaction_fetch_data(is_massPwType)
@@ -400,6 +384,10 @@ $(document).ready(function(){
           "targets": [1]}
         ]
    });
+   //제품 분류 선택 기능
+   $('#RTable_filter').prepend('제품 분류:&nbsp&nbsp&nbsp<select id="Rselect" class="form-control form-control-sm" style="width:20%; display:inline-block;"></select>&nbsp&nbsp&nbsp');
+    $('#Rselect').append('<option value="">All</optionv><option value="CP4">CP4</option><option value="CP6">CP6</option>');
+    $('#Rselect').val(is_massPwType);
   }
 
 
@@ -433,6 +421,10 @@ $(document).ready(function(){
           "targets": [1]}
         ]
    });
+   //제품 분류 선택 기능
+   $('#NCTable_filter').prepend('제품 분류:&nbsp&nbsp&nbsp<select id="NCselect" class="form-control form-control-sm" style="width:20%; display:inline-block;"></select>&nbsp&nbsp&nbsp');
+    $('#NCselect').append('<option value="">All</optionv><option value="CP4">CP4</option><option value="CP6">CP6</option>');
+    $('#NCselect').val(is_massPwType);
   }
 
   function etc_fetch_data()
@@ -466,7 +458,7 @@ $(document).ready(function(){
    });
   }
 
-  $(document).on('change', '#RmassPwType', function(){
+  $(document).on('change', '#Rselect', function(){
         var massPwType = $(this).val();
         $('#RTable').DataTable().destroy();
         if(massPwType != '')
@@ -479,7 +471,7 @@ $(document).ready(function(){
         }
       });
 
-      $(document).on('change', '#NCmassPwType', function(){
+      $(document).on('change', '#NCselect', function(){
         var massPwType = $(this).val();
         $('#NCTable').DataTable().destroy();
         if(massPwType != '')
@@ -492,7 +484,7 @@ $(document).ready(function(){
         }
       });
 
-      $(document).on('change', '#JetmassPwType', function(){
+      $(document).on('change', '#Jetselect', function(){
         var massPwType = $(this).val();
         $('#JetTable').DataTable().destroy();
         if(massPwType != '')
@@ -505,7 +497,7 @@ $(document).ready(function(){
         }
       });
 
-      $(document).on('change', '#ClmassPwType', function(){
+      $(document).on('change', '#Clselect', function(){
         var massPwType = $(this).val();
         $('#ClTable').DataTable().destroy();
         if(massPwType != '')

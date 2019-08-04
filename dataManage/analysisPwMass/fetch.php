@@ -3,17 +3,26 @@
 session_start();
 //fetch.php
 include '../db.php';
+
 $column = array('lotNo', 'classPost', 'sizeSem', 'stdSem', 'd10', 'd50', 'd90', 'dmax','cohesion',
 'ncIgl', 'qcIgl', 'tIgl', 'pIgl', 'cIgl', 'dtaPeak', 'enthalphy', 'bet', 'td', 'xrd', 'pcuR', 'pcuNc', 'na', 'etc');
 $query = "SELECT * FROM analysispwmasstbl";
 
+$query .= " WHERE ";
 
+if(isset($_POST["is_massPwType"]))
+{
+  if($_POST["is_massPwType"] !== "Etc"){
+ $query .= "classPost = '".$_POST["is_massPwType"]."' AND ";
+}else{
+  $query .= " NOT classPost IN ('R', 'NC', 'JET', 'CL') AND ";
+}
+}
 
 if(isset($_POST["search"]["value"]))
 {
  $query .= '
- WHERE lotNo LIKE "%'.$_POST["search"]["value"].'%"
- OR classPost LIKE "%'.$_POST["search"]["value"].'%"
+ (lotNo LIKE "%'.$_POST["search"]["value"].'%"
  OR sizeSem LIKE "%'.$_POST["search"]["value"].'%"
  OR stdSem LIKE "%'.$_POST["search"]["value"].'%"
  OR d10 LIKE "%'.$_POST["search"]["value"].'%"
@@ -34,7 +43,7 @@ if(isset($_POST["search"]["value"]))
  OR pcuR LIKE "%'.$_POST["search"]["value"].'%"
  OR pcuNc LIKE "%'.$_POST["search"]["value"].'%"
  OR na LIKE "%'.$_POST["search"]["value"].'%"
- OR etc LIKE "%'.$_POST["search"]["value"].'%"
+ OR etc LIKE "%'.$_POST["search"]["value"].'%")
  ';
 }
 
