@@ -54,6 +54,7 @@
       <th width="">R-PCU</th>
       <th width="">NC-PCU</th>
       <th width="">Na</th>
+      <th>P</th>
       <th width="">Etc</th>
       <th width="">Edit</th>
      </tr>
@@ -190,17 +191,21 @@
                         </div>
                        </div></br>
                        <div class="row">
-                         <div class="col-md-4">
-                            <label>R-PCU (4:1)</label>
-                            <input type="number" name="pcuR" id="pcuR" class="form-control"/>
+                         <div class="col-md-3">
+                            <label>R-PCU</label>
+                            <input type="number" name="pcuR" id="pcuR" class="form-control" placeholder="4:1"/>
                          </div>
-                         <div class="col-md-4">
-                          <label>NC-PCU (2:1)</label>
-                          <input type="number" name="pcuNc" id="pcuNc" class="form-control"/>
+                         <div class="col-md-3">
+                          <label>NC-PCU</label>
+                          <input type="number" name="pcuNc" id="pcuNc" class="form-control" placeholder="2:1"/>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                          <label>Na</label>
                          <input type="number" name="na" id="na" class="form-control" placeholder="mg/&#8467;"/>
+                        </div>
+                        <div class="col-md-3">
+                         <label>P</label>
+                         <input type="number" name="phos" id="phos" class="form-control" placeholder="mg/&#8467;"/>
                         </div>
                        </div></br>
                          <label>Etc</label>
@@ -301,7 +306,7 @@ $(document).ready(function(){
     orderable: false,
     targets: [21,22]
   },
-  {targets: [3,7,14,15,-2,-3,-5],
+  {targets: [3,7,14,15,-2,-5],
        visible: false}],
     "ajax" : {
      url:"../dataManage/analysisPwMass/fetch.php",
@@ -391,6 +396,7 @@ $(document).ready(function(){
                      $('#pcuR').val(data.pcuR);
                      $('#pcuNc').val(data.pcuNc);
                      $('#na').val(data.na);
+                     $('#phos').val(data.phos);
                      $('#etc').val(data.etc);
                      $('#id').val("edit");
                      $('#insert').val("Update");

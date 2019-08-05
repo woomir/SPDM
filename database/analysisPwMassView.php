@@ -135,13 +135,20 @@
                     <th>D90</th>
                     <th>Dmax</th>
                     <th>응집도</th>
+                    <th width="">NC-IGL</th>
                     <th>QC-IGL</th>
                     <th>T-IGL</th>
                     <th>P-IGL</th>
                     <th>C-IGL</th>
-                    <th>BET</th>
-                    <th>TD</th>
-                    <th>XRD</th>
+                    <th width="">DTA Peak</th>
+                    <th width="">Enthalphy</th>
+                    <th width="">BET</th>
+                    <th width="">TD</th>
+                    <th width="">XRD</th>
+                    <th width="">R-PCU</th>
+                    <th width="">NC-PCU</th>
+                    <th width="">Na</th>
+                    <th>P</th>
                   </tr>
                   </thead>
                 </table>
@@ -176,14 +183,20 @@
                     <th>D90</th>
                     <th>Dmax</th>
                     <th>응집도</th>
-                    <th>NC-IGL</th>
+                    <th width="">NC-IGL</th>
                     <th>QC-IGL</th>
                     <th>T-IGL</th>
                     <th>P-IGL</th>
                     <th>C-IGL</th>
-                    <th>BET</th>
-                    <th>TD</th>
-                    <th>XRD</th>
+                    <th width="">DTA Peak</th>
+                    <th width="">Enthalphy</th>
+                    <th width="">BET</th>
+                    <th width="">TD</th>
+                    <th width="">XRD</th>
+                    <th width="">R-PCU</th>
+                    <th width="">NC-PCU</th>
+                    <th width="">Na</th>
+                    <th>P</th>
                   </tr>
                   </thead>
                 </table>
@@ -218,14 +231,20 @@
                     <th>D90</th>
                     <th>Dmax</th>
                     <th>응집도</th>
-                    <th>NC-IGL</th>
+                    <th width="">NC-IGL</th>
                     <th>QC-IGL</th>
                     <th>T-IGL</th>
                     <th>P-IGL</th>
                     <th>C-IGL</th>
-                    <th>BET</th>
-                    <th>TD</th>
-                    <th>XRD</th>
+                    <th width="">DTA Peak</th>
+                    <th width="">Enthalphy</th>
+                    <th width="">BET</th>
+                    <th width="">TD</th>
+                    <th width="">XRD</th>
+                    <th width="">R-PCU</th>
+                    <th width="">NC-PCU</th>
+                    <th width="">Na</th>
+                    <th>P</th>
                   </tr>
                   </thead>
                 </table>
@@ -306,7 +325,7 @@ $(document).ready(function(){
           text: 'Show / Hide columns'
         }],
         columnDefs: [
-          {targets: [1, 8, 10, 15,],
+          {targets: [1, 8, 10, 15,27,28],
           visible: false},
           {"orderable": false,
           "targets": [1]}
@@ -343,7 +362,7 @@ $(document).ready(function(){
           text: 'Show / Hide columns'
         }],
         columnDefs: [
-          {targets: [1, 8, 10, 15,],
+          {targets: [1, 8, 10, 15,27,28],
           visible: false},
           {"orderable": false,
           "targets": [1]}
@@ -450,7 +469,7 @@ $(document).ready(function(){
           text: 'Show / Hide columns'
         }],
         columnDefs: [
-          {targets: [1, 8, 10, 15,],
+          {targets: [1, 8, 10, 15,27,28],
           visible: false},
           {"orderable": false,
           "targets": [1]}

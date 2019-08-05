@@ -7,7 +7,7 @@ $column = array('sampleNo', 'concept', 'powderType','dateMake', 'ncpwLot',
 'nameRed', 'ratioRed', 'amountRed', 'nameAmine', 'amountAmine', 'nameLubricant1',
 'ratioLubricant1', 'nameLubricant2', 'ratioLubricant2', 'ratioSA', 'ratioPA', 'nameAdd',
 'ratioAdd','amountAdd','tempCoating','rpmPw','sizeSem','cohesion','d10','d50','d90','dmax','tIgl','pIgl',
-'cIgl','bet','td','xrd');
+'cIgl','bet','td','xrd', 'na', 'phos');
 $query = "SELECT * FROM analysispw_view";
 
 if(isset($_POST["search"]["value"]))
@@ -46,6 +46,8 @@ if(isset($_POST["search"]["value"]))
  OR bet LIKE "%'.$_POST["search"]["value"].'%"
  OR td LIKE "%'.$_POST["search"]["value"].'%"
  OR xrd LIKE "%'.$_POST["search"]["value"].'%"
+ OR na LIKE "%'.$_POST["search"]["value"].'%"
+ OR phos LIKE "%'.$_POST["search"]["value"].'%"
  ';
 }
 
@@ -108,6 +110,8 @@ while($row = mysqli_fetch_array($result))
  $sub_array[] = '<div data-column="bet">' . $row["bet"] . '</div>';
  $sub_array[] = '<div data-column="td">' . $row["td"] . '</div>';
  $sub_array[] = '<div data-column="xrd">' . $row["xrd"] . '</div>';
+ $sub_array[] = '<div data-column="na">' . $row["na"] . '</div>';
+ $sub_array[] = '<div data-column="phos">' . $row["phos"] . '</div>';
  
  $data[] = $sub_array;
 }

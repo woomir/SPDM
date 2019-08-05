@@ -7,7 +7,7 @@ include '../db.php';
 $column = array('sampleNo', 'concept', 'dateWashing', 'pwLot', 'amountDMW', 'amountPw',
 'kindsWash', 'ratioWash', 'amountWash', 'temp', 'orderAdd', 'rpm', 'timeDissol', 'timePw', 
 'maker', 'washEtc', 'd10','d50','d90','dmax','tIgl','dtaPeak', 'enthalphy', 'bet','xrd',
-'pcu', 'na', 'etc');
+'pcu', 'na', 'phos', 'etc');
 $query = "SELECT * FROM analysispwwash_view";
 
 if(isset($_POST["search"]["value"]))
@@ -40,6 +40,7 @@ if(isset($_POST["search"]["value"]))
  OR xrd LIKE "%'.$_POST["search"]["value"].'%"
  OR pcu LIKE "%'.$_POST["search"]["value"].'%"
  OR na LIKE "%'.$_POST["search"]["value"].'%"
+ OR phos LIKE "%'.$_POST["search"]["value"].'%"
  OR etc LIKE "%'.$_POST["search"]["value"].'%"
  ';
 }
@@ -97,6 +98,7 @@ while($row = mysqli_fetch_array($result))
  $sub_array[] = '<div data-column="xrd">' . $row["xrd"] . '</div>';
  $sub_array[] = '<div data-column="pcu">' . $row["pcu"] . '</div>';
  $sub_array[] = '<div data-column="na">' . $row["na"] . '</div>';
+ $sub_array[] = '<div data-column="phos">' . $row["phos"] . '</div>';
  $sub_array[] = '<div data-column="etc">' . $row["etc"] . '</div>';
  
  $data[] = $sub_array;

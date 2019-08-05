@@ -6,8 +6,8 @@ include '../db.php';
 
 $column = array('lotNo', 'nameProduct', 'characteristic', 'makeDate', 'nameLubricant1',
 'ratioLubricant1', 'nameLubricant2', 'ratioLubricant2', 'ratioSAPA', 'tempCoating',
-'rateAddJet', 'pressureJet', 'yieldJet', 'yieldSmall', 'yieldBig', 'makeEtc','sizeSem','d10','d50',
-'d90','dmax','cohesion','ncIgl','qcIgl','tIgl','pIgl','cIgl','bet','td','xrd');
+'rateAddJet', 'pressureJet', 'yieldJet', 'yieldSmall', 'yieldBig', 'makeEtc','sizeSem', 'stdSem', 'd10', 'd50', 'd90', 'dmax','cohesion',
+'ncIgl', 'qcIgl', 'tIgl', 'pIgl', 'cIgl', 'dtaPeak', 'enthalphy', 'bet', 'td', 'xrd', 'pcuR', 'pcuNc', 'na', 'phos', 'etc');
 
 $query = 'SELECT * FROM analysispwmass_cl_view';
 
@@ -38,6 +38,7 @@ if(isset($_POST["search"]["value"]))
  OR yieldBig LIKE "%'.$_POST["search"]["value"].'%"
  OR makeEtc LIKE "%'.$_POST["search"]["value"].'%"
  OR sizeSem LIKE "%'.$_POST["search"]["value"].'%"
+ OR stdSem LIKE "%'.$_POST["search"]["value"].'%"
  OR d10 LIKE "%'.$_POST["search"]["value"].'%"
  OR d50 LIKE "%'.$_POST["search"]["value"].'%"
  OR d90 LIKE "%'.$_POST["search"]["value"].'%"
@@ -48,9 +49,16 @@ if(isset($_POST["search"]["value"]))
  OR tIgl LIKE "%'.$_POST["search"]["value"].'%"
  OR pIgl LIKE "%'.$_POST["search"]["value"].'%"
  OR cIgl LIKE "%'.$_POST["search"]["value"].'%"
+ OR dtaPeak LIKE "%'.$_POST["search"]["value"].'%"
+ OR enthalphy LIKE "%'.$_POST["search"]["value"].'%"
  OR bet LIKE "%'.$_POST["search"]["value"].'%"
  OR td LIKE "%'.$_POST["search"]["value"].'%"
- OR xrd LIKE "%'.$_POST["search"]["value"].'%")
+ OR xrd LIKE "%'.$_POST["search"]["value"].'%"
+ OR pcuR LIKE "%'.$_POST["search"]["value"].'%"
+ OR pcuNc LIKE "%'.$_POST["search"]["value"].'%"
+ OR na LIKE "%'.$_POST["search"]["value"].'%"
+ OR phos LIKE "%'.$_POST["search"]["value"].'%"
+ OR etc LIKE "%'.$_POST["search"]["value"].'%")
  ';
 }
 
@@ -107,9 +115,16 @@ while($row = mysqli_fetch_array($result))
  $sub_array[] = '<div data-column="tIgl">' . $row["tIgl"] . '</div>';
  $sub_array[] = '<div data-column="pIgl">' . $row["pIgl"] . '</div>';
  $sub_array[] = '<div data-column="cIgl">' . $row["cIgl"] . '</div>';
+ $sub_array[] = '<div data-column="dtaPeak">' . $row["dtaPeak"] . '</div>';
+ $sub_array[] = '<div data-column="enthalphy">' . $row["enthalphy"] . '</div>';
  $sub_array[] = '<div data-column="bet">' . $row["bet"] . '</div>';
  $sub_array[] = '<div data-column="td">' . $row["td"] . '</div>';
  $sub_array[] = '<div data-column="xrd">' . $row["xrd"] . '</div>';
+ $sub_array[] = '<div data-column="pcuR">' . $row["pcuR"] . '</div>';
+ $sub_array[] = '<div data-column="pcuNc">' . $row["pcuNc"] . '</div>';
+ $sub_array[] = '<div data-column="na">' . $row["na"] . '</div>';
+ $sub_array[] = '<div data-column="phos">' . $row["phos"] . '</div>';
+ $sub_array[] = '<div data-column="etc">' . $row["etc"] . '</div>';
 
  $data[] = $sub_array;
 }

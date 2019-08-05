@@ -100,6 +100,7 @@
                         <th width="">XRD</th>
                         <th width="">PCU</th>
                         <th width="">Na</th>
+                        <th width="">P</th>
                         <th width="">Etc</th>
                       </tr>
                     </thead>
@@ -140,6 +141,7 @@
                       <th>XRD</th>
                       <th>PCU</th>
                       <th>Na</th>
+                      <th width="">P</th>
                       <th width="">Etc</th>
                     </tr>
                     </thead>
@@ -186,6 +188,8 @@
                       <th>BET</th>
                       <th>TD</th>
                       <th>XRD</th>
+                      <th>Na</th>
+                      <th width="">P</th>
                     </tr>
                     </thead>
                   </table>
@@ -299,7 +303,7 @@ $(document).ready(function(){
         "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
         "iDisplayLength": 25,
         "columnDefs": [
-          {targets: [4,6,8,11,14,17,18,19,20,22,23,24,25,28,31,32,33,34,36,38,41,43,45,46,48,49,50,51,52,53,55,56],
+          {targets: [4,6,8,11,14,17,18,19,20,22,23,24,25,28,31,32,33,34,36,38,41,43,45,46,48,49,50,51,52,53,58],
               visible: false}
         ],
             "ajax" : {
@@ -349,7 +353,7 @@ $(document).ready(function(){
         "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
         "iDisplayLength": 25,
         "columnDefs": [
-          {targets: [10,11,12,14,15,16,17,18,19,21,22,23,27],
+          {targets: [10,11,12,14,15,16,17,18,19,21,22,23,28],
               visible: false}
         ],
         "ajax" : {

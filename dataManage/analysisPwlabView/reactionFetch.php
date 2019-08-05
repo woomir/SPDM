@@ -11,7 +11,7 @@ $column = array('sampleNo', 'object', 'date', 'scale', 'agC',
 'redC', 'amountRed', 'kindRedAdd1', 'ratioRedAdd1', 'amountRedAdd1', 'kindRedAdd2', 
 'ratioRedAdd2', 'amountRedAdd2', 'redTemp','redRpm', 'ratioReactionNaOH', 'redEtc', 
 'reactionpH', 'reactionTemp', 'infoAgno3_lotNo', 'maker', 'sizeSem', 'd10', 'd50', 'd90', 'dmax',
-'tIgl', 'pIgl', 'cIgl', 'dtaPeak', 'enthalphy', 'bet', 'td', 'xrd', 'pcu', 'na', 'etc');
+'tIgl', 'pIgl', 'cIgl', 'dtaPeak', 'enthalphy', 'bet', 'td', 'xrd', 'pcu', 'na', 'phos', 'etc');
 
 $query = "SELECT * FROM analysispwreaction_view";
 
@@ -81,6 +81,7 @@ if(isset($_POST["search"]["value"]))
  OR xrd LIKE "%'.$_POST["search"]["value"].'%"
  OR pcu LIKE "%'.$_POST["search"]["value"].'%"
  OR na LIKE "%'.$_POST["search"]["value"].'%"
+ OR phos LIKE "%'.$_POST["search"]["value"].'%"
  OR etc LIKE "%'.$_POST["search"]["value"].'%")
  ';
 }
@@ -170,6 +171,7 @@ while($row = mysqli_fetch_array($result))
  $sub_array[] = '<div data-column="xrd">' . $row["xrd"] . '</div>';
  $sub_array[] = '<div data-column="pcu">' . $row["pcu"] . '</div>';
  $sub_array[] = '<div data-column="na">' . $row["na"] . '</div>';
+ $sub_array[] = '<div data-column="phos">' . $row["phos"] . '</div>';
  $sub_array[] = '<div data-column="etc">' . $row["etc"] . '</div>';
 
  

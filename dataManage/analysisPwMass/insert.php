@@ -67,9 +67,15 @@ if ($_SESSION['role_id']<3){
       if ($_POST["pcuNc"]!=""){
       $pcuNc = mysqli_real_escape_string($connect, $_POST["pcuNc"]);
     } else {$pcuNc = 'NULL';}
+      
       if ($_POST["na"]!=""){
       $na = mysqli_real_escape_string($connect, $_POST["na"]);
     } else {$na = 'NULL';}
+
+      if ($_POST["phos"]!=""){
+        $phos = mysqli_real_escape_string($connect, $_POST["phos"]);
+      } else {$phos = 'NULL';}
+
       $etc = mysqli_real_escape_string($connect, $_POST["etc"]);
       $username = $_POST["username"];
 
@@ -98,6 +104,7 @@ if ($_SESSION['role_id']<3){
            pcuR = $pcuR,
            pcuNc = $pcuNc,
            na = $na,
+           phos = $phos,
            etc = '$etc',
            updateUser = '$username'
            WHERE lotNo = '$lotNo' and classPost = '$classPost'";
@@ -115,10 +122,10 @@ if ($_SESSION['role_id']<3){
         if($check_result == 0) {
            $query = "INSERT INTO analysispwmasstbl (lotNo, classPost, sizeSem,
              stdSem, d10, d50, d90, dmax, ncIgl, qcIgl, tIgl, pIgl, cIgl, dtaPeak,
-             enthalphy, bet, td, xrd, pcuR, pcuNc, na, etc, updateUser)
+             enthalphy, bet, td, xrd, pcuR, pcuNc, na, phos, etc, updateUser)
            VALUES('$lotNo', '$classPost', $sizeSem, $stdSem, $d10, $d50, $d90,
              $dmax, $ncIgl, $qcIgl, $tIgl, $pIgl, $cIgl, $dtaPeak, $enthalphy,
-             $bet, $td, $xrd, $pcuR, $pcuNc, $na, '$etc','$username');
+             $bet, $td, $xrd, $pcuR, $pcuNc, $na, $phos, '$etc','$username');
            ";
            $message = 'Data Inserted';
 

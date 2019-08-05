@@ -5,7 +5,7 @@ session_start();
 include '../db.php';
 
 $column = array('lotNo', 'classPost', 'sizeSem', 'stdSem', 'd10', 'd50', 'd90', 'dmax','cohesion',
-'ncIgl', 'qcIgl', 'tIgl', 'pIgl', 'cIgl', 'dtaPeak', 'enthalphy', 'bet', 'td', 'xrd', 'pcuR', 'pcuNc', 'na', 'etc');
+'ncIgl', 'qcIgl', 'tIgl', 'pIgl', 'cIgl', 'dtaPeak', 'enthalphy', 'bet', 'td', 'xrd', 'pcuR', 'pcuNc', 'na', 'phos', 'etc');
 $query = "SELECT * FROM analysispwmasstbl";
 
 $query .= " WHERE ";
@@ -43,6 +43,7 @@ if(isset($_POST["search"]["value"]))
  OR pcuR LIKE "%'.$_POST["search"]["value"].'%"
  OR pcuNc LIKE "%'.$_POST["search"]["value"].'%"
  OR na LIKE "%'.$_POST["search"]["value"].'%"
+ OR phos LIKE "%'.$_POST["search"]["value"].'%"
  OR etc LIKE "%'.$_POST["search"]["value"].'%")
  ';
 }
@@ -95,6 +96,7 @@ while($row = mysqli_fetch_array($result))
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="pcuR">' . $row["pcuR"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="pcuNc">' . $row["pcuNc"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="na">' . $row["na"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["id"].'" data-column="phos">' . $row["phos"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["id"].'" data-column="etc">' . $row["etc"] . '</div>';
  
  if ($_SESSION['role_id']==1){

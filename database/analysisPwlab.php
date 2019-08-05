@@ -52,6 +52,7 @@
       <th width="">XRD</th>
       <th width="">PCU</th>
       <th width="">Na</th>
+      <th width="">P</th>
       <th width="">Etc</th>
       <th width="">Manage</th>
      </tr>
@@ -163,15 +164,19 @@
                           </div>
                        </div></br>
                        <div class="row">
-                         <div class="col-md-4">
+                         <div class="col-md-3">
                             <label>PCU</label>
                             <input type="number" name="pcu" id="pcu" class="form-control" placeholder=""/>
                          </div>
-                         <div class="col-md-4">
+                         <div class="col-md-3">
                           <label>Na</label>
                           <input type="number" name="na" id="na" class="form-control" placeholder="ppm"/>
                          </div>
-                         <div class="col-md-4">
+                         <div class="col-md-3">
+                          <label>P</label>
+                          <input type="number" name="phos" id="phos" class="form-control" placeholder="ppm" step="" />
+                         </div>
+                         <div class="col-md-3">
                           <label>SEM size</label>
                           <input type="number" name="sizeSem" id="sizeSem" class="form-control" placeholder="&#181;m" step="0.001" />
                          </div>
@@ -281,7 +286,7 @@ $(document).ready(function(){
     orderable: false,
     targets: [18,19]
   },
-  {targets: [4,6,7,11,12,-2,-3],
+  {targets: [4,6,7,11,12,-2],
        visible: false}],
     "ajax" : {
      url:"../dataManage/analysisPwlab/fetch.php",
@@ -366,6 +371,7 @@ $(document).ready(function(){
                      $('#xrd').val(data.xrd);
                      $('#pcu').val(data.pcu);
                      $('#na').val(data.na);
+                     $('#phos').val(data.phos);
                      $('#sizeSem').val(data.sizeSem);
                      $('#etc').val(data.etc);
                      $('#id').val("edit");

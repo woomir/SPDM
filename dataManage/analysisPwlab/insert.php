@@ -58,6 +58,9 @@ if ($_SESSION['role_id']<3){
       if ($_POST["na"]!=""){
         $na = mysqli_real_escape_string($connect, $_POST["na"]);
       } else {$na = 'NULL';}
+      if ($_POST["phos"]!=""){
+        $phos = mysqli_real_escape_string($connect, $_POST["phos"]);
+      } else {$phos = 'NULL';}
       $etc = mysqli_real_escape_string($connect, $_POST["etc"]);
       $username = $_POST["username"];
 
@@ -82,6 +85,7 @@ if ($_SESSION['role_id']<3){
            xrd = $xrd,
            pcu = $pcu,
            na = $na,
+           phos = $phos,
            etc = '$etc',
            updateUser = '$username'
            WHERE sampleNo='$sampleNo' and powderType = '$powderType'";
@@ -99,9 +103,9 @@ if ($_SESSION['role_id']<3){
       {
         if($check_result == 0) {
            $query = "INSERT INTO analysispwtbl (sampleNo, powderType, sizeSem, d10, d50,
-             d90, dmax, tIgl, pIgl, cIgl, dtaPeak, enthalphy, bet, td, xrd, pcu, na, etc, updateUser)
+             d90, dmax, tIgl, pIgl, cIgl, dtaPeak, enthalphy, bet, td, xrd, pcu, na, phos, etc, updateUser)
            VALUES('$sampleNo', '$powderType', $sizeSem, $d10, $d50, $d90, $dmax, $tIgl,
-             $pIgl, $cIgl, $dtaPeak, $enthalphy, $bet, $td, $xrd, $pcu, $na, '$etc','$username');
+             $pIgl, $cIgl, $dtaPeak, $enthalphy, $bet, $td, $xrd, $pcu, $na, $phos, '$etc','$username');
            ";
            $message = 'Data Inserted';
       
